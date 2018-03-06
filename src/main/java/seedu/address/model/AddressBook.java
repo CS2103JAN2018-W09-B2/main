@@ -164,6 +164,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         for (Person person: persons) {
 
             // cannot remove tag from initTagSet since initTagSet is unmodifiableSet
+            // create new Tag Set manually
             Set<Tag> initTagSet = person.getTags();
             UniqueTagList afterRemovedTagSet = new UniqueTagList();
             for (Tag tag: initTagSet) {
