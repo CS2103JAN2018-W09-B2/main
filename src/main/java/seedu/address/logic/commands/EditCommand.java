@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PROFILE_PICTURE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
@@ -24,9 +25,12 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.ProfilePicture;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Tag;
+
+import javax.swing.text.html.Option;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -41,6 +45,7 @@ public class EditCommand extends UndoableCommand {
             + PREFIX_PHONE + " "
             + PREFIX_EMAIL + " "
             + PREFIX_ADDRESS + " "
+            + PREFIX_PROFILE_PICTURE + " "
             + "[" + PREFIX_TAG + "TAG]...";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
@@ -51,6 +56,7 @@ public class EditCommand extends UndoableCommand {
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
+            + "[" + PREFIX_PROFILE_PICTURE + "PROFILE PICTURE PATH] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
@@ -114,9 +120,10 @@ public class EditCommand extends UndoableCommand {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
+        ProfilePicture updatedProfilePicture = editPersonDescriptor.getProfilePicture().orElse(personToEdit.getProfilePicture());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedProfilePicture, updatedTags);
     }
 
     @Override
@@ -147,6 +154,7 @@ public class EditCommand extends UndoableCommand {
         private Phone phone;
         private Email email;
         private Address address;
+        private ProfilePicture profilePicture;
         private Set<Tag> tags;
 
         public EditPersonDescriptor() {}
@@ -160,6 +168,7 @@ public class EditCommand extends UndoableCommand {
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setAddress(toCopy.address);
+            setProfilePicture(toCopy.profilePicture);
             setTags(toCopy.tags);
         }
 
@@ -167,7 +176,7 @@ public class EditCommand extends UndoableCommand {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(this.name, this.phone, this.email, this.address, this.tags);
+            return CollectionUtil.isAnyNonNull(this.name, this.phone, this.email, this.address, this.profilePicture, this.tags);
         }
 
         public void setName(Name name) {
@@ -201,6 +210,10 @@ public class EditCommand extends UndoableCommand {
         public Optional<Address> getAddress() {
             return Optional.ofNullable(address);
         }
+
+        public void setProfilePicture(ProfilePicture profilePicture) { this.profilePicture = profilePicture; }
+
+        public Optional<ProfilePicture> getProfilePicture() { return Optional.ofNullable(profilePicture); }
 
         /**
          * Sets {@code tags} to this object's {@code tags}.
@@ -238,6 +251,7 @@ public class EditCommand extends UndoableCommand {
                     && getPhone().equals(e.getPhone())
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
+                    && getProfilePicture().equals(e.getProfilePicture())
                     && getTags().equals(e.getTags());
         }
     }
