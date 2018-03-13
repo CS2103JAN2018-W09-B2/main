@@ -29,7 +29,7 @@ public class StorageManager extends ComponentManager implements Storage {
         super();
         createProfilePicturesFolder();
         this.addressBookStorage = addressBookStorage;
-
+        this.userPrefsStorage = userPrefsStorage;
    }
 
     private void createProfilePicturesFolder() {

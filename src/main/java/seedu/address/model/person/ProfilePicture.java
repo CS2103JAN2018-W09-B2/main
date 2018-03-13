@@ -6,10 +6,10 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class ProfilePicture {
     private static  final String SPECIAL_CHARACTERS = "!#$%&'*+/=?`{|}~^.-";
     public static final String MESSAGE_PROFILEPICTURE_CONSTRAINTS =
-            "Person names should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Profile picture path should be a valid path, and it should end with either jpg, png, gif or bmp";
 
     // alphanumeric and special characters
-    public static final String PROFILE_PICTURE_VALIDATION_REGEX = "([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)";
+    public static final String PROFILE_PICTURE_VALIDATION_REGEX = "^$|([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)";
 
     public final String value;
 
@@ -41,7 +41,7 @@ public class ProfilePicture {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof ProfilePicture // instanceof handles nulls
-                && this.value.equals(((Email) other).value)); // state check
+                && this.value.equals(((ProfilePicture) other).value)); // state check
     }
 
     @Override
