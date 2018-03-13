@@ -119,7 +119,11 @@ public class XmlAdaptedPerson {
         }
         final Address address = new Address(this.address);
 
-        if (this.profilePicture != null && !ProfilePicture.isValidProfilePicture(this.profilePicture)) {
+        if (this.profilePicture == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ProfilePicture.class.getSimpleName()));
+        }
+        if (!ProfilePicture.isValidProfilePicture(this.profilePicture)) {
             throw new IllegalValueException(ProfilePicture.MESSAGE_PROFILEPICTURE_CONSTRAINTS);
         }
         final ProfilePicture profilePicture = new ProfilePicture(this.profilePicture);

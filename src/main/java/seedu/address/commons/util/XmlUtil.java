@@ -26,7 +26,9 @@ public class XmlUtil {
      * @throws JAXBException         Thrown if the file is empty or does not have the correct format.
      */
     @SuppressWarnings("unchecked")
-    public static <T> T getDataFromFile(File file, Class<T> classToConvert)
+    public static <T> T
+
+    getDataFromFile(File file, Class<T> classToConvert)
             throws FileNotFoundException, JAXBException {
 
         requireNonNull(file);

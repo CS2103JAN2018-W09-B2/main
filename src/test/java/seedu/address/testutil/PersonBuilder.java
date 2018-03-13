@@ -36,7 +36,7 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
-        profilePicture = new ProfilePicture((DEFAULT_PROFILE_PICTURE));
+        profilePicture = new ProfilePicture(DEFAULT_PROFILE_PICTURE);
         tags = SampleDataUtil.getTagSet(DEFAULT_TAGS);
     }
 

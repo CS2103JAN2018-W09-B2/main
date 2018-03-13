@@ -48,12 +48,8 @@ public class AddCommandParser implements Parser<AddCommand> {
             Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE)).get();
             Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL)).get();
             Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS)).get();
-            ProfilePicture profilePicture = new ProfilePicture(null);
-            Optional<ProfilePicture> optionalProfilePicture =
-                    ParserUtil.parseProfilePicture(argMultimap.getValue(PREFIX_PROFILE_PICTURE));
-            if (optionalProfilePicture.isPresent()) {
-                profilePicture = optionalProfilePicture.get();
-            }
+            ProfilePicture profilePicture =
+                    ParserUtil.parseProfilePicture(argMultimap.getValue(PREFIX_PROFILE_PICTURE)).get();
             Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
             Person person = new Person(name, phone, email, address, profilePicture, tagList);
