@@ -30,8 +30,6 @@ import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Tag;
 
-import javax.swing.text.html.Option;
-
 /**
  * Edits the details of an existing person in the address book.
  */
@@ -120,7 +118,8 @@ public class EditCommand extends UndoableCommand {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
-        ProfilePicture updatedProfilePicture = editPersonDescriptor.getProfilePicture().orElse(personToEdit.getProfilePicture());
+        ProfilePicture updatedProfilePicture =
+                editPersonDescriptor.getProfilePicture().orElse(personToEdit.getProfilePicture());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedProfilePicture, updatedTags);
@@ -176,7 +175,8 @@ public class EditCommand extends UndoableCommand {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(this.name, this.phone, this.email, this.address, this.profilePicture, this.tags);
+            return CollectionUtil.isAnyNonNull(this.name, this.phone, this.email, this.address, this.profilePicture,
+                    this.tags);
         }
 
         public void setName(Name name) {
@@ -211,9 +211,13 @@ public class EditCommand extends UndoableCommand {
             return Optional.ofNullable(address);
         }
 
-        public void setProfilePicture(ProfilePicture profilePicture) { this.profilePicture = profilePicture; }
+        public void setProfilePicture(ProfilePicture profilePicture) {
+            this.profilePicture = profilePicture;
+        }
 
-        public Optional<ProfilePicture> getProfilePicture() { return Optional.ofNullable(profilePicture); }
+        public Optional<ProfilePicture> getProfilePicture() {
+            return Optional.ofNullable(profilePicture);
+        }
 
         /**
          * Sets {@code tags} to this object's {@code tags}.

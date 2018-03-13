@@ -156,10 +156,12 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code Optional<String> profilePicture} into an {@code Optional<ProfilePicture>} if {@code profilePicture} is present.
+     * Parses a {@code Optional<String> profilePicture} into an {@code Optional<ProfilePicture>}
+     * if {@code profilePicture} is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
      */
-    public static Optional<ProfilePicture> parseProfilePicture(Optional<String> profilePicture) throws IllegalValueException {
+    public static Optional<ProfilePicture> parseProfilePicture(Optional<String> profilePicture)
+            throws IllegalValueException {
         requireNonNull(profilePicture);
         return profilePicture.isPresent() ? Optional.of(parseProfilePicture(profilePicture.get())) : Optional.empty();
     }

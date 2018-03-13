@@ -3,8 +3,11 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * Represents a ProfilePicture in the address book.
+ * Guarantees: details are present and not null, field values are validated, immutable.
+ */
 public class ProfilePicture {
-    private static  final String SPECIAL_CHARACTERS = "!#$%&'*+/=?`{|}~^.-";
     public static final String MESSAGE_PROFILEPICTURE_CONSTRAINTS =
             "Profile picture path should be a valid path, and it should end with either jpg, png, gif or bmp";
 
@@ -19,9 +22,8 @@ public class ProfilePicture {
      * @param profilePicture A valid image path.
      */
     public ProfilePicture(String profilePicture) {
-        if (profilePicture != null) {
-            checkArgument(isValidProfilePicture(profilePicture), MESSAGE_PROFILEPICTURE_CONSTRAINTS);
-        }
+        requireNonNull(profilePicture);
+        checkArgument(isValidProfilePicture(profilePicture), MESSAGE_PROFILEPICTURE_CONSTRAINTS);
         this.value = profilePicture;
     }
 

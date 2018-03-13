@@ -174,7 +174,8 @@ public class AddressBook implements ReadOnlyAddressBook {
                 }
             }
             updatePerson(person, new Person(person.getName(),
-                    person.getPhone(), person.getEmail(), person.getAddress(), person.getProfilePicture(), afterRemovedTagSet.toSet()));
+                    person.getPhone(), person.getEmail(), person.getAddress(), person.getProfilePicture(),
+                    afterRemovedTagSet.toSet()));
         }
         tags.remove(t);
     }

@@ -30,7 +30,7 @@ public class StorageManager extends ComponentManager implements Storage {
         createProfilePicturesFolder();
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;
-   }
+    }
 
     private void createProfilePicturesFolder() {
         File dir = new File("src/main/resources/ProfilePictures");
