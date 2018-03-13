@@ -12,6 +12,7 @@ import seedu.address.model.tag.UniqueTagList;
 /**
  * Represents a Person in the address book.
  * Guarantees: details are present and not null, field values are validated, immutable.
+ * Two persons can have the same profilePicture
  */
 public class Person {
 
@@ -98,6 +99,8 @@ public class Person {
                 .append(getEmail())
                 .append(" Address: ")
                 .append(getAddress())
+                .append(" Profile Picture: ")
+                .append(getProfilePicture())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
