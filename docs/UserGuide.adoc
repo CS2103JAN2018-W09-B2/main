@@ -107,7 +107,7 @@ Edits the name of the 2nd person to be `Betsy Crower` and clears all existing ta
 
 === Locating persons by name: `find`
 
-You can find all the person whose names or tags contain any of the given keywords using the following format. +
+You can find all the persons whose names or tags contain any of the given keywords using the following format. +
 Format: `find n/KEYWORD [MORE_KEYWORDS]` to find by name or `find t/KEYWORD [MORE_KEYWORDS]` to find by tag
 
 ****
