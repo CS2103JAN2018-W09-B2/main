@@ -34,7 +34,7 @@ Not sure how to install Java? Visit the oracle website link below for more infor
 
 
 .  Download the latest `contactHeRo.jar` link:{repoURL}/releases[here].
-.  Copy the file to the folder you want to use as the home folder for your Address Book.
+.  Copy the file to the folder you want to use as the home folder for contactHeRo.
 .  Double-click the file to start the app. The user interface should appear in a few seconds as shown below.
 +
 image::Ui.png[width="790"]
