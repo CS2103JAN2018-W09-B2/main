@@ -33,7 +33,7 @@ This app will not work with earlier versions of Java 8.
 Not sure how to install Java? Visit the oracle website link below for more information. https://tinyurl.com/yb8leqv8
 
 
-.  Download the latest `addressbook.jar` link:{repoURL}/releases[here].
+.  Download the latest `contactHeRo.jar` link:{repoURL}/releases[here].
 .  Copy the file to the folder you want to use as the home folder for your Address Book.
 .  Double-click the file to start the app. The user interface should appear in a few seconds as shown below.
 +
@@ -189,12 +189,12 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 // tag::undoredo[]
 === Undoing previous command : `undo`
 
-You can restore the address book to the state before the previous _undoable_ command was executed using the following format. +
+You can restore contactHeRo to the state before the previous _undoable_ command was executed using the following format. +
 Format: `undo`
 
 [NOTE]
 ====
-Undoable commands: those commands that modify the address book's content (`add`, `delete`, `edit` and `clear`).
+Undoable commands: those commands that modify the contactHeRo's content (`add`, `delete`, `edit` and `clear`).
 ====
 
 Examples:
