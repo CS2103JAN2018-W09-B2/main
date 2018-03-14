@@ -35,23 +35,6 @@ public class TypicalPersons {
             .withEmail("johnd@example.com").withPhone("98765432")
             .withProfilePicture("src/main/resources/ProfilePictures/Benson.jpg")
             .withTags("owesMoney", "friends").build();
-    public static final Person JOHN = new PersonBuilder().withName("John Lee")
-            .withAddress("311, Clementi Ave 2, #02-28")
-            .withEmail("johnt@example.com").withPhone("98765438")
-            .withProfilePicture("src/main/resources/ProfilePictures/John.jpg")
-            .withTags("owesMoney", "friends").build();
-    // Persons after remove a tag
-    public static final Person BENSON2 = new PersonBuilder().withName("Benson Meier")
-            .withAddress("311, Clementi Ave 2, #02-25")
-            .withEmail("johnd@example.com").withPhone("98765432")
-            .withProfilePicture("src/main/resources/ProfilePictures/Benson2.jpg")
-            .withTags("owesMoney").build();
-    public static final Person JOHN2 = new PersonBuilder().withName("John Lee")
-            .withAddress("311, Clementi Ave 2, #02-28")
-            .withEmail("johnt@example.com").withPhone("98765438")
-            .withProfilePicture("src/main/resources/ProfilePictures/John2.jpg")
-            .withTags("owesMoney").build();
-
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
             .withEmail("heinz@example.com").withAddress("wall street")
             .withProfilePicture("src/main/resources/ProfilePictures/Carl.jpg").build();
