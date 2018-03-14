@@ -154,7 +154,7 @@
 <div class="sect2">
 <h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
+<p>You can restore contactHeRo to the state before the previous <em>undoable</em> command was executed using the following format.<br>
 Format: <code>undo</code></p>
 </div>
 <div class="admonitionblock note">
@@ -165,7 +165,7 @@ Format: <code>undo</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
+<p>Undoable commands: those commands that modify the contactHeRo&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
 </div>
 </td>
 </tr>
@@ -199,7 +199,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <div class="sect2">
 <h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
+<p>You can reverse the most recent <code>undo</code> command using the following format.<br>
 Format: <code>redo</code></p>
 </div>
 <div class="paragraph">
@@ -229,10 +229,85 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
+<h3 id="set-reminders-code-comming-in-v1-5-code"><a class="link" href="#set-reminders-code-comming-in-v1-5-code">Set reminders <code>[comming in v1.5]</code></a></h3>
+<div class="paragraph">
+<p>You can set reminders for meetings, appointments or any other event and contactHeRo will remind you of the event.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="login-system-code-coming-in-v2-0-code"><a class="link" href="#login-system-code-coming-in-v2-0-code">Login system <code>[coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>The login system shall provide security to your data stored in contactHeRo.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">FAQ</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">Command Summary</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong><a href="#Adding-a-person">Add</a></strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+</li>
+<li>
+<p><strong><a href="#Clearing-all-entries">Clear</a></strong> : <code>clear</code></p>
+</li>
+<li>
+<p><strong><a href="#ClearHistory">[ClearHistory]</a></strong> : <code>clearhistory</code></p>
+</li>
+<li>
+<p><strong><a href="#Deleting-a-person">Delete</a></strong> : <code>delete INDEX</code><br>
+e.g. <code>delete 3</code></p>
+</li>
+<li>
+<p><strong><a href="#Editing-a-person">Edit</a></strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
+</li>
+<li>
+<p><strong><a href="#Locating-persons-by-name">Find</a></strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
+e.g. <code>find James Jake</code></p>
+</li>
+<li>
+<p><strong><a href="#Listing-all-persons">List</a></strong> : <code>list</code></p>
+</li>
+<li>
+<p><strong><a href="#Viewing-help">Help</a></strong> : <code>help</code></p>
+</li>
+<li>
+<p><strong><a href="#Selecting-a-person">Select</a></strong> : <code>select INDEX</code><br>
+e.g.<code>select 2</code></p>
+</li>
+<li>
+<p><strong><a href="#Listing-entered-commands">History</a></strong> : <code>history</code></p>
+</li>
+<li>
+<p><strong><a href="#Undoing-previous-command">Undo</a></strong> : <code>undo</code></p>
+</li>
+<li>
+<p><strong><a href="#Redoing-the-previously-undone-command">Redo</a></strong> : <code>redo</code></p>
+</li>
+<li>
+<p><strong><a href="#Viewing-the-LinkedIn-search-of-the-person">LinkedIn</a></strong>: <code>linkedIn INDEX</code><br>
+e.g. <code>linkedIn 2</code></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -561,7 +636,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-21 14:13:38 UTC
+Last updated 2018-03-14 16:49:11 UTC
 </div>
 </div>
 </body>
