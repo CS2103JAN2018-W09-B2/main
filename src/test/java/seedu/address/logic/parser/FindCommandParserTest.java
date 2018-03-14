@@ -44,13 +44,21 @@ public class FindCommandParserTest {
 
     @Test
     public void parse_invalidArg_throwsParseException() {
-        assertParseFailure(parser, "n/", String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+        FindCommand expectedFindNameCommand =
+                new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList("")));
+        assertParseSuccess(parser, " n/", expectedFindNameCommand);
 
-        assertParseFailure(parser, "t/", String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+        FindCommand expectedFindTagCommand =
+                new FindCommand(new TagContainsKeywordsPredicate(Arrays.asList("")));
+        assertParseSuccess(parser, " t/", expectedFindTagCommand);
 
-        assertParseFailure(parser, "n/ t/", String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, " n/", String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
 
-        assertParseFailure(parser, "t/ n/", String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, " t/", String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+
+        assertParseFailure(parser, " n/ t/", String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+
+        assertParseFailure(parser, " t/ n/", String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
     }
 
 }
