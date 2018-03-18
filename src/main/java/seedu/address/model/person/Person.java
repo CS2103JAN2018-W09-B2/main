@@ -8,6 +8,7 @@ import java.util.Set;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.image.Image;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
 
@@ -23,11 +24,13 @@ public class Person implements ReadOnlyPerson {
     private final Email email;
     private final Address address;
     private final ProfilePicture profilePicture;
+    private final Image image;
 
     private ObjectProperty<Name> nameProperty;
     private ObjectProperty<Phone> phoneProperty;
     private ObjectProperty<Email> emailProperty;
     private ObjectProperty<Address> addressProperty;
+    private ObjectProperty<Image> imageProperty;
 
     private final UniqueTagList tags;
 
@@ -45,6 +48,8 @@ public class Person implements ReadOnlyPerson {
         this.address = address;
         this.addressProperty = new SimpleObjectProperty<>(address);
         this.profilePicture = profilePicture;
+        this.image = profilePicture.getImage();
+        this.imageProperty = new SimpleObjectProperty<>(image);
         // protect internal tags from changes in the arg list
         this.tags = new UniqueTagList(tags);
     }
@@ -68,6 +73,8 @@ public class Person implements ReadOnlyPerson {
     public ProfilePicture getProfilePicture() {
         return profilePicture;
     }
+
+    public Image getImage() { return image; }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
@@ -134,7 +141,7 @@ public class Person implements ReadOnlyPerson {
         return addressProperty;
     }
 
-    public ObjectProperty<ProfilePicture> profilePictureProperty() {
-        return profilePictureProperty();
+    public ObjectProperty<Image> imageProperty() {
+        return imageProperty;
     }
 }
