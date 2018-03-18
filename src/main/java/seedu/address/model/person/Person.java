@@ -133,4 +133,8 @@ public class Person implements ReadOnlyPerson {
     public ObjectProperty<Address> addressProperty() {
         return addressProperty;
     }
+
+    public ObjectProperty<ProfilePicture> profilePictureProperty() {
+        return profilePictureProperty();
+    }
 }
