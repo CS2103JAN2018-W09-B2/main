@@ -32,9 +32,6 @@ public class ContactDetailsDisplay extends UiPart<Region> {
     @FXML
     private Label email;
 
-    @FXML
-    private Label imageView;
-
     public ContactDetailsDisplay() {
         super(FXML);
         registerAsAnEventHandler(this);

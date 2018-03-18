@@ -22,7 +22,6 @@ public class PersonCard extends UiPart<Region> {
     private static final String[] TAG_COLOR_STYLES =
         { "teal", "red", "green", "blue", "orange", "brown",
             "yellow", "pink", "lightgreen", "grey", "purple" };
-    private static final String defaultImg = "file:images/clock.png";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -62,19 +61,7 @@ public class PersonCard extends UiPart<Region> {
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         profilePicture.setText(person.getProfilePicture().value);
-
-        try {
-            // user need to put all profile picture in folder images
-            String profilePicturepath = "images/".concat(person.getProfilePicture().value);
-            File file = new File(profilePicturepath);
-            if (!file.exists()) {
-                throw new FileNotFoundException("Can not find profile picture");
-            }
-            Image image = new Image(file.toURI().toURL().toExternalForm());
-            imageView.setImage(image);
-        } catch (MalformedURLException|FileNotFoundException e){
-            imageView.setImage(new Image(defaultImg));
-        }
+        imageView.setImage(person.getProfilePicture().getImage());
         initTags(person);
     }
 
