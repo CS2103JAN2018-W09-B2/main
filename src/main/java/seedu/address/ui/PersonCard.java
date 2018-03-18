@@ -2,10 +2,16 @@ package seedu.address.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -16,6 +22,7 @@ public class PersonCard extends UiPart<Region> {
     private static final String[] TAG_COLOR_STYLES =
         { "teal", "red", "green", "blue", "orange", "brown",
             "yellow", "pink", "lightgreen", "grey", "purple" };
+    private static final String defaultImg = "file:images/clock.png";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -43,6 +50,8 @@ public class PersonCard extends UiPart<Region> {
     private Label profilePicture;
     @FXML
     private FlowPane tags;
+    @FXML
+    private ImageView imageView;
 
     public PersonCard(Person person, int displayedIndex) {
         super(FXML);
@@ -53,6 +62,19 @@ public class PersonCard extends UiPart<Region> {
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         profilePicture.setText(person.getProfilePicture().value);
+
+        try {
+            // user need to put all profile picture in folder images
+            String profilePicturepath = "images/".concat(person.getProfilePicture().value);
+            File file = new File(profilePicturepath);
+            if (!file.exists()) {
+                throw new FileNotFoundException("Can not find profile picture");
+            }
+            Image image = new Image(file.toURI().toURL().toExternalForm());
+            imageView.setImage(image);
+        } catch (MalformedURLException|FileNotFoundException e){
+            imageView.setImage(new Image(defaultImg));
+        }
         initTags(person);
     }
 
