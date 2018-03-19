@@ -2,16 +2,12 @@ package seedu.address.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.net.MalformedURLException;
 
 /**
  * An UI component that displays information of a {@code Person}.

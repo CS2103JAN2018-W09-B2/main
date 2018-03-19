@@ -1,11 +1,9 @@
 package seedu.address.model.person;
 
 import javafx.scene.image.Image;
-
 import java.io.File;
 import java.net.MalformedURLException;
 
-import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**

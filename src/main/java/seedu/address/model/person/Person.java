@@ -8,7 +8,6 @@ import java.util.Set;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.scene.image.Image;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
 
