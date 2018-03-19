@@ -793,6 +793,12 @@ manage which include contact details and profiles of potential employees. It is 
 
 *Value proposition*: An ideal solution for small teams and business professionals who need a simple solution to manage their contacts and help them with day-to-day business activities.
 
+*Feature contribution*:
+
+* Kevin
+** Find contact by tag using keyword. (Minor)
+** "Email" command for user to send email to contact. Will be using Gmail API. (Major)
+
 [appendix]
 == User Stories
 
