@@ -76,12 +76,17 @@ public class EditPersonDescriptorBuilder {
     /**
      * Sets the {@code ProfilePicture} of the {@code EditPersonDescriptor} that we are building.
      */
+<<<<<<< HEAD
     public EditPersonDescriptorBuilder withProfilePicture(String... profilePicture) {
         if (profilePicture.length == 0) {
             descriptor.setProfilePicture(new ProfilePicture());
         } else {
             descriptor.setProfilePicture(new ProfilePicture(profilePicture[0]));
         }
+=======
+    public EditPersonDescriptorBuilder withProfilePicture(String profilePicture) {
+        descriptor.setProfilePicture(new ProfilePicture(profilePicture));
+>>>>>>> upstream/master
         return this;
     }
 

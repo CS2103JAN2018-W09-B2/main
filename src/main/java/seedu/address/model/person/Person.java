@@ -24,13 +24,11 @@ public class Person implements ReadOnlyPerson {
     private final Email email;
     private final Address address;
     private final ProfilePicture profilePicture;
-    //private final Image image;
 
     private ObjectProperty<Name> nameProperty;
     private ObjectProperty<Phone> phoneProperty;
     private ObjectProperty<Email> emailProperty;
     private ObjectProperty<Address> addressProperty;
-    //private ObjectProperty<Image> imageProperty;
 
     private final UniqueTagList tags;
 
@@ -52,9 +50,6 @@ public class Person implements ReadOnlyPerson {
         } else {
             this.profilePicture = profilePicture;
         }
-        //this.image = new Image(this.profilePicture.value);
-        //this.imageProperty = new SimpleObjectProperty<>(image);
-        // protect internal tags from changes in the arg list
         this.tags = new UniqueTagList(tags);
     }
 
@@ -78,8 +73,6 @@ public class Person implements ReadOnlyPerson {
         return profilePicture;
     }
 
-    //public Image getImage() { return image; }
-
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
@@ -100,7 +93,8 @@ public class Person implements ReadOnlyPerson {
         return otherPerson.getName().equals(this.getName())
                 && otherPerson.getPhone().equals(this.getPhone())
                 && otherPerson.getEmail().equals(this.getEmail())
-                && otherPerson.getAddress().equals(this.getAddress());
+                && otherPerson.getAddress().equals(this.getAddress())
+                && otherPerson.getProfilePicture().equals(this.getProfilePicture());
     }
 
     @Override
@@ -142,9 +136,4 @@ public class Person implements ReadOnlyPerson {
         return addressProperty;
     }
 
-    /*
-    public ObjectProperty<Image> imageProperty() {
-        return imageProperty;
-    }
-    */
 }

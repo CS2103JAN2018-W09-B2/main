@@ -128,7 +128,6 @@ public class XmlAdaptedPerson {
                 throw new IllegalValueException(ProfilePicture.MESSAGE_PROFILEPICTURE_NOT_EXISTS);
             }
         }
-
         final ProfilePicture profilePicture = new ProfilePicture(this.profilePicture);
 
         final Set<Tag> tags = new HashSet<>(personTags);
