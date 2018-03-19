@@ -795,9 +795,18 @@ manage which include contact details and profiles of potential employees. It is 
 
 *Feature contribution*:
 
-* Kevin
-** Find contact by tag using keyword. (Minor)
-** "Email" command for user to send email to contact. Will be using Gmail API. (Major)
+3. Kevin Chin
+* Major Feature: Email contact
+** User can use the "email" command to send email to chosen contact.
+** The feature uses Gmail API to send emails.
+
+* Minor Feature: Find contact by tag
+** User can find contact by tag using keyword of the tag.
+** Supports multiple keywords.
+
+* How do these features fit into the product scope?
+** Major Feature: Recruiters may sometimes need to set up appointments, meetings, and interviews. This will usually be done through the use of email. This feature will be convenient for them as the email address of the contacts are already in contactHeRo.
+** Minor Feature: Sometimes, recruiter might not remember the name of the person they wish to contact. The assigned role of a person is much easier to remember. Therefore, this feature is very useful in helping them find a contact easily.
 
 [appendix]
 == User Stories
