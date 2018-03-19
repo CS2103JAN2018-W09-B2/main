@@ -1,10 +1,11 @@
 package seedu.address.model.person;
 
-import javafx.scene.image.Image;
+import static seedu.address.commons.util.AppUtil.checkArgument;
+
 import java.io.File;
 import java.net.MalformedURLException;
 
-import static seedu.address.commons.util.AppUtil.checkArgument;
+import javafx.scene.image.Image;
 
 /**
  * Represents a ProfilePicture in the address book.
@@ -12,16 +13,18 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class ProfilePicture {
     public static final String MESSAGE_PROFILEPICTURE_CONSTRAINTS =
-            "Profile picture name should be a valid image name, and it should end with either jpeg, jpg, png, gif or bmp";
+            "Profile picture name should be a valid image name,"
+                    + " and it should end with either jpeg, jpg, png, gif or bmp";
     public static final String MESSAGE_PROFILEPICTURE_NOT_EXISTS =
             "Profile picture does not exists. Please give another profile picture";
-    private static final String defaultImg = "file:images/default.png";
 
     // alphanumeric and special characters
     public static final String PROFILE_PICTURE_VALIDATION_REGEX = "^$|([^\\s]+(\\.(?i)(jpeg|jpg|png|gif|bmp))$)";
 
-    public final String value;
+    private static final String defaultImg = "file:images/default.png";
+
     public final String path;
+    public final String value;
 
     /**
      * Constructs an {@code Email}.
