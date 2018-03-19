@@ -11,5 +11,5 @@ public interface ReadOnlyPerson {
     ObjectProperty< Address > addressProperty();
     ObjectProperty< Phone > phoneProperty();
     ObjectProperty< Email > emailProperty();
-    ObjectProperty< Image > imageProperty();
+    //ObjectProperty< Image > imageProperty();
 }

@@ -39,7 +39,7 @@ public class XmlUtilTest {
     private static final String VALID_PHONE = "9482424";
     private static final String VALID_EMAIL = "hans@example";
     private static final String VALID_ADDRESS = "4th street";
-    private static final String VALID_PROFILE_PICTURE = "src/main/resources/ProfilePictures/Muster.jpg";
+    private static final String VALID_PROFILE_PICTURE = "hans.jpeg";
     private static final List<XmlAdaptedTag> VALID_TAGS = Collections.singletonList(new XmlAdaptedTag("friends"));
 
     @Rule

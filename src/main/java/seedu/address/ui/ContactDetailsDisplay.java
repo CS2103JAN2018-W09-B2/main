@@ -49,7 +49,8 @@ public class ContactDetailsDisplay extends UiPart<Region> {
         address.textProperty().bind(Bindings.convert(person.addressProperty()));
         phone.textProperty().bind(Bindings.convert(person.phoneProperty()));
         email.textProperty().bind(Bindings.convert(person.emailProperty()));
-        imageView.imageProperty().bind(person.imageProperty());
+        //imageView.imageProperty().bind(person.imageProperty());
+        imageView.setImage(person.getProfilePicture().getImage());
     }
 
     @Subscribe

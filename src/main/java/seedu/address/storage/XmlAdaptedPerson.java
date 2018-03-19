@@ -1,5 +1,6 @@
 package seedu.address.storage;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -119,13 +120,15 @@ public class XmlAdaptedPerson {
         }
         final Address address = new Address(this.address);
 
-        if (this.profilePicture == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    ProfilePicture.class.getSimpleName()));
+        if (this.profilePicture != null) {
+            if (!ProfilePicture.isValidProfilePicture(this.profilePicture)) {
+                throw new IllegalValueException(ProfilePicture.MESSAGE_PROFILEPICTURE_CONSTRAINTS);
+            } else if (!ProfilePicture.hasValidProfilePicture(this.profilePicture)) {
+                System.out.println(this.profilePicture);
+                throw new IllegalValueException(ProfilePicture.MESSAGE_PROFILEPICTURE_NOT_EXISTS);
+            }
         }
-        if (!ProfilePicture.isValidProfilePicture(this.profilePicture)) {
-            throw new IllegalValueException(ProfilePicture.MESSAGE_PROFILEPICTURE_CONSTRAINTS);
-        }
+
         final ProfilePicture profilePicture = new ProfilePicture(this.profilePicture);
 
         final Set<Tag> tags = new HashSet<>(personTags);
@@ -147,6 +150,7 @@ public class XmlAdaptedPerson {
                 && Objects.equals(phone, otherPerson.phone)
                 && Objects.equals(email, otherPerson.email)
                 && Objects.equals(address, otherPerson.address)
+                && Objects.equals(profilePicture, otherPerson.profilePicture)
                 && tagged.equals(otherPerson.tagged);
     }
 }

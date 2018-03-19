@@ -14,25 +14,39 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class ProfilePicture {
     public static final String MESSAGE_PROFILEPICTURE_CONSTRAINTS =
-            "Profile picture path should be a valid path, and it should end with either jpg, png, gif or bmp";
+            "Profile picture name should be a valid image name, and it should end with either jpeg, jpg, png, gif or bmp";
     public static final String MESSAGE_PROFILEPICTURE_NOT_EXISTS =
-            "Profile picture does not exists. Please give another profile picture path";
-    private static final String defaultImg = "file:images/clock.png";
+            "Profile picture does not exists. Please give another profile picture";
+    private static final String defaultImg = "file:images/default.png";
 
     // alphanumeric and special characters
-    public static final String PROFILE_PICTURE_VALIDATION_REGEX = "^$|([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)";
+    public static final String PROFILE_PICTURE_VALIDATION_REGEX = "^$|([^\\s]+(\\.(?i)(jpeg|jpg|png|gif|bmp))$)";
 
     public final String value;
+    public final String path;
 
     /**
      * Constructs an {@code Email}.
      *
      * @param profilePicture A valid image path.
      */
-    public ProfilePicture(String profilePicture) {
-        requireNonNull(profilePicture);
-        checkArgument(isValidProfilePicture(profilePicture), MESSAGE_PROFILEPICTURE_CONSTRAINTS);
-        this.value = profilePicture;
+    public ProfilePicture(String... profilePicture) {
+        if (profilePicture.length != 0 && profilePicture[0] != null) {
+            checkArgument(isValidProfilePicture(profilePicture[0]), MESSAGE_PROFILEPICTURE_CONSTRAINTS);
+            checkArgument(hasValidProfilePicture(profilePicture[0]), MESSAGE_PROFILEPICTURE_NOT_EXISTS);
+            String temp = new String();
+            try {
+                temp = new File("images/".concat(profilePicture[0])).toURI().toURL().toExternalForm();
+            } catch (MalformedURLException e) {
+                temp = defaultImg;
+            } finally {
+                this.value = profilePicture[0];
+                this.path = temp;
+            }
+        } else {
+            this.value = "default.png";
+            this.path = defaultImg;
+        }
     }
 
     /**
@@ -54,14 +68,7 @@ public class ProfilePicture {
     }
 
     public Image getImage() {
-        try {
-            if (hasValidProfilePicture(value)) {
-                String profilePicturepath = "images/".concat(value);
-                return new Image(new File(profilePicturepath).toURI().toURL().toExternalForm());
-            }
-        } catch (MalformedURLException e) {
-        }
-        return new Image(defaultImg);
+        return new Image(path);
     }
 
     @Override
