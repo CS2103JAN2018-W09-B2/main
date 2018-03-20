@@ -92,8 +92,7 @@ public class Person implements ReadOnlyPerson {
         return otherPerson.getName().equals(this.getName())
                 && otherPerson.getPhone().equals(this.getPhone())
                 && otherPerson.getEmail().equals(this.getEmail())
-                && otherPerson.getAddress().equals(this.getAddress())
-                && otherPerson.getProfilePicture().equals(this.getProfilePicture());
+                && otherPerson.getAddress().equals(this.getAddress());
     }
 
     @Override

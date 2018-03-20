@@ -5,7 +5,7 @@
         <phone isPrivate="false">9482424</phone>
         <email isPrivate="false">hans@example.com</email>
         <address isPrivate="false">4th street</address>
-        <profilePicture isPrivate="False">hans.jpeg</profilePicture>
+        <profilePicture isPrivate="False">./src/test/data/images/hans.jpeg</profilePicture>
     </persons>
     <persons>
         <name>Ruth Mueller</name>
@@ -30,7 +30,7 @@
         <phone isPrivate="false">9482224</phone>
         <email isPrivate="false">werner@example.com</email>
         <address isPrivate="false">michegan ave</address>
-        <profilePicture isPrivate="False">werner.jpeg</profilePicture>
+        <profilePicture isPrivate="False">./src/test/data/images/werner.jpeg</profilePicture>
     </persons>
     <persons>
         <name>Lydia Kunz</name>
@@ -43,7 +43,7 @@
         <phone isPrivate="false">9482442</phone>
         <email isPrivate="false">anna@example.com</email>
         <address isPrivate="false">4th street</address>
-        <profilePicture isPrivate="False">anna.jpeg</profilePicture>
+        <profilePicture isPrivate="False">./src/test/data/images/anna.jpeg</profilePicture>
     </persons>
     <persons>
         <name>Stefan Meier</name>
@@ -56,6 +56,6 @@
         <phone isPrivate="false">8482131</phone>
         <email isPrivate="false">hans@example.com</email>
         <address isPrivate="false">chicago ave</address>
-        <profilePicture isPrivate="False">martin.jpeg</profilePicture>
+        <profilePicture isPrivate="False">./src/test/data/images/martin.jpeg</profilePicture>
     </persons>
 </addressbook>
