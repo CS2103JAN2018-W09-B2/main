@@ -49,6 +49,7 @@
 <li><a href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></li>
 <li><a href="#logging">3.4. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
+<li><a href="#showing-profile-picture">3.6. Showing Profile Picture</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -1027,6 +1028,57 @@ Both the <code>select</code> and <code>linkedIn</code> command function quite si
 <h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="showing-profile-picture"><a class="link" href="#showing-profile-picture">3.6. Showing Profile Picture</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.6.1. Current implementation</a></h4>
+<div class="paragraph">
+<p><code>ProfilePicture</code> is a <code>Person</code> 's attribute. It stores the path of the input profile picture and generates a similar profile picture which will be stored in the app.
+The ProfilePicture constructor is called when <code>AddCommand</code> or <code>EditCommand</code> is executed. In <code>AddCommand</code>, it is an optional attribute. Whenever there is no valid profile picture for <code>ProfilePicture</code>,
+<code>ProfilePicture</code> takes the default <code>ProfilePicture</code>.
+<code>ProfilePicture</code>.getImage() returns an image for the <code>ImageView</code> of UI.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration-2"><a class="link" href="#design-consideration-2">3.6.2. Design consideration</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-link-with-code-profilepicture-code"><a class="link" href="#aspect-how-to-link-with-code-profilepicture-code">Aspect: How to link with <code>ProfilePicture</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Takes in the image path then copy the image to the ProfilePictureFolder.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: We still have profile picture if the original profile picture is lost.</p>
+</li>
+<li>
+<p>Cons: Memory consumption.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Store the path and retrieve the image from the path when necessary.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less memory consumption.</p>
+</li>
+<li>
+<p>Cons: Original Image may be lost.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>diagrams::ModelComponentClassDiagram.pptx[width="650"]</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2060,7 +2112,7 @@ manage which include contact details and profiles of potential employees. It is 
 </div>
 </li>
 <li>
-<p>Minor Feature: Contact details and LinkedIn search display</p>
+<p>Minor Feature: Contact details and LinkedIn search display.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2781,7 +2833,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-20 18:46:42 UTC
+Last updated 2018-03-20 19:08:22 UTC
 </div>
 </div>
 </body>
