@@ -477,6 +477,12 @@ The ProfilePicture constructor is called when `AddCommand` or `EditCommand` is e
 
 diagrams::ModelComponentClassDiagram.pptx[width="650"]
 
+=== Emailing a contact
+
+==== Current implementation
+The `EmailCommand` class will allow user to open an email interface to send email to the chosen contact. `EmailCommand` extends the `Command` class. It takes in an index through the `EmailCommandParser`,
+similar to the implementation of `DeleteCommand` and `DeleteCommandParser`.
+
 == Documentation
 
 We use asciidoc for writing documentation.
