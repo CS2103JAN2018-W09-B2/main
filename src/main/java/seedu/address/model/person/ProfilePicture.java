@@ -29,7 +29,6 @@ public class ProfilePicture {
     public final String filePath;
     public final String url;
 
-
     /**
      * Constructs an {@code Email}.
      *
@@ -69,9 +68,6 @@ public class ProfilePicture {
      */
     public static boolean hasValidProfilePicture(String profilePicture) {
         File file = new File(profilePicture);
-        if (!file.exists() || file.isDirectory()) {
-            System.out.println(profilePicture);
-        }
         return file.exists() && !file.isDirectory();
     }
 

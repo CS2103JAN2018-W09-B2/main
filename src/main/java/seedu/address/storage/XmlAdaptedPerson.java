@@ -123,8 +123,6 @@ public class XmlAdaptedPerson {
             if (!ProfilePicture.isValidProfilePicture(this.profilePicture)) {
                 throw new IllegalValueException(ProfilePicture.MESSAGE_PROFILEPICTURE_CONSTRAINTS);
             } else if (!ProfilePicture.hasValidProfilePicture(this.profilePicture)) {
-                System.out.println(this.profilePicture);
-
                 throw new IllegalValueException(ProfilePicture.MESSAGE_PROFILEPICTURE_NOT_EXISTS);
             }
         }
