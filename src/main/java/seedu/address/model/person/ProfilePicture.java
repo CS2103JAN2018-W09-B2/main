@@ -37,9 +37,6 @@ public class ProfilePicture {
     public ProfilePicture(String... profilePicture) {
         if (profilePicture.length != 0 && profilePicture[0] != null) {
             checkArgument(isValidProfilePicture(profilePicture[0]), MESSAGE_PROFILEPICTURE_CONSTRAINTS);
-            if (!hasValidProfilePicture(profilePicture[0])) {
-                System.out.println(this.toString());
-            }
             checkArgument(hasValidProfilePicture(profilePicture[0]), MESSAGE_PROFILEPICTURE_NOT_EXISTS);
             if (profilePicture[0].length() > 37
                     && profilePicture[0].substring(0, 37).equals("./src/main/resources/ProfilePictures/")) {
