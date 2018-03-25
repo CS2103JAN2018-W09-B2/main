@@ -69,7 +69,7 @@ public class XmlAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
-        profilePicture = source.getProfilePicture().value;
+        profilePicture = source.getProfilePicture().filePath;
         tagged = new ArrayList<>();
         for (Tag tag : source.getTags()) {
             tagged.add(new XmlAdaptedTag(tag));
@@ -123,11 +123,12 @@ public class XmlAdaptedPerson {
             if (!ProfilePicture.isValidProfilePicture(this.profilePicture)) {
                 throw new IllegalValueException(ProfilePicture.MESSAGE_PROFILEPICTURE_CONSTRAINTS);
             } else if (!ProfilePicture.hasValidProfilePicture(this.profilePicture)) {
+                System.out.println(this.profilePicture);
+
                 throw new IllegalValueException(ProfilePicture.MESSAGE_PROFILEPICTURE_NOT_EXISTS);
             }
         }
         final ProfilePicture profilePicture = new ProfilePicture(this.profilePicture);
-
         final Set<Tag> tags = new HashSet<>(personTags);
         return new Person(name, phone, email, address, profilePicture, tags);
     }
