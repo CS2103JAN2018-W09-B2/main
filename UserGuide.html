@@ -18,7 +18,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team W09-B2</code>      Since: <code>Feb 2018</code>      Licence: <code>MIT</code></p>
+<p>By: <code>Team W09-B2</code>      Since: <code>Mar 2018</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -42,12 +42,13 @@
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.12. Redoing the previously undone command : <code>redo</code></a></li>
 <li><a href="#clearing-all-entries-code-clear-code">3.13. Clearing all entries : <code>clear</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.14. Exiting the program : <code>exit</code></a></li>
-<li><a href="#auto-complete-command">3.15. Auto-complete command</a></li>
+<li><a href="#auto-completing-command">3.15. Auto-completing command</a></li>
 <li><a href="#saving-the-data">3.16. Saving the data</a></li>
-<li><a href="#set-reminders-code-coming-in-v1-5-code">3.17. Set reminders <code>[coming in v1.5]</code></a></li>
-<li><a href="#emailing-a-person-code-coming-in-v1-5-code">3.18. Emailing a person <code>[coming in v1.5]</code></a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.19. Encrypting data files <code>[coming in v2.0]</code></a></li>
-<li><a href="#login-system-code-coming-in-v2-0-code">3.20. Login system <code>[coming in v2.0]</code></a></li>
+<li><a href="#arranging-meetings-with-gmail-calendar-code-coming-in-v1-5-code">3.17. Arranging meetings with Gmail calendar <code>[coming in v1.5]</code></a></li>
+<li><a href="#setting-reminders-code-coming-in-v1-5-code">3.18. Setting reminders <code>[coming in v1.5]</code></a></li>
+<li><a href="#emailing-a-person-code-coming-in-v1-5-code">3.19. Emailing a person <code>[coming in v1.5]</code></a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.20. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#using-login-system-code-coming-in-v2-0-code">3.21. Using login system <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -67,7 +68,7 @@
 <h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can begin using contactHeRo by following a few simple steps below.</p>
+<p>You can begin using contactHeRo by following a few simple steps below:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -152,6 +153,30 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect1">
 <h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>As contactHeRo is a <strong>Command Line Interface(CLI) application</strong>, you need to type in commands in order to use contactHeRo features.</p>
+</div>
+<div class="paragraph">
+<p>Below is the interface of contactHeRo for you to type your command.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/command.png" alt="command" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Whenever you type in a command. It will show you the right format of the command.<br></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The command = name of command + parameters</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>To understand how to fill in the parameter, let&#8217;s us show you the command format for the parameters.</p>
+</div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
@@ -160,20 +185,46 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters you suppose to fill in.</p>
+<div class="literalblock">
+<div class="content">
+<pre>If the command specifies `add n/NAME`, `NAME` is a parameter where you put the name of the person you want to add.
+For example, you want to add John: `add n/John Doe`.</pre>
+</div>
+</div>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional. You can choose to type in or not.</p>
+<div class="literalblock">
+<div class="content">
+<pre>If the command specifies `n/NAME [t/TAG]`. `t/TAG` is optional.
+For example, you can type in `n/John Doe t/friend` or as `n/John Doe`.</pre>
+</div>
+</div>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times including zero times.</p>
+<div class="literalblock">
+<div class="content">
+<pre>If the command specifies `[t/TAG]...`.  `t/TAG` can be used multiple times.
+For example, you can type in `` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.</pre>
+</div>
+</div>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
+<p>Parameters can be in any order.</p>
+<div class="literalblock">
+<div class="content">
+<pre>If the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.</pre>
+</div>
+</div>
 </li>
 </ul>
 </div>
 </div>
+</div>
+<div class="paragraph">
+<p>Now as you have understood the command format, let&#8217;s explore the features:</p>
 </div>
 <div class="sect2">
 <h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
@@ -573,7 +624,7 @@ Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="auto-complete-command"><a class="link" href="#auto-complete-command">3.15. Auto-complete command</a></h3>
+<h3 id="auto-completing-command"><a class="link" href="#auto-completing-command">3.15. Auto-completing command</a></h3>
 <div class="paragraph">
 <p>To save your time, after typing a partial command, you can press TAB for the command to be auto-completed.</p>
 </div>
@@ -610,25 +661,31 @@ Examples:
 </div>
 </div>
 <div class="sect2">
-<h3 id="set-reminders-code-coming-in-v1-5-code"><a class="link" href="#set-reminders-code-coming-in-v1-5-code">3.17. Set reminders <code>[coming in v1.5]</code></a></h3>
+<h3 id="arranging-meetings-with-gmail-calendar-code-coming-in-v1-5-code"><a class="link" href="#arranging-meetings-with-gmail-calendar-code-coming-in-v1-5-code">3.17. Arranging meetings with Gmail calendar <code>[coming in v1.5]</code></a></h3>
+<div class="paragraph">
+<p>You can arrange meeting on Gmail calender using contactHero.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setting-reminders-code-coming-in-v1-5-code"><a class="link" href="#setting-reminders-code-coming-in-v1-5-code">3.18. Setting reminders <code>[coming in v1.5]</code></a></h3>
 <div class="paragraph">
 <p>You can set reminders for meetings, appointments or any other event and contactHeRo will remind you of the event.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="emailing-a-person-code-coming-in-v1-5-code"><a class="link" href="#emailing-a-person-code-coming-in-v1-5-code">3.18. Emailing a person <code>[coming in v1.5]</code></a></h3>
+<h3 id="emailing-a-person-code-coming-in-v1-5-code"><a class="link" href="#emailing-a-person-code-coming-in-v1-5-code">3.19. Emailing a person <code>[coming in v1.5]</code></a></h3>
 <div class="paragraph">
 <p>You can send email to any person you have saved in contactHeRo, without having to leave the app!</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.19. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.20. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="login-system-code-coming-in-v2-0-code"><a class="link" href="#login-system-code-coming-in-v2-0-code">3.20. Login system <code>[coming in v2.0]</code></a></h3>
+<h3 id="using-login-system-code-coming-in-v2-0-code"><a class="link" href="#using-login-system-code-coming-in-v2-0-code">3.21. Using login system <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>The login system shall provide security to your data stored in contactHeRo.</p>
 </div>
@@ -642,11 +699,22 @@ Examples:
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
 <strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
 </div>
+<div class="paragraph">
+<p><strong>Q</strong>: How do I report bugs to the developers?<br>
+<strong>A</strong>: Please send an email to <a href="mailto:contactHeRo@gmail.com">contactHeRo@gmail.com</a> if you find bug. Thank you.</p>
+</div>
+<div class="paragraph">
+<p>To ask more questions, please send your email to <a href="mailto:contactHeRo@gmail.com">contactHeRo@gmail.com</a>.<br>
+We are willing to help you.<br></p>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>These are all the commands that you can use for the latest version of contactHeRo:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -701,7 +769,7 @@ e.g. <code>linkedIn 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-26 06:53:01 UTC
+Last updated 2018-03-26 07:35:10 UTC
 </div>
 </div>
 </body>
