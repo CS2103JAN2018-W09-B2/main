@@ -51,7 +51,6 @@
 <li><a href="#logging">4.4. Logging</a></li>
 <li><a href="#Implementation-Configuration">4.5. Configuration</a></li>
 <li><a href="#showing-profile-picture">4.6. Showing Profile Picture</a></li>
-<li><a href="#emailing-a-contact">4.7. Emailing a contact</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -1094,52 +1093,6 @@ The ProfilePicture constructor is called when <code>AddCommand</code> or <code>E
 </div>
 <div class="paragraph">
 <p>diagrams::ModelComponentClassDiagram.pptx[width="650"]</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="emailing-a-contact"><a class="link" href="#emailing-a-contact">4.7. Emailing a contact</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.7.1. Current implementation</a></h4>
-<div class="paragraph">
-<p>The <code>EmailCommand</code> class will allow user to open an email interface to send email to the chosen contact. <code>EmailCommand</code> extends the <code>Command</code> class. It takes in an index through the <code>EmailCommandParser</code>,
-similar to the implementation of <code>DeleteCommand</code> and <code>DeleteCommandParser</code>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-consideration-3"><a class="link" href="#design-consideration-3">4.7.2. Design consideration</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-to-send-an-email"><a class="link" href="#aspect-how-to-send-an-email">Aspect: How to send an email</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Using Gmail API to send an email.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Able to customize the UI that the user will use to send out an email.</p>
-</li>
-<li>
-<p>Cons: Will take more time to implement due to additional UI components.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Using <code>Webview</code> to display the Gmail drafting url.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Faster implementation as similar feature has been done before.</p>
-</li>
-<li>
-<p>Cons: Not customizable and text may appear small in <code>Webview</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
 </div>
 </div>
 </div>
@@ -2899,7 +2852,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-27 14:57:42 UTC
+Last updated 2018-03-27 17:52:37 UTC
 </div>
 </div>
 </body>
