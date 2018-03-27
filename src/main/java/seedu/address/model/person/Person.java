@@ -33,6 +33,7 @@ public class Person {
         this.phone = phone;
         this.email = email;
         this.address = address;
+
         if (profilePicture == null) {
             this.profilePicture = new ProfilePicture();
         } else {
@@ -101,6 +102,8 @@ public class Person {
                 .append(getEmail())
                 .append(" Address: ")
                 .append(getAddress())
+                .append(" Profile Picture: ")
+                .append(getProfilePicture())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();

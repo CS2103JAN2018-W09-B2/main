@@ -4,8 +4,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
-import java.util.Date;
 
 import javafx.scene.image.Image;
 
@@ -22,12 +22,16 @@ public class ProfilePicture {
 
     // alphanumeric and special characters
     public static final String PROFILE_PICTURE_VALIDATION_REGEX = "^$|([^\\s]+(\\.(?i)(jpeg|jpg|png|gif|bmp))$)";
-    public static final String DEFAULT_IMG_URL = "file:src/test/data/images/default.png";
-    public static final String PROFILE_PICTURE_FOLDER =
+
+    private static final String defaultImgPath = "./src/test/data/images/default.png";
+    private static final String defaultImgURL = "file:src/test/data/images/default.png";
+    private static final String profilePictureFolder =
             "./src/main/resources/ProfilePictures/";
 
-    public final String filePath;
-    public final String url;
+    private static int id = 0;
+
+    public final String value;
+    public final String path;
 
     /**
      * Constructs an {@code Email}.
@@ -38,16 +42,19 @@ public class ProfilePicture {
         if (profilePicture.length != 0 && profilePicture[0] != null) {
             checkArgument(isValidProfilePicture(profilePicture[0]), MESSAGE_PROFILEPICTURE_CONSTRAINTS);
             checkArgument(hasValidProfilePicture(profilePicture[0]), MESSAGE_PROFILEPICTURE_NOT_EXISTS);
-            if (profilePicture[0].length() > 37
-                    && profilePicture[0].substring(0, 37).equals("./src/main/resources/ProfilePictures/")) {
-                this.filePath = profilePicture[0];
-            } else {
-                this.filePath = copyImageToProfilePictureFolder(profilePicture[0]);
+
+            this.value = profilePicture[0];
+            String temp = new String();
+            try {
+                temp = new File(copyImageToProfilePictureFolder(profilePicture[0])).toURI().toURL().toExternalForm();
+            } catch (MalformedURLException e) {
+                temp = defaultImgURL;
+            } finally {
+                this.path = temp;
             }
-            this.url = "file:".concat(this.filePath.substring(2));
         } else {
-            this.url = DEFAULT_IMG_URL;
-            this.filePath = DEFAULT_IMG_URL.replace("file:", "./");
+            this.value = defaultImgPath;
+            this.path = defaultImgURL;
         }
     }
 
@@ -69,24 +76,24 @@ public class ProfilePicture {
     }
 
     public Image getImage() {
-        return new Image(url);
+        return new Image(path);
     }
 
     @Override
     public String toString() {
-        return filePath;
+        return value;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof ProfilePicture // instanceof handles nulls
-                && this.filePath.equals(((ProfilePicture) other).filePath)); // state check
+                && this.value.equals(((ProfilePicture) other).value)); // state check
     }
 
     @Override
     public int hashCode() {
-        return filePath.hashCode();
+        return value.hashCode();
     }
 
     /**
@@ -99,11 +106,10 @@ public class ProfilePicture {
         try {
             File source = new File(profilePicture);
             String fileExtension = extractFileExtension(profilePicture);
-            Date date = new Date();
-            destPath = PROFILE_PICTURE_FOLDER.concat(
-                    date.toString().replace(" ", "").concat(".").concat(fileExtension));
+            destPath = profilePictureFolder.concat(Integer.toString(id).concat(".").concat(fileExtension));
             File dest = new File(destPath);
             Files.copy(source.toPath(), dest.toPath());
+            id++;
         } catch (IOException e) {
             // Exception will not happen as the profile picture path has been check through hasValidProfilePicture
         }
