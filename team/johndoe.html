@@ -304,8 +304,10 @@ We are willing to help you.<br></p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong><a href="#adding-a-person-code-add-code">Add</a></strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p><strong><a href="#adding-a-person-code-add-code">Add</a></strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [pp/PROFILE_PICTURE_PATH]
+[t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>add n/John Doe p/98765432 e/johnd@example.com a/Raffles Hall
+pp//home/trafalgarandre/downloads/john.jpeg t/friends t/owesMoney</code></p>
 </li>
 <li>
 <p><strong><a href="#clearing-all-entries-code-clear-code">Clear</a></strong> : <code>clear</code></p>
@@ -318,7 +320,8 @@ e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1
 e.g. <code>delete 3</code></p>
 </li>
 <li>
-<p><strong><a href="#editing-a-person-code-edit-code">Edit</a></strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
+<p><strong><a href="#editing-a-person-code-edit-code">Edit</a></strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS]
+[pp/PROFILE_PICTURE_PATH] [t/TAG]&#8230;&#8203;</code><br>
 e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
 </li>
 <li>
@@ -765,8 +768,7 @@ Both the <code>select</code> and <code>linkedIn</code> command function quite si
 <div class="paragraph">
 <p><strong>Alternative 3 :</strong> Show the <code>ContactDetailsDisplay</code> and <code>LinkedIn</code> as completely independent windows without tabs.<br>
 <strong>Pros</strong>: Completely isolates the <code>select</code> and <code>linkedIn</code> commands.<br>
-<strong>Cons</strong>: Removes the connectivity between a person&#8217;s contact information and LinkedIn profile. Also, in the current implementation one is easily accessible from another, just by manually switching tabs which would not be possible with this alternative.
-1</p>
+<strong>Cons</strong>: Removes the connectivity between a person&#8217;s contact information and LinkedIn profile. Also, in the current implementation one is easily accessible from another, just by manually switching tabs which would not be possible with this alternative.</p>
 </div>
 </div>
 <div class="sect2">
@@ -789,7 +791,7 @@ Both the <code>select</code> and <code>linkedIn</code> command function quite si
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-27 03:30:11 UTC
+Last updated 2018-03-27 03:42:36 UTC
 </div>
 </div>
 </body>

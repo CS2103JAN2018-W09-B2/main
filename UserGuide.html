@@ -64,7 +64,7 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Welcome to <strong>contactHero</strong>! contacitHeRo is the <strong>perfect contact management solution for recruiters</strong> across companies who need a <strong>quick and efficient way</strong> to manage the contact details and profiles of their potential recruits. It is a <strong>Command Line Interface(CLI) application</strong> with intuitive usage and effective features. You can <code>add</code>, <code>delete</code> and <code>edit</code> your contacts and <code>find</code> them by names or tags that you can assign.
+<p>Welcome to <strong>contactHero</strong>! contactHeRo is the <strong>perfect contact management solution for recruiters</strong> across companies who need a <strong>quick and efficient way</strong> to manage the contact details and profiles of their potential recruits. It is a <strong>Command Line Interface(CLI) application</strong> with intuitive usage and effective features. You can <code>add</code>, <code>delete</code> and <code>edit</code> your contacts and <code>find</code> them by names or tags that you can assign.
 You can <code>add, edit and delete job openings</code> as well as <code>match</code> these job openings to potenital employees.
 Other than that, you can also <code>view the linkedIn profiles</code> of your potential employees, <code>send emails</code> and <code>arrange meetings</code>.</p>
 </div>
@@ -253,8 +253,10 @@ Format: <code>help</code></p>
 <div class="sect2">
 <h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person : <code>add</code></a></h3>
 <div class="paragraph">
-<p>You can add a person to contactHero using the following format.<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS cp/CURRENT_POSITION cc/COMPANY [pp/PROFILE_PICTURE] [t/TAG]&#8230;&#8203;</code></p>
+<p>You can add a person to contactHero using the following format.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS cp/CURRENT_POSITION cc/COMPANY [pp/PROFILE_PICTURE_PATH] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -324,8 +326,10 @@ Format: <code>list</code></p>
 <div class="sect2">
 <h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></h3>
 <div class="paragraph">
-<p>You can edit an existing person in contactHero using this format.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [cp/CURRENT_POSITION] [cc/COMPANY] [pp/PROFILE_PICTURE][t/TAG]&#8230;&#8203;</code></p>
+<p>You can edit an existing person in contactHero using this format.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [cp/CURRENT_POSITION] [cc/COMPANY] [pp/PROFILE_PICTURE_PATH][t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -869,8 +873,10 @@ We are willing to help you.<br></p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong><a href="#adding-a-person-code-add-code">Add</a></strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p><strong><a href="#adding-a-person-code-add-code">Add</a></strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [pp/PROFILE_PICTURE_PATH]
+[t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>add n/John Doe p/98765432 e/johnd@example.com a/Raffles Hall
+pp//home/trafalgarandre/downloads/john.jpeg t/friends t/owesMoney</code></p>
 </li>
 <li>
 <p><strong><a href="#clearing-all-entries-code-clear-code">Clear</a></strong> : <code>clear</code></p>
@@ -883,7 +889,8 @@ e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1
 e.g. <code>delete 3</code></p>
 </li>
 <li>
-<p><strong><a href="#editing-a-person-code-edit-code">Edit</a></strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
+<p><strong><a href="#editing-a-person-code-edit-code">Edit</a></strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS]
+[pp/PROFILE_PICTURE_PATH] [t/TAG]&#8230;&#8203;</code><br>
 e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
 </li>
 <li>
@@ -924,7 +931,7 @@ e.g. <code>addjob p/Software Engineer t/Cloud Services l/Singapore n/2</code></p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-27 03:30:11 UTC
+Last updated 2018-03-27 03:42:36 UTC
 </div>
 </div>
 </body>
