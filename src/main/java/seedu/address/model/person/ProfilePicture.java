@@ -22,7 +22,7 @@ public class ProfilePicture {
 
     // alphanumeric and special characters
     public static final String PROFILE_PICTURE_VALIDATION_REGEX = "^$|([^\\s]+(\\.(?i)(jpeg|jpg|png|gif|bmp))$)";
-    public static final String DEFAULT_IMG_URL = "file:src/test/data/images/default.png";
+    public static final String DEFAULT_IMG_URL = "file:src/main/resources/images/default.png";
     public static final String PROFILE_PICTURE_FOLDER =
             "./src/main/resources/ProfilePictures/";
 
