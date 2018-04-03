@@ -315,7 +315,7 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">3.1. Architecture</a></h3>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/Architecture.png" alt="Architecture" width="600">
 </div>
@@ -397,7 +397,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <div class="paragraph">
 <p>For example, the <code>Logic</code> component (see the class diagram given below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
 </div>
@@ -407,7 +407,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <div class="paragraph">
 <p>The <em>Sequence Diagram</em> below shows how the components interact for the scenario where the user issues the command <code>delete 1</code>.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/SDforDeletePerson.png" alt="SDforDeletePerson" width="800">
 </div>
@@ -428,7 +428,7 @@ Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</c
 <div class="paragraph">
 <p>The diagram below shows how the <code>EventsCenter</code> reacts to that event, which eventually results in the updates being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/SDforDeletePersonEventHandling.png" alt="SDforDeletePersonEventHandling" width="800">
 </div>
@@ -452,7 +452,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 <div class="sect2">
 <h3 id="Design-Ui"><a class="link" href="#Design-Ui">3.2. UI component</a></h3>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
 </div>
@@ -486,13 +486,13 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 <div class="sect2">
 <h3 id="Design-Logic"><a class="link" href="#Design-Logic">3.3. Logic component</a></h3>
-<div id="fig-LogicClassDiagram" class="imageblock">
+<div id="fig-LogicClassDiagram" class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
 </div>
 <div class="title">Figure 6. Structure of the Logic Component</div>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
 </div>
@@ -521,7 +521,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="paragraph">
 <p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
 </div>
@@ -530,7 +530,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 <div class="sect2">
 <h3 id="Design-Model"><a class="link" href="#Design-Model">3.4. Model component</a></h3>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
 </div>
@@ -561,7 +561,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 <div class="sect2">
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">3.5. Storage component</a></h3>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
 </div>
@@ -608,7 +608,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="paragraph">
 <p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. The following diagram shows the inheritance diagram for commands:</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
 </div>
@@ -657,7 +657,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="paragraph">
 <p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th person in contactHeRo. The current state of contactHeRo is saved before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto the <code>undoStack</code> (the current state is saved together with the command).</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UndoRedoStartingStackDiagram.png" alt="UndoRedoStartingStackDiagram" width="800">
 </div>
@@ -665,7 +665,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="paragraph">
 <p>As the user continues to use the program, more commands are added into the <code>undoStack</code>. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new person.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UndoRedoNewCommand1StackDiagram.png" alt="UndoRedoNewCommand1StackDiagram" width="800">
 </div>
@@ -688,7 +688,7 @@ If a command fails its execution, it will not be pushed to the <code>UndoRedoSta
 <div class="paragraph">
 <p>We will pop the most recent command out of the <code>undoStack</code> and push it back to the <code>redoStack</code>. We will restore contactHeRo to the state before the <code>add</code> command executed.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UndoRedoExecuteUndoStackDiagram.png" alt="UndoRedoExecuteUndoStackDiagram" width="800">
 </div>
@@ -708,7 +708,7 @@ If the <code>undoStack</code> is empty, then there are no other commands left to
 <div class="paragraph">
 <p>The following sequence diagram shows how the undo operation works:</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
 </div>
@@ -731,7 +731,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="paragraph">
 <p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into the <code>undoStack</code>. This time the <code>redoStack</code> is no longer empty. It will be purged as it no longer make sense to redo the <code>add n/David</code> command (this is the behavior that most modern desktop applications follow).</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UndoRedoNewCommand2StackDiagram.png" alt="UndoRedoNewCommand2StackDiagram" width="800">
 </div>
@@ -739,7 +739,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="paragraph">
 <p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution:</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UndoRedoNewCommand3StackDiagram.png" alt="UndoRedoNewCommand3StackDiagram" width="800">
 </div>
@@ -747,7 +747,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="paragraph">
 <p>The following activity diagram summarize what happens inside the <code>UndoRedoStack</code> when a user executes a new command:</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
 </div>
@@ -901,7 +901,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="paragraph">
 <p>The UML diagram below represents the UI structure for the <code>DetailsPanel</code> (Refer to Figure 30):</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/DetailsPanelClassDiagram.png" alt="DetailsPanelClassDiagram" width="600">
 </div>
@@ -969,7 +969,7 @@ Both the <code>select</code> and <code>linkedIn</code> command function quite si
 <div class="paragraph">
 <p>The figure below (Refer to figure 31) is the wireframe for the <code>ContactDetailsDisplay</code>:</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/ContactDetailsDisplayWireFrame.png" alt="ContactDetailsDisplayWireFrame" width="600">
 </div>
@@ -1225,7 +1225,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 </li>
 </ol>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
@@ -1601,7 +1601,7 @@ Do take a look at <a href="#Design-Ui">Section 3.2, &#8220;UI component&#8221;</
 <div class="paragraph">
 <p><strong>Before</strong></p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/getting-started-ui-tag-before.png" alt="getting started ui tag before" width="300">
 </div>
@@ -1609,7 +1609,7 @@ Do take a look at <a href="#Design-Ui">Section 3.2, &#8220;UI component&#8221;</
 <div class="paragraph">
 <p><strong>After</strong></p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/getting-started-ui-tag-after.png" alt="getting started ui tag after" width="300">
 </div>
@@ -1664,7 +1664,7 @@ Do take a look at <a href="#Design-Ui">Section 3.2, &#8220;UI component&#8221;</
 <div class="paragraph">
 <p><strong>Before</strong></p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/getting-started-ui-result-before.png" alt="getting started ui result before" width="200">
 </div>
@@ -1672,7 +1672,7 @@ Do take a look at <a href="#Design-Ui">Section 3.2, &#8220;UI component&#8221;</
 <div class="paragraph">
 <p><strong>After</strong></p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/getting-started-ui-result-after.png" alt="getting started ui result after" width="200">
 </div>
@@ -1740,7 +1740,7 @@ Do take a look at <a href="#Design-Ui">Section 3.2, &#8220;UI component&#8221;</
 <div class="paragraph">
 <p><strong>Before</strong></p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/getting-started-ui-status-before.png" alt="getting started ui status before" width="500">
 </div>
@@ -1748,7 +1748,7 @@ Do take a look at <a href="#Design-Ui">Section 3.2, &#8220;UI component&#8221;</
 <div class="paragraph">
 <p><strong>After</strong></p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/getting-started-ui-status-after.png" alt="getting started ui status after" width="500">
 </div>
@@ -2923,7 +2923,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-03 17:47:47 UTC
+Last updated 2018-04-03 17:56:38 UTC
 </div>
 </div>
 </body>
