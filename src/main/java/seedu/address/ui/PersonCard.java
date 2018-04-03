@@ -56,6 +56,11 @@ public class PersonCard extends UiPart<Region> {
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         imageView.setImage(person.getProfilePicture().getImage());
+
+        if (person.getProfilePicture().filePath != null) {
+            imageView.setImage(person.getProfilePicture().getImage());
+        }
+
         //@@author KevinCJH
         initTags(person);
     }
