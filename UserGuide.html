@@ -41,15 +41,15 @@
 <li><a href="#clearing-list-of-entered-commands-code-clearhistory-code">3.11. Clearing list of entered commands : <code>clearhistory</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code">3.12. Undoing previous command : <code>undo</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.13. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.14. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.15. Exiting the program : <code>exit</code></a></li>
-<li><a href="#auto-complete-command">3.16. Auto-complete command</a></li>
-<li><a href="#saving-the-data">3.17. Saving the data</a></li>
-<li><a href="#editing-a-job-opening-code-coming-in-v1-4-code">3.18. Editing a job opening <code>[coming in v1.4]</code></a></li>
-<li><a href="#deleting-a-job-opening-code-coming-in-v1-4-code">3.19. Deleting a job opening <code>[coming in v1.4]</code></a></li>
-<li><a href="#matching-a-job-opening-to-a-person-code-coming-in-v1-4-code">3.20. Matching a job opening to a person <code>[coming in v1.4]</code></a></li>
-<li><a href="#arranging-meetings-with-gmail-calendar-code-coming-in-v1-5-code">3.21. Arranging meetings with Gmail calendar <code>[coming in v1.5]</code></a></li>
-<li><a href="#emailing-a-person-code-coming-in-v1-5-code">3.22. Emailing a person <code>[coming in v1.5]</code></a></li>
+<li><a href="#emailing-your-contact-code-email-code">3.14. Emailing your contact : <code>email</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.15. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.16. Exiting the program : <code>exit</code></a></li>
+<li><a href="#auto-complete-command">3.17. Auto-complete command</a></li>
+<li><a href="#saving-the-data">3.18. Saving the data</a></li>
+<li><a href="#editing-a-job-opening-code-coming-in-v1-4-code">3.19. Editing a job opening <code>[coming in v1.4]</code></a></li>
+<li><a href="#deleting-a-job-opening-code-coming-in-v1-4-code">3.20. Deleting a job opening <code>[coming in v1.4]</code></a></li>
+<li><a href="#matching-a-job-opening-to-a-person-code-coming-in-v1-4-code">3.21. Matching a job opening to a person <code>[coming in v1.4]</code></a></li>
+<li><a href="#arranging-meetings-with-gmail-calendar-code-coming-in-v1-5-code">3.22. Arranging meetings with Gmail calendar <code>[coming in v1.5]</code></a></li>
 <li><a href="#add-reminders-code-coming-in-v2-0-code">3.23. Add reminders <code>[coming in v2.0]</code></a></li>
 <li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.24. Encrypting data files <code>[coming in v2.0]</code></a></li>
 <li><a href="#login-system-code-coming-in-v2-0-code">3.25. Login system <code>[coming in v2.0]</code></a></li>
@@ -743,7 +743,88 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.14. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="emailing-your-contact-code-email-code"><a class="link" href="#emailing-your-contact-code-email-code">3.14. Emailing your contact : <code>email</code></a></h3>
+<div class="paragraph">
+<p>You can send email to any person you have saved in contactHeRo using the following format.<br>
+Format: <code>email INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Opens up the Draft Email tab. This is an User Interface for you to draft your emails.</p>
+</li>
+<li>
+<p>Collects the information of the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The collected information will be used to help you fill up details in the draft like the person&#8217;s email address.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>email 2</code><br>
+This will open up the Draft Email tab and then
+collect the information of the 2nd person in the list. On running the above command, you should see the following success message:<br></p>
+<div class="literalblock">
+<div class="content">
+<pre>Drafting email to: berniceyu@example.com</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The collected information will be used automatically to fill up details as shown below.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/emailSS1.png" alt="emailSS1" width="790">
+</div>
+<div class="title">Figure 6. The User Interface to draft your email</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can use keyboard short-cuts like <code>Ctrl-B</code> to <strong>bold</strong> your text while drafting
+your email.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Finally, after you are done drafting up the email, simply hit the <code>Send</code>
+button to send your email. If the email is sent successfully, you should see
+a pop-up message as shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/emailSS2.png" alt="emailSS2" width="400">
+</div>
+<div class="title">Figure 7. Pop-up message</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.15. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>You can clear all entries from contactHeRo using the following format.<br>
 Format: <code>clear</code></p>
@@ -754,14 +835,14 @@ Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.15. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.16. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>You can exit the program using the following format.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="auto-complete-command"><a class="link" href="#auto-complete-command">3.16. Auto-complete command</a></h3>
+<h3 id="auto-complete-command"><a class="link" href="#auto-complete-command">3.17. Auto-complete command</a></h3>
 <div class="paragraph">
 <p>To save your time, after typing a partial command, you can press TAB for the command to be auto-completed.</p>
 </div>
@@ -792,39 +873,33 @@ Examples:
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.17. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.18. Saving the data</a></h3>
 <div class="paragraph">
 <p>You do not need to save manually. contactHeRo saves the data into the hard disk for you automatically.<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-job-opening-code-coming-in-v1-4-code"><a class="link" href="#editing-a-job-opening-code-coming-in-v1-4-code">3.18. Editing a job opening <code>[coming in v1.4]</code></a></h3>
+<h3 id="editing-a-job-opening-code-coming-in-v1-4-code"><a class="link" href="#editing-a-job-opening-code-coming-in-v1-4-code">3.19. Editing a job opening <code>[coming in v1.4]</code></a></h3>
 <div class="paragraph">
 <p>You will soon be able to edit a job opening in contactHeRo.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-job-opening-code-coming-in-v1-4-code"><a class="link" href="#deleting-a-job-opening-code-coming-in-v1-4-code">3.19. Deleting a job opening <code>[coming in v1.4]</code></a></h3>
+<h3 id="deleting-a-job-opening-code-coming-in-v1-4-code"><a class="link" href="#deleting-a-job-opening-code-coming-in-v1-4-code">3.20. Deleting a job opening <code>[coming in v1.4]</code></a></h3>
 <div class="paragraph">
 <p>You will soon be able to delete a job opening in contactHeRo.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="matching-a-job-opening-to-a-person-code-coming-in-v1-4-code"><a class="link" href="#matching-a-job-opening-to-a-person-code-coming-in-v1-4-code">3.20. Matching a job opening to a person <code>[coming in v1.4]</code></a></h3>
+<h3 id="matching-a-job-opening-to-a-person-code-coming-in-v1-4-code"><a class="link" href="#matching-a-job-opening-to-a-person-code-coming-in-v1-4-code">3.21. Matching a job opening to a person <code>[coming in v1.4]</code></a></h3>
 <div class="paragraph">
 <p>You will soon be able to match job openings to people in contactHeRo.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="arranging-meetings-with-gmail-calendar-code-coming-in-v1-5-code"><a class="link" href="#arranging-meetings-with-gmail-calendar-code-coming-in-v1-5-code">3.21. Arranging meetings with Gmail calendar <code>[coming in v1.5]</code></a></h3>
+<h3 id="arranging-meetings-with-gmail-calendar-code-coming-in-v1-5-code"><a class="link" href="#arranging-meetings-with-gmail-calendar-code-coming-in-v1-5-code">3.22. Arranging meetings with Gmail calendar <code>[coming in v1.5]</code></a></h3>
 <div class="paragraph">
 <p>You will soon be able to arrange meeting on Gmail calender using contactHero.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="emailing-a-person-code-coming-in-v1-5-code"><a class="link" href="#emailing-a-person-code-coming-in-v1-5-code">3.22. Emailing a person <code>[coming in v1.5]</code></a></h3>
-<div class="paragraph">
-<p>You can send email to any person you have saved in contactHeRo, without having to leave the app!</p>
 </div>
 </div>
 <div class="sect2">
@@ -931,7 +1006,7 @@ e.g. <code>addjob p/Software Engineer t/Cloud Services l/Singapore n/2</code></p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-03 13:57:31 UTC
+Last updated 2018-04-03 17:47:47 UTC
 </div>
 </div>
 </body>

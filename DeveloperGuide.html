@@ -1107,8 +1107,28 @@ The ProfilePicture constructor is called when <code>AddCommand</code> or <code>E
 similar to the implementation of <code>DeleteCommand</code> and <code>DeleteCommandParser</code>.</p>
 </div>
 <div class="paragraph">
-<p>The sending of email will be implemented using Gmail API. First, <code>GoogleAuthorizationCodeFlow</code> is used to build and request for authorization from user.
-Then it saves the user authorization into <code>Credential</code>, which is saved into a local file so that they do not need to repeat the authorization step.</p>
+<p>The sending of email will be implemented using the Gmail API.</p>
+</div>
+<div class="paragraph">
+<p>Firstly, <code>GoogleAuthorizationCodeFlow</code> is used to build and request for authorization from user.
+Then it saves the user authorization into <code>Credential</code>, which is saved into a local file so that they do not need to repeat the authorization step.
+This authorization is handled in the <code>GmailAuthentication</code> class.</p>
+</div>
+<div class="paragraph">
+<p>Next, a <code>GmailClient</code> is created using the <code>Credential</code> that was created by <code>GmailAuthentication</code>.
+The <code>GmailClient</code> class provides all the services that uses the Gmail API.</p>
+</div>
+<div class="paragraph">
+<p>The <code>EmailPanel</code> is the UI for user to draft their email. The UI has 3 inputs, <strong>To</strong>, <strong>Subject</strong> and <strong>Body</strong>. <strong>From</strong> is not needed here as we already have
+the authorised user&#8217;s email address, which we can retrieve using <code>GmailClient</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>GmailMessage</code> class will take in the values inputted by the user
+in the UI. These values will be stored in <code>GmailMessage</code>
+and packaged into a <code>MimeMessage</code> ready to be send out.</p>
+</div>
+<div class="paragraph">
+<p>Finally, <code>GmailClient</code> will send out the <code>MimeMessage</code> of <code>GmailMessage</code> as an email.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2903,7 +2923,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-03 13:57:31 UTC
+Last updated 2018-04-03 17:47:47 UTC
 </div>
 </div>
 </body>
