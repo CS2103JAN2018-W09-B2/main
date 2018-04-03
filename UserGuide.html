@@ -46,20 +46,22 @@
 <li><a href="#emailing-your-contact-code-email-code">4.15. Emailing your contact : <code>email</code></a></li>
 <li><a href="#clearing-all-entries-code-clear-code">4.16. Clearing all entries : <code>clear</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">4.17. Exiting the program : <code>exit</code></a></li>
-<li><a href="#auto-complete-command">4.18. Auto-complete command</a></li>
-<li><a href="#saving-the-data">4.19. Saving the data</a></li>
-<li><a href="#opening-the-calendar">4.20. Opening the calendar</a></li>
-<li><a href="#viewing-calendar">4.21. Viewing calendar</a></li>
-<li><a href="#adding-appointment">4.22. Adding appointment</a></li>
-<li><a href="#deleting-appointment">4.23. Deleting appointment</a></li>
-<li><a href="#editing-a-job-opening-code-coming-in-v1-4-code">4.24. Editing a job opening <code>[coming in v1.4]</code></a></li>
-<li><a href="#deleting-a-job-opening-code-coming-in-v1-4-code">4.25. Deleting a job opening <code>[coming in v1.4]</code></a></li>
-<li><a href="#matching-a-job-opening-to-a-person-code-coming-in-v1-4-code">4.26. Matching a job opening to a person <code>[coming in v1.4]</code></a></li>
-<li><a href="#editing-a-job-opening-code-coming-in-v1-5-code">4.27. Editing a job opening <code>[coming in v1.5]</code></a></li>
-<li><a href="#arranging-meetings-with-gmail-calendar-code-coming-in-v2-0-code">4.28. Arranging meetings with Gmail calendar <code>[coming in v2.0]</code></a></li>
-<li><a href="#add-reminders-code-coming-in-v2-0-code">4.29. Add reminders <code>[coming in v2.0]</code></a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">4.30. Encrypting data files <code>[coming in v2.0]</code></a></li>
-<li><a href="#login-system-code-coming-in-v2-0-code">4.31. Login system <code>[coming in v2.0]</code></a></li>
+<li><a href="#registering-new-account-code-signup-code">4.18. Registering new account : <code>signup</code></a></li>
+<li><a href="#logging-in-code-login-code">4.19. Logging in : <code>login</code></a></li>
+<li><a href="#logging-out-code-logout-code">4.20. Logging out : <code>logout</code></a></li>
+<li><a href="#saving-the-data">4.21. Saving the data</a></li>
+<li><a href="#opening-the-calendar">4.22. Opening the calendar</a></li>
+<li><a href="#viewing-calendar">4.23. Viewing calendar</a></li>
+<li><a href="#adding-appointment">4.24. Adding appointment</a></li>
+<li><a href="#deleting-appointment">4.25. Deleting appointment</a></li>
+<li><a href="#editing-a-job-opening-code-coming-in-v1-4-code">4.26. Editing a job opening <code>[coming in v1.4]</code></a></li>
+<li><a href="#deleting-a-job-opening-code-coming-in-v1-4-code">4.27. Deleting a job opening <code>[coming in v1.4]</code></a></li>
+<li><a href="#matching-a-job-opening-to-a-person-code-coming-in-v1-4-code">4.28. Matching a job opening to a person <code>[coming in v1.4]</code></a></li>
+<li><a href="#editing-a-job-opening-code-coming-in-v1-5-code">4.29. Editing a job opening <code>[coming in v1.5]</code></a></li>
+<li><a href="#arranging-meetings-with-gmail-calendar-code-coming-in-v2-0-code">4.30. Arranging meetings with Gmail calendar <code>[coming in v2.0]</code></a></li>
+<li><a href="#add-reminders-code-coming-in-v2-0-code">4.31. Add reminders <code>[coming in v2.0]</code></a></li>
+<li><a href="#login-system-code-coming-in-v2-0-code">4.32. Login system <code>[coming in v2.0]</code></a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">4.33. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">5. FAQ</a></li>
@@ -155,14 +157,14 @@ Not sure how to install Java? Visit the oracle website link below for more infor
 </li>
 <li>
 <p>Double-click the file to start the app. The user interface should appear in a few seconds as shown below (Refer to figure 1).</p>
-</li>
-</ol>
-</div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/Ui.png" alt="Ui" width="790">
 </div>
 <div class="title">Figure 1. contactHeRo on launch</div>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>Now you can start using contactHeRo.</p>
@@ -307,9 +309,6 @@ Profile Picture indicates the profile picture&#8217;s file path
 <ul>
 <li>
 <p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 cp/Software Engineer cc/Google pp//home/john/Desktop/John.jpg</code><br></p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
 <p>On running the above command, you should see the following success message:<br></p>
 </div>
@@ -318,8 +317,7 @@ Profile Picture indicates the profile picture&#8217;s file path
 <pre>New person added: John Doe Phone: 98765432 Email: johnd@example.com Address: John street, block 123, #01-01 Current Position: Software Engineer Company: Google Skills:</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><code>add n/Betsy Crowe s/Java e/betsycrowe@example.com a/Newgate Prison p/1234567 cp/Student cc/NUS s/C++</code></p>
 </li>
@@ -373,9 +371,6 @@ Profile Picture indicates the profile picture&#8217;s file path
 <li>
 <p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
 Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
 <p>On running the above command, you should see the following success message:<br></p>
 </div>
@@ -384,8 +379,7 @@ Edits the phone number and email address of the 1st person to be <code>91234567<
 <pre>Edited Person: John Doe Phone: 91234567 Email: johndoe@example.com Address: John street, block 123, #01-01 Current Position: Software Engineer Company: Google Skills:</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><code>edit 2 n/Betsy Crower s/</code><br>
 Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing skills.</p>
@@ -930,7 +924,63 @@ Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="auto-complete-command"><a class="link" href="#auto-complete-command">4.18. Auto-complete command</a></h3>
+<h3 id="registering-new-account-code-signup-code"><a class="link" href="#registering-new-account-code-signup-code">4.18. Registering new account : <code>signup</code></a></h3>
+<div class="paragraph">
+<p>You can create a new user account through the command line by using the following format.<br>
+Format: <code>signup u/USERNAME pw/PASSWORD</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+===
+* Username has to be at least 3 characters starting with a alphanumeric character.<br>
+* Password should be at least 4 characters long.<br>
+* Both username and password should not contain any whitespaces.<br>
+===
+Examples
+* signup u/JohnDoe pw/doe123
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br>
+  <code>You have signup successfully!</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging-in-code-login-code"><a class="link" href="#logging-in-code-login-code">4.19. Logging in : <code>login</code></a></h3>
+<div class="paragraph">
+<p>You can login through the command line by using the following this format.<br>
+Format: <code>login u/USERNAME pw/PASSWORD</code></p>
+</div>
+<div class="paragraph">
+<p>Examples
+* login u/JohnDoe pw/doe123</p>
+</div>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br>
+ <code>You have successfully login as JohnDoe</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging-out-code-logout-code"><a class="link" href="#logging-out-code-logout-code">4.20. Logging out : <code>logout</code></a></h3>
+<div class="paragraph">
+<p>You can logout through the command line by using the following this format.<br>
+Format: <code>logout</code></p>
+</div>
+<div class="paragraph">
+<p>On running this command, you should see the following success message:<br>
+ <code>You have logout successfully!</code></p>
+</div>
+<div class="paragraph">
+<p>Examples
+=== Auto-complete command</p>
+</div>
 <div class="paragraph">
 <p>To save your time, after typing a partial command, you can press TAB for the command to be auto-completed.</p>
 </div>
@@ -963,25 +1013,25 @@ The first lexicographically matched command is returned.
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">4.19. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">4.21. Saving the data</a></h3>
 <div class="paragraph">
 <p>You do not need to save manually. contactHeRo saves the data into the hard disk for you automatically.<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="opening-the-calendar"><a class="link" href="#opening-the-calendar">4.20. Opening the calendar</a></h3>
+<h3 id="opening-the-calendar"><a class="link" href="#opening-the-calendar">4.22. Opening the calendar</a></h3>
 <div class="paragraph">
 <p>You can switch to the calendar tab using the following format.<br>
 Format: <code>calendar</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-calendar"><a class="link" href="#viewing-calendar">4.21. Viewing calendar</a></h3>
+<h3 id="viewing-calendar"><a class="link" href="#viewing-calendar">4.23. Viewing calendar</a></h3>
 <div class="paragraph">
 <p>You can view your calendar using these commands:<br></p>
 </div>
 <div class="sect3">
-<h4 id="viewing-a-specific-date-or-switch-to-the-date-view"><a class="link" href="#viewing-a-specific-date-or-switch-to-the-date-view">4.21.1. Viewing a specific date or switch to the date view</a></h4>
+<h4 id="viewing-a-specific-date-or-switch-to-the-date-view"><a class="link" href="#viewing-a-specific-date-or-switch-to-the-date-view">4.23.1. Viewing a specific date or switch to the date view</a></h4>
 <div class="paragraph">
 <p>You can view a specifc date or switch to the date view by using the following format.<br>
 Format: <code>date [DATE]</code><br></p>
@@ -1012,7 +1062,7 @@ Example: <code>date</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-a-specific-week-or-switch-to-the-week-view"><a class="link" href="#viewing-a-specific-week-or-switch-to-the-week-view">4.21.2. Viewing a specific week or switch to the week view</a></h4>
+<h4 id="viewing-a-specific-week-or-switch-to-the-week-view"><a class="link" href="#viewing-a-specific-week-or-switch-to-the-week-view">4.23.2. Viewing a specific week or switch to the week view</a></h4>
 <div class="paragraph">
 <p>You can view a specifc week or switch to the week view by using the following format.<br>
 Format: <code>week [YEAR WEEK]</code><br></p>
@@ -1044,7 +1094,7 @@ Example: <code>week</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-a-specific-month-or-switch-to-the-month-view"><a class="link" href="#viewing-a-specific-month-or-switch-to-the-month-view">4.21.3. Viewing a specific month or switch to the month view</a></h4>
+<h4 id="viewing-a-specific-month-or-switch-to-the-month-view"><a class="link" href="#viewing-a-specific-month-or-switch-to-the-month-view">4.23.3. Viewing a specific month or switch to the month view</a></h4>
 <div class="paragraph">
 <p>You can view a specifc month or switch to the month view by using the following format.<br>
 Format: <code>month [MONTH]</code><br></p>
@@ -1075,7 +1125,7 @@ Example: <code>month</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-a-specific-year-or-switch-to-the-year-view"><a class="link" href="#viewing-a-specific-year-or-switch-to-the-year-view">4.21.4. Viewing a specific year or switch to the year view</a></h4>
+<h4 id="viewing-a-specific-year-or-switch-to-the-year-view"><a class="link" href="#viewing-a-specific-year-or-switch-to-the-year-view">4.23.4. Viewing a specific year or switch to the year view</a></h4>
 <div class="paragraph">
 <p>You can view a specifc year or switch to the year view by using the following format.<br>
 Format: <code>year [YEAR]</code><br></p>
@@ -1107,7 +1157,7 @@ Example: <code>year</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-appointment"><a class="link" href="#adding-appointment">4.22. Adding appointment</a></h3>
+<h3 id="adding-appointment"><a class="link" href="#adding-appointment">4.24. Adding appointment</a></h3>
 <div class="paragraph">
 <p>You can add appointment by using the following format.<br></p>
 </div>
@@ -1134,7 +1184,7 @@ Example: <code>year</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-appointment"><a class="link" href="#deleting-appointment">4.23. Deleting appointment</a></h3>
+<h3 id="deleting-appointment"><a class="link" href="#deleting-appointment">4.25. Deleting appointment</a></h3>
 <div class="paragraph">
 <p>You can delete appointment by using the following format.<br></p>
 </div>
@@ -1161,51 +1211,51 @@ Example: <code>year</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-job-opening-code-coming-in-v1-4-code"><a class="link" href="#editing-a-job-opening-code-coming-in-v1-4-code">4.24. Editing a job opening <code>[coming in v1.4]</code></a></h3>
+<h3 id="editing-a-job-opening-code-coming-in-v1-4-code"><a class="link" href="#editing-a-job-opening-code-coming-in-v1-4-code">4.26. Editing a job opening <code>[coming in v1.4]</code></a></h3>
 <div class="paragraph">
 <p>You will soon be able to edit a job opening in contactHeRo.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-job-opening-code-coming-in-v1-4-code"><a class="link" href="#deleting-a-job-opening-code-coming-in-v1-4-code">4.25. Deleting a job opening <code>[coming in v1.4]</code></a></h3>
+<h3 id="deleting-a-job-opening-code-coming-in-v1-4-code"><a class="link" href="#deleting-a-job-opening-code-coming-in-v1-4-code">4.27. Deleting a job opening <code>[coming in v1.4]</code></a></h3>
 <div class="paragraph">
 <p>You will soon be able to delete a job opening in contactHeRo.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="matching-a-job-opening-to-a-person-code-coming-in-v1-4-code"><a class="link" href="#matching-a-job-opening-to-a-person-code-coming-in-v1-4-code">4.26. Matching a job opening to a person <code>[coming in v1.4]</code></a></h3>
+<h3 id="matching-a-job-opening-to-a-person-code-coming-in-v1-4-code"><a class="link" href="#matching-a-job-opening-to-a-person-code-coming-in-v1-4-code">4.28. Matching a job opening to a person <code>[coming in v1.4]</code></a></h3>
 <div class="paragraph">
 <p>You will soon be able to match job openings to people in contactHeRo.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-job-opening-code-coming-in-v1-5-code"><a class="link" href="#editing-a-job-opening-code-coming-in-v1-5-code">4.27. Editing a job opening <code>[coming in v1.5]</code></a></h3>
+<h3 id="editing-a-job-opening-code-coming-in-v1-5-code"><a class="link" href="#editing-a-job-opening-code-coming-in-v1-5-code">4.29. Editing a job opening <code>[coming in v1.5]</code></a></h3>
 <div class="paragraph">
 <p>You will soon be able to edit a job opening in contactHeRo.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="arranging-meetings-with-gmail-calendar-code-coming-in-v2-0-code"><a class="link" href="#arranging-meetings-with-gmail-calendar-code-coming-in-v2-0-code">4.28. Arranging meetings with Gmail calendar <code>[coming in v2.0]</code></a></h3>
+<h3 id="arranging-meetings-with-gmail-calendar-code-coming-in-v2-0-code"><a class="link" href="#arranging-meetings-with-gmail-calendar-code-coming-in-v2-0-code">4.30. Arranging meetings with Gmail calendar <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>You will soon be able to arrange meeting on Gmail calender using contactHero.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-reminders-code-coming-in-v2-0-code"><a class="link" href="#add-reminders-code-coming-in-v2-0-code">4.29. Add reminders <code>[coming in v2.0]</code></a></h3>
+<h3 id="add-reminders-code-coming-in-v2-0-code"><a class="link" href="#add-reminders-code-coming-in-v2-0-code">4.31. Add reminders <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>You will soon be able to set reminders for meetings, appointments or any other event and contactHeRo will remind you of the event.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">4.30. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="login-system-code-coming-in-v2-0-code"><a class="link" href="#login-system-code-coming-in-v2-0-code">4.32. Login system <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p>The login system shall provide security to your data stored in contactHeRo.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="login-system-code-coming-in-v2-0-code"><a class="link" href="#login-system-code-coming-in-v2-0-code">4.31. Login system <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">4.33. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
-<p>The login system shall provide security to your data stored in contactHeRo.</p>
+<p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
 </div>
 </div>
@@ -1321,7 +1371,7 @@ e.g <code>delapp t/Meeting sdt/2018-04-05 14:00 edt/2018-04-05 15:00</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-03 19:39:46 UTC
+Last updated 2018-04-03 19:51:46 UTC
 </div>
 </div>
 </body>
