@@ -29,7 +29,7 @@ public class ProfilePictureTest {
 
         // valid profile picture
         assertTrue(ProfilePicture.isValidProfilePicture("")); //no image => default image
-        temp = "/home/trafalgarandre/Desktop/CS2103/addressbook/src/test/data/images/alex.jpeg";
+        temp = "./src/test/data/images/alex.jpeg";
         assertTrue(ProfilePicture.isValidProfilePicture(temp)
                 && ProfilePicture.hasValidProfilePicture(temp)); //absolute path
     }
