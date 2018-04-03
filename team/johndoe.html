@@ -229,13 +229,223 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
+<h3 id="opening-the-calendar"><a class="link" href="#opening-the-calendar">Opening the calendar</a></h3>
+<div class="paragraph">
+<p>You can switch to the calendar tab using the following format.<br>
+Format: <code>calendar</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-calendar"><a class="link" href="#viewing-calendar">Viewing calendar</a></h3>
+<div class="paragraph">
+<p>You can view your calendar using these commands:<br></p>
+</div>
+<div class="sect3">
+<h4 id="viewing-a-specific-date-or-switch-to-the-date-view"><a class="link" href="#viewing-a-specific-date-or-switch-to-the-date-view">Viewing a specific date or switch to the date view</a></h4>
+<div class="paragraph">
+<p>You can view a specifc date or switch to the date view by using the following format.<br>
+Format: <code>date [DATE]</code><br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>DATE</code> needs to be in format YYYY-MM-DD
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>With <code>DATE</code>, you view the specific date<br>
+Example: <code>date 2018-03-26</code></p>
+</li>
+<li>
+<p>Without <code>DATE</code>, you change to the date view<br>
+Example: <code>date</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-a-specific-week-or-switch-to-the-week-view"><a class="link" href="#viewing-a-specific-week-or-switch-to-the-week-view">Viewing a specific week or switch to the week view</a></h4>
+<div class="paragraph">
+<p>You can view a specifc week or switch to the week view by using the following format.<br>
+Format: <code>week [YEAR WEEK]</code><br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>Year</code> needs to be in format YYYY.<br>
+<code>Week</code> needs to be in format WW and WW refers to the order of week in one year.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>With <code>YEAR WEEK</code>, you view the specific week<br>
+Example: <code>week 2018 10</code></p>
+</li>
+<li>
+<p>Without <code>YEAR WEEK</code>, you change to the week view<br>
+Example: <code>week</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-a-specific-month-or-switch-to-the-month-view"><a class="link" href="#viewing-a-specific-month-or-switch-to-the-month-view">Viewing a specific month or switch to the month view</a></h4>
+<div class="paragraph">
+<p>You can view a specifc month or switch to the month view by using the following format.<br>
+Format: <code>month [MONTH]</code><br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>MONTH</code> needs to be in format YYYY-MM
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>With <code>MONTH</code>, you view the specific month<br>
+Example: <code>month 2018-10</code></p>
+</li>
+<li>
+<p>Without <code>MONTH</code>, you change to the month view<br>
+Example: <code>month</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-a-specific-year-or-switch-to-the-year-view"><a class="link" href="#viewing-a-specific-year-or-switch-to-the-year-view">Viewing a specific year or switch to the year view</a></h4>
+<div class="paragraph">
+<p>You can view a specifc year or switch to the year view by using the following format.<br>
+Format: <code>year [YEAR]</code><br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>YEAR</code> needs to be in format YYYY
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>With <code>YEAR</code>, you view the specific year<br>
+Example: <code>year 2018</code></p>
+</li>
+<li>
+<p>Without <code>YEAR</code>, you change to the year view<br>
+Example: <code>year</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-appointment"><a class="link" href="#adding-appointment">Adding appointment</a></h3>
+<div class="paragraph">
+<p>You can add appointment by using the following format.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>addapp t/TITLE sdt/START_DATE_TIME edt/END_DATE_TIME</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addapp t/Meeting sdt/2018-04-05 14:00 edt/2018-04-05 15:00</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>New appointment added: Meeting Start Date Time: 2018-04-05 14:00 End Date Time: 2018-04-05 15:00</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-appointment"><a class="link" href="#deleting-appointment">Deleting appointment</a></h3>
+<div class="paragraph">
+<p>You can delete appointment by using the following format.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delapp t/TITLE sdt/START_DATE_TIME edt/END_DATE_TIME</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delapp t/Meeting sdt/2018-04-05 14:00 edt/2018-04-05 15:00</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Appointment deleted: Meeting Start Date Time: 2018-04-05 14:00 End Date Time: 2018-04-05 15:00</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-job-opening-code-coming-in-v1-4-code"><a class="link" href="#editing-a-job-opening-code-coming-in-v1-4-code">Editing a job opening <code>[coming in v1.4]</code></a></h3>
+<div class="paragraph">
+<p>You will soon be able to edit a job opening in contactHeRo.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-job-opening-code-coming-in-v1-4-code"><a class="link" href="#deleting-a-job-opening-code-coming-in-v1-4-code">Deleting a job opening <code>[coming in v1.4]</code></a></h3>
+<div class="paragraph">
+<p>You will soon be able to delete a job opening in contactHeRo.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="matching-a-job-opening-to-a-person-code-coming-in-v1-4-code"><a class="link" href="#matching-a-job-opening-to-a-person-code-coming-in-v1-4-code">Matching a job opening to a person <code>[coming in v1.4]</code></a></h3>
+<div class="paragraph">
+<p>You will soon be able to match job openings to people in contactHeRo.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="editing-a-job-opening-code-coming-in-v1-5-code"><a class="link" href="#editing-a-job-opening-code-coming-in-v1-5-code">Editing a job opening <code>[coming in v1.5]</code></a></h3>
 <div class="paragraph">
 <p>You will soon be able to edit a job opening in contactHeRo.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="arranging-meetings-with-gmail-calendar-code-coming-in-v1-5-code"><a class="link" href="#arranging-meetings-with-gmail-calendar-code-coming-in-v1-5-code">Arranging meetings with Gmail calendar <code>[coming in v1.5]</code></a></h3>
+<h3 id="arranging-meetings-with-gmail-calendar-code-coming-in-v2-0-code"><a class="link" href="#arranging-meetings-with-gmail-calendar-code-coming-in-v2-0-code">Arranging meetings with Gmail calendar <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>You will soon be able to arrange meeting on Gmail calender using contactHero.</p>
 </div>
@@ -336,6 +546,33 @@ e.g. <code>linkedIn 2</code></p>
 <li>
 <p><strong><a href="#adding-a-job-opening">Add job opening</a></strong> : <code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER_OF_POSITIONS</code><br>
 e.g. <code>addjob p/Software Engineer t/Cloud Services l/Singapore n/2</code></p>
+</li>
+<li>
+<p><strong><a href="#openning-the-calendar">Open calendar</a></strong> : <code>calendar</code></p>
+</li>
+<li>
+<p><strong><a href="#viewing-specific-date-or-switching-to-date-view">View specific date or switch date view</a></strong> : <code>date [DATE]</code><br>
+e.g. <code>date</code> or <code>date 2018-04-04</code></p>
+</li>
+<li>
+<p><strong><a href="#viewing-specific-week-or-switching-to-week-view">View specific week or switch week view</a></strong> : <code>week [YEAR WEEK]</code><br>
+e.g. <code>week</code> or <code>week 2018 14</code></p>
+</li>
+<li>
+<p><strong><a href="#viewing-specific-month-or-switching-to-month-view">View specific month or switch month view</a></strong> : <code>month [MONTH]</code><br>
+e.g. <code>month</code> or <code>month 2018-04</code></p>
+</li>
+<li>
+<p><strong><a href="#viewing-specific-year-or-switching-to-year-view">View specific year or switch year view</a></strong> : <code>year [YEAR]</code><br>
+e.g. <code>year</code> or <code>year 2018</code></p>
+</li>
+<li>
+<p><strong><a href="#adding-appointment">Adding appointment</a></strong> : <code>addapp t/TITLE sdt/START_DATE_TIME edt/END_DATE_TIME</code><br>
+e.g <code>addapp t/Meeting sdt/2018-04-05 14:00 edt/2018-04-05 15:00</code></p>
+</li>
+<li>
+<p><strong><a href="#deleting-appointment">Deleting appointment</a></strong> : <code>delapp t/TITLE sdt/START_DATE_TIME edt/END_DATE_TIME</code><br>
+e.g <code>delapp t/Meeting sdt/2018-04-05 14:00 edt/2018-04-05 15:00</code></p>
 </li>
 </ul>
 </div>
@@ -773,7 +1010,7 @@ Both the <code>select</code> and <code>linkedIn</code> command function quite si
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-03 17:56:38 UTC
+Last updated 2018-04-03 18:18:54 UTC
 </div>
 </div>
 </body>
