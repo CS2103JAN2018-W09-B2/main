@@ -36,9 +36,9 @@
 <li><a href="#deleting-a-person-code-delete-code">4.5. Deleting a person : <code>delete</code></a></li>
 <li><a href="#viewing-the-contact-details-of-a-person-code-select-code">4.6. Viewing the contact details of a person: <code>select</code></a></li>
 <li><a href="#viewing-the-linkedin-search-of-a-person-code-linkedin-code">4.7. Viewing the LinkedIn search of a person: <code>linkedIn</code></a></li>
-<li><a href="#adding-a-job-opening-code-addjob-code">4.8. Adding a job opening : <code>addjob</code></a></li>
-<li><a href="#deleting-a-job-opening-code-deletejob-code">4.9. Deleting a job opening : <code>deletejob</code></a></li>
-<li><a href="#matching-a-job-opening-to-a-person-code-matchjob-code">4.10. Matching a job opening to a person : <code>matchjob</code></a></li>
+<li><a href="#adding-a-job-opening">4.8. Adding a job opening</a></li>
+<li><a href="#deleting-a-job-opening">4.9. Deleting a job opening</a></li>
+<li><a href="#matching-a-job-opening-to-a-person">4.10. Matching a job opening to a person</a></li>
 <li><a href="#listing-entered-commands-code-history-code">4.11. Listing entered commands : <code>history</code></a></li>
 <li><a href="#clearing-list-of-entered-commands-code-clearhistory-code">4.12. Clearing list of entered commands : <code>clearhistory</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code">4.13. Undoing previous command : <code>undo</code></a></li>
@@ -51,10 +51,10 @@
 <li><a href="#logging-out-code-logout-code">4.20. Logging out : <code>logout</code></a></li>
 <li><a href="#auto-complete-command">4.21. Auto-complete command</a></li>
 <li><a href="#saving-the-data">4.22. Saving the data</a></li>
-<li><a href="#opening-the-calendar-code-calendar-code">4.23. Opening the calendar : <code>calendar</code></a></li>
+<li><a href="#opening-the-calendar">4.23. Opening the calendar</a></li>
 <li><a href="#viewing-calendar">4.24. Viewing calendar</a></li>
-<li><a href="#adding-appointment-code-addapp-code">4.25. Adding appointment : <code>addapp</code></a></li>
-<li><a href="#deleting-appointment-code-delapp-code">4.26. Deleting appointment : <code>delapp</code></a></li>
+<li><a href="#adding-appointment">4.25. Adding appointment</a></li>
+<li><a href="#deleting-appointment">4.26. Deleting appointment</a></li>
 <li><a href="#editing-a-job-opening-code-coming-in-v1-4-code">4.27. Editing a job opening <code>[coming in v1.4]</code></a></li>
 <li><a href="#deleting-a-job-opening-code-coming-in-v1-4-code">4.28. Deleting a job opening <code>[coming in v1.4]</code></a></li>
 <li><a href="#matching-a-job-opening-to-a-person-code-coming-in-v1-4-code">4.29. Matching a job opening to a person <code>[coming in v1.4]</code></a></li>
@@ -66,7 +66,7 @@
 </ul>
 </li>
 <li><a href="#faq">5. FAQ</a></li>
-<li><a href="#contacthero-cheat-sheet">6. ContactHeRo Cheat Sheet</a></li>
+<li><a href="#command-summary">6. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -287,18 +287,6 @@ Format: <code>help</code></p>
 </td>
 <td class="content">
 A person can have any number of skills (including 0)
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Profile Picture indicates the profile picture&#8217;s file path
 </td>
 </tr>
 </table>
@@ -612,7 +600,7 @@ Loads the LinkedIn search of 1st person in the results of the <code>find</code> 
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-job-opening-code-addjob-code"><a class="link" href="#adding-a-job-opening-code-addjob-code">4.8. Adding a job opening : <code>addjob</code></a></h3>
+<h3 id="adding-a-job-opening"><a class="link" href="#adding-a-job-opening">4.8. Adding a job opening</a></h3>
 <div class="paragraph">
 <p>You can add a job opening to contactHero using the following format.<br>
 Format: <code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER_OF_POSITIONS s/REQUIRED_SKILLS</code></p>
@@ -652,7 +640,7 @@ Format: <code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER_OF_POSITIONS s/REQUIR
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-job-opening-code-deletejob-code"><a class="link" href="#deleting-a-job-opening-code-deletejob-code">4.9. Deleting a job opening : <code>deletejob</code></a></h3>
+<h3 id="deleting-a-job-opening"><a class="link" href="#deleting-a-job-opening">4.9. Deleting a job opening</a></h3>
 <div class="paragraph">
 <p>You can delete a specified job opening from contactHeRo using the following format.<br>
 Format: <code>deletejob INDEX</code></p>
@@ -693,7 +681,7 @@ This deletes the 2nd job opening in contactHeRo and on running the above command
 </div>
 </div>
 <div class="sect2">
-<h3 id="matching-a-job-opening-to-a-person-code-matchjob-code"><a class="link" href="#matching-a-job-opening-to-a-person-code-matchjob-code">4.10. Matching a job opening to a person : <code>matchjob</code></a></h3>
+<h3 id="matching-a-job-opening-to-a-person"><a class="link" href="#matching-a-job-opening-to-a-person">4.10. Matching a job opening to a person</a></h3>
 <div class="paragraph">
 <p>You can see potential candidates for a specified job opening in contactHeRo using the following format.<br>
 Format: <code>matchjob INDEX</code></p>
@@ -1034,7 +1022,7 @@ The first lexicographically matched command is returned.
 </div>
 </div>
 <div class="sect2">
-<h3 id="opening-the-calendar-code-calendar-code"><a class="link" href="#opening-the-calendar-code-calendar-code">4.23. Opening the calendar : <code>calendar</code></a></h3>
+<h3 id="opening-the-calendar"><a class="link" href="#opening-the-calendar">4.23. Opening the calendar</a></h3>
 <div class="paragraph">
 <p>You can switch to the calendar tab using the following format.<br>
 Format: <code>calendar</code></p>
@@ -1046,7 +1034,7 @@ Format: <code>calendar</code></p>
 <p>You can view your calendar using these commands:<br></p>
 </div>
 <div class="sect3">
-<h4 id="viewing-a-specific-date-or-switch-to-the-date-view-code-date-code"><a class="link" href="#viewing-a-specific-date-or-switch-to-the-date-view-code-date-code">4.24.1. Viewing a specific date or switch to the date view : <code>date</code></a></h4>
+<h4 id="viewing-a-specific-date-or-switch-to-the-date-view"><a class="link" href="#viewing-a-specific-date-or-switch-to-the-date-view">4.24.1. Viewing a specific date or switch to the date view</a></h4>
 <div class="paragraph">
 <p>You can view a specifc date or switch to the date view by using the following format.<br>
 Format: <code>date [DATE]</code><br></p>
@@ -1075,37 +1063,9 @@ Example: <code>date</code></p>
 </li>
 </ul>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/dateView.png" alt="dateView" width="400">
-</div>
-<div class="title">Figure 8. Date view</div>
-</div>
 </div>
 <div class="sect3">
-<h4 id="viewing-a-specific-date-or-switch-to-the-date-view-code-datetime-code"><a class="link" href="#viewing-a-specific-date-or-switch-to-the-date-view-code-datetime-code">4.24.2. Viewing a specific date or switch to the date view : <code>datetime</code></a></h4>
-<div class="paragraph">
-<p>You can view a specifc date time by using the following format.<br>
-Format: <code>datetime [DATE_TIME]</code><br></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<code>DATE_TIME</code> needs to be in format YYYY-MM-DD HH-mm
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Example: <code>date 2018-03-26 12:00</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="viewing-a-specific-week-or-switch-to-the-week-view-code-week-code"><a class="link" href="#viewing-a-specific-week-or-switch-to-the-week-view-code-week-code">4.24.3. Viewing a specific week or switch to the week view : <code>week</code></a></h4>
+<h4 id="viewing-a-specific-week-or-switch-to-the-week-view"><a class="link" href="#viewing-a-specific-week-or-switch-to-the-week-view">4.24.2. Viewing a specific week or switch to the week view</a></h4>
 <div class="paragraph">
 <p>You can view a specifc week or switch to the week view by using the following format.<br>
 Format: <code>week [YEAR WEEK]</code><br></p>
@@ -1135,15 +1095,9 @@ Example: <code>week</code></p>
 </li>
 </ul>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/weekView.png" alt="weekView" width="400">
-</div>
-<div class="title">Figure 9. Week view</div>
-</div>
 </div>
 <div class="sect3">
-<h4 id="viewing-a-specific-month-or-switch-to-the-month-view-code-month-code"><a class="link" href="#viewing-a-specific-month-or-switch-to-the-month-view-code-month-code">4.24.4. Viewing a specific month or switch to the month view : <code>month</code></a></h4>
+<h4 id="viewing-a-specific-month-or-switch-to-the-month-view"><a class="link" href="#viewing-a-specific-month-or-switch-to-the-month-view">4.24.3. Viewing a specific month or switch to the month view</a></h4>
 <div class="paragraph">
 <p>You can view a specifc month or switch to the month view by using the following format.<br>
 Format: <code>month [MONTH]</code><br></p>
@@ -1172,15 +1126,9 @@ Example: <code>month</code></p>
 </li>
 </ul>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/monthView.png" alt="monthView" width="400">
-</div>
-<div class="title">Figure 10. Month view</div>
-</div>
 </div>
 <div class="sect3">
-<h4 id="viewing-a-specific-year-or-switch-to-the-year-view-code-year-code"><a class="link" href="#viewing-a-specific-year-or-switch-to-the-year-view-code-year-code">4.24.5. Viewing a specific year or switch to the year view : <code>year</code></a></h4>
+<h4 id="viewing-a-specific-year-or-switch-to-the-year-view"><a class="link" href="#viewing-a-specific-year-or-switch-to-the-year-view">4.24.4. Viewing a specific year or switch to the year view</a></h4>
 <div class="paragraph">
 <p>You can view a specifc year or switch to the year view by using the following format.<br>
 Format: <code>year [YEAR]</code><br></p>
@@ -1209,16 +1157,10 @@ Example: <code>year</code></p>
 </li>
 </ul>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/yearView.png" alt="yearView" width="400">
-</div>
-<div class="title">Figure 11. Year view</div>
-</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-appointment-code-addapp-code"><a class="link" href="#adding-appointment-code-addapp-code">4.25. Adding appointment : <code>addapp</code></a></h3>
+<h3 id="adding-appointment"><a class="link" href="#adding-appointment">4.25. Adding appointment</a></h3>
 <div class="paragraph">
 <p>You can add appointment by using the following format.<br></p>
 </div>
@@ -1245,7 +1187,7 @@ Example: <code>year</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-appointment-code-delapp-code"><a class="link" href="#deleting-appointment-code-delapp-code">4.26. Deleting appointment : <code>delapp</code></a></h3>
+<h3 id="deleting-appointment"><a class="link" href="#deleting-appointment">4.26. Deleting appointment</a></h3>
 <div class="paragraph">
 <p>You can delete appointment by using the following format.<br></p>
 </div>
@@ -1339,7 +1281,7 @@ We are willing to help you.<br></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="contacthero-cheat-sheet"><a class="link" href="#contacthero-cheat-sheet">6. ContactHeRo Cheat Sheet</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>These are all the commands that you can use for the latest version of contactHeRo:</p>
@@ -1410,10 +1352,6 @@ e.g. <code>addjob p/Software Engineer t/Cloud Services l/Singapore n/2</code></p
 e.g. <code>date</code> or <code>date 2018-04-04</code></p>
 </li>
 <li>
-<p><strong><a href="#viewing-specific-date-time">View specific date time</a></strong> : <code>datetime [DATE_TIME]</code><br>
-e.g. <code>datetime 2018-04-04 13:00</code></p>
-</li>
-<li>
 <p><strong><a href="#viewing-specific-week-or-switch-to-week-view">View specific week or switch week view</a></strong> : <code>week [YEAR WEEK]</code><br>
 e.g. <code>week</code> or <code>week 2018 14</code></p>
 </li>
@@ -1440,7 +1378,7 @@ e.g <code>delapp t/Meeting sdt/2018-04-05 14:00 edt/2018-04-05 15:00</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-06 04:19:38 UTC
+Last updated 2018-04-06 04:36:09 UTC
 </div>
 </div>
 </body>
