@@ -35,7 +35,7 @@ public class ProfilePicture {
      * @param profilePicture A valid image path.
      */
     public ProfilePicture(String... profilePicture) {
-        if (profilePicture.length != 0 && profilePicture[0] != null && profilePicture[0].length() != 0) {
+        if (profilePicture.length != 0 && profilePicture[0] != null) {
             checkArgument(isValidProfilePicture(profilePicture[0]), MESSAGE_PROFILEPICTURE_CONSTRAINTS);
             checkArgument(hasValidProfilePicture(profilePicture[0]), MESSAGE_PROFILEPICTURE_NOT_EXISTS);
             if (profilePicture[0].length() > 37

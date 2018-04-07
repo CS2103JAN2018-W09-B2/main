@@ -227,6 +227,8 @@ public class ParserUtil {
         String trimmedProfilePicture = profilePicture.trim();
         if (!ProfilePicture.isValidProfilePicture(trimmedProfilePicture)) {
             throw new IllegalValueException(ProfilePicture.MESSAGE_PROFILEPICTURE_CONSTRAINTS);
+        } else if (!ProfilePicture.hasValidProfilePicture(trimmedProfilePicture)) {
+            throw new IllegalValueException(ProfilePicture.MESSAGE_PROFILEPICTURE_NOT_EXISTS);
         }
         return new ProfilePicture(trimmedProfilePicture);
     }
