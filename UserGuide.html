@@ -43,23 +43,24 @@
 <li><a href="#clearing-list-of-entered-commands-code-clearhistory-code">4.12. Clearing list of entered commands : <code>clearhistory</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code">4.13. Undoing previous command : <code>undo</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">4.14. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#emailing-your-contact-code-email-code">4.15. Emailing your contact : <code>email</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">4.16. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">4.17. Exiting the program : <code>exit</code></a></li>
-<li><a href="#registering-new-account-code-signup-code">4.18. Registering new account : <code>signup</code></a></li>
-<li><a href="#logging-in-code-login-code">4.19. Logging in : <code>login</code></a></li>
-<li><a href="#logging-out-code-logout-code">4.20. Logging out : <code>logout</code></a></li>
-<li><a href="#auto-complete-command">4.21. Auto-complete command</a></li>
-<li><a href="#saving-the-data">4.22. Saving the data</a></li>
-<li><a href="#opening-the-calendar-code-calendar-code">4.23. Opening the calendar <code>calendar</code></a></li>
-<li><a href="#viewing-calendar">4.24. Viewing calendar</a></li>
-<li><a href="#adding-appointment-code-addapp-code">4.25. Adding appointment : <code>addapp</code></a></li>
-<li><a href="#deleting-appointment-code-delapp-code">4.26. Deleting appointment : <code>delapp</code></a></li>
-<li><a href="#editing-a-job-opening-code-coming-in-v1-5-code">4.27. Editing a job opening <code>[coming in v1.5]</code></a></li>
-<li><a href="#arranging-meetings-with-gmail-calendar-code-coming-in-v2-0-code">4.28. Arranging meetings with Gmail calendar <code>[coming in v2.0]</code></a></li>
-<li><a href="#add-reminders-code-coming-in-v2-0-code">4.29. Add reminders <code>[coming in v2.0]</code></a></li>
-<li><a href="#login-system-code-coming-in-v2-0-code">4.30. Login system <code>[coming in v2.0]</code></a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">4.31. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#login-to-google-code-googlelogin-code">4.15. Login to Google : <code>googlelogin</code></a></li>
+<li><a href="#emailing-your-contact-code-email-code">4.16. Emailing your contact : <code>email</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">4.17. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">4.18. Exiting the program : <code>exit</code></a></li>
+<li><a href="#registering-new-account-code-signup-code">4.19. Registering new account : <code>signup</code></a></li>
+<li><a href="#logging-in-code-login-code">4.20. Logging in : <code>login</code></a></li>
+<li><a href="#logging-out-code-logout-code">4.21. Logging out : <code>logout</code></a></li>
+<li><a href="#auto-complete-command">4.22. Auto-complete command</a></li>
+<li><a href="#saving-the-data">4.23. Saving the data</a></li>
+<li><a href="#opening-the-calendar-code-calendar-code">4.24. Opening the calendar <code>calendar</code></a></li>
+<li><a href="#viewing-calendar">4.25. Viewing calendar</a></li>
+<li><a href="#adding-appointment-code-addapp-code">4.26. Adding appointment : <code>addapp</code></a></li>
+<li><a href="#deleting-appointment-code-delapp-code">4.27. Deleting appointment : <code>delapp</code></a></li>
+<li><a href="#editing-a-job-opening-code-coming-in-v1-5-code">4.28. Editing a job opening <code>[coming in v1.5]</code></a></li>
+<li><a href="#arranging-meetings-with-gmail-calendar-code-coming-in-v2-0-code">4.29. Arranging meetings with Gmail calendar <code>[coming in v2.0]</code></a></li>
+<li><a href="#add-reminders-code-coming-in-v2-0-code">4.30. Add reminders <code>[coming in v2.0]</code></a></li>
+<li><a href="#login-system-code-coming-in-v2-0-code">4.31. Login system <code>[coming in v2.0]</code></a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">4.32. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">5. FAQ</a></li>
@@ -823,17 +824,93 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="emailing-your-contact-code-email-code"><a class="link" href="#emailing-your-contact-code-email-code">4.15. Emailing your contact : <code>email</code></a></h3>
+<h3 id="login-to-google-code-googlelogin-code"><a class="link" href="#login-to-google-code-googlelogin-code">4.15. Login to Google : <code>googlelogin</code></a></h3>
 <div class="paragraph">
-<p>You can send email to any person you have saved in contactHeRo using the following format.<br>
-Format: <code>email INDEX</code></p>
+<p>You will have to login to google in order to use features like
+emailing. This process is simple and fast like how you normally login
+using the web browser.<br>
+Format: <code>googlelogin</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Opens up the Draft Email tab. This is an User Interface for you to draft your emails.</p>
+<p>Opens up the <code>Google</code> tab. This is contactHeRo&#8217;s built-in browser for Google logins. Simply enter your email and password to login.</p>
+</li>
+<li>
+<p>You will have to login in order to use the <code>Email</code> command to send email.</p>
+</li>
+<li>
+<p><strong>IMPORTANT</strong>: Please do not go to other webpage in the <code>Google</code> tab after you have logged in.<br></p>
+<div class="paragraph">
+<p>This is because contactHeRo has to use the login information from the webpage after you have login to send your email.</p>
+</div>
+</li>
+<li>
+<p><strong>NOTE</strong>: We do not save or log any of your Google credentials or information as we respect your privacy.
+Therefore, everytime you restart contactHeRo, you will have to login again.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>googlelogin</code><br>
+This will open up the <code>Google</code> tab for you to login. On running the above command, you should see the following success message:<br></p>
+<div class="literalblock">
+<div class="content">
+<pre>Please log in to Google.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should also see the login screen as shown below.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/googlelogin1.PNG" alt="googlelogin1" width="600">
+</div>
+<div class="title">Figure 6. The Google log in page</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Please do not go to any other webpages in the <code>Google</code> tab after you have logged in.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Now that you have logged in, you are ready to use the <code>Email</code> feature to send out emails!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="emailing-your-contact-code-email-code"><a class="link" href="#emailing-your-contact-code-email-code">4.16. Emailing your contact : <code>email</code></a></h3>
+<div class="paragraph">
+<p>You can send email to any person you have saved in contactHeRo using the following format.<br>
+Format: <code>email INDEX</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Important</strong>: You must have logged in to Google using <code>googlelogin</code>. Otherwise, you will not be able to send out emails.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Opens up the <code>Draft Email</code> tab. This is an User Interface for you to draft your emails.</p>
 </li>
 <li>
 <p>Collects the information of the person at the specified <code>INDEX</code>.</p>
@@ -847,6 +924,9 @@ Format: <code>email INDEX</code></p>
 <li>
 <p>The collected information will be used to help you fill up details in the draft like the person&#8217;s email address.</p>
 </li>
+<li>
+<p><strong>NOTE</strong>: Please ensure that you have internet connection before sending the email!</p>
+</li>
 </ul>
 </div>
 </div>
@@ -859,7 +939,7 @@ Format: <code>email INDEX</code></p>
 <li>
 <p><code>list</code><br>
 <code>email 2</code><br>
-This will open up the Draft Email tab and then
+This will open up the <code>Draft Email</code> tab and then
 collect the information of the 2nd person in the list. On running the above command, you should see the following success message:<br></p>
 <div class="literalblock">
 <div class="content">
@@ -874,9 +954,9 @@ collect the information of the 2nd person in the list. On running the above comm
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/emailSS1.PNG" alt="emailSS1" width="790">
+<img src="images/emailSS1.PNG" alt="emailSS1" width="600">
 </div>
-<div class="title">Figure 6. The User Interface to draft your email</div>
+<div class="title">Figure 7. The User Interface to draft your email</div>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -900,11 +980,11 @@ a pop-up message as shown below.</p>
 <div class="content">
 <img src="images/emailSS2.PNG" alt="emailSS2" width="400">
 </div>
-<div class="title">Figure 7. Pop-up message</div>
+<div class="title">Figure 8. Pop-up message</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">4.16. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">4.17. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>You can clear all your contacts from contactHeRo using the following format.<br>
 Format: <code>clear</code></p>
@@ -915,14 +995,14 @@ Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">4.17. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">4.18. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>You can exit the program using the following format.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="registering-new-account-code-signup-code"><a class="link" href="#registering-new-account-code-signup-code">4.18. Registering new account : <code>signup</code></a></h3>
+<h3 id="registering-new-account-code-signup-code"><a class="link" href="#registering-new-account-code-signup-code">4.19. Registering new account : <code>signup</code></a></h3>
 <div class="paragraph">
 <p>You can create a new user account through the command line by using the following format.<br>
 Format: <code>signup u/USERNAME pw/PASSWORD</code></p>
@@ -951,7 +1031,7 @@ Examples
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging-in-code-login-code"><a class="link" href="#logging-in-code-login-code">4.19. Logging in : <code>login</code></a></h3>
+<h3 id="logging-in-code-login-code"><a class="link" href="#logging-in-code-login-code">4.20. Logging in : <code>login</code></a></h3>
 <div class="paragraph">
 <p>You can login through the command line by using the following this format.<br>
 Format: <code>login u/USERNAME pw/PASSWORD</code></p>
@@ -966,7 +1046,7 @@ Format: <code>login u/USERNAME pw/PASSWORD</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging-out-code-logout-code"><a class="link" href="#logging-out-code-logout-code">4.20. Logging out : <code>logout</code></a></h3>
+<h3 id="logging-out-code-logout-code"><a class="link" href="#logging-out-code-logout-code">4.21. Logging out : <code>logout</code></a></h3>
 <div class="paragraph">
 <p>You can logout through the command line by using the following this format.<br>
 Format: <code>logout</code></p>
@@ -980,7 +1060,7 @@ Format: <code>logout</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="auto-complete-command"><a class="link" href="#auto-complete-command">4.21. Auto-complete command</a></h3>
+<h3 id="auto-complete-command"><a class="link" href="#auto-complete-command">4.22. Auto-complete command</a></h3>
 <div class="paragraph">
 <p>To save your time, after typing a partial command, you can press TAB for the command to be auto-completed.</p>
 </div>
@@ -1013,25 +1093,25 @@ The first lexicographically matched command is returned.
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">4.22. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">4.23. Saving the data</a></h3>
 <div class="paragraph">
 <p>You do not need to save manually. contactHeRo saves the data into the hard disk for you automatically.<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="opening-the-calendar-code-calendar-code"><a class="link" href="#opening-the-calendar-code-calendar-code">4.23. Opening the calendar <code>calendar</code></a></h3>
+<h3 id="opening-the-calendar-code-calendar-code"><a class="link" href="#opening-the-calendar-code-calendar-code">4.24. Opening the calendar <code>calendar</code></a></h3>
 <div class="paragraph">
 <p>You can switch to the calendar tab using the following format.<br>
 Format: <code>calendar</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-calendar"><a class="link" href="#viewing-calendar">4.24. Viewing calendar</a></h3>
+<h3 id="viewing-calendar"><a class="link" href="#viewing-calendar">4.25. Viewing calendar</a></h3>
 <div class="paragraph">
 <p>You can view your calendar using these commands:<br></p>
 </div>
 <div class="sect3">
-<h4 id="viewing-a-specific-date-or-switch-to-the-date-view-code-date-code"><a class="link" href="#viewing-a-specific-date-or-switch-to-the-date-view-code-date-code">4.24.1. Viewing a specific date or switch to the date view <code>date</code></a></h4>
+<h4 id="viewing-a-specific-date-or-switch-to-the-date-view-code-date-code"><a class="link" href="#viewing-a-specific-date-or-switch-to-the-date-view-code-date-code">4.25.1. Viewing a specific date or switch to the date view <code>date</code></a></h4>
 <div class="paragraph">
 <p>You can view a specifc date or switch to the date view by using the following format.<br>
 Format: <code>date [DATE]</code><br></p>
@@ -1064,11 +1144,11 @@ Example: <code>date</code></p>
 <div class="content">
 <img src="images/dateView.png" alt="dateView" width="400">
 </div>
-<div class="title">Figure 8. Date view</div>
+<div class="title">Figure 9. Date view</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-a-specific-date-or-switch-to-the-date-view-code-datetime-code"><a class="link" href="#viewing-a-specific-date-or-switch-to-the-date-view-code-datetime-code">4.24.2. Viewing a specific date or switch to the date view : <code>datetime</code></a></h4>
+<h4 id="viewing-a-specific-date-or-switch-to-the-date-view-code-datetime-code"><a class="link" href="#viewing-a-specific-date-or-switch-to-the-date-view-code-datetime-code">4.25.2. Viewing a specific date or switch to the date view : <code>datetime</code></a></h4>
 <div class="paragraph">
 <p>You can view a specifc date time by using the following format.<br>
 Format: <code>datetime [DATE_TIME]</code><br></p>
@@ -1090,7 +1170,7 @@ Format: <code>datetime [DATE_TIME]</code><br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-a-specific-week-or-switch-to-the-week-view-code-week-code"><a class="link" href="#viewing-a-specific-week-or-switch-to-the-week-view-code-week-code">4.24.3. Viewing a specific week or switch to the week view : <code>week</code></a></h4>
+<h4 id="viewing-a-specific-week-or-switch-to-the-week-view-code-week-code"><a class="link" href="#viewing-a-specific-week-or-switch-to-the-week-view-code-week-code">4.25.3. Viewing a specific week or switch to the week view : <code>week</code></a></h4>
 <div class="paragraph">
 <p>You can view a specifc week or switch to the week view by using the following format.<br>
 Format: <code>week [YEAR WEEK]</code><br></p>
@@ -1124,11 +1204,11 @@ Example: <code>week</code></p>
 <div class="content">
 <img src="images/weekView.png" alt="weekView" width="400">
 </div>
-<div class="title">Figure 9. Week view</div>
+<div class="title">Figure 10. Week view</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-a-specific-month-or-switch-to-the-month-view-code-month-code"><a class="link" href="#viewing-a-specific-month-or-switch-to-the-month-view-code-month-code">4.24.4. Viewing a specific month or switch to the month view : <code>month</code></a></h4>
+<h4 id="viewing-a-specific-month-or-switch-to-the-month-view-code-month-code"><a class="link" href="#viewing-a-specific-month-or-switch-to-the-month-view-code-month-code">4.25.4. Viewing a specific month or switch to the month view : <code>month</code></a></h4>
 <div class="paragraph">
 <p>You can view a specifc month or switch to the month view by using the following format.<br>
 Format: <code>month [MONTH]</code><br></p>
@@ -1161,11 +1241,11 @@ Example: <code>month</code></p>
 <div class="content">
 <img src="images/monthView.png" alt="monthView" width="400">
 </div>
-<div class="title">Figure 10. Month view</div>
+<div class="title">Figure 11. Month view</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-a-specific-year-or-switch-to-the-year-view-code-year-code"><a class="link" href="#viewing-a-specific-year-or-switch-to-the-year-view-code-year-code">4.24.5. Viewing a specific year or switch to the year view : <code>year</code></a></h4>
+<h4 id="viewing-a-specific-year-or-switch-to-the-year-view-code-year-code"><a class="link" href="#viewing-a-specific-year-or-switch-to-the-year-view-code-year-code">4.25.5. Viewing a specific year or switch to the year view : <code>year</code></a></h4>
 <div class="paragraph">
 <p>You can view a specifc year or switch to the year view by using the following format.<br>
 Format: <code>year [YEAR]</code><br></p>
@@ -1198,12 +1278,12 @@ Example: <code>year</code></p>
 <div class="content">
 <img src="images/yearView.png" alt="yearView" width="400">
 </div>
-<div class="title">Figure 11. Year view</div>
+<div class="title">Figure 12. Year view</div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-appointment-code-addapp-code"><a class="link" href="#adding-appointment-code-addapp-code">4.25. Adding appointment : <code>addapp</code></a></h3>
+<h3 id="adding-appointment-code-addapp-code"><a class="link" href="#adding-appointment-code-addapp-code">4.26. Adding appointment : <code>addapp</code></a></h3>
 <div class="paragraph">
 <p>You can add appointment by using the following format.<br></p>
 </div>
@@ -1230,7 +1310,7 @@ Example: <code>year</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-appointment-code-delapp-code"><a class="link" href="#deleting-appointment-code-delapp-code">4.26. Deleting appointment : <code>delapp</code></a></h3>
+<h3 id="deleting-appointment-code-delapp-code"><a class="link" href="#deleting-appointment-code-delapp-code">4.27. Deleting appointment : <code>delapp</code></a></h3>
 <div class="paragraph">
 <p>You can delete appointment by using the following format.<br></p>
 </div>
@@ -1257,31 +1337,31 @@ Example: <code>year</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-job-opening-code-coming-in-v1-5-code"><a class="link" href="#editing-a-job-opening-code-coming-in-v1-5-code">4.27. Editing a job opening <code>[coming in v1.5]</code></a></h3>
+<h3 id="editing-a-job-opening-code-coming-in-v1-5-code"><a class="link" href="#editing-a-job-opening-code-coming-in-v1-5-code">4.28. Editing a job opening <code>[coming in v1.5]</code></a></h3>
 <div class="paragraph">
 <p>You will soon be able to edit a job opening in contactHeRo.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="arranging-meetings-with-gmail-calendar-code-coming-in-v2-0-code"><a class="link" href="#arranging-meetings-with-gmail-calendar-code-coming-in-v2-0-code">4.28. Arranging meetings with Gmail calendar <code>[coming in v2.0]</code></a></h3>
+<h3 id="arranging-meetings-with-gmail-calendar-code-coming-in-v2-0-code"><a class="link" href="#arranging-meetings-with-gmail-calendar-code-coming-in-v2-0-code">4.29. Arranging meetings with Gmail calendar <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>You will soon be able to arrange meeting on Gmail calender using contactHero.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-reminders-code-coming-in-v2-0-code"><a class="link" href="#add-reminders-code-coming-in-v2-0-code">4.29. Add reminders <code>[coming in v2.0]</code></a></h3>
+<h3 id="add-reminders-code-coming-in-v2-0-code"><a class="link" href="#add-reminders-code-coming-in-v2-0-code">4.30. Add reminders <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>You will soon be able to set reminders for meetings, appointments or any other event and contactHeRo will remind you of the event.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="login-system-code-coming-in-v2-0-code"><a class="link" href="#login-system-code-coming-in-v2-0-code">4.30. Login system <code>[coming in v2.0]</code></a></h3>
+<h3 id="login-system-code-coming-in-v2-0-code"><a class="link" href="#login-system-code-coming-in-v2-0-code">4.31. Login system <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>The login system shall provide security to your data stored in contactHeRo.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">4.31. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">4.32. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -1362,7 +1442,10 @@ e.g.<code>select 2</code></p>
 e.g. <code>linkedIn 2</code></p>
 </li>
 <li>
-<p><strong><a href="#emailing-your-contact">Email</a></strong> : <code>email INDEX</code><br>
+<p><strong><a href="#login-to-google-code-googlelogin-code">Login to Google</a></strong> : <code>googlelogin</code><br></p>
+</li>
+<li>
+<p><strong><a href="#emailing-your-contact-code-email-code">Email</a></strong> : <code>email INDEX</code><br>
 e.g. <code>email 1</code></p>
 </li>
 <li>
@@ -1407,7 +1490,7 @@ e.g <code>delapp t/Meeting sdt/2018-04-05 14:00 edt/2018-04-05 15:00</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-10 16:47:16 UTC
+Last updated 2018-04-10 17:20:09 UTC
 </div>
 </div>
 </body>

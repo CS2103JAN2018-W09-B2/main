@@ -572,7 +572,10 @@ e.g.<code>select 2</code></p>
 e.g. <code>linkedIn 2</code></p>
 </li>
 <li>
-<p><strong><a href="#emailing-your-contact">Email</a></strong> : <code>email INDEX</code><br>
+<p><strong><a href="#login-to-google-code-googlelogin-code">Login to Google</a></strong> : <code>googlelogin</code><br></p>
+</li>
+<li>
+<p><strong><a href="#emailing-your-contact-code-email-code">Email</a></strong> : <code>email INDEX</code><br>
 e.g. <code>email 1</code></p>
 </li>
 <li>
@@ -1260,40 +1263,126 @@ Don&#8217;t know Image and ImageView. Check these two links:<br>
 </div>
 </div>
 <div class="sect2">
-<h3 id="emailing-a-contact"><a class="link" href="#emailing-a-contact">Emailing a contact</a></h3>
+<h3 id="emailing-a-contact-using-google-api"><a class="link" href="#emailing-a-contact-using-google-api">Emailing a contact using Google API</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current implementation</a></h4>
 <div class="paragraph">
-<p>The <code>EmailCommand</code> class will allow user to open an email interface to send email to the chosen contact. <code>EmailCommand</code> extends the <code>Command</code> class. It takes in an index through the <code>EmailCommandParser</code>,
+<p>The sending of email will be implemented using the Google API.</p>
+</div>
+<div class="paragraph">
+<p>Firstly, to access the Google API, the user must login to Google using the <code>googlelogin</code> command.
+The <code>GoogleLoginCommand</code> class will open the Google authentication webpage in the built-in web browser for user to login.</p>
+</div>
+<div class="paragraph">
+<p>The <code>GoogleAuthentication</code> class will handle the authentication process of Google login.
+After authentication is successful, the user will be redirected to the Google homepage,
+where the <code>Token</code> is stored in the URL.</p>
+</div>
+<div class="paragraph">
+<p>Below is the sequence diagram of the <code>googlelogin</code> command:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/GoogleLoginSequence.png" alt="GoogleLoginSequence" width="600">
+</div>
+<div class="title">Figure 5. Sequence Diagram of the GoogleLoginCommand</div>
+</div>
+<div class="paragraph">
+<p>Next, a <code>GmailClient</code> is created using the <code>GoogleAuthentication</code> class and <code>Token</code>.
+The <code>Token</code> is obtained from the redirected URL, meaning that the user must not navigate to other URL
+after they have logged in.</p>
+</div>
+<div class="paragraph">
+<p>Below is the class diagram of the <code>GmailClient</code>:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/GmailClassDiagram.png" alt="GmailClassDiagram" width="600">
+</div>
+<div class="title">Figure 6. Class Diagram of GmailClient and GoogleAuthentication</div>
+</div>
+<div class="paragraph">
+<p>This newly created <code>GmailClient</code> class will provide all the services that use the Google API.</p>
+</div>
+<div class="paragraph">
+<p>Now that the <code>GmailClient</code> is created, we can use it send out emails!</p>
+</div>
+<div class="paragraph">
+<p>The user will use the <code>email</code> command to start this process.
+The <code>EmailCommand</code> class will open an email interface to send email to the chosen contact. <code>EmailCommand</code> extends the <code>Command</code> class. It takes in an index through the <code>EmailCommandParser</code>,
 similar to the implementation of <code>DeleteCommand</code> and <code>DeleteCommandParser</code>.</p>
 </div>
 <div class="paragraph">
-<p>The sending of email will be implemented using the Gmail API.</p>
-</div>
-<div class="paragraph">
-<p>Firstly, <code>GoogleAuthorizationCodeFlow</code> is used to build and request for authorization from user.
-Then it saves the user authorization into <code>Credential</code>, which is saved into a local file so that they do not need to repeat the authorization step.
-This authorization is handled in the <code>GmailAuthentication</code> class.</p>
-</div>
-<div class="paragraph">
-<p>Next, a <code>GmailClient</code> is created using the <code>Credential</code> that was created by <code>GmailAuthentication</code>.
-The <code>GmailClient</code> class provides all the services that uses the Gmail API.</p>
-</div>
-<div class="paragraph">
 <p>The <code>EmailPanel</code> is the UI for user to draft their email. The UI has 3 inputs, <strong>To</strong>, <strong>Subject</strong> and <strong>Body</strong>. <strong>From</strong> is not needed here as we already have
-the authorised user&#8217;s email address, which we can retrieve using <code>GmailClient</code>.</p>
+the authorised user&#8217;s email address in <code>GoogleAuthentication</code>.</p>
 </div>
 <div class="paragraph">
-<p>The <code>GmailMessage</code> class will take in the values inputted by the user
+<p>The <code>GmailMessage</code> class will take in the values input by the user
 in the UI. These values will be stored in <code>GmailMessage</code>
 and packaged into a <code>MimeMessage</code> ready to be send out.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> MimeMessage createEmailContent(<span class="predefined-type">String</span> to, <span class="predefined-type">String</span> from, <span class="predefined-type">String</span> subject, <span class="predefined-type">String</span> bodyText) <span class="directive">throws</span> MessagingException {
+        <span class="predefined-type">Properties</span> props = <span class="keyword">new</span> <span class="predefined-type">Properties</span>();
+        Session session = Session.getDefaultInstance(props, <span class="predefined-constant">null</span>);
+        MimeMessage emailContent = <span class="keyword">new</span> MimeMessage(session);
+        emailContent.setFrom(<span class="keyword">new</span> InternetAddress(from));
+        emailContent.addRecipient(javax.mail.Message.RecipientType.TO, <span class="keyword">new</span> InternetAddress(to));
+        emailContent.setSubject(subject);
+        emailContent.setContent(bodyText, <span class="string"><span class="delimiter">&quot;</span><span class="content">text/html; charset=utf-8</span><span class="delimiter">&quot;</span></span>);
+        <span class="keyword">return</span> emailContent;
+    }</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Finally, <code>GmailClient</code> will send out the <code>MimeMessage</code> of <code>GmailMessage</code> as an email.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> sendEmail(MimeMessage emailContent) <span class="directive">throws</span> MessagingException, <span class="exception">IOException</span> {
+        Message message = createMessageWithEmail(emailContent);
+        message = service.users().messages().send(<span class="string"><span class="delimiter">&quot;</span><span class="content">me</span><span class="delimiter">&quot;</span></span>, message).execute();
+    }</code></pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="design-consideration-3"><a class="link" href="#design-consideration-3">Design consideration</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-login-to-google"><a class="link" href="#aspect-how-to-login-to-google">Aspect: How to login to Google</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1: Using <code>GoogleAuthorizationCodeFlow</code> to log in.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Very simple to implement and handle. <code>Token</code> and <code>Credential</code> are handled by the API.</p>
+</li>
+<li>
+<p>Cons: It opens a default web browser, which the users are able to close. <code>GoogleAuthorizationCodeFlow</code> will stall the
+main thread in order to wait for the user to authenticate, if the user close the browser, the app will crash.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2 (current choice): Using a built-in web browser to get the <code>Token</code> from the URL.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User cannot close the built in browser. The authentication process will not stall the main thread.</p>
+</li>
+<li>
+<p>Cons: If the user changes the URL in the web browser, the <code>Token</code> is gone and the user have to re-login.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 <div class="sect4">
 <h5 id="aspect-how-to-send-an-email"><a class="link" href="#aspect-how-to-send-an-email">Aspect: How to send an email</a></h5>
 <div class="ulist">
@@ -1390,7 +1479,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="../images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 5. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 7. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -3510,40 +3599,126 @@ Don&#8217;t know Image and ImageView. Check these two links:<br>
 </div>
 </div>
 <div class="sect2">
-<h3 id="emailing-a-contact-2"><a class="link" href="#emailing-a-contact-2">Emailing a contact</a></h3>
+<h3 id="emailing-a-contact-using-google-api-2"><a class="link" href="#emailing-a-contact-using-google-api-2">Emailing a contact using Google API</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current implementation</a></h4>
 <div class="paragraph">
-<p>The <code>EmailCommand</code> class will allow user to open an email interface to send email to the chosen contact. <code>EmailCommand</code> extends the <code>Command</code> class. It takes in an index through the <code>EmailCommandParser</code>,
+<p>The sending of email will be implemented using the Google API.</p>
+</div>
+<div class="paragraph">
+<p>Firstly, to access the Google API, the user must login to Google using the <code>googlelogin</code> command.
+The <code>GoogleLoginCommand</code> class will open the Google authentication webpage in the built-in web browser for user to login.</p>
+</div>
+<div class="paragraph">
+<p>The <code>GoogleAuthentication</code> class will handle the authentication process of Google login.
+After authentication is successful, the user will be redirected to the Google homepage,
+where the <code>Token</code> is stored in the URL.</p>
+</div>
+<div class="paragraph">
+<p>Below is the sequence diagram of the <code>googlelogin</code> command:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/GoogleLoginSequence.png" alt="GoogleLoginSequence" width="600">
+</div>
+<div class="title">Figure 8. Sequence Diagram of the GoogleLoginCommand</div>
+</div>
+<div class="paragraph">
+<p>Next, a <code>GmailClient</code> is created using the <code>GoogleAuthentication</code> class and <code>Token</code>.
+The <code>Token</code> is obtained from the redirected URL, meaning that the user must not navigate to other URL
+after they have logged in.</p>
+</div>
+<div class="paragraph">
+<p>Below is the class diagram of the <code>GmailClient</code>:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/GmailClassDiagram.png" alt="GmailClassDiagram" width="600">
+</div>
+<div class="title">Figure 9. Class Diagram of GmailClient and GoogleAuthentication</div>
+</div>
+<div class="paragraph">
+<p>This newly created <code>GmailClient</code> class will provide all the services that use the Google API.</p>
+</div>
+<div class="paragraph">
+<p>Now that the <code>GmailClient</code> is created, we can use it send out emails!</p>
+</div>
+<div class="paragraph">
+<p>The user will use the <code>email</code> command to start this process.
+The <code>EmailCommand</code> class will open an email interface to send email to the chosen contact. <code>EmailCommand</code> extends the <code>Command</code> class. It takes in an index through the <code>EmailCommandParser</code>,
 similar to the implementation of <code>DeleteCommand</code> and <code>DeleteCommandParser</code>.</p>
 </div>
 <div class="paragraph">
-<p>The sending of email will be implemented using the Gmail API.</p>
-</div>
-<div class="paragraph">
-<p>Firstly, <code>GoogleAuthorizationCodeFlow</code> is used to build and request for authorization from user.
-Then it saves the user authorization into <code>Credential</code>, which is saved into a local file so that they do not need to repeat the authorization step.
-This authorization is handled in the <code>GmailAuthentication</code> class.</p>
-</div>
-<div class="paragraph">
-<p>Next, a <code>GmailClient</code> is created using the <code>Credential</code> that was created by <code>GmailAuthentication</code>.
-The <code>GmailClient</code> class provides all the services that uses the Gmail API.</p>
-</div>
-<div class="paragraph">
 <p>The <code>EmailPanel</code> is the UI for user to draft their email. The UI has 3 inputs, <strong>To</strong>, <strong>Subject</strong> and <strong>Body</strong>. <strong>From</strong> is not needed here as we already have
-the authorised user&#8217;s email address, which we can retrieve using <code>GmailClient</code>.</p>
+the authorised user&#8217;s email address in <code>GoogleAuthentication</code>.</p>
 </div>
 <div class="paragraph">
-<p>The <code>GmailMessage</code> class will take in the values inputted by the user
+<p>The <code>GmailMessage</code> class will take in the values input by the user
 in the UI. These values will be stored in <code>GmailMessage</code>
 and packaged into a <code>MimeMessage</code> ready to be send out.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> MimeMessage createEmailContent(<span class="predefined-type">String</span> to, <span class="predefined-type">String</span> from, <span class="predefined-type">String</span> subject, <span class="predefined-type">String</span> bodyText) <span class="directive">throws</span> MessagingException {
+        <span class="predefined-type">Properties</span> props = <span class="keyword">new</span> <span class="predefined-type">Properties</span>();
+        Session session = Session.getDefaultInstance(props, <span class="predefined-constant">null</span>);
+        MimeMessage emailContent = <span class="keyword">new</span> MimeMessage(session);
+        emailContent.setFrom(<span class="keyword">new</span> InternetAddress(from));
+        emailContent.addRecipient(javax.mail.Message.RecipientType.TO, <span class="keyword">new</span> InternetAddress(to));
+        emailContent.setSubject(subject);
+        emailContent.setContent(bodyText, <span class="string"><span class="delimiter">&quot;</span><span class="content">text/html; charset=utf-8</span><span class="delimiter">&quot;</span></span>);
+        <span class="keyword">return</span> emailContent;
+    }</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Finally, <code>GmailClient</code> will send out the <code>MimeMessage</code> of <code>GmailMessage</code> as an email.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> sendEmail(MimeMessage emailContent) <span class="directive">throws</span> MessagingException, <span class="exception">IOException</span> {
+        Message message = createMessageWithEmail(emailContent);
+        message = service.users().messages().send(<span class="string"><span class="delimiter">&quot;</span><span class="content">me</span><span class="delimiter">&quot;</span></span>, message).execute();
+    }</code></pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="design-consideration-6"><a class="link" href="#design-consideration-6">Design consideration</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-login-to-google-2"><a class="link" href="#aspect-how-to-login-to-google-2">Aspect: How to login to Google</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1: Using <code>GoogleAuthorizationCodeFlow</code> to log in.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Very simple to implement and handle. <code>Token</code> and <code>Credential</code> are handled by the API.</p>
+</li>
+<li>
+<p>Cons: It opens a default web browser, which the users are able to close. <code>GoogleAuthorizationCodeFlow</code> will stall the
+main thread in order to wait for the user to authenticate, if the user close the browser, the app will crash.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2 (current choice): Using a built-in web browser to get the <code>Token</code> from the URL.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User cannot close the built in browser. The authentication process will not stall the main thread.</p>
+</li>
+<li>
+<p>Cons: If the user changes the URL in the web browser, the <code>Token</code> is gone and the user have to re-login.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 <div class="sect4">
 <h5 id="aspect-how-to-send-an-email-2"><a class="link" href="#aspect-how-to-send-an-email-2">Aspect: How to send an email</a></h5>
 <div class="ulist">
@@ -3640,7 +3815,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="../images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 6. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 10. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -5433,7 +5608,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-10 16:47:16 UTC
+Last updated 2018-04-10 17:20:09 UTC
 </div>
 </div>
 </body>
