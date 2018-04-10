@@ -294,6 +294,7 @@ public class ParserUtil {
         return title.isPresent() ? Optional.of(parseTitle(title.get())) : Optional.empty();
     }
 
+    //@@author trafalgarandre
     /**
      * Parses a {@code String startDateTime} into a {@code StartDateTime}.
      * Leading and trailing whitespaces will be trimmed.
@@ -358,6 +359,7 @@ public class ParserUtil {
         return endDateTime.isPresent() ? Optional.of(parseEndDateTime(endDateTime.get())) : Optional.empty();
     }
 
+    //@@author
     /**
      * Parses a {@code String position} into a {@code Position}.
      * Leading and trailing whitespaces will be trimmed.

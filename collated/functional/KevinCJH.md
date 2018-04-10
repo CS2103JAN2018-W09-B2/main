@@ -1,233 +1,38 @@
 # KevinCJH
-###### /java/seedu/address/logic/commands/person/FindCommand.java
-``` java
-    public static final String COMMAND_SYNTAX = COMMAND_WORD + " " + PREFIX_NAME;
-
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose"
-            + " NAME or SKILL "
-            + "contains any of the specified keywords (case-insensitive) "
-            + "and displays them as a list with index numbers.\n"
-            + "Parameters: n/NAME_KEYWORDS [MORE_NAME_KEYWORDS] or t/SKILL_KEYWORDS [MORE_SKILL_KEYWORDS]\n"
-            + "Example: " + COMMAND_WORD + " n/Alice Bob\n"
-            + "Example: " + COMMAND_WORD + " t/accountant manager";
-
-    private final Predicate<Person> predicate;
-
-    public FindCommand(Predicate<Person> predicate) {
-        this.predicate = predicate;
-    }
-```
-###### /java/seedu/address/logic/commands/EmailCommand.java
+###### /java/seedu/address/model/skill/PersonSkillContainsKeywordsPredicate.java
 ``` java
 /**
- * Send an email to the person identified using it's last displayed index from the address book.
+ * Tests that a {@code Person}'s {@code Skill} matches any of the keywords given.
  */
-public class EmailCommand extends Command {
+public class PersonSkillContainsKeywordsPredicate implements Predicate<Person> {
+    private final List<String> keywords;
 
-    public static final String COMMAND_WORD = "email";
-
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Send an email to the person identified by the index number used in the last person listing.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
-
-    public static final int TAB_ID_EMAIL = 3;
-
-    public static final String MESSAGE_EMAIL_PERSON_SUCCESS = "Drafting email to: %1$s";
-
-    private final Index targetIndex;
-
-    private Person personToEmail;
-
-    public EmailCommand(Index targetIndex) {
-        this.targetIndex = targetIndex;
+    public PersonSkillContainsKeywordsPredicate(List<String> keywords) {
+        this.keywords = keywords;
     }
 
     @Override
-    public CommandResult execute() throws CommandException {
-
-        List<Person> lastShownList = model.getFilteredPersonList();
-
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+    public boolean test(Person person) {
+        Iterator tagsIterator = person.getSkills().iterator();
+        StringBuilder sb = new StringBuilder();
+        sb.append(tagsIterator.next());
+        while (tagsIterator.hasNext()) {
+            sb.append(" " + tagsIterator.next());
         }
-
-        personToEmail = lastShownList.get(targetIndex.getZeroBased());
-
-        EventsCenter.getInstance().post(new SwitchTabRequestEvent(TAB_ID_EMAIL));
-        EventsCenter.getInstance().post(new JumpToListRequestEvent(targetIndex));
-
-        GmailClient.getInstance();
-
-        return new CommandResult(String.format(MESSAGE_EMAIL_PERSON_SUCCESS, personToEmail.getEmail()));
-
+        String tagLists = sb.toString()
+                .replace("[", "")
+                .replace("]", "");
+        return keywords.stream()
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(tagLists, keyword));
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof EmailCommand // instanceof handles nulls
-                && this.targetIndex.equals(((EmailCommand) other).targetIndex) // state check
-                && Objects.equals(this.personToEmail, ((EmailCommand) other).personToEmail));
-    }
-}
-```
-###### /java/seedu/address/logic/GmailClient.java
-``` java
-/**
- * Creates an authorized Gmail client for all services that uses Gmail API.
- */
-public class GmailClient {
-
-    private static final String APPLICATION_NAME = "contactHeRo";
-
-    private static GmailClient instance = null;
-    private static Gmail service;
-
-    private GmailClient() {
-        try {
-            service = createGmailClientService();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                || (other instanceof PersonSkillContainsKeywordsPredicate // instanceof handles nulls
+                && this.keywords.equals(((PersonSkillContainsKeywordsPredicate) other).keywords)); // state check
     }
 
-    public static GmailClient getInstance() {
-        if (instance == null) {
-            instance = new GmailClient();
-        }
-        return instance;
-    }
-
-    /**
-     * Create and return an authorized Gmail client service.
-     * @return an authorized Gmail client service
-     * @throws IOException
-     */
-    public static Gmail createGmailClientService() throws IOException {
-        Credential credential = GmailAuthentication.authorize();
-        return new Gmail.Builder(GmailAuthentication.getHttpTransport(),
-                GmailAuthentication.getJsonFactory(), credential)
-                .setApplicationName(APPLICATION_NAME)
-                .build();
-    }
-
-    /**
-     * Create a message from an email to be send out.
-     *
-     * @param emailContent Email to be set to raw of message
-     * @return a message containing a base64url encoded email
-     * @throws IOException
-     * @throws MessagingException
-     */
-    public static Message createMessageWithEmail(MimeMessage emailContent)
-            throws MessagingException, IOException {
-        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-        emailContent.writeTo(buffer);
-        byte[] bytes = buffer.toByteArray();
-        String encodedEmail = Base64.encodeBase64URLSafeString(bytes);
-        Message message = new Message();
-        message.setRaw(encodedEmail);
-        return message;
-    }
-
-    /**
-     * Send an email from the user's mailbox to its recipient.
-     * @param emailContent Email content to be sent.
-     * @throws MessagingException
-     * @throws IOException
-     */
-    public static void sendEmail(MimeMessage emailContent)
-            throws MessagingException, IOException {
-        Message message = createMessageWithEmail(emailContent);
-        message = service.users().messages().send("me", message).execute();
-
-        System.out.println("Message id: " + message.getId());
-        System.out.println(message.toPrettyString());
-    }
-
-
-    public static Gmail getGmailService() {
-        return service;
-    }
-}
-
-```
-###### /java/seedu/address/logic/GmailAuthentication.java
-``` java
-    public static HttpTransport getHttpTransport() {
-        return httpTransport;
-    }
-
-    public static JsonFactory getJsonFactory() {
-        return JSON_FACTORY;
-    }
-}
-```
-###### /java/seedu/address/logic/parser/person/FindCommandParser.java
-``` java
-        ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_SKILL);
-
-        if (!(arePrefixesPresent(argMultimap, PREFIX_NAME)
-                || arePrefixesPresent(argMultimap, PREFIX_SKILL))
-                || (arePrefixesPresent(argMultimap, PREFIX_NAME) && arePrefixesPresent(argMultimap, PREFIX_SKILL))
-                || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
-        }
-
-
-
-        if (arePrefixesPresent(argMultimap, PREFIX_NAME)) {
-            List<String> testnovalue = argMultimap.getAllValues(PREFIX_NAME);
-            if (testnovalue.contains("")) {
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
-            }
-            String[] nameKeywords = argMultimap.getValue(PREFIX_NAME).get().split("\\W+");
-            return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
-        } else if (arePrefixesPresent(argMultimap, PREFIX_SKILL)) {
-            List<String> testnovalue = argMultimap.getAllValues(PREFIX_SKILL);
-            if (testnovalue.contains("")) {
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
-            }
-            String[] tagKeywords = argMultimap.getValue(PREFIX_SKILL).get().split("\\W+");
-            return new FindCommand(new SkillContainsKeywordsPredicate(Arrays.asList(tagKeywords)));
-        } else {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
-        }
-    }
-
-    /**
-     * Returns true if none of the prefixes contains empty values in the given
-     * {@code ArgumentMultimap}.
-     */
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
-    }
-
-}
-```
-###### /java/seedu/address/logic/parser/EmailCommandParser.java
-``` java
-/**
- * Parses input arguments and creates a new EmailCommand object
- */
-public class EmailCommandParser implements Parser<EmailCommand> {
-
-    /**
-     * Parses the given {@code String} of arguments in the context of the EmailCommand
-     * and returns an EmailCommand object for execution.
-     * @throws ParseException if the user input does not conform the expected format
-     */
-    public EmailCommand parse(String args) throws ParseException {
-        try {
-            Index index = ParserUtil.parseIndex(args);
-            return new EmailCommand(index);
-        } catch (IllegalValueException ive) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, EmailCommand.MESSAGE_USAGE));
-        }
-    }
 }
 ```
 ###### /java/seedu/address/model/GmailMessage.java
@@ -316,40 +121,235 @@ public class GmailMessage {
 }
 
 ```
-###### /java/seedu/address/model/skill/SkillContainsKeywordsPredicate.java
+###### /java/seedu/address/logic/parser/EmailCommandParser.java
 ``` java
 /**
- * Tests that a {@code Person}'s {@code Skill} matches any of the keywords given.
+ * Parses input arguments and creates a new EmailCommand object
  */
-public class SkillContainsKeywordsPredicate implements Predicate<Person> {
-    private final List<String> keywords;
+public class EmailCommandParser implements Parser<EmailCommand> {
 
-    public SkillContainsKeywordsPredicate(List<String> keywords) {
-        this.keywords = keywords;
+    /**
+     * Parses the given {@code String} of arguments in the context of the EmailCommand
+     * and returns an EmailCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public EmailCommand parse(String args) throws ParseException {
+        try {
+            Index index = ParserUtil.parseIndex(args);
+            return new EmailCommand(index);
+        } catch (IllegalValueException ive) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, EmailCommand.MESSAGE_USAGE));
+        }
+    }
+}
+```
+###### /java/seedu/address/logic/parser/person/FindCommandParser.java
+``` java
+        ArgumentMultimap argMultimap =
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_SKILL);
+
+        if (!(arePrefixesPresent(argMultimap, PREFIX_NAME)
+                || arePrefixesPresent(argMultimap, PREFIX_SKILL))
+                || (arePrefixesPresent(argMultimap, PREFIX_NAME) && arePrefixesPresent(argMultimap, PREFIX_SKILL))
+                || !argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+        }
+
+
+
+        if (arePrefixesPresent(argMultimap, PREFIX_NAME)) {
+            List<String> testnovalue = argMultimap.getAllValues(PREFIX_NAME);
+            if (testnovalue.contains("")) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+            }
+            String[] nameKeywords = argMultimap.getValue(PREFIX_NAME).get().split("\\W+");
+            return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
+        } else if (arePrefixesPresent(argMultimap, PREFIX_SKILL)) {
+            List<String> testnovalue = argMultimap.getAllValues(PREFIX_SKILL);
+            if (testnovalue.contains("")) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+            }
+            String[] tagKeywords = argMultimap.getValue(PREFIX_SKILL).get().split("\\W+");
+            return new FindCommand(new PersonSkillContainsKeywordsPredicate(Arrays.asList(tagKeywords)));
+        } else {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+        }
+    }
+
+    /**
+     * Returns true if none of the prefixes contains empty values in the given
+     * {@code ArgumentMultimap}.
+     */
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
+    }
+
+}
+```
+###### /java/seedu/address/logic/GmailClient.java
+``` java
+/**
+ * Creates an authorized Gmail client for all services that uses Gmail API.
+ */
+public class GmailClient {
+
+    private static final String APPLICATION_NAME = "contactHeRo";
+
+    private static GmailClient instance = null;
+    private static Gmail service;
+
+    private GmailClient() {
+        try {
+            service = createGmailClientService();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static GmailClient getInstance() {
+        if (instance == null) {
+            instance = new GmailClient();
+        }
+        return instance;
+    }
+
+    /**
+     * Create and return an authorized Gmail client service.
+     * @return an authorized Gmail client service
+     * @throws IOException
+     */
+    public static Gmail createGmailClientService() throws IOException {
+        Credential credential = GmailAuthentication.authorize();
+        return new Gmail.Builder(GmailAuthentication.getHttpTransport(),
+                GmailAuthentication.getJsonFactory(), credential)
+                .setApplicationName(APPLICATION_NAME)
+                .build();
+    }
+
+    /**
+     * Create a message from an email to be send out.
+     *
+     * @param emailContent Email to be set to raw of message
+     * @return a message containing a base64url encoded email
+     * @throws IOException
+     * @throws MessagingException
+     */
+    public static Message createMessageWithEmail(MimeMessage emailContent)
+            throws MessagingException, IOException {
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        emailContent.writeTo(buffer);
+        byte[] bytes = buffer.toByteArray();
+        String encodedEmail = Base64.encodeBase64URLSafeString(bytes);
+        Message message = new Message();
+        message.setRaw(encodedEmail);
+        return message;
+    }
+
+    /**
+     * Send an email from the user's mailbox to its recipient.
+     * @param emailContent Email content to be sent.
+     * @throws MessagingException
+     * @throws IOException
+     */
+    public static void sendEmail(MimeMessage emailContent)
+            throws MessagingException, IOException {
+        Message message = createMessageWithEmail(emailContent);
+        message = service.users().messages().send("me", message).execute();
+
+        System.out.println("Message id: " + message.getId());
+        System.out.println(message.toPrettyString());
+    }
+
+
+    public static Gmail getGmailService() {
+        return service;
+    }
+}
+
+```
+###### /java/seedu/address/logic/commands/person/FindCommand.java
+``` java
+    public static final String COMMAND_SYNTAX = COMMAND_WORD + " " + PREFIX_NAME;
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose"
+            + " NAME or SKILL "
+            + "contains any of the specified keywords (case-insensitive) "
+            + "and displays them as a list with index numbers.\n"
+            + "Parameters: n/NAME_KEYWORDS [MORE_NAME_KEYWORDS] or s/SKILL_KEYWORDS [MORE_SKILL_KEYWORDS]\n"
+            + "Example: " + COMMAND_WORD + " n/Alice Bob\n"
+            + "Example: " + COMMAND_WORD + " s/accountant manager";
+
+    private final Predicate<Person> predicate;
+
+    public FindCommand(Predicate<Person> predicate) {
+        this.predicate = predicate;
+    }
+```
+###### /java/seedu/address/logic/commands/EmailCommand.java
+``` java
+/**
+ * Send an email to the person identified using it's last displayed index from the address book.
+ */
+public class EmailCommand extends Command {
+
+    public static final String COMMAND_WORD = "email";
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Send an email to the person identified by the index number used in the last person listing.\n"
+            + "Parameters: INDEX (must be a positive integer)\n"
+            + "Example: " + COMMAND_WORD + " 1";
+
+    public static final int TAB_ID_EMAIL = 3;
+
+    public static final String MESSAGE_EMAIL_PERSON_SUCCESS = "Drafting email to: %1$s";
+
+    private final Index targetIndex;
+
+    private Person personToEmail;
+
+    public EmailCommand(Index targetIndex) {
+        this.targetIndex = targetIndex;
     }
 
     @Override
-    public boolean test(Person person) {
-        Iterator tagsIterator = person.getSkills().iterator();
-        StringBuilder sb = new StringBuilder();
-        sb.append(tagsIterator.next());
-        while (tagsIterator.hasNext()) {
-            sb.append(" " + tagsIterator.next());
+    public CommandResult execute() throws CommandException {
+
+        List<Person> lastShownList = model.getFilteredPersonList();
+
+        if (targetIndex.getZeroBased() >= lastShownList.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
-        String tagLists = sb.toString()
-                .replace("[", "")
-                .replace("]", "");
-        return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(tagLists, keyword));
+
+        personToEmail = lastShownList.get(targetIndex.getZeroBased());
+
+        EventsCenter.getInstance().post(new SwitchTabRequestEvent(TAB_ID_EMAIL));
+        EventsCenter.getInstance().post(new JumpToPersonListRequestEvent(targetIndex));
+
+        GmailClient.getInstance();
+
+        return new CommandResult(String.format(MESSAGE_EMAIL_PERSON_SUCCESS, personToEmail.getEmail()));
+
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof SkillContainsKeywordsPredicate // instanceof handles nulls
-                && this.keywords.equals(((SkillContainsKeywordsPredicate) other).keywords)); // state check
+                || (other instanceof EmailCommand // instanceof handles nulls
+                && this.targetIndex.equals(((EmailCommand) other).targetIndex) // state check
+                && Objects.equals(this.personToEmail, ((EmailCommand) other).personToEmail));
+    }
+}
+```
+###### /java/seedu/address/logic/GmailAuthentication.java
+``` java
+    public static HttpTransport getHttpTransport() {
+        return httpTransport;
     }
 
+    public static JsonFactory getJsonFactory() {
+        return JSON_FACTORY;
+    }
 }
 ```
 ###### /java/seedu/address/ui/EmailPanel.java
@@ -470,25 +470,18 @@ public class EmailPanel extends UiPart<Region> {
 ```
 ###### /java/seedu/address/ui/PersonCard.java
 ``` java
-    private static final String[] TAG_COLOR_STYLES =
+    private static final String[] SKILL_COLOR_STYLES =
         { "teal", "red", "green", "blue", "orange", "brown",
             "yellow", "pink", "lightgreen", "grey", "purple" };
+    private static final String DEFAULT_IMAGE = "/images/default.png";
 ```
 ###### /java/seedu/address/ui/PersonCard.java
 ``` java
         initSkills(person);
     }
 
-```
-###### /java/seedu/address/ui/PersonCard.java
-``` java
-    /**
-     * Returns the color style for {@code skillName}'s label.
-     */
-    private String getSkillColorStyleFor(String skillName) {
-        // we use the hash code of the skill name to generate a random color, so that the color remain consistent
-        // between different runs of the program while still making it random enough between skills.
-        return SKILL_COLOR_STYLES[Math.abs(skillName.hashCode()) % SKILL_COLOR_STYLES.length];
+    private Image getImage(String imagePath) {
+        return new Image(MainApp.class.getResourceAsStream(imagePath));
     }
 
 ```
@@ -553,10 +546,10 @@ public class EmailPanel extends UiPart<Region> {
 ``` fxml
 <AnchorPane prefHeight="478.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HTMLEditor fx:id="bodyTxtField" layoutY="98.0" prefHeight="257.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <TextField fx:id="subjectTxtField" layoutY="55.0" prefHeight="29.0" promptText="Subject:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <TextField fx:id="toTxtField" layoutY="10.0" prefHeight="25.0" promptText="To:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Button fx:id="sendBtn" layoutY="356.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="36.0" text="Send" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+       <TextField fx:id="toTxtField" layoutY="10.0" prefHeight="25.0" promptText="To:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+       <TextField fx:id="subjectTxtField" layoutY="55.0" prefHeight="29.0" promptText="Subject:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+       <HTMLEditor fx:id="bodyTxtField" layoutY="98.0" prefHeight="257.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+       <Button fx:id="sendBtn" layoutY="356.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="36.0" text="Send" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>
 ```
