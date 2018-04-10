@@ -447,7 +447,6 @@ public class ParserUtil {
         return new NumberOfPositions(trimmedNumberOfPositions);
     }
 
-    //@@author trafalgarandre
     /**
      * Parses a {@code Optional<String> numberOfPositions} into an {@code Optional<String>}
      * if {@code numberOfPositions} is present.
@@ -460,6 +459,7 @@ public class ParserUtil {
                 : Optional.empty();
     }
 
+    //@@author trafalgarandre
     /**
      * Parses a {@code String yearMonth} into a {@code yearMonth}.
      * Leading and trailing whitespaces will be trimmed.
