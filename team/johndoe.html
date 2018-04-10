@@ -1077,24 +1077,159 @@ Both the <code>select</code> and <code>linkedIn</code> command function quite si
 </div>
 </div>
 <div class="sect2">
-<h3 id="showing-profile-picture"><a class="link" href="#showing-profile-picture">Showing Profile Picture</a></h3>
+<h3 id="profile-picture-feature"><a class="link" href="#profile-picture-feature">Profile Picture Feature</a></h3>
+<div class="paragraph">
+<p>Profile picture feature allows to show persons' profile pictures.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>ProfilePicture</code> refers to the class <code>ProfilePicture</code>.<br>
+"Profile picture" refers to the image file which is used as the profile picture.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current implementation</a></h4>
+<div class="sect4">
+<h5 id="input-and-store-profile-picture-path"><a class="link" href="#input-and-store-profile-picture-path">Input and store profile picture path:</a></h5>
 <div class="paragraph">
-<p><code>ProfilePicture</code> is a <code>Person</code> 's attribute. It stores the path of the input profile picture and generates a similar profile picture which will be stored in the app.
-The ProfilePicture constructor is called when <code>AddCommand</code> or <code>EditCommand</code> is executed. In <code>AddCommand</code>, it is an optional attribute. Whenever there is no valid profile picture for <code>ProfilePicture</code>,
-<code>ProfilePicture</code> takes the default <code>ProfilePicture</code>.
-<code>ProfilePicture</code>.getImage() returns an image for the <code>ImageView</code> of UI.</p>
+<p><code>ProfilePicture</code> is a <code>Person</code> 's optional attribute. It receives profile picture path providing by users.<br>
+It resides inside <code>model</code>, but also works with <code>ui</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>ProfilePicture</code> is updated by either command <code>add</code> or <code>edit</code> typed by the user.
+As the user will input <code>ProfilePicture</code>, it is necessary to ensure that the input is valid.
+This has been done by two methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><code>hasValidProfilePicture</code>:</strong> Check if the path is valid and exist.</p>
+</li>
+<li>
+<p><strong><code>isValidProfilePicture</code>:</strong> Check if the path leads to an image file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These are the two methods:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="directive">static</span> <span class="type">boolean</span> hasValidProfilePicture(<span class="predefined-type">String</span> profilePicture) {
+        <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(profilePicture);
+        <span class="keyword">return</span> file.exists() &amp;&amp; !file.isDirectory();
+    }</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="directive">static</span> <span class="type">boolean</span> isValidProfilePicture(<span class="predefined-type">String</span> test) {
+        <span class="keyword">return</span> test.matches(PROFILE_PICTURE_VALIDATION_REGEX);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is the validation regrex for your reference:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> PROFILE_PICTURE_VALIDATION_REGEX = <span class="string"><span class="delimiter">&quot;</span><span class="content">^$|(.+(</span><span class="char">\\</span><span class="content">.(?i)(jpeg|jpg|png|gif|bmp))$)</span><span class="delimiter">&quot;</span></span>;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="copy-and-store-profile-picture"><a class="link" href="#copy-and-store-profile-picture">Copy and store profile picture:</a></h5>
+<div class="paragraph">
+<p>After the user has input a valid <code>ProfilePicture</code>, contactHeRo will copy profile picture and store it in a <code>Profile Picture</code> folder, which resides in the same folder of app.<br>
+If this folder doesn&#8217;t exist, it will be created when the app is starting. This has been done due to method <code>createProfilePicturesFolder</code> in <code>StorageManager</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> createProfilePicturesFolder() {
+        <span class="predefined-type">File</span> dir = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">./ProfilePictures</span><span class="delimiter">&quot;</span></span>);
+        dir.mkdir();
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Choosing a name for the copied profile picture so that it will not be duplicate is crucial when copying profile picture.
+ContactHeRo deals with this by naming copied profile pictures by the date and time that it was created. Hence, there will not be any duplicates.<br>
+This is how it has been done:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="predefined-type">String</span> copyImageToProfilePictureFolder(<span class="predefined-type">String</span> profilePicture) {
+        <span class="predefined-type">String</span> destPath = <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>;
+        <span class="keyword">try</span> {
+            <span class="predefined-type">File</span> source = <span class="keyword">new</span> <span class="predefined-type">File</span>(profilePicture);
+            <span class="predefined-type">String</span> fileExtension = extractFileExtension(profilePicture);
+            <span class="predefined-type">Date</span> date = <span class="keyword">new</span> <span class="predefined-type">Date</span>();
+            destPath = PROFILE_PICTURE_FOLDER.concat(
+                    date.toString().replace(<span class="string"><span class="delimiter">&quot;</span><span class="content">:</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>).replace(<span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>).concat(
+                            <span class="string"><span class="delimiter">&quot;</span><span class="content">.</span><span class="delimiter">&quot;</span></span>).concat(fileExtension));
+            <span class="predefined-type">File</span> dest = <span class="keyword">new</span> <span class="predefined-type">File</span>(destPath);
+            Files.copy(source.toPath(), dest.toPath());
+        } <span class="keyword">catch</span> (<span class="exception">IOException</span> e) {
+            <span class="comment">// Exception will not happen as the profile picture path has been check through hasValidProfilePicture</span>
+        }
+        <span class="keyword">return</span> destPath;
+    }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="show-profile-picture"><a class="link" href="#show-profile-picture">Show profile picture:</a></h5>
+<div class="paragraph">
+<p>Profile pictures are shown in two places: <code>ContactDetailsDisplay</code> and <code>PersonCard</code> (both these views belong to <code>ui</code>).</p>
+</div>
+<div class="paragraph">
+<p><code>Profile Picture</code> has method <code>getImage</code> to return profile picture in form of <code>Image</code>.<br>
+Hence, it is shown by calling this method to provide <code>Image</code> for <code>ImageView</code> of both views.<br></p>
+</div>
+<div class="paragraph">
+<p>If provide picture is not provided, <code>ContactDetailsDisplay</code> and <code>PersonCard</code> will show the default profile picture.
+This is a code snippet of <code>ContactDetailsDisplay</code> dealing with profile picture feature:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">if</span> (person.getProfilePicture().filePath != <span class="predefined-constant">null</span>) {
+            imageView.setImage(person.getProfilePicture().getImage());
+        } <span class="keyword">else</span> {
+            imageView.setImage(getImage(DEFAULT_IMAGE));
+        }</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Don&#8217;t know Image and ImageView. Check these two links:<br>
+<a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html" class="bare">https://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html</a><br>
+<a href="https://docs.oracle.com/javafx/2/api/javafx/scene/image/Image.html" class="bare">https://docs.oracle.com/javafx/2/api/javafx/scene/image/Image.html</a>
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-consideration-2"><a class="link" href="#design-consideration-2">Design consideration</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-to-link-with-code-profilepicture-code"><a class="link" href="#aspect-how-to-link-with-code-profilepicture-code">Aspect: How to link with <code>ProfilePicture</code></a></h5>
+<h5 id="aspect-how-to-link-profile-picture-with-code-profilepicture-code"><a class="link" href="#aspect-how-to-link-profile-picture-with-code-profilepicture-code">Aspect: How to link profile picture with <code>ProfilePicture</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Takes in the image path then copy the image to the ProfilePictureFolder.</p>
+<p><strong>Alternative 1 (current choice):</strong> Takes in the image path ,copy the image to the ProfilePictureFolder and store the copied image&#8217;s path.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1107,7 +1242,7 @@ The ProfilePicture constructor is called when <code>AddCommand</code> or <code>E
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Store the path and retrieve the image from the path when necessary.</p>
+<p><strong>Alternative 2:</strong> Store the image path and retrieve the image from the path when necessary.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1120,9 +1255,6 @@ The ProfilePicture constructor is called when <code>AddCommand</code> or <code>E
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>diagrams::ModelComponentClassDiagram.pptx[width="650"]</p>
 </div>
 </div>
 </div>
@@ -1266,8 +1398,11 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="sect1">
 <h2 id="Testing"><a class="link" href="#Testing">Testing</a></h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="running-tests"><a class="link" href="#running-tests">Running Tests</a></h3>
+<div class="paragraph">
+<p>This section shows you how to test contactHeRo
+.
+=== Running Tests</p>
+</div>
 <div class="paragraph">
 <p>There are three ways for you to run tests.</p>
 </div>
@@ -1326,7 +1461,6 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 </div>
 <div class="paragraph">
 <p>To run tests in headless mode, open a console and run the command <code>gradlew clean headless allTests</code> (Mac/Linux: <code>./gradlew clean headless allTests</code>)</p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="types-of-tests"><a class="link" href="#types-of-tests">Types of tests</a></h3>
@@ -3193,24 +3327,159 @@ Both the <code>select</code> and <code>linkedIn</code> command function quite si
 </div>
 </div>
 <div class="sect2">
-<h3 id="showing-profile-picture-2"><a class="link" href="#showing-profile-picture-2">Showing Profile Picture</a></h3>
+<h3 id="profile-picture-feature-2"><a class="link" href="#profile-picture-feature-2">Profile Picture Feature</a></h3>
+<div class="paragraph">
+<p>Profile picture feature allows to show persons' profile pictures.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>ProfilePicture</code> refers to the class <code>ProfilePicture</code>.<br>
+"Profile picture" refers to the image file which is used as the profile picture.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect3">
 <h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current implementation</a></h4>
+<div class="sect4">
+<h5 id="input-and-store-profile-picture-path-2"><a class="link" href="#input-and-store-profile-picture-path-2">Input and store profile picture path:</a></h5>
 <div class="paragraph">
-<p><code>ProfilePicture</code> is a <code>Person</code> 's attribute. It stores the path of the input profile picture and generates a similar profile picture which will be stored in the app.
-The ProfilePicture constructor is called when <code>AddCommand</code> or <code>EditCommand</code> is executed. In <code>AddCommand</code>, it is an optional attribute. Whenever there is no valid profile picture for <code>ProfilePicture</code>,
-<code>ProfilePicture</code> takes the default <code>ProfilePicture</code>.
-<code>ProfilePicture</code>.getImage() returns an image for the <code>ImageView</code> of UI.</p>
+<p><code>ProfilePicture</code> is a <code>Person</code> 's optional attribute. It receives profile picture path providing by users.<br>
+It resides inside <code>model</code>, but also works with <code>ui</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>ProfilePicture</code> is updated by either command <code>add</code> or <code>edit</code> typed by the user.
+As the user will input <code>ProfilePicture</code>, it is necessary to ensure that the input is valid.
+This has been done by two methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><code>hasValidProfilePicture</code>:</strong> Check if the path is valid and exist.</p>
+</li>
+<li>
+<p><strong><code>isValidProfilePicture</code>:</strong> Check if the path leads to an image file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These are the two methods:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="directive">static</span> <span class="type">boolean</span> hasValidProfilePicture(<span class="predefined-type">String</span> profilePicture) {
+        <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(profilePicture);
+        <span class="keyword">return</span> file.exists() &amp;&amp; !file.isDirectory();
+    }</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="directive">static</span> <span class="type">boolean</span> isValidProfilePicture(<span class="predefined-type">String</span> test) {
+        <span class="keyword">return</span> test.matches(PROFILE_PICTURE_VALIDATION_REGEX);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is the validation regrex for your reference:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> PROFILE_PICTURE_VALIDATION_REGEX = <span class="string"><span class="delimiter">&quot;</span><span class="content">^$|(.+(</span><span class="char">\\</span><span class="content">.(?i)(jpeg|jpg|png|gif|bmp))$)</span><span class="delimiter">&quot;</span></span>;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="copy-and-store-profile-picture-2"><a class="link" href="#copy-and-store-profile-picture-2">Copy and store profile picture:</a></h5>
+<div class="paragraph">
+<p>After the user has input a valid <code>ProfilePicture</code>, contactHeRo will copy profile picture and store it in a <code>Profile Picture</code> folder, which resides in the same folder of app.<br>
+If this folder doesn&#8217;t exist, it will be created when the app is starting. This has been done due to method <code>createProfilePicturesFolder</code> in <code>StorageManager</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> createProfilePicturesFolder() {
+        <span class="predefined-type">File</span> dir = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">./ProfilePictures</span><span class="delimiter">&quot;</span></span>);
+        dir.mkdir();
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Choosing a name for the copied profile picture so that it will not be duplicate is crucial when copying profile picture.
+ContactHeRo deals with this by naming copied profile pictures by the date and time that it was created. Hence, there will not be any duplicates.<br>
+This is how it has been done:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="predefined-type">String</span> copyImageToProfilePictureFolder(<span class="predefined-type">String</span> profilePicture) {
+        <span class="predefined-type">String</span> destPath = <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>;
+        <span class="keyword">try</span> {
+            <span class="predefined-type">File</span> source = <span class="keyword">new</span> <span class="predefined-type">File</span>(profilePicture);
+            <span class="predefined-type">String</span> fileExtension = extractFileExtension(profilePicture);
+            <span class="predefined-type">Date</span> date = <span class="keyword">new</span> <span class="predefined-type">Date</span>();
+            destPath = PROFILE_PICTURE_FOLDER.concat(
+                    date.toString().replace(<span class="string"><span class="delimiter">&quot;</span><span class="content">:</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>).replace(<span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>).concat(
+                            <span class="string"><span class="delimiter">&quot;</span><span class="content">.</span><span class="delimiter">&quot;</span></span>).concat(fileExtension));
+            <span class="predefined-type">File</span> dest = <span class="keyword">new</span> <span class="predefined-type">File</span>(destPath);
+            Files.copy(source.toPath(), dest.toPath());
+        } <span class="keyword">catch</span> (<span class="exception">IOException</span> e) {
+            <span class="comment">// Exception will not happen as the profile picture path has been check through hasValidProfilePicture</span>
+        }
+        <span class="keyword">return</span> destPath;
+    }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="show-profile-picture-2"><a class="link" href="#show-profile-picture-2">Show profile picture:</a></h5>
+<div class="paragraph">
+<p>Profile pictures are shown in two places: <code>ContactDetailsDisplay</code> and <code>PersonCard</code> (both these views belong to <code>ui</code>).</p>
+</div>
+<div class="paragraph">
+<p><code>Profile Picture</code> has method <code>getImage</code> to return profile picture in form of <code>Image</code>.<br>
+Hence, it is shown by calling this method to provide <code>Image</code> for <code>ImageView</code> of both views.<br></p>
+</div>
+<div class="paragraph">
+<p>If provide picture is not provided, <code>ContactDetailsDisplay</code> and <code>PersonCard</code> will show the default profile picture.
+This is a code snippet of <code>ContactDetailsDisplay</code> dealing with profile picture feature:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">if</span> (person.getProfilePicture().filePath != <span class="predefined-constant">null</span>) {
+            imageView.setImage(person.getProfilePicture().getImage());
+        } <span class="keyword">else</span> {
+            imageView.setImage(getImage(DEFAULT_IMAGE));
+        }</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Don&#8217;t know Image and ImageView. Check these two links:<br>
+<a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html" class="bare">https://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html</a><br>
+<a href="https://docs.oracle.com/javafx/2/api/javafx/scene/image/Image.html" class="bare">https://docs.oracle.com/javafx/2/api/javafx/scene/image/Image.html</a>
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-consideration-5"><a class="link" href="#design-consideration-5">Design consideration</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-to-link-with-code-profilepicture-code-2"><a class="link" href="#aspect-how-to-link-with-code-profilepicture-code-2">Aspect: How to link with <code>ProfilePicture</code></a></h5>
+<h5 id="aspect-how-to-link-profile-picture-with-code-profilepicture-code-2"><a class="link" href="#aspect-how-to-link-profile-picture-with-code-profilepicture-code-2">Aspect: How to link profile picture with <code>ProfilePicture</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Takes in the image path then copy the image to the ProfilePictureFolder.</p>
+<p><strong>Alternative 1 (current choice):</strong> Takes in the image path ,copy the image to the ProfilePictureFolder and store the copied image&#8217;s path.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -3223,7 +3492,7 @@ The ProfilePicture constructor is called when <code>AddCommand</code> or <code>E
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Store the path and retrieve the image from the path when necessary.</p>
+<p><strong>Alternative 2:</strong> Store the image path and retrieve the image from the path when necessary.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -3236,9 +3505,6 @@ The ProfilePicture constructor is called when <code>AddCommand</code> or <code>E
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>diagrams::ModelComponentClassDiagram.pptx[width="650"]</p>
 </div>
 </div>
 </div>
@@ -3382,8 +3648,11 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="sect1">
 <h2 id="Testing"><a class="link" href="#Testing">Testing</a></h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="running-tests-2"><a class="link" href="#running-tests-2">Running Tests</a></h3>
+<div class="paragraph">
+<p>This section shows you how to test contactHeRo
+.
+=== Running Tests</p>
+</div>
 <div class="paragraph">
 <p>There are three ways for you to run tests.</p>
 </div>
@@ -3442,7 +3711,6 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 </div>
 <div class="paragraph">
 <p>To run tests in headless mode, open a console and run the command <code>gradlew clean headless allTests</code> (Mac/Linux: <code>./gradlew clean headless allTests</code>)</p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="types-of-tests-2"><a class="link" href="#types-of-tests-2">Types of tests</a></h3>
@@ -5165,7 +5433,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-10 15:37:05 UTC
+Last updated 2018-04-10 16:07:59 UTC
 </div>
 </div>
 </body>
