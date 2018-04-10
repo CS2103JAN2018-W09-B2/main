@@ -12,11 +12,7 @@ import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.EventsCenter;
-import seedu.address.commons.core.index.Index;
 import seedu.address.commons.events.ui.EditPersonEvent;
-import seedu.address.commons.events.ui.JumpToPersonListRequestEvent;
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.logic.parser.ParserUtil;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.appointment.UniqueAppointmentList;
 import seedu.address.model.appointment.exceptions.AppointmentNotFoundException;
