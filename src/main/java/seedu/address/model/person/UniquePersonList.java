@@ -8,7 +8,12 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.commons.core.EventsCenter;
+import seedu.address.commons.core.index.Index;
+import seedu.address.commons.events.ui.JumpToPersonListRequestEvent;
+import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.CollectionUtil;
+import seedu.address.logic.parser.ParserUtil;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
@@ -18,7 +23,6 @@ import seedu.address.model.person.exceptions.PersonNotFoundException;
  * Supports a minimal set of list operations.
  *
  * @see Person#equals(Object)
- * @see CollectionUtil#elementsAreUnique(Collection)
  */
 public class UniquePersonList implements Iterable<Person> {
 
@@ -51,7 +55,7 @@ public class UniquePersonList implements Iterable<Person> {
      * @throws DuplicatePersonException if the replacement is equivalent to another existing person in the list.
      * @throws PersonNotFoundException if {@code target} could not be found in the list.
      */
-    public void setPerson(Person target, Person editedPerson)
+    public int setPerson(Person target, Person editedPerson)
             throws DuplicatePersonException, PersonNotFoundException {
         requireNonNull(editedPerson);
 
@@ -65,6 +69,11 @@ public class UniquePersonList implements Iterable<Person> {
         }
 
         internalList.set(index, editedPerson);
+        return index;
+    }
+
+    public Person getPerson(int index) {
+        return internalList.get(index);
     }
 
     /**
