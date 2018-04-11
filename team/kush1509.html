@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Kushagra Goyal - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Kushagra Goyal - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-contacthero"><a class="link" href="#project-contacthero">PROJECT: contactHeRo</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>contactHeRo is a contact management solution for recruiters across companies who need a quick and efficient way to manage the contact details and profiles of their potential recruits. It is a Command Line Interface(CLI) application with intuitive usage and effective features. You can manage details of prospective employees and job openings in your company through easy to use add, delete and edit features. Matching jobs to employees is also a great feature that makes the hiring process easy for you. Other than that, you can also view the linkedIn profiles of your potential employees, send emails and arrange meetings.</p>
+</div>
+<div class="paragraph">
+<p>This portfolio is to collate my contributions towards the developing of contactHeRo. It showcases the software programming knowledge I have learned during the course of CS2103T, as well as how I utilized this knowledge and applied it to a real-world project. This portfolio also contains some enhancements I would suggest to be developed for contactHeRo in the future.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>job openings section</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to maintain a list of current job openings using add, delete, find and edit commands and match these job openings to potential employees using skill-matching.</p>
+</li>
+<li>
+<p>Justification: A recruiter needs the list of the job openings in the company so he/she knows what are the current job openings and what skillsets to look for in people. This way, the user can better search for potential employees. Hence, this feature is an essential feature of any recruitment-management software.</p>
+</li>
+<li>
+<p>Highlights: This enhancement required the addition of six new commands, namely, <code>addjob</code>, <code>deletejob</code>, <code>editjob</code>, <code>findjob</code>, <code>listjob</code> and <code>matchjob</code>. New attributes, currentPosition and company were added to the Person which required hanges to existing commands like <code>add</code> and <code>edit</code> as well.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added a Contact-Details and LinkedIn-Search display.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Justification: Viewing the contact details in a separate focused panel makes them easier to read for the user as the Person card can now just contain limited information like the person’s name, current position and company, also allowing more number of contacts to be displayed at a time since amount of information is reduced. Moreover, recruiters need to keep a track of the professional progress of his/her potential recruits and having easy access to their LinkedIn profiles will help them do this efficiently.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W09-B2/main/blob/master/collated/functional/kush1509.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-W09-B2/main/blob/master/collated/test/kush1509.md">Test code</a>] <em>{give links to collated code files}</em></p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Took the role of Team Leader to make important decisions regarding development of product.</p>
+</li>
+<li>
+<p>Features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Auto-complete: added functionality for commands to be auto-completed on pressing <code>TAB</code> <a href="https://github.com/CS2103JAN2018-W09-B2/main/pull/35">Pull request #35</a>, <a href="https://github.com/CS2103JAN2018-W09-B2/main/pull/186">Pull request #186</a></p>
+</li>
+<li>
+<p>Improved User Interface by adding Tabbed Details Panel: added a tab display for Details Panel which was used by many features like LinkedIn, Email and Calendar.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed all releases <code>v1.3</code> - <code>v1.5rc</code> on GitHub</p>
+</li>
+<li>
+<p>Managed all milestones <code>v1.1</code> - <code>v1.5rc</code> (5 milestones) on GitHub</p>
+</li>
+<li>
+<p>Managed project effectively to keep track of issues, merging pull requests by resolving conflicts and keeping track of deadlines and deliverables.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added curentPosition and company attributes to Person <a href="https://github.com/CS2103JAN2018-W09-B2/main/pull/118">Pull request #118</a></p>
+</li>
+<li>
+<p>Updated Ui to contain icons <a href="https://github.com/CS2103JAN2018-W09-B2/main/pull/136/commits/7b9ac8bb2d99af8a63d7bf9ee68d17a0b48bea58">Commit #7b9ac8</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Made User Guide more reader-friendly by adding screenshots and organising features into sections: <a href="https://github.com/CS2103JAN2018-W09-B2/main/pull/114/">Pull request #114</a>, <a href="https://github.com/CS2103JAN2018-W09-B2/main/pull/217">Pull request #217</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/CS2103JAN2018-W09-B2/main/pull/173">Pull request #173</a>, <a href="https://github.com/CS2103JAN2018-W09-B2/main/pull/55">Pull request #55</a>, <a href="https://github.com/CS2103JAN2018-W09-B2/main/pull/152">Pull request #152</a>,</p>
+</li>
+<li>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/CS2103JAN2018-F09-B1/main/issues/85">Issue #85</a>, <a href="https://github.com/CS2103JAN2018-F09-B1/main/issues/95">Issue #95</a>, <a href="https://github.com/CS2103JAN2018-F09-B1/main/issues/69">Issue #69</a>, <a href="https://github.com/CS2103JAN2018-F09-B1/main/issues/76">Issue #76</a>, <a href="https://github.com/CS2103JAN2018-F09-B1/main/issues/83">Issue #83</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="link" href="#introduction">Introduction</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Welcome to <strong>contactHeRo</strong>! contactHeRo is the <strong>perfect contact management solution for recruiters</strong> across companies who need a <strong>quick and efficient way</strong> to manage the contact details and profiles of their potential recruits. It is a <strong>Command Line Interface(CLI) application</strong> with intuitive usage and effective features. You can manage details of prospective employees and job openings in your company through easy to use <code>add</code>, <code>delete</code> and <code>edit</code> features. Matching jobs to employees is also a great feature that makes the hiring process easy for you.
+Other than that, you can also view the linkedIn profiles of your potential employees, send emails and arrange meetings.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="before-reading-this-guide"><a class="link" href="#before-reading-this-guide">Before Reading This Guide</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This short guide will familiarize you with all of the features and functionality of contactHeRo. Given below is the legend for some symbols and markups used in this guide.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This will represent something you should take a note of.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+This will represent a useful tip.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code>This will represent an input/output statement in contactHeRo</code></p>
+</div>
+<div class="sect3">
+<h4 id="searching-a-person-on-linkedin-code-linkedin-code"><a class="link" href="#searching-a-person-on-linkedin-code-linkedin-code">Searching a person on LinkedIn: <code>linkedIn</code></a></h4>
+<div class="paragraph">
+<p>You can select a person identified by the index number used in the last person listing to search him/her on LinkedIn using the following format.<br>
+Format: <code>linkedIn INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This loads the LinkedIn search of the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You will have to login to LinkedIn the first time to use this command in order to search the person.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>linkedIn 2</code><br>
+This loads the LinkedIn search of the 2nd person in the contactHeRo.</p>
+</li>
+<li>
+<p><code>find Betsy</code><br>
+<code>select 1</code><br>
+This loads the LinkedIn search of 1st person in the results of the <code>find</code> command.<br></p>
+<div class="paragraph">
+<p>On running the above command and after you have logged in, you should a similar result as the following (refer to figure 5). Betsy is selected in the person list and she is searched on LinkedIn in the LinkedIn Tab.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/linkedInCommand.png" alt="linkedInCommand" width="790">
+</div>
+<div class="title">Figure 1. LinkedIn Command Execution</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="auto-complete-command"><a class="link" href="#auto-complete-command">Auto-complete command</a></h4>
+<div class="paragraph">
+<p>To save your time, after typing a partial command, you can press TAB for the command to be auto-completed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The first lexicographically matched command is returned.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typing <code>ad</code> and pressing <code>TAB</code> gives:<br>
+<code>add n/ e/ a/ [s/]&#8230;&#8203;</code></p>
+</li>
+<li>
+<p>Typing <code>h</code> and pressing <code>TAB</code> gives:<br>
+<code>help</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-job-openings"><a class="link" href="#managing-job-openings">Managing Job Openings</a></h3>
+<div class="paragraph">
+<p>This section describes the commands you can use to manage person profiles in contactHeRo.</p>
+</div>
+<div class="sect3">
+<h4 id="adding-a-job-opening-code-addjob-code"><a class="link" href="#adding-a-job-opening-code-addjob-code">Adding a job opening: <code>addjob</code></a></h4>
+<div class="paragraph">
+<p>You can add a job opening to contactHero using the following format.<br>
+Format: <code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER_OF_POSITIONS s/REQUIRED_SKILLS</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addjob p/Software Engineer t/Cloud Services l/Singapore n/1 s/Java</code></p>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>New job opening added: Software Engineer Team: Cloud Services Location: Singapore Number of Positions: 1 Skills: [Java]</pre>
+</div>
+</div>
+</li>
+<li>
+<p><code>addjob p/Marketing Intern t/Social Media Marketing l/Singapore n/1 s/Excel</code></p>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>New job opening added: Marketing Intern Team: Social Media Marketing Location: Singapore Number of Positions: 1 Skills: [Excel]</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-a-job-opening-code-editjob-code"><a class="link" href="#editing-a-job-opening-code-editjob-code">Editing a job opening : <code>editjob</code></a></h4>
+<div class="paragraph">
+<p>You can edit an existing job opening in contactHero using this format.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>editjob INDEX [p/POSITION] [t/TEAM] [l/LOCATION] [n/NUMBER_OF_POSITIONS] [s/SKILL]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the job opening at the specified <code>INDEX</code>. Remember that the index refers to the index number shown in the last job listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>You need to provide at least one of the optional.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>When you edit skills, the existing skills of the job opening will be removed i.e adding of job&#8217;s skills is not cumulative.</p>
+</li>
+<li>
+<p>Unlike editing a person feature, you cannot remove all the job&#8217;s skills by typing <code>s/</code> because a job opening requires atleast one skill.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editjob 1 p/Hardware Engineer t/Hardware Products</code><br>
+Edits the position and team of the 1st job opening to be <code>Hardware Engineer</code> and <code>Hardware Products</code> respectively.</p>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Edited Job: Hardware Engineer Team: Hardware Products Location: Singapore Number of Positions: 1 Skills: [Java]</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-job-openings-code-listjob-code"><a class="link" href="#listing-all-job-openings-code-listjob-code">Listing all job openings : <code>listjob</code></a></h4>
+<div class="paragraph">
+<p>You can see a list of all job openings in contactHeRo using the following format.<br>
+Format: <code>listjob</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-job-opening-code-deletejob-code"><a class="link" href="#deleting-a-job-opening-code-deletejob-code">Deleting a job opening: <code>deletejob</code></a></h4>
+<div class="paragraph">
+<p>You can delete a specified job opening from contactHeRo using the following format.<br>
+Format: <code>deletejob INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the job opening at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listjob</code><br>
+<code>deletejob 2</code><br>
+This deletes the 2nd job opening in contactHeRo and on running the above command, you should see the following success message:<br></p>
+<div class="literalblock">
+<div class="content">
+<pre>Deleted Job: Marketing Intern Team: Social Media Marketing Location: Kuala Lampur, Malaysia Number of Positions: 1 Skills: [Excel][Writing]</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="matching-a-job-opening-to-a-person-code-matchjob-code"><a class="link" href="#matching-a-job-opening-to-a-person-code-matchjob-code">Matching a job opening to a person: <code>matchjob</code></a></h4>
+<div class="paragraph">
+<p>You can see potential candidates for a specified job opening in contactHeRo using the following format.<br>
+Format: <code>matchjob INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Matches the job opening at the specified <code>INDEX</code> to potential candidates using skill-matching.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>matchjob 1</code><br>
+This will show any person whose skills match any of those required for the job opening at index 1.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="details-panel-implementation"><a class="link" href="#details-panel-implementation">Details Panel Implementation</a></h3>
+<div class="paragraph">
+<p>The <code>select</code> command shows the contact details of the person in a separate panel while the <code>linkedIn</code> command shows the LinkedIn search of the person.</p>
+</div>
+<div class="paragraph">
+<p>The <code>DetailsPanel</code> is a TabPane which  which consists of the two tabs, <code>Contact Details</code> and <code>LinkedIn Search</code>. The <code>ContactDetailsDisplay</code> is embedded in the <code>Contact Details</code> tab and the <code>Browser Panel</code> in the <code>Linked Search</code> tab.</p>
+</div>
+<div class="paragraph">
+<p>The UML diagram below represents the UI structure for the <code>DetailsPanel</code> (Refer to Figure 30):</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/DetailsPanelClassDiagram.png" alt="DetailsPanelClassDiagram" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p><em>Figure 30 : UML Diagram for Panel.</em></p>
+</div>
+<div class="paragraph">
+<p>We created a new event, <code>SwitchTabRequestEvent</code> which sets the current tab in the <code>DetailsPanel</code> to <code>Contact Details</code> or <code>LinkedIn Search</code> depending on the input command.
+The code for the SwitchTabRequestEvent` event is as follows.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">SwitchTabRequestEvent</span> <span class="directive">extends</span> BaseEvent {
+    <span class="directive">public</span> <span class="directive">final</span> <span class="type">int</span> tabId;
+    <span class="directive">public</span> SwitchTabRequestEvent(<span class="type">int</span> tabId) {
+        <span class="local-variable">this</span>.tabId = tabId;
+    }
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">String</span> toString() {
+        <span class="keyword">return</span> <span class="local-variable">this</span>.getClass().getSimpleName();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>SwitchTabRequestEvent</code> has an integer attribute <code>tabId</code>. The event handlers use this <code>tabId</code> to switch between tabs wherein the <code>Contact Details</code> and <code>LinkedIn Search</code> have tabIds 0 and 1 respectively.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Event handlers use the following code to handle the <code>SwitchTabRequestEvent</code> event.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Subscribe</span>
+<span class="directive">private</span> <span class="type">void</span> handleSwitchTabRequestEvent(SwitchTabRequestEvent event) {
+    logger.info(LogsCenter.getEventHandlingLogMessage(event));
+    tabPane.getSelectionModel().clearAndSelect(event.tabId);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>DetailsPanel</code> is also displayed when the user manually clicks on the <code>PersonCard</code> and the panel corresponding to the current tab is shown. This is implemented by handling the <code>PersonPanelSelectionChangedEvent</code> in both the <code>ContactDetailsPanel</code> and the <code>BrowserPanel</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Both the <code>select</code> and <code>linkedIn</code> command function quite similarly and only differ in the panel that they trigger.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The figure below (Refer to figure 31) is the wireframe for the <code>ContactDetailsDisplay</code>:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/ContactDetailsDisplayWireFrame.png" alt="ContactDetailsDisplayWireFrame" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p><em>Figure 31 : Wireframe for Contact Details Panel.</em></p>
+</div>
+<h4 id="design-consideration" class="discrete">Design Consideration</h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Improving the UI<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 1 (current choice):</strong> Show the extra details of contact after they are selected.<br>
+<strong>Pros</strong>: Allows more readability of the contact details and if more attributes are added to the <code>Person</code> class, not everything needs to be shown in the <code>PersonCard</code>.<br>
+<strong>Cons</strong>: User needs to manually select the user to see more details of that person.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Only show the LinkedIn search in the <code>BrowserPanel</code> and show the contact details of the person only in the <code>PersonCard</code>.<br>
+<strong>Pros</strong>: User only has to look in the <code>PersonCard</code> for any and every detail<br>
+<strong>Cons</strong>: Looks very cluttered and has poor User Interface design.</p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 3 :</strong> Show the <code>ContactDetailsDisplay</code> and <code>LinkedIn</code> as completely independent windows without tabs.<br>
+<strong>Pros</strong>: Completely isolates the <code>select</code> and <code>linkedIn</code> commands.<br>
+<strong>Cons</strong>: Removes the connectivity between a person&#8217;s contact information and LinkedIn profile. Also, in the current implementation one is easily accessible from another, just by manually switching tabs which would not be possible with this alternative.</p>
+</div>
+<div class="paragraph">
+<p><strong>Target users:</strong></p>
+</div>
+<div class="paragraph">
+<p>The application is targeted towards Human Resources Managers at companies, especially those responsible for recruitment. Such recruiters have a lot of contacts to<br>
+manage which include contact details and profiles of potential employees, job openings and appointments.<br>
+It is essential for them to have a quick and easy access to these contacts. Hence, contactHero aims to make their lives easier by helping them to store and manage their contacts efficiently.</p>
+</div>
+<div class="paragraph">
+<p><strong>User Profile</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Recruiters who have a significant number of contacts and job openings to manage</p>
+</li>
+<li>
+<p>Recruiters who prefer desktop apps</p>
+</li>
+<li>
+<p>Recruiters who are good at typing and hence prefer CLI apps</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Value proposition</strong>: An ideal solution for small teams and business professionals who need a simple solution to manage their contacts and help them with day-to-day business activities.</p>
+</div>
+<div class="paragraph">
+<p><strong>Feature contributions:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Kushagra Goyal</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Major Feature: Job Openings</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Users can add job openings.</p>
+</li>
+<li>
+<p>Users can edit job openings.</p>
+</li>
+<li>
+<p>Users can delete job openings.</p>
+</li>
+<li>
+<p>Users can match job openings to potential employees.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Minor Feature: Contact details and LinkedIn search display.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Users can view the contact details in a separate panel using the <code>select</code> command.</p>
+</li>
+<li>
+<p>Users can view the LinkedIn search of the person using the <code>linkedIn</code> command.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>How do these features fit into the product scope?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Major Feature: A recruiter needs the list of the job openings in the company so he knows what are the current job openings and what tagsets to look for in people. This way, the user can better search for potential employees.</p>
+</li>
+<li>
+<p>Major Feature: A recruiter needs the list of the job openings in the company so he knows what are the current job openings and what tagsets to look for in people. This way, the user can better search for potential employees.</p>
+</li>
+<li>
+<p>Minor Feature: Viewing the contact details in a separate focused panel makes them easier to read for the user as the Person card can now just contain limited information like the person&#8217;s name, current position and company, also allowing more number of contacts to be displayed at a time since amount of information is reduced. Moreover, recruiters need to keep a track of the professional progress of his/her potential recruits and having easy access to their LinkedIn profiles will help them do this efficiently.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-11 00:07:42 UTC
+</div>
+</div>
+</body>
+</html>
