@@ -95,6 +95,9 @@ It required the ability to read and understand codes written by others and also 
 <li>
 <p>Created issues and milestones for the team.</p>
 </li>
+<li>
+<p>Help to merge and review team member&#8217;s PR</p>
+</li>
 </ul>
 </div>
 </li>
@@ -105,6 +108,9 @@ It required the ability to read and understand codes written by others and also 
 <li>
 <p>Minor enhancements to the GUI: (Pull requests
 <a href="https://github.com/CS2103JAN2018-W09-B2/main/pull/34">#34</a>)</p>
+</li>
+<li>
+<p>Enhancement to the Find command: <a href="https://github.com/CS2103JAN2018-W09-B2/main/pull/50">#50</a></p>
 </li>
 </ul>
 </div>
@@ -229,7 +235,7 @@ Please do not go to any other webpages in the <code>Google</code> tab after you 
 <h4 id="emailing-your-contact-code-email-code"><a class="link" href="#emailing-your-contact-code-email-code">Emailing your contact : <code>email</code></a></h4>
 <div class="paragraph">
 <p>You can send email to any person you have saved in contactHeRo using the following format.<br>
-Format: <code>email INDEX</code></p>
+Format: <code>email INDEX [sub/EMAIL_SUBJECT]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -248,6 +254,9 @@ Format: <code>email INDEX</code></p>
 <p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
+<p>The email subject title is optional.</p>
+</li>
+<li>
 <p>The collected information will be used to help you fill up details in the draft like the person&#8217;s email address.</p>
 </li>
 </ul>
@@ -263,17 +272,28 @@ Format: <code>email INDEX</code></p>
 <p><code>list</code><br>
 <code>email 2</code><br>
 This will open up the Draft Email tab and then
-collect the information of the 2nd person in the list. On running the above command, you should see the following success message:<br></p>
+collect the information of the 2nd person in the list.</p>
+</li>
+<li>
+<p><code>list</code><br>
+<code>email 2 sub/Interview on 13 May 2018</code><br>
+This will open up the Draft Email tab and then
+collect the information of the 2nd person in the list.
+It will also set the email subject title to "Interview on 13 May 2018".</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>On running the above commands, you should see similar message like the following:<br></p>
+</div>
 <div class="literalblock">
 <div class="content">
 <pre>Drafting email to: berniceyu@example.com</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The collected information will be used automatically to fill up details as shown below in figure 5	.</p>
-</div>
-</li>
-</ul>
+<p>The collected information will be used automatically to fill up details as shown below in figure 5.
+If you have also used <code>sub/Interview on 13 May 2018</code> in the command, the Subject textbox will also be fill with "Interview on 13 May 2018".</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -368,8 +388,8 @@ after they have logged in.</p>
 </div>
 <div class="paragraph">
 <p>The user will use the <code>email</code> command to start this process.
-The <code>EmailCommand</code> class will open an email interface to send email to the chosen contact. <code>EmailCommand</code> extends the <code>Command</code> class. It takes in an index through the <code>EmailCommandParser</code>,
-similar to the implementation of <code>DeleteCommand</code> and <code>DeleteCommandParser</code>.</p>
+The <code>EmailCommand</code> class will open an email interface to send email to the chosen contact. <code>EmailCommand</code> extends the <code>Command</code> class. It takes in an index and also an optional field <code>EMAILSUBJECT</code> through the <code>EmailCommandParser</code>,
+similar to the implementation of <code>EditCommand</code> and <code>EditCommandParser</code>.</p>
 </div>
 <div class="paragraph">
 <p>The <code>EmailPanel</code> is the UI for user to draft their email. The UI has 3 inputs, <strong>To</strong>, <strong>Subject</strong> and <strong>Body</strong>. <strong>From</strong> is not needed here as we already have
@@ -491,7 +511,7 @@ main thread in order to wait for the user to authenticate, if the user close the
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-11 00:07:42 UTC
+Last updated 2018-04-12 11:49:08 UTC
 </div>
 </div>
 </body>
