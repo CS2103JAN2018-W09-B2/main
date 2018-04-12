@@ -151,12 +151,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public void updateUsername(String username){
+        public void updateUsername(String username) {
             fail("This method should not be called.");
         }
 
         @Override
-        public void updatePassword(String password_1, String password_2){
+        public void updatePassword(String password1, String password2) {
             fail("This method should not be called.");
         }
 

@@ -206,12 +206,12 @@ public class AddressBookParserTest {
     //@@author Jason1im
     @Test
     public void parseCommand_updatePasswordCommandWord_returnsUpdatePasswordCommand() throws Exception {
-        String testPassword_1 = "test";
-        String testPassword_2 = "123";
+        String testPassword1 = "test";
+        String testPassword2 = "123";
         UpdatePasswordCommand command = (UpdatePasswordCommand) parser.parseCommand(
-                UpdatePasswordCommand.COMMAND_WORD + " pw/" + testPassword_1
-                            + " npw/" + testPassword_2);
-        assertEquals(new UpdatePasswordCommand(testPassword_1, testPassword_2), command);
+                UpdatePasswordCommand.COMMAND_WORD + " pw/" + testPassword1
+                            + " npw/" + testPassword2);
+        assertEquals(new UpdatePasswordCommand(testPassword1, testPassword2), command);
     }
 
     //@@author
