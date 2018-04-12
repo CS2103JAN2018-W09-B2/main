@@ -38,7 +38,9 @@ public final class Account {
         password = newPassword;
     }
 
-    public void resetPassword() { password = DEFAULT_PASSWORD; }
+    public void resetPassword() {
+        password = DEFAULT_PASSWORD;
+    }
 
     @Override
     public boolean equals(Object other) {

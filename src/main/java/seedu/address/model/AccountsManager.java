@@ -55,7 +55,9 @@ public class AccountsManager {
         }
     }
 
-    public void resetPassword() { account.resetPassword(); }
+    public void resetPassword() {
+        account.resetPassword();
+    }
 
     /**
      * Checks for validity of username and password.

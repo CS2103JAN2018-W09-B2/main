@@ -9,6 +9,9 @@ import java.util.stream.Stream;
 import seedu.address.logic.commands.UpdatePasswordCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+/**
+ * Parses input arguments and creates a new UpdatePasswordCommand object
+ */
 public class UpdatePasswordCommandParser implements Parser<UpdatePasswordCommand> {
     /**
      * * Parses the given {@code String} of arguments in the context of the LoginCommand
@@ -21,7 +24,8 @@ public class UpdatePasswordCommandParser implements Parser<UpdatePasswordCommand
 
         if (!arePrefixesPresent(argMultimap, PREFIX_PASSWORD, PREFIX_NEW_PASSWORD)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UpdatePasswordCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    UpdatePasswordCommand.MESSAGE_USAGE));
         } else {
             String inputPassword1 = argMultimap.getValue(PREFIX_PASSWORD).get();
             String inputPassword2 = argMultimap.getValue(PREFIX_NEW_PASSWORD).get();

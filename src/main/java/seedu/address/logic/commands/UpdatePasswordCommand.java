@@ -9,6 +9,9 @@ import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.exception.InvalidPasswordException;
 
+/**
+ * Change the password of the user account.
+ */
 public class UpdatePasswordCommand extends Command {
     public static final String COMMAND_WORD = "updatepassword";
     public static final String COMMAND_SYNTAX = COMMAND_WORD + " "
