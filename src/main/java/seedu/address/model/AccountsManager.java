@@ -5,11 +5,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
-import seedu.address.commons.util.CollectionUtil;
-import seedu.address.model.exception.DuplicateUsernameException;
 import seedu.address.model.exception.InvalidPasswordException;
 import seedu.address.model.exception.InvalidUsernameException;
 

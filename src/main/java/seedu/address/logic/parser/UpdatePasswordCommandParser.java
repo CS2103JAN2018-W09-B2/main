@@ -1,13 +1,13 @@
 package seedu.address.logic.parser;
 
-import seedu.address.logic.commands.UpdatePasswordCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-
-import java.util.stream.Stream;
-
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NEW_PASSWORD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSWORD;
+
+import java.util.stream.Stream;
+
+import seedu.address.logic.commands.UpdatePasswordCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
 
 public class UpdatePasswordCommandParser implements Parser<UpdatePasswordCommand> {
     /**
@@ -23,9 +23,9 @@ public class UpdatePasswordCommandParser implements Parser<UpdatePasswordCommand
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UpdatePasswordCommand.MESSAGE_USAGE));
         } else {
-            String inputPassword_1 = argMultimap.getValue(PREFIX_PASSWORD).get();
-            String inputPassword_2 = argMultimap.getValue(PREFIX_NEW_PASSWORD).get();
-            return new UpdatePasswordCommand(inputPassword_1, inputPassword_2);
+            String inputPassword1 = argMultimap.getValue(PREFIX_PASSWORD).get();
+            String inputPassword2 = argMultimap.getValue(PREFIX_NEW_PASSWORD).get();
+            return new UpdatePasswordCommand(inputPassword1, inputPassword2);
         }
     }
 
