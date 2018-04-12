@@ -551,7 +551,7 @@ Now that you have logged in, you are ready to use the `Email` feature to send ou
 ==== Emailing your contact : `email`
 
 You can send email to any person you have saved in contactHeRo using the following format. +
-Format: `email INDEX [sub/EMAILSUBJECT]`
+Format: `email INDEX [sub/EMAIL_SUBJECT]`
 
 ****
 * Opens up the Draft Email tab. This is an User Interface for you to draft your emails.
