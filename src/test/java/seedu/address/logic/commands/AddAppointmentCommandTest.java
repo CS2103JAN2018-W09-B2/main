@@ -166,7 +166,7 @@ public class AddAppointmentCommandTest {
         }
 
         @Override
-        public void updatePassword(String password1, String password2){
+        public void updatePassword(String password1, String password2) {
             fail("This method should not be called.");
         }
 
