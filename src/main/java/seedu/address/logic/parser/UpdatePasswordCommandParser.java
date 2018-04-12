@@ -9,7 +9,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NEW_PASSWORD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSWORD;
 
-public class UpdatePasswordCommandParser {
+public class UpdatePasswordCommandParser implements Parser<UpdatePasswordCommand> {
     /**
      * * Parses the given {@code String} of arguments in the context of the LoginCommand
      * *  and returns an LoginCommand object for execution.

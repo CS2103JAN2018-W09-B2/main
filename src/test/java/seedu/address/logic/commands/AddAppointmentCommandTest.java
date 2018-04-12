@@ -163,9 +163,13 @@ public class AddAppointmentCommandTest {
         }
 
         @Override
-        public AccountsManager getAccountsManager() {
+        public void updateUsername(String username){
             fail("This method should not be called.");
-            return null;
+        }
+
+        @Override
+        public void updatePassword(String password_1, String password_2){
+            fail("This method should not be called.");
         }
 
         @Override
@@ -184,13 +188,6 @@ public class AddAppointmentCommandTest {
         public void logout() throws UserLogoutException {
             fail("This method should not be called.");
         };
-
-
-
-        @Override
-        public void register(String username, String password) throws DuplicateUsernameException {
-            fail("This method should not be called.");
-        }
 
         @Override
         public void addJob(Job job) throws DuplicateJobException {

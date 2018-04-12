@@ -17,7 +17,7 @@ public class UpdatePasswordCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + "Updates the user account password."
             + "Parameters: "
             + PREFIX_PASSWORD + "PASSWORD "
-            + PREFIX_NEW_PASSWORD + "PASSWORD\n"
+            + PREFIX_NEW_PASSWORD + "NEW_PASSWORD\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_PASSWORD + "Doe123 "
             + PREFIX_NEW_PASSWORD + "doe456";
