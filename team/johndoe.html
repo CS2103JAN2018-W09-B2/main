@@ -537,26 +537,132 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div class="sect2">
 <h3 id="details-panel-implementation"><a class="link" href="#details-panel-implementation">Details Panel Implementation</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The <code>select</code> command shows the contact details of the person in a separate panel while the <code>linkedIn</code> command shows the LinkedIn search of the person.</p>
+<p><code>DetailsPanel</code> is a TabPane which consists of the following tabs:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>Contact Details</code></p>
+</li>
+<li>
+<p><code>LinkedIn Search</code></p>
+</li>
+<li>
+<p><code>Calendar</code></p>
+</li>
+<li>
+<p><code>Draft Email</code></p>
+</li>
+<li>
+<p><code>Google</code></p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
-<p>The <code>DetailsPanel</code> is a TabPane which  which consists of the two tabs, <code>Contact Details</code> and <code>LinkedIn Search</code>. The <code>ContactDetailsDisplay</code> is embedded in the <code>Contact Details</code> tab and the <code>Browser Panel</code> in the <code>Linked Search</code> tab.</p>
-</div>
-<div class="paragraph">
-<p>The UML diagram below represents the UI structure for the <code>DetailsPanel</code> (Refer to Figure 30):</p>
+<p>The <code>select</code> command shows the contact details of the person at the specified index under the <code>Contact Details</code> tab.
+The <code>ContactDetailsDisplay</code> is a GridPane embedded in the <code>Contact Details</code> tab and the UML diagram below represents the UI structure for the <code>ContactDetailsPanel</code> (Refer to Figure 30):</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="../images/DetailsPanelClassDiagram.png" alt="DetailsPanelClassDiagram" width="600">
 </div>
+<div class="title">Figure 1. UML Diagram for DetailsPanel UI</div>
 </div>
 <div class="paragraph">
-<p><em>Figure 30 : UML Diagram for Panel.</em></p>
+<p>The <code>DetailsPanel</code> also comes into play when the user manually clicks on the <code>PersonCard</code> and the panel corresponding <code>Contact Details</code> or <code>LinkedIn</code> is currently shown. This is implemented by handling the <code>PersonPanelSelectionChangedEvent</code> in both the <code>ContactDetailsPanel</code> and the <code>BrowserPanel</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Both the <code>select</code> and <code>linkedIn</code> command function quite similarly and only differ in the tabs that they trigger.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>We created a new event, <code>SwitchTabRequestEvent</code> which sets the current tab in the <code>DetailsPanel</code> to <code>Contact Details</code> or <code>LinkedIn Search</code> depending on the input command.
-The code for the SwitchTabRequestEvent` event is as follows.</p>
+<p>The figure below (Refer to figure 31) is the wireframe for the <code>ContactDetailsDisplay</code>:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/ContactDetailsDisplayWireFrame.png" alt="ContactDetailsDisplayWireFrame" width="600">
+</div>
+<div class="title">Figure 2. Wireframe for Contact Details Panel.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Improving the UI<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 1 (current choice):</strong> Show the extra details of contact after they are selected.<br>
+<strong>Pros</strong>: Allows more readability of the contact details and since other attributes like <code>Current Position</code> and <code>Company</code> have been added to the <code>Person</code> class, too much information would make the <code>PersonCard</code> cluttered.<br>
+<strong>Cons</strong>: User needs to manually select the user to see the contact details of that person.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Show  the contact details of the person only in the <code>PersonCard</code>.<br>
+<strong>Pros</strong>: User only has to look in the <code>PersonCard</code> for any and every detail<br>
+<strong>Cons</strong>: Looks very cluttered and has poor User Interface design.</p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 3 :</strong> Show all the tabs as completely independent windows.<br>
+<strong>Pros</strong>: Completely isolates the UI for different commands like <code>select</code> and <code>linkedIn</code> and provides more focus.<br>
+<strong>Cons</strong>: In the current implementation one window is easily accessible from another, just by manually switching tabs which would not be possible with this alternative since the user would have to run many different commands to do this.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tab-switching-mechanism"><a class="link" href="#tab-switching-mechanism">Tab Switching Mechanism</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
+<div class="paragraph">
+<p>Tab Switching Mechanism is an event driven mechanism.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/SwitchTabRequestEventHighSD.png" alt="SwitchTabRequestEventHighSD" width="800">
+</div>
+<div class="title">Figure 3. Component interaction for Tab Switching Mechanism.</div>
+</div>
+<div class="paragraph">
+<p>The above diagram (Refer to Figure 13) shows the high-level overview of the component interactions for the tab switching mechanism. We use the event, <code>SwitchTabRequestEvent</code> which sets the current tab in the <code>DetailsPanel</code> to one of five tabs below depending on the input command.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>Contact Details</code></p>
+</li>
+<li>
+<p><code>LinkedIn Search</code></p>
+</li>
+<li>
+<p><code>Calendar</code></p>
+</li>
+<li>
+<p><code>Draft Email</code></p>
+</li>
+<li>
+<p><code>Google</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The code for the <code>SwitchTabRequestEvent</code> event is as follows.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -579,25 +685,82 @@ The code for the SwitchTabRequestEvent` event is as follows.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The <code>SwitchTabRequestEvent</code> has an integer attribute <code>tabId</code>. The event handlers use this <code>tabId</code> to switch between tabs wherein the <code>Contact Details</code> and <code>LinkedIn Search</code> have tabIds 0 and 1 respectively.
+The <code>SwitchTabRequestEvent</code> has an integer attribute <code>tabId</code>. The event handlers use this <code>tabId</code> to switch between tabs wherein the tabs <code>Contact Details</code>, <code>LinkedIn Search</code>, <code>Calendar</code>, <code>Draft Email</code> and `Google`have tabIds 0, 1, 2, 3 and 4 respectively.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Event handlers use the following code to handle the <code>SwitchTabRequestEvent</code> event.</p>
+<p>Let us look at an execution example for the LinkedIn Command.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/SwitchTabRequestEventSD.png" alt="SwitchTabRequestEventSD" width="800">
+</div>
+<div class="title">Figure 4. Sequence diagram for the event posting for the Tab Switching Mechanism.</div>
+</div>
+<div class="paragraph">
+<p>As seen from the sequence diagram above (Refer to Figure 14), when the user types the <code>linkedIn</code> command, an instance of LinkedInCommand would be created and upon execution by LogicManager, the event SwitchTabRequestEvent would be posted by the EventCenter to the EventBus:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Subscribe</span>
-<span class="directive">private</span> <span class="type">void</span> handleSwitchTabRequestEvent(SwitchTabRequestEvent event) {
-    logger.info(LogsCenter.getEventHandlingLogMessage(event));
-    tabPane.getSelectionModel().clearAndSelect(event.tabId);
-}</code></pre>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">LinkedInCommand</span> <span class="directive">extends</span> Command {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
+        <span class="comment">//... other execution statements</span>
+        EventsCenter.getInstance().post(<span class="keyword">new</span> SwitchTabRequestEvent(TAB_ID_LINKEDIN));
+        <span class="comment">//... other execution statements</span>
+    }
+    ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>DetailsPanel</code> is also displayed when the user manually clicks on the <code>PersonCard</code> and the panel corresponding to the current tab is shown. This is implemented by handling the <code>PersonPanelSelectionChangedEvent</code> in both the <code>ContactDetailsPanel</code> and the <code>BrowserPanel</code>.</p>
+<p><code>DetailsPanel</code> class in the <code>UI</code> component has the <code>handleSwitchTabRequestEvent()</code> method which listens for the event. Upon receiving the event, it switches the tab depending on the <code>tabId</code> passed to the event.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">DetailsPanel</span> <span class="directive">extends</span> UiPart&lt;<span class="predefined-type">Region</span>&gt; {
+    <span class="annotation">@Subscribe</span>
+    <span class="directive">private</span> <span class="type">void</span> handleSwitchTabRequestEvent(SwitchTabRequestEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        tabPane.getSelectionModel().clearAndSelect(event.tabId);
+    }
+    ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Shown below is the sequence diagram for the above implementation (Refer to figure 15).</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/SwitchTabRequestEventSD2.png" alt="SwitchTabRequestEventSD2" width="800">
+</div>
+<div class="title">Figure 5. Sequence diagram for the event handling for the Tab Switching Mechanism.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 1 (current choice):</strong> Use event driven mechanism.<br>
+<strong>Pros</strong>: Event is only handled in the <code>DetailsPanel</code> and not in the Command itself hence decreasing coupling between the UI and Logic.<br>
+<strong>Cons</strong>: Tab switching is a hidden mechanism and might not be intuitive to certain users.</p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Switch tab in the command execution itself.<br>
+<strong>Pros</strong>: .<br>
+<strong>Cons</strong>: The <code>TabPane</code> will have to be accessible to the logic which will increase coupling.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="job-openings-implementation"><a class="link" href="#job-openings-implementation">Job Openings Implementation</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>Job</code> object represents a job opening in contactHeRo. It contains <code>Position</code>, <code>Team</code>, <code>Location</code> and <code>NumberOfPositions</code> objects and a set of <code>Skills</code>, which represent the position, team, location, the number of available positions and the required skills  for the job opening respectively (Refer to Figure 12).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -606,46 +769,234 @@ The <code>SwitchTabRequestEvent</code> has an integer attribute <code>tabId</cod
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Both the <code>select</code> and <code>linkedIn</code> command function quite similarly and only differ in the panel that they trigger.
+All fields mentioned above are compulsory for the <code>Job</code> object unlike the <code>Person</code> where <code>skill</code> is optional.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/JobUML.png" alt="JobUML" width="600">
+</div>
+<div class="title">Figure 6. UML class diagram for Job Opening</div>
+</div>
+<div class="paragraph">
+<p>In addition to the above attributes, the <code>Job</code> object also contains a set of <code>Skills</code> which denote the skills required for the job opening.</p>
+</div>
+<div class="paragraph">
+<p><code>Job</code> objects are kept in-memory during the running of contactHeRo. A <code>UniqueJobList</code> is maintained which contains the Job (Refer to Figure 13) and assures that there are no duplicate <code>Job</code> objects. The <code>UniqueJobList</code> object is then kept and used by ModelManager to carry out commands related to job openings.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/JobModelUML.png" alt="JobModelUML" width="600">
+</div>
+<div class="title">Figure 7. Model management of Job objects</div>
+</div>
+<div class="paragraph">
+<p>The storage of job openings is very similar to that of the persons. <code>Job</code> objects are stored in a XML storage file in a JAXB-friendly version <code>XmlAdaptedJob</code>. When the program starts, <code>XmlAdaptedJob</code> objects are read in as jobs in the <code>XmlSerializableAddressBook</code> via <code>XmlFileStorage</code>.</p>
+</div>
+<div class="paragraph">
+<p>The job openings management is facilitated by several command classes in contactHeRo, namely:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>JobAddCommand</p>
+</li>
+<li>
+<p>JobEditCommand</p>
+</li>
+<li>
+<p>JobDeleteCommand</p>
+</li>
+<li>
+<p>JobFindCommand</p>
+</li>
+<li>
+<p>JobListCommand</p>
+</li>
+<li>
+<p>JobMatchCommand</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The implementation of these commands is quite similar to the equivalent operations in the <code>Person</code> class. Let us look at <code>JobAddCommand</code> as an example.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="strong-adding-job-openings-strong"><a class="link" href="#strong-adding-job-openings-strong"><strong>Adding Job Openings</strong></a></h4>
+<div class="paragraph">
+<p>Adding job openings is facilitated by the JobAddCommand. Execution of this command adds a <code>Job</code> Object to contactHeRo with the input <code>Position</code>, <code>Team</code>, <code>Location</code>, <code>NumberOfPositions</code> and <code>Skills</code>.</p>
+</div>
+<div class="paragraph">
+<p>Given below is the sequence diagram for addition of a job opening.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/SDforAddJobEventHandling.png" alt="SDforAddJobEventHandling" width="800">
+</div>
+<div class="title">Figure 8. High Level Sequence Diagram for adding a job opening</div>
+</div>
+<div class="paragraph">
+<p>The following snippet shows how the executeUndoableCommand() method updates the model of the application by adding the job to the list of jobs.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">JobAddCommand</span> <span class="directive">extends</span> UndoableCommand {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult executeUndoableCommand() <span class="directive">throws</span> CommandException {
+        requireNonNull(model);
+        <span class="keyword">try</span> {
+            model.addJob(toAdd);
+            <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_SUCCESS, toAdd));
+        } <span class="keyword">catch</span> (DuplicateJobException e) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_DUPLICATE_JOB);
+        }
+    }
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The job openings are displayed towards the right side of the UI in the <code>JobListPanel</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Storing job openings<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 1 (current choice):</strong> Use the same file to store jobs and persons.<br>
+<strong>Pros</strong>: Certain jobs and persons may have the same skills and in the current implementation there will not be any duplicates in the data file, thus saving memory.<br>
+<strong>Cons</strong>: Different types of data in the same file.</p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Use different files to store jobs and persons.<br>
+<strong>Pros</strong>: Data is segregated by type.<br>
+<strong>Cons</strong>: Certain jobs and persons may have the same skills and in this implementation, there might be duplicate skills having one copy in each file.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="matching-jobs-implementation"><a class="link" href="#matching-jobs-implementation">Matching jobs implementation</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>JobMatchCommand</code> uses <code>PersonSkillContainsKeywordsPredicate</code> to match person&#8217;s skills with a job&#8217;s skills. It accepts the index for the job to match and then uses the <code>PersonSkillMatchesKeywordsPredicate</code> to match the job. Below is the code for the execution:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
+
+    <span class="predefined-type">List</span>&lt;Job&gt; lastShownList = model.getFilteredJobList();
+
+    <span class="keyword">if</span> (targetIndex.getZeroBased() &gt;= lastShownList.size()) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(Messages.MESSAGE_INVALID_JOB_DISPLAYED_INDEX);
+    }
+
+    Job jobToMatch = lastShownList.get(targetIndex.getZeroBased());
+
+    model.updateFilteredPersonList(<span class="keyword">new</span> PersonSkillContainsKeywordsPredicate(
+            CollectionUtil.getSetAsStringList(jobToMatch.getSkills())));
+    <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(getMessageForPersonListShownSummary(model.getFilteredPersonList().size()));
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>PersonSkillMatchesKeywordsPredicate</code> takes in the list of skills of the job as the keywords as the parameter and then checks if the person has any of these skills using the <code>SkillUtil</code>. The code for matching the skills is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/**
+ * Checks if a set of skills contains any of the {@code keywords}.
+ */</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="type">boolean</span> match(<span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; keywords, <span class="predefined-type">Set</span>&lt;Skill&gt; list) {
+    <span class="predefined-type">String</span> skillList = getSkillsAsString(list);
+    <span class="keyword">return</span> keywords.stream()
+            .anyMatch(keyword -&gt; StringUtil.containsWordIgnoreCase(skillList, keyword));
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To minimize code duplication, we made a utility class <code>SkillUtil</code> which is used both by <code>PersonSkillMatchesKeywordsPredicate</code> during execution of <code>matchjob</code> and <code>find s/</code> commands and <code>JobSkillMatchesKeywordsPredicate</code> during the execution of <code>findjob s/</code> command.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="auto-complete-mechanism"><a class="link" href="#auto-complete-mechanism">Auto-complete Mechanism</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The auto-complete mechanism is implemented in the <code>CommandBox</code> in the <code>UI</code> component. We check the key pressed by the user and if it is the <code>Tab</code> key, the auto-complete mechanism is triggered.</p>
+</div>
+<div class="paragraph">
+<p>Given below is are the activity diagram (Refer to figurue 20) for the mechanism.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/Auto-CompleteActivityDiagram.png" alt="Auto CompleteActivityDiagram" width="800">
+</div>
+<div class="title">Figure 9. UML class diagram for Job Opening</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Previous input has been included to account for cases in cases where more than one command share the same prefix. For e.g. the <code>add</code>, <code>addjob</code> and <code>addapp</code> commands share the common <code>add</code>. In such a case, the user can just type <code>a</code> or <code>ad</code> or <code>add</code> and press <code>Tab</code> multiple times to cycle between these commands which will keep incrementing the Tab counter, <code>tabNumber</code> in a cyclic manner.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The figure below (Refer to figure 31) is the wireframe for the <code>ContactDetailsDisplay</code>:</p>
+<p>Given below is the code for the <code>CommandBox#autoCompleteCommand()</code> method.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="listingblock">
 <div class="content">
-<img src="../images/ContactDetailsDisplayWireFrame.png" alt="ContactDetailsDisplayWireFrame" width="600">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/**
+ * Auto-completes the partial command {@code text} entered with the first command matched
+ * in the lexicographically sorted command list
+ */</span>
+<span class="directive">private</span> <span class="type">void</span> autoCompleteCommand(<span class="predefined-type">String</span> text) {
+    <span class="keyword">if</span> (text.equals(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>)) {
+        <span class="keyword">return</span>;
+    }
+    <span class="keyword">if</span> (!text.startsWith(prevText) || prevText.equals(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>)) {
+        prevText = text;
+        tabNumber = <span class="integer">0</span>;
+    }
+    CommandList commandListObj = <span class="keyword">new</span> CommandList();
+
+    <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; matchedCommands = commandListObj.commandList.stream().filter(u -&gt; u.startsWith(prevText))
+            .collect(Collectors.toList());
+
+    <span class="keyword">if</span> (matchedCommands.size() &gt; <span class="integer">0</span>) {
+        <span class="predefined-type">String</span> textToDisplay = commandListObj.getSyntax(matchedCommands.get(tabNumber % matchedCommands.size()));
+
+        replaceText(textToDisplay);
+        commandTextField.positionCaret(matchedCommands.get(<span class="integer">0</span>).length() + <span class="integer">1</span>);
+    }
+}</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p><em>Figure 31 : Wireframe for Contact Details Panel.</em></p>
-</div>
-<h4 id="design-consideration" class="discrete">Design Consideration</h4>
-<div class="paragraph">
-<p><strong>Aspect:</strong> Improving the UI<br></p>
-</div>
-<div class="paragraph">
-<p><strong>Alternative 1 (current choice):</strong> Show the extra details of contact after they are selected.<br>
-<strong>Pros</strong>: Allows more readability of the contact details and if more attributes are added to the <code>Person</code> class, not everything needs to be shown in the <code>PersonCard</code>.<br>
-<strong>Cons</strong>: User needs to manually select the user to see more details of that person.<br></p>
-</div>
-<div class="paragraph">
-<p><strong>Alternative 2:</strong> Only show the LinkedIn search in the <code>BrowserPanel</code> and show the contact details of the person only in the <code>PersonCard</code>.<br>
-<strong>Pros</strong>: User only has to look in the <code>PersonCard</code> for any and every detail<br>
-<strong>Cons</strong>: Looks very cluttered and has poor User Interface design.</p>
-</div>
-<div class="paragraph">
-<p><strong>Alternative 3 :</strong> Show the <code>ContactDetailsDisplay</code> and <code>LinkedIn</code> as completely independent windows without tabs.<br>
-<strong>Pros</strong>: Completely isolates the <code>select</code> and <code>linkedIn</code> commands.<br>
-<strong>Cons</strong>: Removes the connectivity between a person&#8217;s contact information and LinkedIn profile. Also, in the current implementation one is easily accessible from another, just by manually switching tabs which would not be possible with this alternative.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
@@ -689,9 +1040,13 @@ Both the <code>select</code> and <code>linkedIn</code> command function quite si
 <div class="sect2">
 <h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">Configuration</a></h3>
 <div class="paragraph">
-<p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).
-=== Profile Picture Feature
-Profile picture feature allows to show persons' profile pictures.</p>
+<p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="profile-picture-feature"><a class="link" href="#profile-picture-feature">Profile Picture Feature</a></h3>
+<div class="paragraph">
+<p>Profile picture feature allows to show persons' profile pictures.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -707,7 +1062,7 @@ Profile picture feature allows to show persons' profile pictures.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current implementation</a></h4>
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">Current implementation</a></h4>
 <div class="sect4">
 <h5 id="input-and-store-profile-picture-path"><a class="link" href="#input-and-store-profile-picture-path">Input and store profile picture path:</a></h5>
 <div class="paragraph">
@@ -835,7 +1190,7 @@ Don&#8217;t know Image and ImageView. Check these two links:<br>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-consideration-2"><a class="link" href="#design-consideration-2">Design consideration</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-link-profile-picture-with-code-profilepicture-code"><a class="link" href="#aspect-how-to-link-profile-picture-with-code-profilepicture-code">Aspect: How to link profile picture with <code>ProfilePicture</code></a></h5>
 <div class="ulist">
@@ -874,7 +1229,7 @@ Don&#8217;t know Image and ImageView. Check these two links:<br>
 <div class="sect2">
 <h3 id="emailing-a-contact-using-google-api"><a class="link" href="#emailing-a-contact-using-google-api">Emailing a contact using Google API</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current implementation</a></h4>
+<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">Current implementation</a></h4>
 <div class="paragraph">
 <p>The sending of email will be implemented using the Google API.</p>
 </div>
@@ -894,7 +1249,7 @@ where the <code>Token</code> is stored in the URL.</p>
 <div class="content">
 <img src="../images/GoogleLoginSequence.png" alt="GoogleLoginSequence" width="600">
 </div>
-<div class="title">Figure 1. Sequence Diagram of the GoogleLoginCommand</div>
+<div class="title">Figure 10. Sequence Diagram of the GoogleLoginCommand</div>
 </div>
 <div class="paragraph">
 <p>Next, a <code>GmailClient</code> is created using the <code>GoogleAuthentication</code> class and <code>Token</code>.
@@ -908,7 +1263,7 @@ after they have logged in.</p>
 <div class="content">
 <img src="../images/GmailClassDiagram.png" alt="GmailClassDiagram" width="600">
 </div>
-<div class="title">Figure 2. Class Diagram of GmailClient and GoogleAuthentication</div>
+<div class="title">Figure 11. Class Diagram of GmailClient and GoogleAuthentication</div>
 </div>
 <div class="paragraph">
 <p>This newly created <code>GmailClient</code> class will provide all the services that use the Google API.</p>
@@ -957,7 +1312,7 @@ and packaged into a <code>MimeMessage</code> ready to be send out.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-consideration-3"><a class="link" href="#design-consideration-3">Design consideration</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-login-to-google"><a class="link" href="#aspect-how-to-login-to-google">Aspect: How to login to Google</a></h5>
 <div class="ulist">
@@ -1088,7 +1443,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="../images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 3. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 12. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -2882,7 +3237,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 13:38:31 UTC
+Last updated 2018-04-14 13:54:46 UTC
 </div>
 </div>
 </body>
