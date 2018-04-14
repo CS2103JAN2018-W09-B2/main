@@ -19,10 +19,4 @@
         <HTMLEditor fx:id="bodyTxtField" prefHeight="257.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
         <Button fx:id="sendBtn" text="Send" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="36.0" prefWidth="686.0" GridPane.columnIndex="0" GridPane.rowIndex="3" />
     </children>
-    <rowConstraints>
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-    </rowConstraints>
 </GridPane>
