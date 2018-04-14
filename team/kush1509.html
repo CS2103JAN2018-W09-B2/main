@@ -221,6 +221,9 @@ Format: <code>linkedIn INDEX</code></p>
 <li>
 <p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
 </li>
+<li>
+<p>You will have to login to LinkedIn the first time to use this command in order to search the person.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -232,7 +235,8 @@ Format: <code>linkedIn INDEX</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-You will have to login to LinkedIn the first time to use this command in order to search the person.
+We do not save or log any of your LinkedIn credentials or information as we respect your privacy.
+Therefore, everytime you restart contactHeRo, you will have to login again.
 </td>
 </tr>
 </table>
@@ -248,18 +252,18 @@ You will have to login to LinkedIn the first time to use this command in order t
 This loads the LinkedIn search of the 2nd person in the contactHeRo.</p>
 </li>
 <li>
-<p><code>find Betsy</code><br>
-<code>select 1</code><br>
+<p><code>find n/Betsy</code><br>
+<code>linkedIn 1</code><br>
 This loads the LinkedIn search of 1st person in the results of the <code>find</code> command.<br></p>
 <div class="paragraph">
-<p>On running the above command and after you have logged in, you should a similar result as the following (refer to figure 5). Betsy is selected in the person list and she is searched on LinkedIn in the LinkedIn Tab.</p>
+<p>On running the above command and after you have logged in, you should a similar result as the following (Refer to figure 5). Betsy is selected in the person list and she is searched on LinkedIn in the LinkedIn Tab.</p>
 </div>
 </li>
 </ul>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="../images/linkedInCommand.png" alt="linkedInCommand" width="790">
+<img src="../images/linkedInCommand.png" alt="linkedInCommand">
 </div>
 <div class="title">Figure 1. LinkedIn Command Execution</div>
 </div>
@@ -305,8 +309,8 @@ The first lexicographically matched command is returned.
 <div class="sect3">
 <h4 id="adding-a-job-opening-code-addjob-code"><a class="link" href="#adding-a-job-opening-code-addjob-code">Adding a job opening: <code>addjob</code></a></h4>
 <div class="paragraph">
-<p>You can add a job opening to contactHero using the following format.<br>
-Format: <code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER_OF_POSITIONS s/REQUIRED_SKILLS</code></p>
+<p>You can add a job opening to contactHeRo using the following format.<br>
+Format: <code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER_OF_POSITIONS s/SKILLS_REQUIRED</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -325,23 +329,29 @@ Format: <code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER_OF_POSITIONS s/REQUIR
 </div>
 </li>
 <li>
-<p><code>addjob p/Marketing Intern t/Social Media Marketing l/Singapore n/1 s/Excel</code></p>
+<p><code>addjob p/Marketing Intern t/Social Media Marketing l/Singapore n/1 s/Excel s/Writing</code></p>
 <div class="paragraph">
-<p>On running the above command, you should see the following success message:<br></p>
+<p>On running the above command, you should see the following success message and the job opening UI(Refer to figure 6) added to the Job List Panel(Refer to figure 1):<br></p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>New job opening added: Marketing Intern Team: Social Media Marketing Location: Singapore Number of Positions: 1 Skills: [Excel]</pre>
+<pre>New job opening added: Marketing Intern Team: Social Media Marketing Location: Kuala Lampur, Malaysia Number of Positions: 1 Skills: [Excel][Writing]</pre>
 </div>
 </div>
 </li>
 </ul>
 </div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/addjobCommand.png" alt="addjobCommand">
+</div>
+<div class="title">Figure 2. A job opening in contactHeRo</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="editing-a-job-opening-code-editjob-code"><a class="link" href="#editing-a-job-opening-code-editjob-code">Editing a job opening : <code>editjob</code></a></h4>
 <div class="paragraph">
-<p>You can edit an existing job opening in contactHero using this format.<br></p>
+<p>You can edit an existing job opening in contactHeRo using this format.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>editjob INDEX [p/POSITION] [t/TEAM] [l/LOCATION] [n/NUMBER_OF_POSITIONS] [s/SKILL]&#8230;&#8203;</code></p>
@@ -385,6 +395,71 @@ Edits the position and team of the 1st job opening to be <code>Hardware Engineer
 <pre>Edited Job: Hardware Engineer Team: Hardware Products Location: Singapore Number of Positions: 1 Skills: [Java]</pre>
 </div>
 </div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="locating-job-opening-by-position-location-or-skill-code-findjob-code"><a class="link" href="#locating-job-opening-by-position-location-or-skill-code-findjob-code">Locating job opening by position, location or skill : <code>findjob</code></a></h4>
+<div class="paragraph">
+<p>You can find all the persons whose names or skills contain any of the given keywords using the following format.<br>
+Format:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find p/KEYWORD [MORE_KEYWORDS]</code> to find by position or</p>
+</li>
+<li>
+<p><code>find t/KEYWORD [MORE_KEYWORDS]</code> to find by team or</p>
+</li>
+<li>
+<p><code>find s/KEYWORD [MORE_KEYWORDS]</code> to find by skill.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Some things to take note of:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+</li>
+<li>
+<p>Only the name or skill is searched, depending on the prefix (n/ or s/)</p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
+</li>
+<li>
+<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find n/John</code><br>
+This will show any person having the name <code>john</code> or <code>John</code>.</p>
+</li>
+<li>
+<p><code>find s/designer</code><br>
+This will show <code>Jane Doe</code> whose skill is <code>designer</code>.</p>
+</li>
+<li>
+<p><code>find n/Betsy Tim John</code><br>
+This will show any person having any of the names <code>Betsy</code>, <code>Tim</code>, or <code>John</code>.</p>
 </li>
 </ul>
 </div>
@@ -470,7 +545,21 @@ Format: <code>matchjob INDEX</code></p>
 <code>matchjob 1</code><br>
 This will show any person whose skills match any of those required for the job opening at index 1.</p>
 </li>
+<li>
+<p><code>findjob s/Software</code><br>
+<code>matchjob 1</code><br>
+This will show any person whose skills match any of those required for the job opening at index 1 in the results of the findjob command.</p>
+<div class="paragraph">
+<p>On running this command, you should see a similar result as the following (Refer to figure 5). All persons having any skill as required by the job 'Software Engineer' will be shown.</p>
+</div>
+</li>
 </ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/matchjobCommand.png" alt="matchjobCommand">
+</div>
+<div class="title">Figure 3. MatchJob Command Execution</div>
 </div>
 </div>
 </div>
@@ -690,7 +779,7 @@ It is essential for them to have a quick and easy access to these contacts. Henc
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 08:59:19 UTC
+Last updated 2018-04-14 13:38:31 UTC
 </div>
 </div>
 </body>
