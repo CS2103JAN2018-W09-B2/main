@@ -59,21 +59,29 @@ public class EmailCommand extends Command {
 
     public static final String COMMAND_WORD = "email";
 
+    public static final String COMMAND_SYNTAX = COMMAND_WORD + " "
+            + "[index]" + " "
+            + "[" + PREFIX_EMAIL_SUBJECT + "]";
+
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Send an email to the person identified by the index number used in the last person listing.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+            + "Parameters: INDEX (must be a non-zero positive integer) "
+            + "[" + PREFIX_EMAIL_SUBJECT + "EMAIL SUBJECT]\n"
+            + "Example: " + COMMAND_WORD + " 1 "
+            + PREFIX_EMAIL_SUBJECT + "Interview for Full-time Software Engineering";
 
     public static final int TAB_ID_EMAIL = 3;
 
     public static final String MESSAGE_EMAIL_PERSON_SUCCESS = "Drafting email to: %1$s";
 
     private final Index targetIndex;
+    private final String emailSubject;
 
     private Person personToEmail;
 
-    public EmailCommand(Index targetIndex) {
+    public EmailCommand(Index targetIndex, String emailSubject) {
         this.targetIndex = targetIndex;
+        this.emailSubject = emailSubject;
     }
 
     @Override
@@ -84,6 +92,10 @@ public class EmailCommand extends Command {
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
+
+        //Set the email subject so that the UI can use it later
+        EmailSubject emailSubjectModel = EmailSubject.getInstance();
+        emailSubjectModel.setSubject(emailSubject);
 
         personToEmail = lastShownList.get(targetIndex.getZeroBased());
 
@@ -353,14 +365,36 @@ public class EmailCommandParser implements Parser<EmailCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public EmailCommand parse(String args) throws ParseException {
+
+        ArgumentMultimap argMultimap =
+                ArgumentTokenizer.tokenize(args, PREFIX_EMAIL_SUBJECT);
+
+        Index index;
+
+        //Index index = ParserUtil.parseIndex(args);
         try {
-            Index index = ParserUtil.parseIndex(args);
-            return new EmailCommand(index);
+            index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (IllegalValueException ive) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, EmailCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EmailCommand.MESSAGE_USAGE));
         }
+
+        String emailSubject = new String("");
+
+        try {
+            Optional<String> subjectOptional = argMultimap.getValue(PREFIX_EMAIL_SUBJECT);
+            if (subjectOptional.isPresent()) {
+                emailSubject = ParserUtil.parseEmailSubject(argMultimap.getValue(PREFIX_EMAIL_SUBJECT)).get();
+                if (emailSubject.isEmpty()) {
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EmailCommand.MESSAGE_USAGE));
+                }
+            }
+        } catch (IllegalValueException ive) {
+            throw new ParseException(ive.getMessage(), ive);
+        }
+
+        return new EmailCommand(index, emailSubject);
     }
+
 }
 ```
 ###### \java\seedu\address\logic\parser\person\FindCommandParser.java
@@ -405,6 +439,36 @@ public class EmailCommandParser implements Parser<EmailCommand> {
     }
 
 }
+```
+###### \java\seedu\address\model\EmailSubject.java
+``` java
+/**
+ * Creates an EmailSubject object for the Draft Email UI.
+ */
+public class EmailSubject {
+
+    private static EmailSubject instance = null;
+    private static String subject;
+
+    private EmailSubject() {
+    }
+
+    public static EmailSubject getInstance() {
+        if (instance == null) {
+            instance = new EmailSubject();
+        }
+        return instance;
+    }
+
+    public static String getSubject() {
+        return subject;
+    }
+
+    public static void setSubject(String subject) {
+        EmailSubject.subject = subject;
+    }
+}
+
 ```
 ###### \java\seedu\address\model\GmailMessage.java
 ``` java
@@ -608,9 +672,11 @@ public class EmailPanel extends UiPart<Region> {
      */
     private void fillEmailDraft(Person person) {
         recipientEmail = person.getEmail().value;
+        EmailSubject emailSubjectModel = EmailSubject.getInstance();
         toTxtField.setText(recipientEmail);
         bodyTxtField.setHtmlText("<font face=\"Segoe UI\">Dear " + person.getName().fullName + ",</font>");
-        subjectTxtField.requestFocus();
+        subjectTxtField.setText(emailSubjectModel.getSubject());
+        bodyTxtField.requestFocus();
     }
 
     /**

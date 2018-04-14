@@ -8,7 +8,8 @@ public class DateCommandTest {
 
     @Test
     public void execute_validDate_success() {
-        assertExecutionSuccess("2018-02-27");
+        assertExecutionNonNullSuccess("2018-02-27");
+        assertExecutionNullSuccess();
     }
 
     @Test
@@ -47,7 +48,7 @@ public class DateCommandTest {
      * Executes a {@code dateCommand} with the given {@code date}, and checks that {@code handleShowDateRequestEvent}
      * is raised with the correct date.
      */
-    private void assertExecutionSuccess(String date) {
+    private void assertExecutionNonNullSuccess(String date) {
 
         try {
             DateCommand dateCommand = prepareCommand(date);
@@ -57,6 +58,25 @@ public class DateCommandTest {
 
             ShowDateRequestEvent lastEvent = (ShowDateRequestEvent) eventsCollectorRule.eventsCollector.getMostRecent();
             assertEquals(ParserUtil.parseDate(date), lastEvent.targetDate);
+        } catch (IllegalValueException e) {
+            throw new IllegalArgumentException("Execution of command should not fail.", e);
+        }
+    }
+
+    /**
+     * Executes a {@code dateCommand} and checks that {@code handleShowDateRequestEvent}
+     * is raised with the message.
+     */
+    private void assertExecutionNullSuccess() {
+
+        try {
+            DateCommand dateCommand = prepareCommand("");
+            CommandResult commandResult = dateCommand.execute();
+            assertEquals(String.format(DateCommand.MESSAGE_SUCCESS, ""),
+                    commandResult.feedbackToUser);
+
+            ShowDateRequestEvent lastEvent = (ShowDateRequestEvent) eventsCollectorRule.eventsCollector.getMostRecent();
+            assertEquals(ParserUtil.parseDate(""), lastEvent.targetDate);
         } catch (IllegalValueException e) {
             throw new IllegalArgumentException("Execution of command should not fail.", e);
         }
@@ -96,7 +116,8 @@ public class MonthCommandTest {
 
     @Test
     public void execute_validMonth_success() {
-        assertExecutionSuccess("2018-02");
+        assertExecutionNonNullSuccess("2018-02");
+        assertExecutionNullSuccess();
     }
 
     @Test
@@ -135,7 +156,7 @@ public class MonthCommandTest {
      * Executes a {@code monthCommand} with the given {@code month}, and checks that {@code handleShowMonthRequestEvent}
      * is raised with the correct month.
      */
-    private void assertExecutionSuccess(String yearMonth) {
+    private void assertExecutionNonNullSuccess(String yearMonth) {
 
         try {
             MonthCommand monthCommand = prepareCommand(yearMonth);
@@ -146,6 +167,26 @@ public class MonthCommandTest {
             ShowMonthRequestEvent lastEvent =
                     (ShowMonthRequestEvent) eventsCollectorRule.eventsCollector.getMostRecent();
             assertEquals(ParserUtil.parseYearMonth(yearMonth), lastEvent.targetYearMonth);
+        } catch (IllegalValueException e) {
+            throw new IllegalArgumentException("Execution of command should not fail.", e);
+        }
+    }
+
+    /**
+     * Executes a {@code monthCommand}, and checks that {@code handleShowMonthRequestEvent}
+     * is raised with the month view.
+     */
+    private void assertExecutionNullSuccess() {
+
+        try {
+            MonthCommand monthCommand = prepareCommand("");
+            CommandResult commandResult = monthCommand.execute();
+            assertEquals(String.format(MonthCommand.MESSAGE_SUCCESS, ""),
+                    commandResult.feedbackToUser);
+
+            ShowMonthRequestEvent lastEvent =
+                    (ShowMonthRequestEvent) eventsCollectorRule.eventsCollector.getMostRecent();
+            assertEquals(ParserUtil.parseYearMonth(""), lastEvent.targetYearMonth);
         } catch (IllegalValueException e) {
             throw new IllegalArgumentException("Execution of command should not fail.", e);
         }
@@ -250,7 +291,8 @@ public class WeekCommandTest {
 
     @Test
     public void execute_validWeek_success() {
-        assertExecutionSuccess("2018 18");
+        assertExecutionNonNullSuccess("2018 18");
+        assertExecutionNullSuccess();
     }
 
     @Test
@@ -287,19 +329,39 @@ public class WeekCommandTest {
 
     /**
      * Executes a {@code weekCommand} with the given {@code week}, and checks that {@code handleShowWeekRequestEvent}
-     * is raised with the correct date.
+     * is raised with the correct week.
      */
-    private void assertExecutionSuccess(String str) {
+    private void assertExecutionNonNullSuccess(String str) {
 
         try {
             WeekCommand weekCommand = prepareCommand(str);
             CommandResult commandResult = weekCommand.execute();
-            assertEquals(String.format(WeekCommand.MESSAGE_SUCCESS, str.substring(5) + " " + str.substring(0, 4)),
+            assertEquals(String.format(WeekCommand.MESSAGE_SUCCESS, str.substring(5) + " of " + str.substring(0, 4)),
                     commandResult.feedbackToUser);
 
             ShowWeekRequestEvent lastEvent = (ShowWeekRequestEvent) eventsCollectorRule.eventsCollector.getMostRecent();
             assertEquals(ParserUtil.parseWeek(str), lastEvent.targetWeek);
             assertEquals(ParserUtil.parseYearOfWeek(str), lastEvent.targetYear);
+        } catch (IllegalValueException e) {
+            throw new IllegalArgumentException("Execution of command should not fail.", e);
+        }
+    }
+
+    /**
+     * Executes a {@code weekCommand}, and checks that {@code handleShowWeekRequestEvent}
+     * is raised with the correct week view.
+     */
+    private void assertExecutionNullSuccess() {
+
+        try {
+            WeekCommand weekCommand = prepareCommand("");
+            CommandResult commandResult = weekCommand.execute();
+            assertEquals(String.format(WeekCommand.MESSAGE_SUCCESS, ""),
+                    commandResult.feedbackToUser);
+
+            ShowWeekRequestEvent lastEvent = (ShowWeekRequestEvent) eventsCollectorRule.eventsCollector.getMostRecent();
+            assertEquals(ParserUtil.parseWeek(""), lastEvent.targetWeek);
+            assertEquals(ParserUtil.parseYearOfWeek(""), lastEvent.targetYear);
         } catch (IllegalValueException e) {
             throw new IllegalArgumentException("Execution of command should not fail.", e);
         }
@@ -339,7 +401,8 @@ public class YearCommandTest {
 
     @Test
     public void execute_validYear_success() {
-        assertExecutionSuccess("2018");
+        assertExecutionNonNullSuccess("2018");
+        assertExecutionNullSuccess();
     }
 
     @Test
@@ -378,7 +441,7 @@ public class YearCommandTest {
      * Executes a {@code yearCommand} with the given {@code year}, and checks that {@code handleShowYearRequestEvent}
      * is raised with the correct month.
      */
-    private void assertExecutionSuccess(String year) {
+    private void assertExecutionNonNullSuccess(String year) {
 
         try {
             YearCommand yearCommand = prepareCommand(year);
@@ -388,6 +451,25 @@ public class YearCommandTest {
 
             ShowYearRequestEvent lastEvent = (ShowYearRequestEvent) eventsCollectorRule.eventsCollector.getMostRecent();
             assertEquals(ParserUtil.parseYear(year), lastEvent.targetYear);
+        } catch (IllegalValueException e) {
+            throw new IllegalArgumentException("Execution of command should not fail.", e);
+        }
+    }
+
+    /**
+     * Executes a {@code yearCommand}, and checks that {@code handleShowYearRequestEvent}
+     * is raised with the year view.
+     */
+    private void assertExecutionNullSuccess() {
+
+        try {
+            YearCommand yearCommand = prepareCommand("");
+            CommandResult commandResult = yearCommand.execute();
+            assertEquals(String.format(YearCommand.MESSAGE_SUCCESS, ""),
+                    commandResult.feedbackToUser);
+
+            ShowYearRequestEvent lastEvent = (ShowYearRequestEvent) eventsCollectorRule.eventsCollector.getMostRecent();
+            assertEquals(ParserUtil.parseYear(""), lastEvent.targetYear);
         } catch (IllegalValueException e) {
             throw new IllegalArgumentException("Execution of command should not fail.", e);
         }
@@ -415,6 +497,91 @@ public class YearCommandTest {
     private YearCommand prepareCommand(String year) throws IllegalValueException {
         YearCommand yearCommand = new YearCommand(ParserUtil.parseYear(year));
         return yearCommand;
+    }
+}
+```
+###### /java/seedu/address/logic/commands/DateTimeCommandTest.java
+``` java
+public class DateTimeCommandTest {
+
+    @Rule
+    public final EventsCollectorRule eventsCollectorRule = new EventsCollectorRule();
+
+    @Test
+    public void execute_validDateTime_success() {
+        assertExecutionSuccess("2018-02-27 12:00");
+    }
+
+    @Test
+    public void execute_invalidDateTime_failure() {
+        assertExecutionFailure("a", DateTimeCommand.MESSAGE_DATE_TIME_CONSTRAINTS);
+    }
+
+    @Test
+    public void equals() {
+        DateTimeCommand dateTimeFirstCommand = new DateTimeCommand(FIRST_DATE_TIME);
+        DateTimeCommand dateTimeSecondCommand = new DateTimeCommand(SECOND_DATE_TIME);
+
+        // same object -> returns true
+        assertTrue(dateTimeFirstCommand.equals(dateTimeFirstCommand));
+
+        // same values -> returns true
+        DateTimeCommand dateTimeFirstCommandCopy = new DateTimeCommand(FIRST_DATE_TIME);
+        assertTrue(dateTimeFirstCommand.equals(dateTimeFirstCommandCopy));
+
+        // different types -> returns false
+        assertFalse(dateTimeFirstCommand.equals(1));
+
+        // null -> returns false
+        assertFalse(dateTimeFirstCommand.equals(null));
+
+        // different date -> returns false
+        assertFalse(dateTimeFirstCommand.equals(dateTimeSecondCommand));
+    }
+
+    /**
+     * Executes a {@code dateTimeCommand} with the given {@code dateTime},
+     * and checks that {@code handleShowDateRequestEvent}
+     * is raised with the correct date.
+     */
+    private void assertExecutionSuccess(String dateTime) {
+
+        try {
+            DateTimeCommand dateTimeCommand = prepareCommand(dateTime);
+            CommandResult commandResult = dateTimeCommand.execute();
+            assertEquals(String.format(DateTimeCommand.MESSAGE_SUCCESS, dateTime),
+                    commandResult.feedbackToUser);
+
+            ShowDateTimeRequestEvent lastEvent =
+                    (ShowDateTimeRequestEvent) eventsCollectorRule.eventsCollector.getMostRecent();
+            assertEquals(ParserUtil.parseDateTime(dateTime), lastEvent.targetDateTime);
+        } catch (IllegalValueException e) {
+            throw new IllegalArgumentException("Execution of command should not fail.", e);
+        }
+    }
+
+    /**
+     * Executes a {@code DateTimeCommand} with the given {@code dateTime}, and checks that a {@code CommandException}
+     * is thrown with the {@code expectedMessage}.
+     */
+    private void assertExecutionFailure(String dateTime, String expectedMessage) {
+
+        try {
+            DateTimeCommand dateTimeCommand = prepareCommand(dateTime);
+            dateTimeCommand.execute();
+            fail("The expected CommandException was not thrown.");
+        } catch (IllegalValueException ce) {
+            assertEquals(expectedMessage, ce.getMessage());
+            assertTrue(eventsCollectorRule.eventsCollector.isEmpty());
+        }
+    }
+
+    /**
+     * Returns a {@code DateTimeCommand} with parameters {@code dateTime}.
+     */
+    private DateTimeCommand prepareCommand(String dateTime) throws IllegalValueException {
+        DateTimeCommand dateTimeCommand = new DateTimeCommand(ParserUtil.parseDateTime(dateTime));
+        return dateTimeCommand;
     }
 }
 ```
@@ -533,14 +700,19 @@ public class AddAppointmentCommandTest {
         }
 
         @Override
+        public void deleteJob(Job target) throws JobNotFoundException {
+            Assert.fail("This method should not be called.");
+        }
+
+        @Override
         public void updatePerson(Person target, Person editedPerson)
                 throws DuplicatePersonException {
             fail("This method should not be called.");
         }
 
         @Override
-        public void deleteTag(Tag t)
-                throws PersonNotFoundException, DuplicatePersonException, UniqueTagList.DuplicateTagException {
+        public void deleteSkill(Skill t)
+                throws PersonNotFoundException, DuplicatePersonException, UniqueSkillList.DuplicateSkillException {
             fail("This method should not be called.");
         }
         @Override
@@ -558,6 +730,12 @@ public class AddAppointmentCommandTest {
         public AccountsManager getAccountsManager() {
             fail("This method should not be called.");
             return null;
+        }
+
+        @Override
+        public void updateJob(Job target, Job editedJob)
+                throws DuplicateJobException {
+            Assert.fail("This method should not be called.");
         }
 
         @Override
@@ -1023,6 +1201,8 @@ public class DateCommandParserTest {
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DateCommand.MESSAGE_USAGE));
         assertParseFailure(parser, "01-04-2018",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DateCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "2018-29-02",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DateCommand.MESSAGE_USAGE));
     }
 }
 ```
@@ -1125,6 +1305,31 @@ public class DeleteAppointmentParserTest {
     }
 }
 ```
+###### /java/seedu/address/logic/parser/DateTimeCommandParserTest.java
+``` java
+public class DateTimeCommandParserTest {
+
+    private DateTimeCommandParser parser = new DateTimeCommandParser();
+
+    @Test
+    public void parse_validArgs_returnsDateTimeCommand() throws IllegalValueException {
+        assertParseSuccess(parser, "2018-04-01 12:00",
+                new DateTimeCommand(ParserUtil.parseDateTime("2018-04-01 12:00")));
+    }
+
+    @Test
+    public void parse_invalidArgs_throwsParseException() {
+        assertParseFailure(parser, "2018-04-1",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DateTimeCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "01-04-2018",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DateTimeCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DateTimeCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "2018-29-02 12:00",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DateTimeCommand.MESSAGE_USAGE));
+    }
+}
+```
 ###### /java/seedu/address/logic/parser/AddressBookParserTest.java
 ``` java
     @Test
@@ -1201,6 +1406,12 @@ public class ProfilePictureTest {
     }
 
     @Test
+    public void constructor_nonExistProfilePicture_throwsIllegalArgumentException() {
+        String invalidProfilePicture = "/abc.jpg";
+        Assert.assertThrows(IllegalArgumentException.class, () -> new ProfilePicture(invalidProfilePicture));
+    }
+
+    @Test
     public void isValidProfilePicture() {
 
         String temp;
@@ -1246,7 +1457,7 @@ public class EndDateTimeTest {
         assertFalse(EndDateTime.isValidEndDateTime("2018-23-09")); // missing time
 
         // valid endDateTime
-        assertTrue(EndDateTime.isValidEndDateTime("2018-26-03 12:00"));
+        assertTrue(EndDateTime.isValidEndDateTime("2018-03-26 12:00"));
     }
 }
 ```
@@ -1277,7 +1488,7 @@ public class StartDateTimeTest {
         assertFalse(StartDateTime.isValidStartDateTime("2018-23-09")); // missing time
 
         // valid startDateTime
-        assertTrue(StartDateTime.isValidStartDateTime("2018-26-03 12:00"));
+        assertTrue(StartDateTime.isValidStartDateTime("2018-03-26 12:00"));
     }
 }
 ```
@@ -1310,6 +1521,19 @@ public class TitleTest {
         assertTrue(Title.isValidTitle("meeting the 2nd")); // alphanumeric characters
         assertTrue(Title.isValidTitle("Meeting")); // with capital letters
         assertTrue(Title.isValidTitle("Meeting with Christiano Ronaldo")); // long titles
+    }
+}
+```
+###### /java/seedu/address/model/appointment/AppointmentTest.java
+``` java
+public class AppointmentTest {
+
+    @Test
+    public void constructor_invalidAppointment_throwsIllegalArgumentException() {
+        Title validTitle = new Title("Meeting");
+        StartDateTime largerSdt = new StartDateTime("2018-03-26 13:00");
+        EndDateTime smallerEdt = new EndDateTime("2018-03-26 12:30"); // edt < sdt
+        Assert.assertThrows(IllegalArgumentException.class, () -> new Appointment(validTitle, largerSdt, smallerEdt));
     }
 }
 ```

@@ -9,10 +9,10 @@ public class WeekCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": View week. "
             + "Parameters: YEAR WEEK (optional, but must be in format YYYY WW if have)\n"
-            + "Example: " + COMMAND_WORD + " 2018";
+            + "Example: " + COMMAND_WORD + " 2018 10";
 
     public static final String MESSAGE_SUCCESS = "View week: %1$s";
-    public static final String WEEK_VALIDATION_REGEX = "^$|^\\d{4}\\s\\d{2}";
+    public static final String WEEK_VALIDATION_REGEX = "^$|^[1-3][0-9][0-9][0-9]\\s([1-4][0-9]|0[1-9]|5[0-2])";
     public static final String MESSAGE_WEEK_CONSTRAINTS = "Week needs to be null or in format YYYY DD";
 
     private final Year year;
@@ -29,7 +29,11 @@ public class WeekCommand extends Command {
     @Override
     public CommandResult execute() {
         EventsCenter.getInstance().post(new ShowWeekRequestEvent(year, week));
-        return new CommandResult(String.format(MESSAGE_SUCCESS, week + " " + year));
+        if (year != null) {
+            return new CommandResult(String.format(MESSAGE_SUCCESS, week + " of " + year));
+        } else {
+            return new CommandResult(String.format(MESSAGE_SUCCESS, ""));
+        }
     }
 
     @Override
@@ -63,6 +67,52 @@ public class CalendarCommand extends Command {
 
 }
 ```
+###### /java/seedu/address/logic/commands/appointment/DateTimeCommand.java
+``` java
+/**
+ * Change view of calendar to specific dateTime.
+ */
+public class DateTimeCommand extends Command {
+    public static final String COMMAND_WORD = "datetime";
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": View date time. "
+            + "Parameters: DATE_TIME (but must be a valid date time in format YYYY-MM-DD HH:mm)\n"
+            + "Example: " + COMMAND_WORD + " 2018-03-26 12:00";
+
+    public static final String MESSAGE_SUCCESS = "View datetime: %1$s";
+    public static final String DATE_TIME_VALIDATION_REGEX =
+            "^[1-3][0-9][0-9][0-9]-(1[0-2]|0[1-9])-(0[1-9]|[1-2][0-9]|3[0-1])\\s([0-1][0-9]|2[0-3]):([0-5][0-9])";
+    public static final String MESSAGE_DATE_TIME_CONSTRAINTS = "Date Time needs to be valid date time"
+            + " in format YYYY-MM-DD HH:mm";
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private final LocalDateTime dateTime;
+
+    /**
+     * Creates an DateTimeCommand to view the specified {@code DateTime} or current if null
+     * @param dateTime
+     */
+    public DateTimeCommand(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    @Override
+    public CommandResult execute() {
+        EventsCenter.getInstance().post(new ShowDateTimeRequestEvent(dateTime));
+
+        return new CommandResult(String.format(MESSAGE_SUCCESS, dateTime.format(formatter)));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof DateTimeCommand // instanceof handles nulls
+                && ((dateTime == null && ((DateTimeCommand) other).dateTime == null)
+                || (dateTime != null
+                && ((DateTimeCommand) other).dateTime != null && dateTime.equals(((DateTimeCommand) other).dateTime))));
+
+    }
+}
+```
 ###### /java/seedu/address/logic/commands/appointment/AddAppointmentCommand.java
 ``` java
 /**
@@ -79,8 +129,8 @@ public class AddAppointmentCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment to calendar. "
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
-            + PREFIX_START_DATE_TIME + "START DATE TIME "
-            + PREFIX_END_DATE_TIME + "END DATE TIME "
+            + PREFIX_START_DATE_TIME + "START_DATE_TIME "
+            + PREFIX_END_DATE_TIME + "END_DATE_TIME "
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TITLE + "Birthday "
             + PREFIX_START_DATE_TIME + "2018-03-26 12:00 "
@@ -88,6 +138,7 @@ public class AddAppointmentCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New appointment added: %1$s";
     public static final String MESSAGE_DUPLICATE_APPOINTMENT = "This appointment already exists in the calendar";
+    public static final String MESSAGE_DATE_TIME_CONSTRAINTS = "Start date time must be before end date time";
 
     private final Appointment toAdd;
 
@@ -128,12 +179,13 @@ public class DateCommand extends Command {
     public static final String COMMAND_WORD = "date";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": View date. "
-            + "Parameters: DATE (optional, but must be in format YYYY-MM-DD if have)\n"
+            + "Parameters: DATE (optional, but must be a valid date in format YYYY-MM-DD if have)\n"
             + "Example: " + COMMAND_WORD + " 2018-03-26";
 
     public static final String MESSAGE_SUCCESS = "View date: %1$s";
-    public static final String DATE_VALIDATION_REGEX = "^$|^\\d{4}-\\d{2}-\\d{2}";
-    public static final String MESSAGE_DATE_CONSTRAINTS = "Date needs to be null or in format YYYY-MM-DD";
+    public static final String DATE_VALIDATION_REGEX =
+            "^$|^[1-3][0-9][0-9][0-9]-(1[0-2]|0[1-9])-(0[1-9]|[1-2][0-9]|3[0-1])";
+    public static final String MESSAGE_DATE_CONSTRAINTS = "Date needs to be null or a valid date in format YYYY-MM-DD";
 
     private final LocalDate date;
 
@@ -148,7 +200,11 @@ public class DateCommand extends Command {
     public CommandResult execute() {
         EventsCenter.getInstance().post(new ShowDateRequestEvent(date));
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, date));
+        if (date != null) {
+            return new CommandResult(String.format(MESSAGE_SUCCESS, date));
+        } else {
+            return new CommandResult(String.format(MESSAGE_SUCCESS, ""));
+        }
     }
 
     @Override
@@ -174,7 +230,7 @@ public class YearCommand extends Command {
             + "Example: " + COMMAND_WORD + " 2018";
 
     public static final String MESSAGE_SUCCESS = "View year: %1$s";
-    public static final String YEAR_VALIDATION_REGEX = "^$|^\\d{4}";
+    public static final String YEAR_VALIDATION_REGEX = "^$|^[1-3][0-9][0-9][0-9]";
     public static final String MESSAGE_YEAR_CONSTRAINTS = "Year needs to be null or in format YYYY";
 
     private final Year year;
@@ -189,8 +245,11 @@ public class YearCommand extends Command {
     @Override
     public CommandResult execute() {
         EventsCenter.getInstance().post(new ShowYearRequestEvent(year));
-
-        return new CommandResult(String.format(MESSAGE_SUCCESS, year));
+        if (year != null) {
+            return new CommandResult(String.format(MESSAGE_SUCCESS, year));
+        } else {
+            return new CommandResult(String.format(MESSAGE_SUCCESS, ""));
+        }
     }
 
     @Override
@@ -272,7 +331,7 @@ public class MonthCommand extends Command {
             + "Example: " + COMMAND_WORD + " 2018-03";
 
     public static final String MESSAGE_SUCCESS = "View month: %1$s";
-    public static final String YEAR_MONTH_VALIDATION_REGEX = "^$|^\\d{4}-\\d{2}";
+    public static final String YEAR_MONTH_VALIDATION_REGEX = "^$|^[1-3][0-9][0-9][0-9]-(1[0-2]|0[1-9])";
     public static final String MESSAGE_YEAR_MONTH_CONSTRAINTS = "Month needs to be null or in format YYYY-MM";
 
     private final YearMonth yearMonth;
@@ -288,7 +347,11 @@ public class MonthCommand extends Command {
     public CommandResult execute() {
         EventsCenter.getInstance().post(new ShowMonthRequestEvent(yearMonth));
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, yearMonth));
+        if (yearMonth != null) {
+            return new CommandResult(String.format(MESSAGE_SUCCESS, yearMonth));
+        } else {
+            return new CommandResult(String.format(MESSAGE_SUCCESS, ""));
+        }
     }
 
     @Override
@@ -304,17 +367,72 @@ public class MonthCommand extends Command {
 ###### /java/seedu/address/logic/parser/ParserUtil.java
 ``` java
     /**
-     * Parses a {@code Optional<String> numberOfPositions} into an {@code Optional<String>}
-     * if {@code numberOfPositions} is present.
-     * See header comment of this class regarding the use of {@code Optional} parameters.
+     * Parses a {@code String startDateTime} into a {@code StartDateTime}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws IllegalValueException if the given {@code startDateTime} is invalid.
      */
-    public static Optional<NumberOfPositions> parseNumberOfPositions(Optional<String> numberOfPositions)
-            throws IllegalValueException {
-        requireNonNull(numberOfPositions);
-        return numberOfPositions.isPresent() ? Optional.of(parseNumberOfPositions(numberOfPositions.get()))
-                : Optional.empty();
+    public static StartDateTime parseStartDateTime(String startDateTime) throws IllegalValueException {
+        requireNonNull(startDateTime);
+        String trimmedStartDateTime = startDateTime.trim();
+        if (!StartDateTime.isValidStartDateTime(trimmedStartDateTime)) {
+            throw new IllegalValueException(StartDateTime.MESSAGE_START_DATE_TIME_CONSTRAINTS);
+        } else {
+            int year = Integer.parseInt(trimmedStartDateTime.substring(0, 4));
+            int month = Integer.parseInt(trimmedStartDateTime.substring(5, 7));
+            int date = Integer.parseInt(trimmedStartDateTime.substring(8, 10));
+            if (!checkValidDate(year, month, date)) {
+                throw new IllegalValueException(MESSAGE_DATE_TIME_CONSTRAINTS);
+            }
+        }
+        return new StartDateTime(trimmedStartDateTime);
     }
 
+    /**
+     * Parses a {@code Optional<String> startDateTime} into an {@code Optional<StartDateTime>}
+     * if {@code startDateTime} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<StartDateTime> parseStartDateTime(Optional<String> startDateTime)
+            throws IllegalValueException {
+        requireNonNull(startDateTime);
+        return startDateTime.isPresent() ? Optional.of(parseStartDateTime(startDateTime.get())) : Optional.empty();
+    }
+
+    /**
+     * Parses a {@code String endDateTime} into a {@code EndDateTime}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws IllegalValueException if the given {@code endDateTime} is invalid.
+     */
+    public static EndDateTime parseEndDateTime(String endDateTime) throws IllegalValueException {
+        requireNonNull(endDateTime);
+        String trimmedEndDateTime = endDateTime.trim();
+        if (!EndDateTime.isValidEndDateTime(trimmedEndDateTime)) {
+            throw new IllegalValueException(EndDateTime.MESSAGE_END_DATE_TIME_CONSTRAINTS);
+        } else {
+            int year = Integer.parseInt(trimmedEndDateTime.substring(0, 4));
+            int month = Integer.parseInt(trimmedEndDateTime.substring(5, 7));
+            int date = Integer.parseInt(trimmedEndDateTime.substring(8, 10));
+            if (!checkValidDate(year, month, date)) {
+                throw new IllegalValueException(MESSAGE_DATE_TIME_CONSTRAINTS);
+            }
+        }
+        return new EndDateTime(trimmedEndDateTime);
+    }
+
+    /**
+     * Parses a {@code Optional<String> endDateTime} into an {@code Optional<EndDateTime>} if {@code name} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<EndDateTime> parseEndDateTime(Optional<String> endDateTime) throws IllegalValueException {
+        requireNonNull(endDateTime);
+        return endDateTime.isPresent() ? Optional.of(parseEndDateTime(endDateTime.get())) : Optional.empty();
+    }
+
+```
+###### /java/seedu/address/logic/parser/ParserUtil.java
+``` java
     /**
      * Parses a {@code String yearMonth} into a {@code yearMonth}.
      * Leading and trailing whitespaces will be trimmed.
@@ -347,7 +465,33 @@ public class MonthCommand extends Command {
         if (trimmedDate.length() == 0) {
             return null;
         } else {
+
             return LocalDate.parse(trimmedDate);
+        }
+    }
+
+    /**
+     * Parses a {@code String dateTime} into a {@code dateTime}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws IllegalValueException if the given {@code dateTime} is invalid.
+     */
+    public static LocalDateTime parseDateTime(String dateTime) throws IllegalValueException {
+        String trimmedDateTime = dateTime.trim();
+        if (!trimmedDateTime.matches(DATE_TIME_VALIDATION_REGEX)) {
+            throw new IllegalValueException(MESSAGE_DATE_TIME_CONSTRAINTS);
+        }
+        if (trimmedDateTime.length() == 0) {
+            return null;
+        } else {
+            int year = Integer.parseInt(trimmedDateTime.substring(0, 4));
+            int month = Integer.parseInt(trimmedDateTime.substring(5, 7));
+            int date = Integer.parseInt(trimmedDateTime.substring(8, 10));
+            if (!checkValidDate(year, month, date)) {
+                throw new IllegalValueException(MESSAGE_DATE_TIME_CONSTRAINTS);
+            }
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+            return LocalDateTime.parse(trimmedDateTime, formatter);
         }
     }
 
@@ -404,6 +548,38 @@ public class MonthCommand extends Command {
             return Integer.parseInt(trimmedArgs.substring(5));
         }
     }
+
+    /**
+     * Check valid date
+     */
+    private static boolean checkValidDate(int year, int month, int day) {
+        switch (month) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            return day < 32;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            return day < 31;
+        case 2:
+            int modulo100 = year % 100;
+            if ((modulo100 == 0 && year % 400 == 0) || (modulo100 != 0 && year % 4 == 0)) {
+                //its a leap year
+                return day < 30;
+            } else {
+                return day < 29;
+            }
+        default:
+            break;
+        }
+        return true;
+    }
 }
 ```
 ###### /java/seedu/address/logic/parser/appointment/AddAppointmentCommandParser.java
@@ -436,7 +612,7 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
             Appointment appointment = new Appointment(title, startDateTime, endDateTime);
 
             return new AddAppointmentCommand(appointment);
-        } catch (IllegalValueException ive) {
+        } catch (IllegalValueException | IllegalArgumentException ive) {
             throw new ParseException(ive.getMessage(), ive);
         }
     }
@@ -519,6 +695,29 @@ public class DeleteAppointmentCommandParser implements Parser<DeleteAppointmentC
     }
 }
 ```
+###### /java/seedu/address/logic/parser/appointment/DateTimeCommandParser.java
+``` java
+/**
+ * Parses input arguments and creates a new DateCommand object
+ */
+public class DateTimeCommandParser implements Parser<DateTimeCommand> {
+
+    /**
+     * Parses the given {@code String} of arguments in the context of the DateTimeCommand
+     * and returns an DateTimeCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public DateTimeCommand parse(String args) throws ParseException {
+        try {
+            LocalDateTime date = ParserUtil.parseDateTime(args);
+            return new DateTimeCommand(date);
+        } catch (IllegalValueException ive) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DateTimeCommand.MESSAGE_USAGE));
+        }
+    }
+}
+```
 ###### /java/seedu/address/logic/parser/appointment/WeekCommandParser.java
 ``` java
 /**
@@ -598,12 +797,13 @@ public class DateCommandParser implements Parser<DateCommand> {
 public class ProfilePicture {
     public static final String MESSAGE_PROFILEPICTURE_CONSTRAINTS =
             "Profile picture name should be a valid image name,"
-                    + " and it should end with either jpeg, jpg, png, gif or bmp";
+                    + " and it should end with either jpeg, jpg, png, gif or bmp. "
+                    + " If no string is given after 'pp/', profile picture will be set to default profile picture.";
     public static final String MESSAGE_PROFILEPICTURE_NOT_EXISTS =
             "Profile picture does not exist. Please give another profile picture";
 
     // alphanumeric and special characters
-    public static final String PROFILE_PICTURE_VALIDATION_REGEX = "^$|([^\\s]+(\\.(?i)(jpeg|jpg|png|gif|bmp))$)";
+    public static final String PROFILE_PICTURE_VALIDATION_REGEX = "^$|(.+(\\.(?i)(jpeg|jpg|png|gif|bmp))$)";
     public static final String PROFILE_PICTURE_FOLDER =
             "./ProfilePictures/";
 
@@ -616,7 +816,7 @@ public class ProfilePicture {
      * @param profilePicture A valid image path.
      */
     public ProfilePicture(String... profilePicture) {
-        if (profilePicture.length != 0 && profilePicture[0] != null) {
+        if (profilePicture.length != 0 && profilePicture[0] != null && profilePicture[0].length() != 0) {
             checkArgument(isValidProfilePicture(profilePicture[0]), MESSAGE_PROFILEPICTURE_CONSTRAINTS);
             checkArgument(hasValidProfilePicture(profilePicture[0]), MESSAGE_PROFILEPICTURE_NOT_EXISTS);
             if (profilePicture[0].length() > 37
@@ -646,7 +846,7 @@ public class ProfilePicture {
      */
     public static boolean hasValidProfilePicture(String profilePicture) {
         File file = new File(profilePicture);
-        return file.exists() && !file.isDirectory();
+        return (file.exists() && !file.isDirectory()) || profilePicture.length() == 0;
     }
 
     public Image getImage() {
@@ -732,6 +932,23 @@ public class ProfilePicture {
         indicateAddressBookChanged();
     }
 
+    //=========== Filtered Person List Accessors =============================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * {@code addressBook}
+     */
+    @Override
+    public ObservableList<Person> getFilteredPersonList() {
+        return FXCollections.unmodifiableObservableList(filteredPersons);
+    }
+
+    @Override
+    public void updateFilteredPersonList(Predicate<Person> predicate) {
+        requireNonNull(predicate);
+        filteredPersons.setPredicate(predicate);
+    }
+
 ```
 ###### /java/seedu/address/model/AddressBook.java
 ``` java
@@ -787,6 +1004,26 @@ public class ProfilePicture {
         // This can cause the skills master list to have additional skills that are not tagged to any person
         // in the person list.
         jobs.add(job);
+    }
+
+    /**
+     * Replaces the given job {@code target} with {@code editedJob}.
+     *
+     * @throws DuplicateJobException if updating the person's details causes the job to be equivalent to
+     *      another existing job in the list.
+     * @throws JobNotFoundException if {@code target} could not be found in the list.
+     *
+     * @see #syncJobWithMasterSkillList(Job)
+     */
+    void updateJob(Job target, Job editedJob)
+            throws DuplicateJobException, JobNotFoundException {
+        requireNonNull(editedJob);
+
+        Job syncedEditedJob = syncJobWithMasterSkillList(editedJob);
+        // TODO: the skills master list will be updated even though the below line fails.
+        // This can cause the skills master list to have additional skills that are not tagged to any person
+        // in the person list.
+        jobs.setJob(target, syncedEditedJob);
     }
 
     /**
@@ -856,7 +1093,7 @@ public class ProfilePicture {
                 && this.persons.equals(((AddressBook) other).persons)
                 && this.skills.equalsOrderInsensitive(((AddressBook) other).skills)
                 && this.appointments.equals(((AddressBook) other).appointments)
-                && this.jobs.equals(((AddressBook) other).jobs);
+                && this.jobs.equals(((AddressBook) other).jobs));
     }
 
     @Override
@@ -893,13 +1130,14 @@ public class DuplicateAppointmentException extends DuplicateDataException {
  */
 public class StartDateTime {
     public static final String MESSAGE_START_DATE_TIME_CONSTRAINTS =
-            "Start date time should be a valid local date time";
+            "Start date time should be a valid local date time in format YYYY-MM-DD HH:mm";
 
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String START_DATE_TIME_VALIDATION_REGEX = "^\\d{4}-\\d{2}-\\d{2}[ ]\\d{2}:\\d{2}$";
+    public static final String START_DATE_TIME_VALIDATION_REGEX =
+            "^[1-3][0-9][0-9][0-9]-(1[0-2]|0[1-9])-(0[1-9]|[1-2][0-9]|3[0-1])\\s([0-1][0-9]|2[0-3]):([0-5][0-9])$";
 
     public final String startDateTime;
 
@@ -948,13 +1186,15 @@ public class StartDateTime {
  * Guarantees: is valid as declared in {@link #isValidEndDateTime(String)} }
  */
 public class EndDateTime {
-    public static final String MESSAGE_END_DATE_TIME_CONSTRAINTS = "Start date time should be a valid local date time";
+    public static final String MESSAGE_END_DATE_TIME_CONSTRAINTS =
+            "Start date time should be a valid local date time in format YYYY-MM-DD HH:mm";
 
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String END_DATE_TIME_VALIDATION_REGEX = "^\\d{4}-\\d{2}-\\d{2}[ ]\\d{2}:\\d{2}$";
+    public static final String END_DATE_TIME_VALIDATION_REGEX =
+            "^[1-3][0-9][0-9][0-9]-(1[0-2]|0[1-9])-(0[1-9]|[1-2][0-9]|3[0-1])\\s([0-1][0-9]|2[0-3]):([0-5][0-9])$";
 
     public final String endDateTime;
 
@@ -1115,6 +1355,8 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
  */
 public class Appointment {
 
+    public static final String MESSAGE_APPOINTMENT_CONSTRAINTS = "Start date time must be before end date time.";
+
     private final Title title;
     private final StartDateTime startDateTime;
     private final EndDateTime endDateTime;
@@ -1124,6 +1366,11 @@ public class Appointment {
      */
     public Appointment(Title title, StartDateTime startDateTime, EndDateTime endDateTime) {
         requireAllNonNull(title, startDateTime, endDateTime);
+        try {
+            checkArgument(isSdtLessThanEdt(startDateTime, endDateTime), MESSAGE_APPOINTMENT_CONSTRAINTS);
+        } catch (IllegalValueException e) {
+            throw new IllegalArgumentException("Invalid date time");
+        }
         this.title = title;
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
@@ -1139,6 +1386,16 @@ public class Appointment {
 
     public EndDateTime getEndDateTime() {
         return endDateTime;
+    }
+
+    /**
+     * Check whethere the appointment has sdt < edt
+     */
+    private boolean isSdtLessThanEdt(StartDateTime startDateTime, EndDateTime endDateTime)
+            throws IllegalValueException {
+        LocalDateTime edt = ParserUtil.parseDateTime(endDateTime.endDateTime);
+        LocalDateTime sdt = ParserUtil.parseDateTime(startDateTime.startDateTime);
+        return edt.isAfter(sdt);
     }
 
     @Override
@@ -1304,6 +1561,24 @@ public class ShowMonthRequestEvent extends BaseEvent {
     }
 }
 ```
+###### /java/seedu/address/commons/events/ui/ShowDateTimeRequestEvent.java
+``` java
+/**
+ * An event requesting to display the given date and time.
+ */
+public class ShowDateTimeRequestEvent extends BaseEvent {
+    public final LocalDateTime targetDateTime;
+
+    public ShowDateTimeRequestEvent(LocalDateTime dateTime) {
+        this.targetDateTime = dateTime;
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
+    }
+}
+```
 ###### /java/seedu/address/commons/events/ui/ReloadCalendarEvent.java
 ``` java
 /**
@@ -1331,12 +1606,31 @@ public class ReloadCalendarEvent extends BaseEvent {
 public class TypicalCalendar {
     public static final LocalDate FIRST_DATE =  LocalDate.parse("2018-01-04");
     public static final LocalDate SECOND_DATE =  LocalDate.parse("2018-03-08");
+    public static final LocalDateTime FIRST_DATE_TIME = parseDateTime("2018-01-04 12:00");
+    public static final LocalDateTime SECOND_DATE_TIME = parseDateTime("2018-03-08 08:00");
+
     public static final Year FIRST_YEAR = Year.parse("2017");
     public static final Year SECOND_YEAR = Year.parse("2018");
     public static final int FIRST_WEEK = Integer.parseInt("05");
     public static final int SECOND_WEEK = Integer.parseInt("30");
     public static final YearMonth FIRST_YEAR_MONTH = YearMonth.parse("2018-03");
     public static final YearMonth SECOND_YEAR_MONTH = YearMonth.parse("2018-04");
+
+    /**
+     *
+     * @param dateTime in YY-MM-DD HH-mm
+     * @return LocalDateTime
+     */
+    private static LocalDateTime parseDateTime(String dateTime) {
+        LocalDateTime result = null;
+        try {
+            result =  ParserUtil.parseDateTime(dateTime);
+        } catch (IllegalValueException e) {
+            e.printStackTrace();
+        } finally {
+            return result;
+        }
+    }
 }
 ```
 ###### /java/seedu/address/storage/XmlAdaptedAppointment.java
@@ -1464,7 +1758,6 @@ public class CalendarPanel extends UiPart<Region> {
 
     public CalendarPanel(List<Appointment> appointmentsList) {
         super(FXML);
-        System.out.println(appointmentsList.size());
         calendar.setStyle(Calendar.Style.STYLE1);
         addAppointments(appointmentsList);
         source.getCalendars().add(calendar);
@@ -1482,7 +1775,6 @@ public class CalendarPanel extends UiPart<Region> {
         for (Appointment appointment: appointments) {
             Entry entry = new Entry();
             entry.setCalendar(calendar);
-            System.out.println(appointment.getTitle().title);
             LocalDateTime start = LocalDateTime.parse(appointment.getStartDateTime().startDateTime, formatter);
             LocalDateTime end = LocalDateTime.parse(appointment.getEndDateTime().endDateTime, formatter);
             entry.setInterval(start, end);
@@ -1497,6 +1789,16 @@ public class CalendarPanel extends UiPart<Region> {
     public void setUpCalendarView() {
         calendarView.getCalendarSources().addAll(source);
         calendarView.setRequestedTime(LocalTime.now());
+        calendarView.setShowAddCalendarButton(false);
+        calendarView.setShowPrintButton(false);
+        calendarView.setShowSourceTrayButton(false);
+        calendarView.setShowPageToolBarControls(false);
+        calendarView.setTransitionsEnabled(false);
+        calendarView.setShowPageSwitcher(false);
+        calendarView.setShowSearchField(false);
+        calendarView.setShowToolBar(false);
+        calendarView.setShowSourceTray(false);
+        calendarView.showMonthPage();
     }
 
     /**
@@ -1534,6 +1836,12 @@ public class CalendarPanel extends UiPart<Region> {
         } else {
             calendarView.showDate(event.targetDate);
         }
+    }
+
+    @Subscribe
+    private void handleShowDateTimeRequestEvent(ShowDateTimeRequestEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        calendarView.showDateTime(event.targetDateTime);
     }
 
     @Subscribe
@@ -1578,7 +1886,7 @@ public class CalendarPanel extends UiPart<Region> {
 ```
 ###### /resources/view/CalendarPanel.fxml
 ``` fxml
-<StackPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9">
+<StackPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" mouseTransparent="true">
     <CalendarView fx:id="calendarView" />
 </StackPane>
 ```

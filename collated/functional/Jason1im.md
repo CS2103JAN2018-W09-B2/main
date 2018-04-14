@@ -487,6 +487,10 @@ public class AccountsManager implements ReadOnlyAccountsManager {
         accountsManager.register(username, password);
     }
 
+    private void setUser(Account account) {
+        user = user.ofNullable(account);
+    }
+
 ```
 ###### /java/seedu/address/model/Model.java
 ``` java

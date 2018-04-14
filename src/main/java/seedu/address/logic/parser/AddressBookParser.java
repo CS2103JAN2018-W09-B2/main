@@ -17,8 +17,8 @@ import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.LoginCommand;
 import seedu.address.logic.commands.LogoutCommand;
 import seedu.address.logic.commands.RedoCommand;
-import seedu.address.logic.commands.SignupCommand;
 import seedu.address.logic.commands.UndoCommand;
+import seedu.address.logic.commands.UpdatePasswordCommand;
 import seedu.address.logic.commands.appointment.AddAppointmentCommand;
 import seedu.address.logic.commands.appointment.CalendarCommand;
 import seedu.address.logic.commands.appointment.DateCommand;
@@ -29,6 +29,7 @@ import seedu.address.logic.commands.appointment.WeekCommand;
 import seedu.address.logic.commands.appointment.YearCommand;
 import seedu.address.logic.commands.job.JobAddCommand;
 import seedu.address.logic.commands.job.JobDeleteCommand;
+import seedu.address.logic.commands.job.JobEditCommand;
 import seedu.address.logic.commands.job.JobFindCommand;
 import seedu.address.logic.commands.job.JobListCommand;
 import seedu.address.logic.commands.job.JobMatchCommand;
@@ -49,6 +50,7 @@ import seedu.address.logic.parser.appointment.YearCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.job.JobAddCommandParser;
 import seedu.address.logic.parser.job.JobDeleteCommandParser;
+import seedu.address.logic.parser.job.JobEditCommandParser;
 import seedu.address.logic.parser.job.JobFindCommandParser;
 import seedu.address.logic.parser.job.JobMatchCommandParser;
 import seedu.address.logic.parser.person.AddCommandParser;
@@ -116,6 +118,9 @@ public class AddressBookParser {
         case LogoutCommand.COMMAND_WORD:
             return new LogoutCommand();
 
+        case UpdatePasswordCommand.COMMAND_WORD:
+            return new UpdatePasswordCommandParser().parse(arguments);
+
         case HistoryCommand.COMMAND_WORD:
             return new HistoryCommand();
 
@@ -140,9 +145,6 @@ public class AddressBookParser {
         case GoogleLoginCommand.COMMAND_WORD:
             return new GoogleLoginCommand();
 
-        case SignupCommand.COMMAND_WORD:
-            return new SignupCommandParser().parse(arguments);
-
         case CalendarCommand.COMMAND_WORD:
             return new CalendarCommand();
 
@@ -152,14 +154,17 @@ public class AddressBookParser {
         case JobMatchCommand.COMMAND_WORD:
             return new JobMatchCommandParser().parse(arguments);
 
+        case JobEditCommand.COMMAND_WORD:
+            return new JobEditCommandParser().parse(arguments);
+
         case JobDeleteCommand.COMMAND_WORD:
             return new JobDeleteCommandParser().parse(arguments);
 
-        case JobListCommand.COMMAND_WORD:
-            return new JobListCommand();
-
         case JobFindCommand.COMMAND_WORD:
             return new JobFindCommandParser().parse(arguments);
+
+        case JobListCommand.COMMAND_WORD:
+            return new JobListCommand();
 
         case AddAppointmentCommand.COMMAND_WORD:
             return new AddAppointmentCommandParser().parse(arguments);

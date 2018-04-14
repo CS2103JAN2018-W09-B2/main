@@ -23,18 +23,13 @@ public class LoginCommandTest {
     public ExpectedException thrown = ExpectedException.none();
 
     private Model model;
-    private String username = "John";
-    private String password = "123";
-
+    private String username = "Admin";
+    private String password = "ad123";
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-        SignupCommand command = new SignupCommand(username, password);
-        command.setData(model, new CommandHistory(), new UndoRedoStack());
-        command.execute();
     }
-
 
     @Test
     public void constructor_nullValues_throwsNullPointerException() {

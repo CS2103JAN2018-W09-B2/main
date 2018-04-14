@@ -7,7 +7,6 @@ import javafx.collections.ObservableList;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.appointment.exceptions.AppointmentNotFoundException;
 import seedu.address.model.appointment.exceptions.DuplicateAppointmentException;
-import seedu.address.model.exception.DuplicateUsernameException;
 import seedu.address.model.exception.InvalidPasswordException;
 import seedu.address.model.exception.InvalidUsernameException;
 import seedu.address.model.exception.MultipleLoginException;
@@ -48,6 +47,16 @@ public interface Model {
     void addPerson(Person person) throws DuplicatePersonException;
 
     /**
+     * Replaces the given job {@code target} with {@code editedJob}.
+     *
+     * @throws DuplicateJobException if updating the person's details causes the job to be equivalent to
+     *      another existing job in the list.
+     * @throws JobNotFoundException if {@code target} could not be found in the list.
+     */
+    void updateJob(Job target, Job editedJob)
+            throws DuplicateJobException, JobNotFoundException;
+
+    /**
      * Replaces the given person {@code target} with {@code editedPerson}.
      *
      * @throws DuplicatePersonException if updating the person's details causes the person to be equivalent to
@@ -72,11 +81,6 @@ public interface Model {
 
     //@@author Jason1im
     /**
-     * Returns AccountsManager.
-     */
-    ReadOnlyAccountsManager getAccountsManager();
-
-    /**
      * Logs the user into contactHeRo.
      * @throws InvalidUsernameException if username is invalid.
      * @throws InvalidPasswordException if the password is invalid.
@@ -92,10 +96,25 @@ public interface Model {
     void logout() throws UserLogoutException;
 
     /**
-     * Register a new account for user.
-     * @throws DuplicateUsernameException if {@param username} is already in used.
+     * Changes the password of the user account
+     * @param oldPassword
+     * @param newPassword
+     * @throws InvalidPasswordException if password_1 is invalid.
      */
-    void register(String username, String password) throws DuplicateUsernameException;
+    void updatePassword(String oldPassword, String newPassword)
+            throws InvalidPasswordException;
+
+    /**
+     * Changes the username of the user account.
+     * @throws InvalidUsernameException
+     */
+    void updateUsername(String oldUsername) throws InvalidUsernameException;
+
+    /**
+     * Checks if the user has logged in.
+     * @return true if user is logged in.
+     */
+    boolean isLoggedIn();
 
     //@@author
     /** Adds the given person */

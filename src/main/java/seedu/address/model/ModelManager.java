@@ -19,7 +19,6 @@ import seedu.address.commons.events.ui.ReloadCalendarEvent;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.appointment.exceptions.AppointmentNotFoundException;
 import seedu.address.model.appointment.exceptions.DuplicateAppointmentException;
-import seedu.address.model.exception.DuplicateUsernameException;
 import seedu.address.model.exception.InvalidPasswordException;
 import seedu.address.model.exception.InvalidUsernameException;
 import seedu.address.model.exception.MultipleLoginException;
@@ -117,6 +116,8 @@ public class ModelManager extends ComponentManager implements Model {
         addressBook.removeSkill(t);
         indicateAddressBookChanged();
     }
+
+    //@@author kush1509
     @Override
     public synchronized void addJob(Job job) throws DuplicateJobException {
         addressBook.addJob(job);
@@ -124,12 +125,21 @@ public class ModelManager extends ComponentManager implements Model {
         indicateAddressBookChanged();
     }
 
-    //@@author Jason1im
     @Override
-    public ReadOnlyAccountsManager getAccountsManager() {
-        return accountsManager;
+    public void updateJob(Job target, Job editedJob)
+            throws DuplicateJobException, JobNotFoundException {
+        requireAllNonNull(target, editedJob);
+        addressBook.updateJob(target, editedJob);
+        indicateAddressBookChanged();
     }
 
+    @Override
+    public synchronized void deleteJob(Job target) throws JobNotFoundException {
+        addressBook.removeJob(target);
+        indicateAddressBookChanged();
+    }
+
+    //@@author Jason1im
     /**
      * Logs the user into the system.
      * @throws InvalidUsernameException
@@ -162,20 +172,22 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void register(String username, String password) throws DuplicateUsernameException {
-        accountsManager.register(username, password);
+    public void updateUsername(String oldUsername) throws InvalidUsernameException {
+        accountsManager.updateUsername(oldUsername);
+    }
+
+    @Override
+    public void updatePassword(String oldPassword, String newPassword)
+        throws InvalidPasswordException {
+        accountsManager.updatePassword(oldPassword, newPassword);
     }
 
     private void setUser(Account account) {
         user = user.ofNullable(account);
     }
 
-    //@@author kush1509
     @Override
-    public synchronized void deleteJob(Job target) throws JobNotFoundException {
-        addressBook.removeJob(target);
-        indicateAddressBookChanged();
-    }
+    public boolean isLoggedIn() { return user.isPresent(); }
 
     //@@author trafalgarandre
     @Override

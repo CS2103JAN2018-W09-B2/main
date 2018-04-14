@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CURRENT_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL_SUBJECT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -61,7 +62,7 @@ public class CommandTestUtil {
     public static final String VALID_SKILL_HUSBAND = "husband";
     public static final String VALID_SKILL_FRIEND = "friend";
     public static final String VALID_USERNAME_USER = "John";
-    public static final String VALID_PASSWORD_USER = "1234";
+    public static final String VALID_PASSWORD_USER = "doe123";
     public static final String VALID_POSITION_DEVELOPER_INTERN = "Developer Intern";
     public static final String VALID_POSITION_INTERN = "Intern";
     public static final String VALID_TEAM_DEVELOPER_INTERN = "Web Development";
@@ -131,6 +132,10 @@ public class CommandTestUtil {
 
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
+
+    public static final String VALID_EMAIL_SUBJECT = "Interview for Full-time Software Engineering.";
+    public static final String VALID_EMAIL_SUBJECT_DESC = PREFIX_EMAIL_SUBJECT + VALID_EMAIL_SUBJECT;
+    public static final String EMPTY_EMAIL_SUBJECT_DESC = PREFIX_EMAIL_SUBJECT + "";
 
     public static final String VALID_TITLE_INTERVIEW1 = "Interview1";
     public static final String VALID_TITLE_INTERVIEW2 = "Interview2";

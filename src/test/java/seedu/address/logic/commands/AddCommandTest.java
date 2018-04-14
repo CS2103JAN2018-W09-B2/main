@@ -20,7 +20,6 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.person.AddCommand;
-import seedu.address.model.AccountsManager;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
@@ -145,6 +144,28 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean isLoggedIn() {
+            fail("This method should not be called.");
+            return false;
+        }
+
+        @Override
+        public void updateJob(Job target, Job editedJob)
+                throws DuplicateJobException {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public void updateUsername(String username) {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public void updatePassword(String password1, String password2) {
+            fail("This method should not be called.");
+        }
+
+        @Override
         public void deleteSkill(Skill t)
                 throws PersonNotFoundException, DuplicatePersonException, UniqueSkillList.DuplicateSkillException {
             fail("This method should not be called.");
@@ -189,11 +210,6 @@ public class AddCommandTest {
             return null;
         }
 
-        public AccountsManager getAccountsManager() {
-            fail("This method should not be called.");
-            return null;
-        }
-
         @Override
         public void login(String username, String password) {
             fail("This method should not be called.");
@@ -201,11 +217,6 @@ public class AddCommandTest {
 
         @Override
         public void logout() {
-            fail("This method should not be called.");
-        }
-
-        @Override
-        public void register(String username, String password) {
             fail("This method should not be called.");
         }
 
