@@ -1122,7 +1122,7 @@ The <code>SwitchTabRequestEvent</code> has an integer attribute <code>tabId</cod
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/SwitchTabRequestEventSD2.png" alt="SwitchTabRequestEventSD2" width="800">
+<img src="images/SwitchTabRequestEventSD2.png" alt="SwitchTabRequestEventSD2" width="350">
 </div>
 <div class="title">Figure 15. Sequence diagram for the event handling for the Tab Switching Mechanism.</div>
 </div>
@@ -1216,9 +1216,9 @@ All fields mentioned above are compulsory for the <code>Job</code> object unlike
 <div class="paragraph">
 <p>The implementation of these commands is quite similar to the equivalent operations in the <code>Person</code> class. Let us look at <code>JobAddCommand</code> as an example.</p>
 </div>
+<div class="paragraph">
+<p><strong>Adding Job Openings</strong></p>
 </div>
-<div class="sect3">
-<h4 id="strong-adding-job-openings-strong"><a class="link" href="#strong-adding-job-openings-strong">4.4.2. <strong>Adding Job Openings</strong></a></h4>
 <div class="paragraph">
 <p>Adding job openings is facilitated by the JobAddCommand. Execution of this command adds a <code>Job</code> Object to contactHeRo with the input <code>Position</code>, <code>Team</code>, <code>Location</code>, <code>NumberOfPositions</code> and <code>Skills</code>.</p>
 </div>
@@ -1256,7 +1256,7 @@ All fields mentioned above are compulsory for the <code>Job</code> object unlike
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.3. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Storing job openings<br></p>
 </div>
@@ -1277,24 +1277,18 @@ All fields mentioned above are compulsory for the <code>Job</code> object unlike
 <div class="sect3">
 <h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">4.5.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The <code>JobMatchCommand</code> uses <code>PersonSkillContainsKeywordsPredicate</code> to match person&#8217;s skills with a job&#8217;s skills. It accepts the index for the job to match and then uses the <code>PersonSkillMatchesKeywordsPredicate</code> to match the job. Below is the code for the execution:</p>
+<p>The <code>JobMatchCommand</code> uses <code>PersonSkillContainsKeywordsPredicate</code> to match person&#8217;s skills with a job&#8217;s skills. It accepts the index for the job to match and then uses the <code>PersonSkillMatchesKeywordsPredicate</code> to match the job. Below is the code for the execution of the <code>JobMatchCommand</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
 <span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
-
-    <span class="predefined-type">List</span>&lt;Job&gt; lastShownList = model.getFilteredJobList();
-
-    <span class="keyword">if</span> (targetIndex.getZeroBased() &gt;= lastShownList.size()) {
-        <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(Messages.MESSAGE_INVALID_JOB_DISPLAYED_INDEX);
-    }
-
+    ...
     Job jobToMatch = lastShownList.get(targetIndex.getZeroBased());
 
     model.updateFilteredPersonList(<span class="keyword">new</span> PersonSkillContainsKeywordsPredicate(
             CollectionUtil.getSetAsStringList(jobToMatch.getSkills())));
-    <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(getMessageForPersonListShownSummary(model.getFilteredPersonList().size()));
+    <span class="comment">// return result</span>
 }</code></pre>
 </div>
 </div>
@@ -1343,48 +1337,11 @@ To minimize code duplication, we made a utility class <code>SkillUtil</code> whi
 </div>
 <div class="title">Figure 19. UML class diagram for Job Opening</div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Previous input has been included to account for cases in cases where more than one command share the same prefix. For e.g. the <code>add</code>, <code>addjob</code> and <code>addapp</code> commands share the common <code>add</code>. In such a case, the user can just type <code>a</code> or <code>ad</code> or <code>add</code> and press <code>Tab</code> multiple times to cycle between these commands which will keep incrementing the Tab counter, <code>tabNumber</code> in a cyclic manner.
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
-<p>Given below is the code for the <code>CommandBox#autoCompleteCommand()</code> method.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/**
- * Auto-completes the partial command {@code text} entered with the first command matched
- * in the lexicographically sorted command list
- */</span>
-<span class="directive">private</span> <span class="type">void</span> autoCompleteCommand(<span class="predefined-type">String</span> text) {
-    <span class="keyword">if</span> (text.equals(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>)) {
-        <span class="keyword">return</span>;
-    }
-    <span class="keyword">if</span> (!text.startsWith(prevText) || prevText.equals(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>)) {
-        prevText = text;
-        tabNumber = <span class="integer">0</span>;
-    }
-    CommandList commandListObj = <span class="keyword">new</span> CommandList();
-
-    <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; matchedCommands = commandListObj.commandList.stream().filter(u -&gt; u.startsWith(prevText))
-            .collect(Collectors.toList());
-
-    <span class="keyword">if</span> (matchedCommands.size() &gt; <span class="integer">0</span>) {
-        <span class="predefined-type">String</span> textToDisplay = commandListObj.getSyntax(matchedCommands.get(tabNumber % matchedCommands.size()));
-
-        replaceText(textToDisplay);
-        commandTextField.positionCaret(matchedCommands.get(<span class="integer">0</span>).length() + <span class="integer">1</span>);
-    }
-}</code></pre>
-</div>
+<p>The <code>previous input</code> and <code>tab Counter</code> are recorded to account for cases where more than one command share the same
+prefix. For e.g. the <code>add</code>, <code>addjob</code> and <code>addapp</code> commands share the common <code>add</code>. In such a case, the user can just
+type <code>a</code> or <code>ad</code> or <code>add</code> and press <code>Tab</code> multiple times to cycle between these commands which will keep incrementing
+the Tab counter, <code>tabNumber</code> in a cyclic manner.</p>
 </div>
 </div>
 </div>
@@ -3617,7 +3574,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 16:07:11 UTC
+Last updated 2018-04-14 18:46:24 UTC
 </div>
 </div>
 </body>

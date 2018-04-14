@@ -25,10 +25,10 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>contactHeRo is a contact management solution for recruiters across companies who need a quick and efficient way to manage the contact details and profiles of their potential recruits. It is a Command Line Interface(CLI) application with intuitive usage and effective features. You can manage details of prospective employees and job openings in your company through easy to use add, delete and edit features. Matching jobs to employees is also a great feature that makes the hiring process easy for you. Other than that, you can also view the linkedIn profiles of your potential employees, send emails and arrange meetings.</p>
+<p>contactHeRo is a contact management solution for recruiters across companies who need a quick and efficient way to manage the profiles of their potential recruits, current job openings and their appointments. It is a Command Line Interface(CLI) application with intuitive usage and effective features. You can manage details of prospective employees and job openings in your company through easy to use add, delete and edit features. Matching jobs to employees is also a great feature that makes the hiring process easy for you. Other than that, you can also view the linkedIn profiles of your potential employees, send emails and arrange meetings.</p>
 </div>
 <div class="paragraph">
-<p>This portfolio is to collate my contributions towards the developing of contactHeRo. It showcases the software programming knowledge I have learned during the course of CS2103T, as well as how I utilized this knowledge and applied it to a real-world project. This portfolio also contains some enhancements I would suggest to be developed for contactHeRo in the future.</p>
+<p>This portfolio is to collate my contributions towards the developing of contactHeRo. It showcases the software engineering knowledge I have learned during the course of CS2103T, as well as how I utilized this knowledge and applied it to a real-world project. This portfolio also contains some enhancements I would suggest to be developed for contactHeRo in the future.</p>
 </div>
 </div>
 </div>
@@ -54,17 +54,10 @@
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a Contact-Details and LinkedIn-Search display.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Justification: Viewing the contact details in a separate focused panel makes them easier to read for the user as the Person card can now just contain limited information like the person’s name, current position and company, also allowing more number of contacts to be displayed at a time since amount of information is reduced. Moreover, recruiters need to keep a track of the professional progress of his/her potential recruits and having easy access to their LinkedIn profiles will help them do this efficiently.</p>
-</li>
-</ul>
-</div>
+<p><strong>Minor enhancement</strong>: added a Details Panel Display including the Contact Details Display.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W09-B2/main/blob/master/collated/functional/kush1509.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-W09-B2/main/blob/master/collated/test/kush1509.md">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>: <a href="https://github.com/CS2103JAN2018-W09-B2/main/blob/master/collated/functional/kush1509.md">Functional code</a> [<a href="https://github.com/CS2103JAN2018-W09-B2/main/blob/master/collated/test/kush1509.md">Test code</a>] <em>{give links to collated code files}</em></p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -74,17 +67,7 @@
 <p>Took the role of Team Leader to make important decisions regarding development of product.</p>
 </li>
 <li>
-<p>Features:</p>
-<div class="ulist">
-<ul>
-<li>
 <p>Auto-complete: added functionality for commands to be auto-completed on pressing <code>TAB</code> <a href="https://github.com/CS2103JAN2018-W09-B2/main/pull/35">Pull request #35</a>, <a href="https://github.com/CS2103JAN2018-W09-B2/main/pull/186">Pull request #186</a></p>
-</li>
-<li>
-<p>Improved User Interface by adding Tabbed Details Panel: added a tab display for Details Panel which was used by many features like LinkedIn, Email and Calendar.</p>
-</li>
-</ul>
-</div>
 </li>
 <li>
 <p>Project management:</p>
@@ -94,7 +77,7 @@
 <p>Managed all releases <code>v1.3</code> - <code>v1.5rc</code> on GitHub</p>
 </li>
 <li>
-<p>Managed all milestones <code>v1.1</code> - <code>v1.5rc</code> (5 milestones) on GitHub</p>
+<p>Managed all milestones <code>v1.1</code> - <code>v1.5</code> (6 milestones) on GitHub</p>
 </li>
 <li>
 <p>Managed project effectively to keep track of issues, merging pull requests by resolving conflicts and keeping track of deadlines and deliverables.</p>
@@ -110,7 +93,7 @@
 <p>Added curentPosition and company attributes to Person <a href="https://github.com/CS2103JAN2018-W09-B2/main/pull/118">Pull request #118</a></p>
 </li>
 <li>
-<p>Updated Ui to contain icons <a href="https://github.com/CS2103JAN2018-W09-B2/main/pull/136/commits/7b9ac8bb2d99af8a63d7bf9ee68d17a0b48bea58">Commit #7b9ac8</a></p>
+<p>Improved the UI of the application <a href="https://github.com/CS2103JAN2018-W09-B2/main/pull/136/commits/7b9ac8bb2d99af8a63d7bf9ee68d17a0b48bea58">Commit #7b9ac8</a></p>
 </li>
 </ul>
 </div>
@@ -121,6 +104,9 @@
 <ul>
 <li>
 <p>Made User Guide more reader-friendly by adding screenshots and organising features into sections: <a href="https://github.com/CS2103JAN2018-W09-B2/main/pull/114/">Pull request #114</a>, <a href="https://github.com/CS2103JAN2018-W09-B2/main/pull/217">Pull request #217</a></p>
+</li>
+<li>
+<p>Organised the Command Summary in a table format to ensure better readability <a href="https://github.com/CS2103JAN2018-W09-B2/main/pull/235">Pull request #235</a></p>
 </li>
 </ul>
 </div>
@@ -202,105 +188,6 @@ This will represent a useful tip.
 <div class="paragraph">
 <p><code>This will represent an input/output statement in contactHeRo</code></p>
 </div>
-<div class="sect3">
-<h4 id="searching-a-person-on-linkedin-code-linkedin-code"><a class="link" href="#searching-a-person-on-linkedin-code-linkedin-code">Searching a person on LinkedIn: <code>linkedIn</code></a></h4>
-<div class="paragraph">
-<p>You can select a person identified by the index number used in the last person listing to search him/her on LinkedIn using the following format.<br>
-Format: <code>linkedIn INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>This loads the LinkedIn search of the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the most recent listing.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
-</li>
-<li>
-<p>You will have to login to LinkedIn the first time to use this command in order to search the person.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-We do not save or log any of your LinkedIn credentials or information as we respect your privacy.
-Therefore, everytime you restart contactHeRo, you will have to login again.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>linkedIn 2</code><br>
-This loads the LinkedIn search of the 2nd person in the contactHeRo.</p>
-</li>
-<li>
-<p><code>find n/Betsy</code><br>
-<code>linkedIn 1</code><br>
-This loads the LinkedIn search of 1st person in the results of the <code>find</code> command.<br></p>
-<div class="paragraph">
-<p>On running the above command and after you have logged in, you should a similar result as the following (Refer to figure 5). Betsy is selected in the person list and she is searched on LinkedIn in the LinkedIn Tab.</p>
-</div>
-</li>
-</ul>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="../images/linkedInCommand.png" alt="linkedInCommand">
-</div>
-<div class="title">Figure 1. LinkedIn Command Execution</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="auto-complete-command"><a class="link" href="#auto-complete-command">Auto-complete command</a></h4>
-<div class="paragraph">
-<p>To save your time, after typing a partial command, you can press TAB for the command to be auto-completed.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The first lexicographically matched command is returned.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Typing <code>ad</code> and pressing <code>TAB</code> gives:<br>
-<code>add n/ e/ a/ [s/]&#8230;&#8203;</code></p>
-</li>
-<li>
-<p>Typing <code>h</code> and pressing <code>TAB</code> gives:<br>
-<code>help</code></p>
-</li>
-</ul>
-</div>
-</div>
 <div class="sect2">
 <h3 id="managing-job-openings"><a class="link" href="#managing-job-openings">Managing Job Openings</a></h3>
 <div class="paragraph">
@@ -345,7 +232,7 @@ Format: <code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER_OF_POSITIONS s/SKILLS
 <div class="content">
 <img src="../images/addjobCommand.png" alt="addjobCommand">
 </div>
-<div class="title">Figure 2. A job opening in contactHeRo</div>
+<div class="title">Figure 1. A job opening in contactHeRo</div>
 </div>
 </div>
 <div class="sect3">
@@ -557,9 +444,126 @@ This will show any person whose skills match any of those required for the job o
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="../images/matchjobCommand.png" alt="matchjobCommand">
+<img src="../images/matchjobCommand.png" alt="matchjobCommand" width="800">
 </div>
-<div class="title">Figure 3. MatchJob Command Execution</div>
+<div class="title">Figure 2. MatchJob Command Execution</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="auto-complete-command"><a class="link" href="#auto-complete-command">Auto-complete command</a></h4>
+<div class="paragraph">
+<p>To save your time, after typing a partial command, you can press TAB for the command to be auto-completed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The first lexicographically matched command is returned.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typing <code>ad</code> and pressing <code>TAB</code> gives:<br>
+<code>add n/ e/ a/ [s/]&#8230;&#8203;</code></p>
+</li>
+<li>
+<p>Typing <code>h</code> and pressing <code>TAB</code> gives:<br>
+<code>help</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="searching-a-person-on-linkedin-code-linkedin-code"><a class="link" href="#searching-a-person-on-linkedin-code-linkedin-code">Searching a person on LinkedIn: <code>linkedIn</code></a></h4>
+<div class="paragraph">
+<p>You can select a person identified by the index number used in the last person listing to search him/her on LinkedIn using the following format.<br>
+Format: <code>linkedIn INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This loads the LinkedIn search of the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+<li>
+<p>You will have to login to LinkedIn the first time to use this command in order to search the person.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+We do not save or log any of your LinkedIn credentials or information as we respect your privacy.
+Therefore, everytime you restart contactHeRo, you will have to login again.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>linkedIn 2</code><br>
+This loads the LinkedIn search of the 2nd person in the contactHeRo.</p>
+</li>
+<li>
+<p><code>find n/Betsy</code><br>
+<code>linkedIn 1</code><br>
+This loads the LinkedIn search of 1st person in the results of the <code>find</code> command.<br></p>
+<div class="paragraph">
+<p>On running the above command and after you have logged in, you should a similar result as the following (Refer to figure 5). Betsy is selected in the person list and she is searched on LinkedIn in the LinkedIn Tab.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/linkedInCommand.png" alt="linkedInCommand" width="800">
+</div>
+<div class="title">Figure 3. LinkedIn Command Execution</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="setting-reminders-code-coming-in-v2-0-code"><a class="link" href="#setting-reminders-code-coming-in-v2-0-code">Setting reminders <code>[coming in v2.0]</code></a></h4>
+<div class="paragraph">
+<p>You will soon be able to set reminders for meetings, appointments or any other event and contactHeRo will remind you of the event.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="better-matching-of-jobs-code-coming-in-v2-0-code"><a class="link" href="#better-matching-of-jobs-code-coming-in-v2-0-code">Better matching of jobs <code>[coming in v2.0]</code></a></h4>
+<div class="paragraph">
+<p>Job matching will soon be improved wherein it will be using location-matching and Artificial Intelligence methods.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="matching-people-to-jobs-code-coming-in-v2-0-code"><a class="link" href="#matching-people-to-jobs-code-coming-in-v2-0-code">Matching people to jobs <code>[coming in v2.0]</code></a></h4>
+<div class="paragraph">
+<p>You will soon be able to match people to jobs as well to see which job opening is suitable for a particular person.</p>
 </div>
 </div>
 </div>
@@ -663,6 +667,340 @@ Both the <code>select</code> and <code>linkedIn</code> command function quite si
 <strong>Pros</strong>: Completely isolates the UI for different commands like <code>select</code> and <code>linkedIn</code> and provides more focus.<br>
 <strong>Cons</strong>: In the current implementation one window is easily accessible from another, just by manually switching tabs which would not be possible with this alternative since the user would have to run many different commands to do this.</p>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tab-switching-mechanism"><a class="link" href="#tab-switching-mechanism">Tab Switching Mechanism</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>Tab Switching Mechanism is an event driven mechanism.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/SwitchTabRequestEventHighSD.png" alt="SwitchTabRequestEventHighSD" width="800">
+</div>
+<div class="title">Figure 6. Component interaction for Tab Switching Mechanism.</div>
+</div>
+<div class="paragraph">
+<p>The above diagram (Refer to Figure 13) shows the high-level overview of the component interactions for the tab switching mechanism. We use the event, <code>SwitchTabRequestEvent</code> which sets the current tab in the <code>DetailsPanel</code> to one of five tabs below depending on the input command.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>Contact Details</code></p>
+</li>
+<li>
+<p><code>LinkedIn Search</code></p>
+</li>
+<li>
+<p><code>Calendar</code></p>
+</li>
+<li>
+<p><code>Draft Email</code></p>
+</li>
+<li>
+<p><code>Google</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The code for the <code>SwitchTabRequestEvent</code> event is as follows.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">SwitchTabRequestEvent</span> <span class="directive">extends</span> BaseEvent {
+    <span class="directive">public</span> <span class="directive">final</span> <span class="type">int</span> tabId;
+    <span class="directive">public</span> SwitchTabRequestEvent(<span class="type">int</span> tabId) {
+        <span class="local-variable">this</span>.tabId = tabId;
+    }
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">String</span> toString() {
+        <span class="keyword">return</span> <span class="local-variable">this</span>.getClass().getSimpleName();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>SwitchTabRequestEvent</code> has an integer attribute <code>tabId</code>. The event handlers use this <code>tabId</code> to switch between tabs wherein the tabs <code>Contact Details</code>, <code>LinkedIn Search</code>, <code>Calendar</code>, <code>Draft Email</code> and `Google`have tabIds 0, 1, 2, 3 and 4 respectively.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Let us look at an execution example for the LinkedIn Command.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/SwitchTabRequestEventSD.png" alt="SwitchTabRequestEventSD" width="800">
+</div>
+<div class="title">Figure 7. Sequence diagram for the event posting for the Tab Switching Mechanism.</div>
+</div>
+<div class="paragraph">
+<p>As seen from the sequence diagram above (Refer to Figure 14), when the user types the <code>linkedIn</code> command, an instance of LinkedInCommand would be created and upon execution by LogicManager, the event SwitchTabRequestEvent would be posted by the EventCenter to the EventBus:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">LinkedInCommand</span> <span class="directive">extends</span> Command {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
+        <span class="comment">//... other execution statements</span>
+        EventsCenter.getInstance().post(<span class="keyword">new</span> SwitchTabRequestEvent(TAB_ID_LINKEDIN));
+        <span class="comment">//... other execution statements</span>
+    }
+    ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>DetailsPanel</code> class in the <code>UI</code> component has the <code>handleSwitchTabRequestEvent()</code> method which listens for the event. Upon receiving the event, it switches the tab depending on the <code>tabId</code> passed to the event.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">DetailsPanel</span> <span class="directive">extends</span> UiPart&lt;<span class="predefined-type">Region</span>&gt; {
+    <span class="annotation">@Subscribe</span>
+    <span class="directive">private</span> <span class="type">void</span> handleSwitchTabRequestEvent(SwitchTabRequestEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        tabPane.getSelectionModel().clearAndSelect(event.tabId);
+    }
+    ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Shown below is the sequence diagram for the above implementation (Refer to figure 15).</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/SwitchTabRequestEventSD2.png" alt="SwitchTabRequestEventSD2" width="350">
+</div>
+<div class="title">Figure 8. Sequence diagram for the event handling for the Tab Switching Mechanism.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 1 (current choice):</strong> Use event driven mechanism.<br>
+<strong>Pros</strong>: Event is only handled in the <code>DetailsPanel</code> and not in the Command itself hence decreasing coupling between the UI and Logic.<br>
+<strong>Cons</strong>: Tab switching is a hidden mechanism and might not be intuitive to certain users.</p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Switch tab in the command execution itself.<br>
+<strong>Pros</strong>: .<br>
+<strong>Cons</strong>: The <code>TabPane</code> will have to be accessible to the logic which will increase coupling.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="job-openings-implementation"><a class="link" href="#job-openings-implementation">Job Openings Implementation</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>Job</code> object represents a job opening in contactHeRo. It contains <code>Position</code>, <code>Team</code>, <code>Location</code> and <code>NumberOfPositions</code> objects and a set of <code>Skills</code>, which represent the position, team, location, the number of available positions and the required skills  for the job opening respectively (Refer to Figure 12).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+All fields mentioned above are compulsory for the <code>Job</code> object unlike the <code>Person</code> where <code>skill</code> is optional.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/JobUML.png" alt="JobUML" width="600">
+</div>
+<div class="title">Figure 9. UML class diagram for Job Opening</div>
+</div>
+<div class="paragraph">
+<p>In addition to the above attributes, the <code>Job</code> object also contains a set of <code>Skills</code> which denote the skills required for the job opening.</p>
+</div>
+<div class="paragraph">
+<p><code>Job</code> objects are kept in-memory during the running of contactHeRo. A <code>UniqueJobList</code> is maintained which contains the Job (Refer to Figure 13) and assures that there are no duplicate <code>Job</code> objects. The <code>UniqueJobList</code> object is then kept and used by ModelManager to carry out commands related to job openings.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/JobModelUML.png" alt="JobModelUML" width="600">
+</div>
+<div class="title">Figure 10. Model management of Job objects</div>
+</div>
+<div class="paragraph">
+<p>The storage of job openings is very similar to that of the persons. <code>Job</code> objects are stored in a XML storage file in a JAXB-friendly version <code>XmlAdaptedJob</code>. When the program starts, <code>XmlAdaptedJob</code> objects are read in as jobs in the <code>XmlSerializableAddressBook</code> via <code>XmlFileStorage</code>.</p>
+</div>
+<div class="paragraph">
+<p>The job openings management is facilitated by several command classes in contactHeRo, namely:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>JobAddCommand</p>
+</li>
+<li>
+<p>JobEditCommand</p>
+</li>
+<li>
+<p>JobDeleteCommand</p>
+</li>
+<li>
+<p>JobFindCommand</p>
+</li>
+<li>
+<p>JobListCommand</p>
+</li>
+<li>
+<p>JobMatchCommand</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The implementation of these commands is quite similar to the equivalent operations in the <code>Person</code> class. Let us look at <code>JobAddCommand</code> as an example.</p>
+</div>
+<div class="paragraph">
+<p><strong>Adding Job Openings</strong></p>
+</div>
+<div class="paragraph">
+<p>Adding job openings is facilitated by the JobAddCommand. Execution of this command adds a <code>Job</code> Object to contactHeRo with the input <code>Position</code>, <code>Team</code>, <code>Location</code>, <code>NumberOfPositions</code> and <code>Skills</code>.</p>
+</div>
+<div class="paragraph">
+<p>Given below is the sequence diagram for addition of a job opening.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/SDforAddJobEventHandling.png" alt="SDforAddJobEventHandling" width="800">
+</div>
+<div class="title">Figure 11. High Level Sequence Diagram for adding a job opening</div>
+</div>
+<div class="paragraph">
+<p>The following snippet shows how the executeUndoableCommand() method updates the model of the application by adding the job to the list of jobs.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">JobAddCommand</span> <span class="directive">extends</span> UndoableCommand {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult executeUndoableCommand() <span class="directive">throws</span> CommandException {
+        requireNonNull(model);
+        <span class="keyword">try</span> {
+            model.addJob(toAdd);
+            <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_SUCCESS, toAdd));
+        } <span class="keyword">catch</span> (DuplicateJobException e) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_DUPLICATE_JOB);
+        }
+    }
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The job openings are displayed towards the right side of the UI in the <code>JobListPanel</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Storing job openings<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 1 (current choice):</strong> Use the same file to store jobs and persons.<br>
+<strong>Pros</strong>: Certain jobs and persons may have the same skills and in the current implementation there will not be any duplicates in the data file, thus saving memory.<br>
+<strong>Cons</strong>: Different types of data in the same file.</p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Use different files to store jobs and persons.<br>
+<strong>Pros</strong>: Data is segregated by type.<br>
+<strong>Cons</strong>: Certain jobs and persons may have the same skills and in this implementation, there might be duplicate skills having one copy in each file.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="matching-jobs-implementation"><a class="link" href="#matching-jobs-implementation">Matching jobs implementation</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>JobMatchCommand</code> uses <code>PersonSkillContainsKeywordsPredicate</code> to match person&#8217;s skills with a job&#8217;s skills. It accepts the index for the job to match and then uses the <code>PersonSkillMatchesKeywordsPredicate</code> to match the job. Below is the code for the execution of the <code>JobMatchCommand</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
+    ...
+    Job jobToMatch = lastShownList.get(targetIndex.getZeroBased());
+
+    model.updateFilteredPersonList(<span class="keyword">new</span> PersonSkillContainsKeywordsPredicate(
+            CollectionUtil.getSetAsStringList(jobToMatch.getSkills())));
+    <span class="comment">// return result</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>PersonSkillMatchesKeywordsPredicate</code> takes in the list of skills of the job as the keywords as the parameter and then checks if the person has any of these skills using the <code>SkillUtil</code>. The code for matching the skills is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/**
+ * Checks if a set of skills contains any of the {@code keywords}.
+ */</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="type">boolean</span> match(<span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; keywords, <span class="predefined-type">Set</span>&lt;Skill&gt; list) {
+    <span class="predefined-type">String</span> skillList = getSkillsAsString(list);
+    <span class="keyword">return</span> keywords.stream()
+            .anyMatch(keyword -&gt; StringUtil.containsWordIgnoreCase(skillList, keyword));
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To minimize code duplication, we made a utility class <code>SkillUtil</code> which is used both by <code>PersonSkillMatchesKeywordsPredicate</code> during execution of <code>matchjob</code> and <code>find s/</code> commands and <code>JobSkillMatchesKeywordsPredicate</code> during the execution of <code>findjob s/</code> command.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="auto-complete-mechanism"><a class="link" href="#auto-complete-mechanism">Auto-complete Mechanism</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The auto-complete mechanism is implemented in the <code>CommandBox</code> in the <code>UI</code> component. We check the key pressed by the user and if it is the <code>Tab</code> key, the auto-complete mechanism is triggered.</p>
+</div>
+<div class="paragraph">
+<p>Given below is are the activity diagram (Refer to figurue 20) for the mechanism.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/Auto-CompleteActivityDiagram.png" alt="Auto CompleteActivityDiagram" width="800">
+</div>
+<div class="title">Figure 12. UML class diagram for Job Opening</div>
+</div>
+<div class="paragraph">
+<p>The <code>previous input</code> and <code>tab Counter</code> are recorded to account for cases where more than one command share the same
+prefix. For e.g. the <code>add</code>, <code>addjob</code> and <code>addapp</code> commands share the common <code>add</code>. In such a case, the user can just
+type <code>a</code> or <code>ad</code> or <code>add</code> and press <code>Tab</code> multiple times to cycle between these commands which will keep incrementing
+the Tab counter, <code>tabNumber</code> in a cyclic manner.</p>
+</div>
 <div class="paragraph">
 <p><strong>Target users:</strong></p>
 </div>
@@ -671,87 +1009,12 @@ Both the <code>select</code> and <code>linkedIn</code> command function quite si
 manage which include contact details and profiles of potential employees, job openings and appointments.<br>
 It is essential for them to have a quick and easy access to these contacts. Hence, contactHero aims to make their lives easier by helping them to store and manage their contacts efficiently.</p>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-enhancement-include-interviewing-process"><a class="link" href="#proposed-enhancement-include-interviewing-process">Proposed Enhancement: Include interviewing process</a></h3>
 <div class="paragraph">
-<p><strong>User Profile</strong>:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Recruiters who have a significant number of contacts and job openings to manage</p>
-</li>
-<li>
-<p>Recruiters who prefer desktop apps</p>
-</li>
-<li>
-<p>Recruiters who are good at typing and hence prefer CLI apps</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Value proposition</strong>: An ideal solution for small teams and business professionals who need a simple solution to manage their contacts and help them with day-to-day business activities.</p>
-</div>
-<div class="paragraph">
-<p><strong>Feature contributions:</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Kushagra Goyal</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Major Feature: Job Openings</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Users can add job openings.</p>
-</li>
-<li>
-<p>Users can edit job openings.</p>
-</li>
-<li>
-<p>Users can delete job openings.</p>
-</li>
-<li>
-<p>Users can match job openings to potential employees.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Minor Feature: Contact details and LinkedIn search display.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Users can view the contact details in a separate panel using the <code>select</code> command.</p>
-</li>
-<li>
-<p>Users can view the LinkedIn search of the person using the <code>linkedIn</code> command.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>How do these features fit into the product scope?</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Major Feature: A recruiter needs the list of the job openings in the company so he knows what are the current job openings and what tagsets to look for in people. This way, the user can better search for potential employees.</p>
-</li>
-<li>
-<p>Major Feature: A recruiter needs the list of the job openings in the company so he knows what are the current job openings and what tagsets to look for in people. This way, the user can better search for potential employees.</p>
-</li>
-<li>
-<p>Minor Feature: Viewing the contact details in a separate focused panel makes them easier to read for the user as the Person card can now just contain limited information like the person&#8217;s name, current position and company, also allowing more number of contacts to be displayed at a time since amount of information is reduced. Moreover, recruiters need to keep a track of the professional progress of his/her potential recruits and having easy access to their LinkedIn profiles will help them do this efficiently.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ol>
-</div>
+<p>This feature will transform contactHeRo from a contact management solution to a hiring manager for the recruiter. They will be able to set interview questions and metrics and grade and analyse candidates based on the results.</p>
 </div>
 </div>
 </div>
@@ -759,7 +1022,7 @@ It is essential for them to have a quick and easy access to these contacts. Henc
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 16:07:11 UTC
+Last updated 2018-04-14 18:46:25 UTC
 </div>
 </div>
 </body>
