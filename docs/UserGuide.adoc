@@ -60,14 +60,16 @@ Not sure how to install Java? Visit the oracle website link below for more infor
 .contactHeRo UI on launch
 image::UiOnStartup.png[width="800", align="center"]
 
-.  Login using the default username,`Admin` and default password, `ad123`. You should see the user interface as shown below (Refer to figure 2) in a few seconds.
+.  Login using the default username `Admin` and default password `ad123` as shown below (Refer to figure 2).
 +
 .Login as first user
 image::DefaultLogin.png[width="800", align="center"]
 
-
++
 [NOTE]
 You can change the password later using the `updatepassword` command.
++
+.  Upon successful login, You should see the user interface as shown below (Refer to figure 3) in a few seconds.
 
 .contactHeRo UI after login
 
@@ -81,7 +83,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 .  Some example commands you can try:
 
 * *`list`* : lists all contacts
-* **`add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 cp/Software Engineer cc/Garena` `**` : adds a contact named `John Doe` to the Address Book.
+* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 cp/Software Engineer cc/Garena`  : adds a contact named `John Doe` to the Address Book.
 * **`delete`**`3` : deletes the 3rd contact shown in the current list
 * *`exit`* : exits the app
 
@@ -155,10 +157,6 @@ Format: `logout`
 On running this command, you should see the following success message: +
  `You have logout successfully!`
 
-.Screen after logout
-
-image::LogoutSuccess.png[width="800", align="center"]
-
 === Managing Persons
 
 This section describes the commands you can use to manage person profiles in contactHeRo.
@@ -183,20 +181,12 @@ On running the above command, you should see the following success message: +
 
  New person added: John Doe Phone: 98765432 Email: johnd@example.com Address: John street, block 123, #01-01 Current Position: Software Engineer Company: Google Skills:
 
-.Success message after adding John Doe
-
-image::addSuccess1.png[width="800", align="center"]
-
 
 * `add n/Betsy Crowe s/Java e/betsycrowe@example.com a/Newgate Prison p/1234567 cp/Student cc/NUS s/C++`
 +
 On running the above command, you should see the following success message: +
 
  New person added: Betsy Crowe Phone: 1234567 Email: betsycrowe@example.com Address: Newgate Prison Current Position: Student Company: NUS  Skills: [C++]
-
-.Success message after adding Betsy Crowe
-
-image::addSuccess1.png[width="800", align="center"]
 
 ==== Editing a person : `edit`
 
@@ -221,10 +211,6 @@ On running the above command, you should see the following success message: +
 
  Edited Person: John Doe Phone: 91234567 Email: johndoe@example.com Address: John street, block 123, #01-01 Current Position: Software Engineer Company: Google Skills:
 
-.Success message after editing John Doe
-
-image::addSuccess1.png[width="800", align="center"]
-
 * `edit 2 n/Betsy Crower s/` +
 Edits the name of the 2nd person to be `Betsy Crower` and clears all existing skills.
 +
@@ -232,18 +218,10 @@ On running the above command, you should see the following success message: +
 
  Edited Person: Betsy Crower Phone: 1234567 Email: betsycrowe@example.com Address: Newgate Prison Current Position: Student Company: NUS Skills:
 
-.Success message after editing John Doe
-
-image::addSuccess2.png[width="800", align="center"]
-
 ==== Listing all persons : `list`
 
 You can see a list of all persons in contactHeRo using the following format. +
 Format: `list`
-
-.Screen after listing
-
-image::listSuccess.png[width="800", align="center"]
 
 ==== Locating persons by name or skill : `find`
 
@@ -266,10 +244,6 @@ This will show any person having the name `john` or `John`.
 This will show `Jane Doe` whose skill is `designer`.
 * `find n/Betsy Tim John` +
 This will show any person having any of the names `Betsy`, `Tim`, or `John`.
-
-.Screen after typing `find n/John`
-
-image::findJohn.png[width="800", align="center"]
 
 
 ==== Deleting a person : `delete`
@@ -297,10 +271,6 @@ This deletes the 1st person in contactHeRo and on running the above command, you
 This deletes the 1st person in the results of the `find` command and on running the above command, you should see the following success message: +
 
   Deleted Person: Betsy Crower Phone: 1234567 Email: betsycrowe@example.com Address: Newgate Prison Current Position: Student Company: NUS Skills:
-
-.Screen after typing `delete 1`
-
-image::deleteJohn.png[width="800", align="center"]
 
 
 ==== Viewing the contact details of a person: `select`
@@ -442,10 +412,6 @@ This will show any job in Singapore.
 
 You can see a list of all job openings in contactHeRo using the following format. +
 Format: `listjob`
-
-.Screen after typing `listjob`
-
-image::listjob.png[width="800", align="center"]
 
 
 ==== Deleting a job opening: `deletejob`
@@ -700,8 +666,7 @@ image::emailSS2.PNG[width="400", align="center"]
 // end::email[]
 
 === Utility Features
-This section describes the commands you can use to utilize contactHeRo. +
-
+This section describes the commands that will help you make better use of contactHeRo.
 ==== Viewing help : `help`
 
 In case you get stuck while using contactHeRo and would like to see the User Guide, you can do so by using the following format. +
