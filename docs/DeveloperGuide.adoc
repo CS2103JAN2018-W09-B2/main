@@ -672,7 +672,7 @@ Certain properties of the application can be controlled (e.g App name, logging l
 
 // tag::profilepicture[]
 === Profile Picture Feature
-Profile picture feature allows to show persons' profile pictures.
+Profile picture feature allows the user to show persons' profile pictures.
 
 [NOTE]
 `ProfilePicture` refers to the class `ProfilePicture`. +
