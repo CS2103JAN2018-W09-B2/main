@@ -119,7 +119,7 @@ Now that you have understood the command format, let's explore the features.
 
 === Managing your contactHeRo account
 
-This section describes the commands you can use to secure your data stored in contactHeRo by the login system.
+This section describes the commands which enable you to use the login system to secure your data stored in contactHeRo.
 
 ==== Registering a new account : `signup`
 
