@@ -56,6 +56,8 @@
 <li><a href="#Implementation-Configuration">4.8. Configuration</a></li>
 <li><a href="#profile-picture-feature">4.9. Profile Picture Feature</a></li>
 <li><a href="#emailing-a-contact-using-google-api">4.10. Emailing a contact using Google API</a></li>
+<li><a href="#login-system-implementation">4.11. Login System Implementation</a></li>
+<li><a href="#matching-jobs-implementation">4.12. Matching jobs implementation</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -1737,6 +1739,166 @@ main thread in order to wait for the user to authenticate, if the user close the
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="login-system-implementation"><a class="link" href="#login-system-implementation">4.11. Login System Implementation</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">4.11.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The login system is currently implemented such that there is only one user per application. Logging in and out of contactHeRo is done in the same way as the other commmands which is through the command line.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="logging-in"><a class="link" href="#logging-in">4.11.2. Logging in</a></h4>
+<div class="paragraph">
+<p>When the user starts the application, the user will see the display screen. The user will need to login in order to switch to the main display to view the data.
+Most of the commands will be locked so as to prevent modification of the data in contactHeRo before a user logs in. The commands that are available for use are <code>LoginCommand</code>, <code>HelpCommand</code>, <code>ClearHistoryCommand</code> and <code>ExitCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>The user will need to enter the <code>login</code> command to log in before he can get to the main window. The image below shows
+the sequence diagram for the <code>login</code> command in the logic component.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/LoginSDLogicComponent.png" alt="LoginSDLogicComponent" width="800">
+</div>
+<div class="title">Figure 22. Logic Component Sequence Diagram for logging in</div>
+</div>
+<div class="paragraph">
+<p>As seen in the image, when the user logs in, an instance of <code>LogicCommand</code> is created which then makes a function call to <code>Model</code> to check the validity of the inputs. Afterwards, the <code>LogicCommand</code> instance will post a <code>LoginEvent</code> to \
+<code>EventsCenter</code> and the event will be handled by the <code>UI</code> component to switch the display.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="logging-out"><a class="link" href="#logging-out">4.11.3. Logging out</a></h4>
+<div class="paragraph">
+<p>When the user is done with using the application, the user can use the <code>LogoutCommand</code> to log out. Once the log out is entered, the user will be brought back to the display screen.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="customizing-username-and-password"><a class="link" href="#customizing-username-and-password">4.11.4. Customizing username and password</a></h4>
+<div class="paragraph">
+<p>Currently, a default username and password is given for first time users of contactHeRo. This information can be seen in the in the <code>ResultDisplayPanel</code> in the display window when the user starts up the application. See the image below.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/LoginPrompt.png" alt="LoginPrompt" width="800">
+</div>
+<div class="title">Figure 23. LoginScreen.png</div>
+</div>
+<div class="paragraph">
+<p>Users can change the username and password by using the <code>updateusername</code> command and <code>updatepassword</code> command respectively.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Constraints are set to both username and password to prevent illegal values from being used, such as an empty string. The code snippets for the regex of both username and password are shown below.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> USERNAME_VALIDATION_REGEX = <span class="string"><span class="delimiter">&quot;</span><span class="char">\\</span><span class="content">S</span><span class="char">\\</span><span class="content">w{3,20}</span><span class="delimiter">&quot;</span></span>;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> PASSWORD_VALIDATION_REGEX = <span class="string"><span class="delimiter">&quot;</span><span class="content">(?=.*[A-Za-z])(?=.*</span><span class="char">\\</span><span class="content">d)[</span><span class="char">\\</span><span class="content">p{Alnum}](</span><span class="char">\\</span><span class="content">S{4,20})</span><span class="delimiter">&quot;</span></span>;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="storing-of-user-account"><a class="link" href="#storing-of-user-account">4.11.5. Storing of user account</a></h4>
+<div class="paragraph">
+<p>In our implementation, the <code>Account</code> class in the <code>model</code> component stores the in-memory data for the username and password. The <code>AccountsManager</code> class handles the methods which interacts with the data in <code>Account</code>, such as login and update password.</p>
+</div>
+<div class="paragraph">
+<p>For storing of the user account data in hard disk, it is handled by the <code>XmlAccountData</code> class in the <code>storage</code> component. The data will be stored as an XML file in a JAXB-friendly version <code>XmlAdaptedAccount</code>. This data file is a separate file from the file which stores the main data of contactHeRo.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.11.6. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Storing of user account data<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 1 (current choice):</strong> Stores user account data in the same file with the main data.<br>
+<strong>Pros</strong>:<br>
+<strong>Cons</strong>: Data in contactHeRo becomes lost if user forgets the customized username or password.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Stores user account data in a separate file.+
+<strong>Pros</strong>:  User can still retrieve their data if they forget their customize username or password by simply removing the file storing account data and restart with a<br>
+<strong>Cons</strong>: Data becomes insecure as now everyone can access the data through the default username and password.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Aspect:</strong> How login UI is implemented<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 1 (current choice):</strong> Use the same window for the display screen and main screen.<br>
+<strong>Pros</strong>: Faster to implement as layout is similar to main screen. Also reduces code duplication.<br>
+<strong>Cons</strong>: Can only do small changes to layout for display screen.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Create a separate login window.<br>
+<strong>Pros</strong>: Login UI can be customized to make it more user friendly for users visually.<br>
+<strong>Cons</strong>: User do not have to deal with the opening and closing of windows which may slow the app.<br></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="matching-jobs-implementation"><a class="link" href="#matching-jobs-implementation">4.12. Matching jobs implementation</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-10"><a class="link" href="#current-implementation-10">4.12.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>JobMatchCommand</code> uses <code>PersonSkillContainsKeywordsPredicate</code> to match person&#8217;s skills with a job&#8217;s skills. It accepts the index for the job to match and then uses the <code>PersonSkillMatchesKeywordsPredicate</code> to match the job. Below is the code for the execution of the <code>JobMatchCommand</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
+    ...
+    Job jobToMatch = lastShownList.get(targetIndex.getZeroBased());
+
+    model.updateFilteredPersonList(<span class="keyword">new</span> PersonSkillContainsKeywordsPredicate(
+            CollectionUtil.getSetAsStringList(jobToMatch.getSkills())));
+    <span class="comment">// return result</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>PersonSkillMatchesKeywordsPredicate</code> takes in the list of skills of the job as the keywords as the parameter and then checks if the person has any of these skills using the <code>SkillUtil</code>. The code for matching the skills is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/**
+ * Checks if a set of skills contains any of the {@code keywords}.
+ */</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="type">boolean</span> match(<span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; keywords, <span class="predefined-type">Set</span>&lt;Skill&gt; list) {
+    <span class="predefined-type">String</span> skillList = getSkillsAsString(list);
+    <span class="keyword">return</span> keywords.stream()
+            .anyMatch(keyword -&gt; StringUtil.containsWordIgnoreCase(skillList, keyword));
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To minimize code duplication, we made a utility class <code>SkillUtil</code> which is used both by <code>PersonSkillMatchesKeywordsPredicate</code> during execution of <code>matchjob</code> and <code>find s/</code> commands and <code>JobSkillMatchesKeywordsPredicate</code> during the execution of <code>findjob s/</code> command.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1798,7 +1960,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 22. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 24. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -4003,7 +4165,7 @@ be displayed to show that you have sent the email successfully.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 13:19:49 UTC
+Last updated 2018-04-15 13:50:35 UTC
 </div>
 </div>
 </body>
