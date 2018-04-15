@@ -81,15 +81,14 @@
 </li>
 <li><a href="#utility-features">4.7. Utility Features</a>
 <ul class="sectlevel3">
-<li><a href="#viewing-help-code-help-code">4.7.1. Viewing help : <code>help</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">4.7.2. Listing entered commands : <code>history</code></a></li>
-<li><a href="#clearing-list-of-entered-commands-code-clearhistory-code">4.7.3. Clearing list of entered commands : <code>clearhistory</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">4.7.4. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">4.7.5. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">4.7.6. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">4.7.7. Exiting the program : <code>exit</code></a></li>
-<li><a href="#auto-complete-command">4.7.8. Auto-complete command</a></li>
-<li><a href="#saving-the-data">4.7.9. Saving the data</a></li>
+<li><a href="#listing-entered-commands-code-history-code">4.7.1. Listing entered commands : <code>history</code></a></li>
+<li><a href="#clearing-list-of-entered-commands-code-clearhistory-code">4.7.2. Clearing list of entered commands : <code>clearhistory</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">4.7.3. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">4.7.4. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">4.7.5. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">4.7.6. Exiting the program : <code>exit</code></a></li>
+<li><a href="#auto-complete-command">4.7.7. Auto-complete command</a></li>
+<li><a href="#saving-the-data">4.7.8. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#coming-in-v2-0">4.8. Coming in V2.0</a>
@@ -97,7 +96,6 @@
 <li><a href="#arranging-meetings-with-gmail-calendar-code-coming-in-v2-0-code">4.8.1. Arranging meetings with Gmail calendar <code>[coming in v2.0]</code></a></li>
 <li><a href="#setting-reminders-code-coming-in-v2-0-code">4.8.2. Setting reminders <code>[coming in v2.0]</code></a></li>
 <li><a href="#better-matching-of-jobs-code-coming-in-v2-0-code">4.8.3. Better matching of jobs <code>[coming in v2.0]</code></a></li>
-<li><a href="#matching-people-to-jobs-code-coming-in-v2-0-code">4.8.4. Matching people to jobs <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 </ul>
@@ -114,6 +112,7 @@
 <li><a href="#utility-commands">6.7. Utility Commands</a></li>
 </ul>
 </li>
+<li><a href="#conclusion">7. Conclusion</a></li>
 </ul>
 </div>
 </div>
@@ -121,8 +120,8 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Welcome to <strong>contactHeRo</strong>! contactHeRo is the <strong>perfect contact management solution for recruiters</strong> across companies who need a <strong>quick and efficient way</strong> to manage the contact details and profiles of their potential recruits. It is a <strong>Command Line Interface(CLI) application</strong> with intuitive usage and effective features. You can manage details of prospective employees and job openings in your company through easy to use <code>add</code>, <code>delete</code> and <code>edit</code> features. Matching jobs to employees is also a great feature that makes the hiring process easy for you.
-Other than that, you can also view the linkedIn profiles of your potential employees, send emails and arrange meetings.</p>
+<p>Welcome to <strong>contactHeRo</strong>! <strong>contactHeRo</strong> is the <strong>perfect contact management solution for recruiters</strong> across companies who need a <strong>quick and efficient way</strong> to manage the contact details and profiles of their potential recruits. It is a <strong>Command Line Interface(CLI) application</strong> with intuitive usage and effective features. You can manage details of prospective employees and job openings in your company through easy to use <code>add</code>, <code>delete</code> and <code>edit</code> features. Matching jobs to employees is also a great feature that makes the hiring process easy for you.
+Other than that, you can also view the LinkedIn profiles of your potential employees, send emails and arrange meetings.</p>
 </div>
 </div>
 </div>
@@ -130,7 +129,7 @@ Other than that, you can also view the linkedIn profiles of your potential emplo
 <h2 id="before-reading-this-guide"><a class="link" href="#before-reading-this-guide">2. Before Reading This Guide</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This short guide will familiarize you with all of the features and functionality of contactHeRo. Given below is the legend for some symbols and markups used in this guide.</p>
+<p>This short guide will familiarize you with all of the features and functionality of contactHeRo. Given below are some symbols and markups used in this guide.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -216,7 +215,13 @@ Not sure how to install Java? Visit the oracle website link below for more infor
 </div>
 </li>
 <li>
-<p>Login using the default username,<code>Admin</code> and default password, <code>ad123</code>. You should see the user interface as shown below (Refer to figure 2) in a few seconds.</p>
+<p>Login using the default username <code>Admin</code> and default password <code>ad123</code> as shown below (Refer to figure 2).</p>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/DefaultLogin.png" alt="DefaultLogin" width="800">
+</div>
+<div class="title">Figure 2. Login as first user</div>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -229,14 +234,17 @@ You can change the password later using the <code>updatepassword</code> command.
 </tr>
 </table>
 </div>
+</li>
+<li>
+<p>Upon successful login, You should see the user interface as shown below (Refer to figure 3).</p>
+</li>
+</ol>
+</div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/UIMarkup.png" alt="UIMarkup" width="800">
 </div>
-<div class="title">Figure 2. contactHeRo UI after login</div>
-</div>
-</li>
-</ol>
+<div class="title">Figure 3. contactHeRo UI after login</div>
 </div>
 <div class="paragraph">
 <p>Now you can start using contactHeRo.</p>
@@ -255,10 +263,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>list</code></strong> : lists all contacts</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
+<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 cp/Software Engineer cc/Garena</code>  : adds a contact named <code>John Doe</code> to the Address Book.</p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rdo contact shown in the current list</p>
+<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
@@ -289,7 +297,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="content">
 <img src="images/commandBox.png" alt="commandBox" width="790">
 </div>
-<div class="title">Figure 3. Command Box in contactHeRo</div>
+<div class="title">Figure 4. Command Box in contactHeRo</div>
 </div>
 <div class="paragraph">
 <p><strong>Command Format</strong><br>
@@ -329,7 +337,7 @@ In case you make a mistake while typing the command, contactHeRo will show you t
 <div class="sect2">
 <h3 id="managing-your-contacthero-account"><a class="link" href="#managing-your-contacthero-account">4.1. Managing your contactHeRo account</a></h3>
 <div class="paragraph">
-<p>This section describes the commands which enable to you use the login system to secure your data stored in contactHeRo.</p>
+<p>This section describes the commands which enable you to use the login system to secure your data stored in contactHeRo.</p>
 </div>
 <div class="sect3">
 <h4 id="registering-a-new-account-code-signup-code"><a class="link" href="#registering-a-new-account-code-signup-code">4.1.1. Registering a new account : <code>signup</code></a></h4>
@@ -342,7 +350,7 @@ Format: <code>signup u/USERNAME pw/PASSWORD</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Username has to be at least 3 characters starting with a alphanumeric character.<br></p>
+<p>Username has to be at least 3 characters starting with an alphanumeric character.<br></p>
 </li>
 <li>
 <p>Password should be at least 4 characters long.<br></p>
@@ -372,7 +380,7 @@ Format: <code>signup u/USERNAME pw/PASSWORD</code></p>
 <div class="sect3">
 <h4 id="logging-in-code-login-code"><a class="link" href="#logging-in-code-login-code">4.1.2. Logging in : <code>login</code></a></h4>
 <div class="paragraph">
-<p>You can login through the command line by using the following this format.<br>
+<p>You can login via the command line using the following format.<br>
 Format: <code>login u/USERNAME pw/PASSWORD</code></p>
 </div>
 <div class="paragraph">
@@ -393,7 +401,7 @@ Format: <code>login u/USERNAME pw/PASSWORD</code></p>
 <div class="sect3">
 <h4 id="logging-out-code-logout-code"><a class="link" href="#logging-out-code-logout-code">4.1.3. Logging out : <code>logout</code></a></h4>
 <div class="paragraph">
-<p>You can logout through the command line by using the following this format.<br>
+<p>You can logout via the command line using the following this format.<br>
 Format: <code>logout</code></p>
 </div>
 <div class="paragraph">
@@ -413,7 +421,7 @@ Format: <code>logout</code></p>
 <p>You can add a person to contactHeRo using the following format.<br></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS cp/CURRENT_POSITION cc/COMPANY [pp/PROFILE_PICTURE_PATH] [s/SKILL]&#8230;&#8203;</code></p>
+<p>Format: <code>n/NAME p/PHONE e/EMAIL a/ADDRESS cp/CURRENT_POSITION cc/COMPANY [pp/PROFILE_PICTURE_PATH] [s/SKILL]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -445,7 +453,7 @@ Profile Picture indicates the profile picture&#8217;s file path
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 cp/Software Engineer cc/Google pp//home/john/Desktop/John.jpg</code><br></p>
+<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 cp/Software Engineer cc/Google</code><br></p>
 <div class="paragraph">
 <p>On running the above command, you should see the following success message:<br></p>
 </div>
@@ -543,7 +551,7 @@ Format: <code>list</code></p>
 <h4 id="locating-persons-by-name-or-skill-code-find-code"><a class="link" href="#locating-persons-by-name-or-skill-code-find-code">4.2.4. Locating persons by name or skill : <code>find</code></a></h4>
 <div class="paragraph">
 <p>You can find all the persons whose names or skills contain any of the given keywords using the following format.<br>
-Format: <code>find n/KEYWORD [MORE_KEYWORDS]</code> to find by name or <code>find s/KEYWORD [MORE_KEYWORDS]</code> to find by skill</p>
+Format: <code>find n/KEYWORD [MORE_NAME_KEYWORDS]</code> to find by name or <code>find s/KEYWORD [MORE_SKILL_KEYWORDS]</code> to find by skill</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -618,8 +626,8 @@ Format: <code>delete INDEX</code></p>
 <ul>
 <li>
 <p><code>list</code><br>
-<code>delete 2</code><br>
-This deletes the 2nd person in contactHeRo and on running the above command, you should see the following success message:<br></p>
+<code>delete 1</code><br>
+This deletes the 1st person in contactHeRo and on running the above command, you should see the following success message:<br></p>
 <div class="literalblock">
 <div class="content">
 <pre>Deleted Person: John Doe Phone: 98765432 Email: johnd@example.com Address: John street, block 123, #01-01 Current Position: Software Engineer Company: Google Skills:</pre>
@@ -686,7 +694,7 @@ This selects the 1st person in the results of the <code>find</code> command.</p>
 <div class="content">
 <img src="images/selectCommand.png" alt="selectCommand" width="800">
 </div>
-<div class="title">Figure 4. Select Command Execution</div>
+<div class="title">Figure 5. Select Command Execution</div>
 </div>
 </div>
 <div class="sect3">
@@ -752,20 +760,20 @@ This loads the LinkedIn search of 1st person in the results of the <code>find</c
 <div class="content">
 <img src="images/linkedInCommand.png" alt="linkedInCommand" width="800">
 </div>
-<div class="title">Figure 5. LinkedIn Command Execution</div>
+<div class="title">Figure 6. LinkedIn Command Execution</div>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="managing-job-openings"><a class="link" href="#managing-job-openings">4.3. Managing Job Openings</a></h3>
 <div class="paragraph">
-<p>This section describes the commands you can use to manage person profiles in contactHeRo.</p>
+<p>This section describes the commands you can use to manage jobs in contactHeRo.</p>
 </div>
 <div class="sect3">
 <h4 id="adding-a-job-opening-code-addjob-code"><a class="link" href="#adding-a-job-opening-code-addjob-code">4.3.1. Adding a job opening: <code>addjob</code></a></h4>
 <div class="paragraph">
 <p>You can add a job opening to contactHeRo using the following format.<br>
-Format: <code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER_OF_POSITIONS s/SKILLS_REQUIRED</code></p>
+Format: <code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER_OF_POSITIONS s/SKILL_REQUIRED&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -784,7 +792,7 @@ Format: <code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER_OF_POSITIONS s/SKILLS
 </div>
 </li>
 <li>
-<p><code>addjob p/Marketing Intern t/Social Media Marketing l/Singapore n/1 s/Excel s/Writing</code></p>
+<p><code>addjob p/Marketing Intern t/Social Media Marketing l/Kuala Lampur, Malaysia n/1 s/Excel s/Writing</code></p>
 <div class="paragraph">
 <p>On running the above command, you should see the following success message and the job opening UI(Refer to figure 6) added to the Job List Panel(Refer to figure 2):<br></p>
 </div>
@@ -800,7 +808,7 @@ Format: <code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER_OF_POSITIONS s/SKILLS
 <div class="content">
 <img src="images/addjobCommand.png" alt="addjobCommand">
 </div>
-<div class="title">Figure 6. A job opening in contactHeRo</div>
+<div class="title">Figure 7. A job opening in contactHeRo</div>
 </div>
 </div>
 <div class="sect3">
@@ -828,7 +836,7 @@ Format: <code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER_OF_POSITIONS s/SKILLS
 <p>When you edit skills, the existing skills of the job opening will be removed i.e adding of job&#8217;s skills is not cumulative.</p>
 </li>
 <li>
-<p>Unlike editing a person feature, you cannot remove all the job&#8217;s skills by typing <code>s/</code> because a job opening requires atleast one skill.</p>
+<p>Unlike editing a person feature, you cannot remove all the job&#8217;s skills by typing <code>s/</code> because a job opening requires at least one skill.</p>
 </li>
 </ul>
 </div>
@@ -863,13 +871,13 @@ Format:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find p/KEYWORD [MORE_KEYWORDS]</code> to find by position or</p>
+<p><code>findjob p/KEYWORD [MORE_KEYWORDS]</code> to find by position or</p>
 </li>
 <li>
-<p><code>find t/KEYWORD [MORE_KEYWORDS]</code> to find by team or</p>
+<p><code>findjob s/KEYWORD [MORE_KEYWORDS]</code> to find by skill or</p>
 </li>
 <li>
-<p><code>find s/KEYWORD [MORE_KEYWORDS]</code> to find by skill.</p>
+<p><code>findjob l/KEYWORD [MORE_KEYWORDS]</code> to find by location.</p>
 </li>
 </ul>
 </div>
@@ -905,16 +913,16 @@ Format:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find n/John</code><br>
-This will show any person having the name <code>john</code> or <code>John</code>.</p>
+<p><code>findjob p/Hardware Engineer</code><br>
+This will show any job with position <code>Hardware Engineer</code>.</p>
 </li>
 <li>
-<p><code>find s/designer</code><br>
-This will show <code>Jane Doe</code> whose skill is <code>designer</code>.</p>
+<p><code>findjob s/Java</code><br>
+This will show any job which requires Java.</p>
 </li>
 <li>
-<p><code>find n/Betsy Tim John</code><br>
-This will show any person having any of the names <code>Betsy</code>, <code>Tim</code>, or <code>John</code>.</p>
+<p><code>findjob l/Singapore</code><br>
+This will show any job in Singapore.</p>
 </li>
 </ul>
 </div>
@@ -1014,7 +1022,7 @@ This will show any person whose skills match any of those required for the job o
 <div class="content">
 <img src="images/matchjobCommand.png" alt="matchjobCommand" width="800">
 </div>
-<div class="title">Figure 7. MatchJob Command Execution</div>
+<div class="title">Figure 8. MatchJob Command Execution</div>
 </div>
 </div>
 </div>
@@ -1026,7 +1034,7 @@ This will show any person whose skills match any of those required for the job o
 <div class="sect3">
 <h4 id="adding-appointment-code-addapp-code"><a class="link" href="#adding-appointment-code-addapp-code">4.4.1. Adding appointment : <code>addapp</code></a></h4>
 <div class="paragraph">
-<p>You can add appointment by using the following format.<br></p>
+<p>You can add appointment using the following format.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>addapp t/TITLE sdt/START_DATE_TIME edt/END_DATE_TIME</code></p>
@@ -1053,7 +1061,7 @@ This will show any person whose skills match any of those required for the job o
 <div class="sect3">
 <h4 id="deleting-appointment-code-delapp-code"><a class="link" href="#deleting-appointment-code-delapp-code">4.4.2. Deleting appointment : <code>delapp</code></a></h4>
 <div class="paragraph">
-<p>You can delete appointment by using the following format.<br></p>
+<p>You can delete appointment using the following format.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>delapp t/TITLE sdt/START_DATE_TIME edt/END_DATE_TIME</code></p>
@@ -1124,7 +1132,7 @@ Example: <code>date</code></p>
 <div class="content">
 <img src="images/dateView.png" alt="dateView" width="400">
 </div>
-<div class="title">Figure 8. Date view</div>
+<div class="title">Figure 9. Date view</div>
 </div>
 </div>
 <div class="sect3">
@@ -1146,7 +1154,7 @@ Format: <code>datetime [DATE_TIME]</code><br></p>
 </table>
 </div>
 <div class="paragraph">
-<p>Example: <code>date 2018-04-26 12:00</code></p>
+<p>Example: <code>datetime 2018-04-26 12:00</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -1184,7 +1192,7 @@ Example: <code>week</code></p>
 <div class="content">
 <img src="images/weekView.png" alt="weekView" width="400">
 </div>
-<div class="title">Figure 9. Week view</div>
+<div class="title">Figure 10. Week view</div>
 </div>
 </div>
 <div class="sect3">
@@ -1221,7 +1229,7 @@ Example: <code>month</code></p>
 <div class="content">
 <img src="images/monthView.png" alt="monthView" width="400">
 </div>
-<div class="title">Figure 10. Month view</div>
+<div class="title">Figure 11. Month view</div>
 </div>
 </div>
 <div class="sect3">
@@ -1258,12 +1266,15 @@ Example: <code>year</code></p>
 <div class="content">
 <img src="images/yearView.png" alt="yearView" width="400">
 </div>
-<div class="title">Figure 11. Year view</div>
+<div class="title">Figure 12. Year view</div>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="managing-emails"><a class="link" href="#managing-emails">4.6. Managing Emails</a></h3>
+<div class="paragraph">
+<p>This section describes the commands you can use to manage emails in contactHeRo</p>
+</div>
 <div class="sect3">
 <h4 id="login-to-google-code-googlelogin-code"><a class="link" href="#login-to-google-code-googlelogin-code">4.6.1. Login to Google : <code>googlelogin</code></a></h4>
 <div class="paragraph">
@@ -1290,7 +1301,7 @@ Format: <code>googlelogin</code></p>
 </li>
 <li>
 <p><strong>NOTE</strong>: We do not save or log any of your Google credentials or information as we respect your privacy.
-Therefore, everytime you restart contactHeRo, you will have to login again.</p>
+Therefore, everytime you restart contactHeRo, you have to login again.</p>
 </li>
 </ul>
 </div>
@@ -1319,7 +1330,7 @@ This will open up the <code>Google</code> tab for you to login. On running the a
 <div class="content">
 <img src="images/googlelogin1.PNG" alt="googlelogin1" width="400">
 </div>
-<div class="title">Figure 12. The Google log in page</div>
+<div class="title">Figure 13. The Google log in page</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1405,7 +1416,7 @@ If you have also used <code>sub/Interview on 13 May 2018</code> in the command, 
 <div class="content">
 <img src="images/emailSS1.PNG" alt="emailSS1" width="400">
 </div>
-<div class="title">Figure 13. The User Interface to draft your email</div>
+<div class="title">Figure 14. The User Interface to draft your email</div>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1429,14 +1440,16 @@ a pop-up message as shown below.</p>
 <div class="content">
 <img src="images/emailSS2.PNG" alt="emailSS2" width="300">
 </div>
-<div class="title">Figure 14. Pop-up message</div>
+<div class="title">Figure 15. Pop-up message</div>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="utility-features"><a class="link" href="#utility-features">4.7. Utility Features</a></h3>
-<div class="sect3">
-<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">4.7.1. Viewing help : <code>help</code></a></h4>
+<div class="paragraph">
+<p>This section describes the commands that will help you make better use of contactHeRo.
+==== Viewing help : <code>help</code></p>
+</div>
 <div class="paragraph">
 <p>In case you get stuck while using contactHeRo and would like to see the User Guide, you can do so by using the following format.<br>
 Format: <code>help</code></p>
@@ -1448,11 +1461,10 @@ Format: <code>help</code></p>
 <div class="content">
 <img src="images/helpWindow.png" alt="helpWindow" width="790">
 </div>
-<div class="title">Figure 15. Help Window in contactHeRo</div>
-</div>
+<div class="title">Figure 16. Help Window in contactHeRo</div>
 </div>
 <div class="sect3">
-<h4 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">4.7.2. Listing entered commands : <code>history</code></a></h4>
+<h4 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">4.7.1. Listing entered commands : <code>history</code></a></h4>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -1473,7 +1485,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="clearing-list-of-entered-commands-code-clearhistory-code"><a class="link" href="#clearing-list-of-entered-commands-code-clearhistory-code">4.7.3. Clearing list of entered commands : <code>clearhistory</code></a></h4>
+<h4 id="clearing-list-of-entered-commands-code-clearhistory-code"><a class="link" href="#clearing-list-of-entered-commands-code-clearhistory-code">4.7.2. Clearing list of entered commands : <code>clearhistory</code></a></h4>
 <div class="paragraph">
 <p>You can clear your history of entered commands using the following format.<br>
 Format: <code>clearhistory</code></p>
@@ -1484,7 +1496,7 @@ Format: <code>clearhistory</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">4.7.4. Undoing previous command : <code>undo</code></a></h4>
+<h4 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">4.7.3. Undoing previous command : <code>undo</code></a></h4>
 <div class="paragraph">
 <p>You can restore contactHeRo to the state before the previous <em>undoable</em> command(refer to note below) was executed in case you make a mistake or otherwise, using the following format.<br>
 Format: <code>undo</code></p>
@@ -1529,7 +1541,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect3">
-<h4 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">4.7.5. Redoing the previously undone command : <code>redo</code></a></h4>
+<h4 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">4.7.4. Redoing the previously undone command : <code>redo</code></a></h4>
 <div class="paragraph">
 <p>You can reverse the most recent <code>undo</code> command using the following format.<br>
 Format: <code>redo</code></p>
@@ -1561,7 +1573,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect3">
-<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">4.7.6. Clearing all entries : <code>clear</code></a></h4>
+<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">4.7.5. Clearing all entries : <code>clear</code></a></h4>
 <div class="paragraph">
 <p>You can clear all your contacts from contactHeRo using the following format.<br>
 Format: <code>clear</code></p>
@@ -1573,14 +1585,14 @@ On running the above command, you should see the following success message:<br>
 </div>
 </div>
 <div class="sect3">
-<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">4.7.7. Exiting the program : <code>exit</code></a></h4>
+<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">4.7.6. Exiting the program : <code>exit</code></a></h4>
 <div class="paragraph">
 <p>You can exit the program using the following format.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="auto-complete-command"><a class="link" href="#auto-complete-command">4.7.8. Auto-complete command</a></h4>
+<h4 id="auto-complete-command"><a class="link" href="#auto-complete-command">4.7.7. Auto-complete command</a></h4>
 <div class="paragraph">
 <p>To save your time, after typing a partial command, you can press TAB for the command to be auto-completed.</p>
 </div>
@@ -1613,7 +1625,7 @@ The first lexicographically matched command is returned.
 </div>
 </div>
 <div class="sect3">
-<h4 id="saving-the-data"><a class="link" href="#saving-the-data">4.7.9. Saving the data</a></h4>
+<h4 id="saving-the-data"><a class="link" href="#saving-the-data">4.7.8. Saving the data</a></h4>
 <div class="paragraph">
 <p>You do not need to save manually. contactHeRo saves the data into the hard disk for you automatically.<br></p>
 </div>
@@ -1636,13 +1648,7 @@ The first lexicographically matched command is returned.
 <div class="sect3">
 <h4 id="better-matching-of-jobs-code-coming-in-v2-0-code"><a class="link" href="#better-matching-of-jobs-code-coming-in-v2-0-code">4.8.3. Better matching of jobs <code>[coming in v2.0]</code></a></h4>
 <div class="paragraph">
-<p>Job matching will soon be improved wherein it will be using location-matching and Artificial Intelligence methods.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="matching-people-to-jobs-code-coming-in-v2-0-code"><a class="link" href="#matching-people-to-jobs-code-coming-in-v2-0-code">4.8.4. Matching people to jobs <code>[coming in v2.0]</code></a></h4>
-<div class="paragraph">
-<p>You will soon be able to match people to jobs as well to see which job opening is suitable for a particular person.</p>
+<p>Job matching will soon be improved using  Artificial Intelligence methods.</p>
 </div>
 </div>
 </div>
@@ -1653,8 +1659,10 @@ The first lexicographically matched command is returned.
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.
-<strong>Q</strong>: How do I report bugs to the developers?<br>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+</div>
+<div class="paragraph">
+<p><strong>Q</strong>: How do I report bugs to the developers?<br>
 <strong>A</strong>: Please send an email to <a href="mailto:contactHeRo@gmail.com">contactHeRo@gmail.com</a> if you find a bug. Thank you.</p>
 </div>
 <div class="paragraph">
@@ -1721,12 +1729,12 @@ We are willing to help you.<br></p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Adding a person.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add n/NAME p/PHONE e/EMAIL a/ADDRESS cp/CURRENT_POSITION cc/COMPANY [pp/PROFILE PICTURE NAME] [s/SKILL]&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add n/NAME p/PHONE e/EMAIL a/ADDRESS cp/CURRENT_POSITION cc/COMPANY [pp/PROFILE_PICTURE_PATH] [s/SKILL]&#8230;&#8203;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 cp/Software Engineer cc/Google pp//home/trafalgarandre/downloads/john.jpeg s/Java s/C++</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Editing an existing person.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [cp/CURRENT_POSITION] [cc/COMPANY] [pp/PROFILE PICTURE NAME] [s/SKILL]&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [cp/CURRENT_POSITION] [cc/COMPANY] [pp/PROFILE_PICTURE_PATH] [s/SKILL]&#8230;&#8203;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit 1 p/91234567 e/johndoe@example.com</code></p></td>
 </tr>
 <tr>
@@ -1984,10 +1992,20 @@ We are willing to help you.<br></p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="conclusion"><a class="link" href="#conclusion">7. Conclusion</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once again, thank you for choosing us as your contact management solution! You are our motivation to make this application better.<br>
+If you find any bugs or want to propose any ideas, please contact us via <a href="mailto:contactHeRo@gmail.com">contactHeRo@gmail.com</a>.<br>
+Hope you enjoy contactHeRo!</p>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 12:10:21 UTC
+Last updated 2018-04-15 13:19:49 UTC
 </div>
 </div>
 </body>

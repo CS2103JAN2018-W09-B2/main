@@ -31,7 +31,7 @@
 <li><a href="#setting-up-the-project-in-your-computer">2.2. Setting up the project in your computer</a></li>
 <li><a href="#verifying-the-setup">2.3. Verifying the setup</a></li>
 <li><a href="#configurations-to-do-before-writing-code">2.4. Configurations to do before writing code</a></li>
-<li><a href="#getting-started-with-coding">2.5. Getting started with coding.</a></li>
+<li><a href="#getting-started-with-coding">2.5. Getting started with coding</a></li>
 </ul>
 </li>
 <li><a href="#design">3. Design</a>
@@ -105,8 +105,10 @@
 <li><a href="#matching-a-job-opening">G.7. Matching a job opening</a></li>
 <li><a href="#searching-a-person-on-linkedin">G.8. Searching a person on LinkedIn</a></li>
 <li><a href="#auto-completing-the-command">G.9. Auto-completing the command</a></li>
-<li><a href="#logging-in-to-google">G.10. Logging in to Google</a></li>
-<li><a href="#sending-an-email">G.11. Sending an email</a></li>
+<li><a href="#managing-profile-picture">G.10. Managing profile picture</a></li>
+<li><a href="#managing-appointments">G.11. Managing appointments</a></li>
+<li><a href="#logging-in-to-google">G.12. Logging in to Google</a></li>
+<li><a href="#sending-an-email">G.13. Sending an email</a></li>
 </ul>
 </li>
 </ul>
@@ -119,7 +121,7 @@
 <p>Welcome to contactHeRo developer guide! This guide contains all the information you need to quickly get started in contributing to contactHeRo.</p>
 </div>
 <div class="paragraph">
-<p>If you notice any mistakes or if there are any missing vital information then please let us know via <a href="mailto:contactHeRo@gmail.com">contactHeRo@gmail.com</a>.<br>
+<p>If you notice any mistakes or if there is any missing vital information then please let us know via <a href="mailto:contactHeRo@gmail.com">contactHeRo@gmail.com</a>.<br>
 Let&#8217;s get started!</p>
 </div>
 </div>
@@ -167,7 +169,7 @@ Not sure how to install Java? Visit the oracle website link below for more infor
 </div>
 </li>
 <li>
-<p><strong>IntelliJ</strong> IDE</p>
+<p><strong>IntelliJ</strong> IDE.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -193,35 +195,35 @@ Do not disable them. If you have disabled them, go to <code>File</code> &gt; <co
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Fork this repo, and clone the fork to your computer</p>
+<p>Fork this repo, and clone the fork to your computer.</p>
 </li>
 <li>
-<p>Open IntelliJ (if you are not in the welcome screen, click <code>File</code> &gt; <code>Close Project</code> to close the existing project dialog first)</p>
+<p>Open IntelliJ (if you are not in the welcome screen, click <code>File</code> &gt; <code>Close Project</code> to close the existing project dialog first).</p>
 </li>
 <li>
-<p>Set up the correct JDK version for Gradle</p>
+<p>Set up the correct JDK version for Gradle.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Click <code>Configure</code> &gt; <code>Project Defaults</code> &gt; <code>Project Structure</code></p>
+<p>Click <code>Configure</code> &gt; <code>Project Defaults</code> &gt; <code>Project Structure</code>.</p>
 </li>
 <li>
-<p>Click <code>New&#8230;&#8203;</code> and find the directory of the JDK</p>
+<p>Click <code>New&#8230;&#8203;</code> and find the directory of the JDK.</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Click <code>Import Project</code></p>
+<p>Click <code>Import Project</code>.</p>
 </li>
 <li>
-<p>Locate the <code>build.gradle</code> file and select it. Click <code>OK</code></p>
+<p>Locate the <code>build.gradle</code> file and select it. Click <code>OK</code>.</p>
 </li>
 <li>
-<p>Click <code>Open as Project</code></p>
+<p>Click <code>Open as Project</code>.</p>
 </li>
 <li>
-<p>Click <code>OK</code> to accept the default settings</p>
+<p>Click <code>OK</code> to accept the default settings.</p>
 </li>
 <li>
 <p>Open a console and run the command <code>gradlew processResources</code> (Mac/Linux: <code>./gradlew processResources</code>). It should finish with the <code>BUILD SUCCESSFUL</code> message.<br>
@@ -238,7 +240,7 @@ This will generate all resources required by the application and tests.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Run the <code>seedu.address.MainApp</code> and try a few commands</p>
+<p>Run the <code>seedu.address.MainApp</code> and try a few commands.</p>
 </li>
 <li>
 <p><a href="#Testing">Run the tests</a> to ensure they all pass.</p>
@@ -249,7 +251,7 @@ This will generate all resources required by the application and tests.</p>
 <div class="sect2">
 <h3 id="configurations-to-do-before-writing-code"><a class="link" href="#configurations-to-do-before-writing-code">2.4. Configurations to do before writing code</a></h3>
 <div class="paragraph">
-<p>Last thing before you start to develop contactHeRo, do some configuration to ensure the code is consistent</p>
+<p>Last thing before you start to develop contactHeRo, do some configuration to ensure the code is consistent.</p>
 </div>
 <div class="sect3">
 <h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">2.4.1. Configuring the coding style</a></h4>
@@ -259,20 +261,20 @@ This will generate all resources required by the application and tests.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Go to <code>File</code> &gt; <code>Settings&#8230;&#8203;</code> (Windows/Linux), or <code>IntelliJ IDEA</code> &gt; <code>Preferences&#8230;&#8203;</code> (macOS)</p>
+<p>Go to <code>File</code> &gt; <code>Settings&#8230;&#8203;</code> (Windows/Linux), or <code>IntelliJ IDEA</code> &gt; <code>Preferences&#8230;&#8203;</code> (macOS).</p>
 </li>
 <li>
-<p>Select <code>Editor</code> &gt; <code>Code Style</code> &gt; <code>Java</code></p>
+<p>Select <code>Editor</code> &gt; <code>Code Style</code> &gt; <code>Java</code>.</p>
 </li>
 <li>
-<p>Click on the <code>Imports</code> tab to set the order</p>
+<p>Click on the <code>Imports</code> tab to set the order.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>For <code>Class count to use import with '*'</code> and <code>Names count to use static import with '*'</code>: Set to <code>999</code> to prevent IntelliJ from contracting the import statements</p>
+<p>For <code>Class count to use import with '*'</code> and <code>Names count to use static import with '*'</code>: Set to <code>999</code> to prevent IntelliJ from contracting the import statements.</p>
 </li>
 <li>
-<p>For <code>Import Layout</code>: The order is <code>import static all other imports</code>, <code>import java.*</code>, <code>import javax.*</code>, <code>import org.*</code>, <code>import com.*</code>, <code>import all other imports</code>. Add a <code>&lt;blank line&gt;</code> between each <code>import</code></p>
+<p>For <code>Import Layout</code>: The order is <code>import static all other imports</code>, <code>import java.*</code>, <code>import javax.*</code>, <code>import org.*</code>, <code>import com.*</code>, <code>import all other imports</code>. Add a <code>&lt;blank line&gt;</code> between each <code>import</code>.</p>
 </li>
 </ul>
 </div>
@@ -319,7 +321,7 @@ Coverage reporting could be useful for a team repository that hosts the final ve
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Having both Travis and AppVeyor ensures your App works on both Unix-based platforms and Windows-based platforms (Travis is Unix-based and AppVeyor is Windows-based)
+Having both Travis and AppVeyor ensures your App works on both Unix-based platforms and Windows-based platforms (Travis is Unix-based and AppVeyor is Windows-based).
 </td>
 </tr>
 </table>
@@ -327,7 +329,7 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 </div>
 </div>
 <div class="sect2">
-<h3 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">2.5. Getting started with coding.</a></h3>
+<h3 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">2.5. Getting started with coding</a></h3>
 <div class="paragraph">
 <p>Now you are ready to start coding.<br>
     Here are some tips to get started with contributing to contactHeRo:</p>
@@ -1399,7 +1401,7 @@ the Tab counter, <code>tabNumber</code> in a cyclic manner.</p>
 <div class="sect2">
 <h3 id="profile-picture-feature"><a class="link" href="#profile-picture-feature">4.9. Profile Picture Feature</a></h3>
 <div class="paragraph">
-<p>Profile picture feature allows to show persons' profile pictures.</p>
+<p>Profile picture feature allows the user to show persons' profile pictures.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2858,10 +2860,13 @@ It is essential for them to have a quick and easy access to these contacts. Henc
 <div class="ulist">
 <ul>
 <li>
-<p>Users can sync Gmail calendar.</p>
+<p>Users can view calendar in different views.</p>
 </li>
 <li>
 <p>Users can add events to the calendar.</p>
+</li>
+<li>
+<p>Users can delete events from the calendar.</p>
 </li>
 </ul>
 </div>
@@ -2884,10 +2889,10 @@ It is essential for them to have a quick and easy access to these contacts. Henc
 <div class="ulist">
 <ul>
 <li>
-<p>Major Feature: Recruiters have a lot of appointments, meetings, and interviews to manage. Hence, showing them on the calendar will help them visualize and manage their time effectively.</p>
+<p>Major Feature: Recruiters have a lot of appointments, meetings, and interviews to manage. Hence, having a calendar where they can view, add, delete appointment will help them visualize and manage their time more effectively.</p>
 </li>
 <li>
-<p>Minor Feature: Viewing profile pictures of the potential employees help recruiters to recognize them easily.</p>
+<p>Minor Feature: Recruiters need to work with thousand of employee. Hence, remember name and details is really hard. By viewing profile pictures of the potential employees, recruiters can recognize them easier.</p>
 </li>
 </ul>
 </div>
@@ -3454,14 +3459,14 @@ These instructions only provide a starting point for testers to work on; testers
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Initial launch</p>
+<p>Initial launch.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Download the jar file and copy into an empty folder</p>
+<p>Download the jar file and copy into an empty folder.</p>
 </li>
 <li>
-<p>Double-click the jar file<br>
+<p>Double-click the jar file.<br>
 Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
 </li>
 </ol>
@@ -3489,7 +3494,7 @@ Expected: The most recent window size and location is retained.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting a person while all persons are listed</p>
+<p>Deleting a person while all persons are listed.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -3813,7 +3818,129 @@ Expected: The command is not auto-completed.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging-in-to-google"><a class="link" href="#logging-in-to-google">G.10. Logging in to Google</a></h3>
+<h3 id="managing-profile-picture"><a class="link" href="#managing-profile-picture">G.10. Managing profile picture</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a profile picture.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Having a profile picture path, a non image file path and a non existing profile picture path. Let&#8217;s call them <code>profile_picture_path</code>, <code>invalid_profile_picture_path</code> and <code>non_exist_profile_picture_path</code>.<br></p>
+</li>
+<li>
+<p>Test case: <code>add n/Tester p/98765432 e/tester@example.com a/NUS cp/Developer cc/Google pp/profile_picture_path</code>.<br>
+Expected: contact Tester is added with the profile picture corresponding to <code>profile_picture_path</code>.</p>
+</li>
+<li>
+<p>Test case: <code>add n/Tester2 p/98765432 e/tester@example.com a/NUS cp/Developer cc/Google</code>.<br>
+Expected: contact Tester2 is added with default profile picture.</p>
+</li>
+<li>
+<p>Test case: <code>add n/Tester3 p/98765432 e/tester@example.com a/NUS pp/invalid_profile_picture_path</code>.<br>
+Expected: No person is added. Error details shown in the status message. Status bar remains the same.<br></p>
+</li>
+<li>
+<p>Test case: <code>add n/Tester3 p/98765432 e/tester@example.com a/NUS pp/non_exist_profile_picture_path</code>.<br>
+Expected: No person is added. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Edit a profile picture.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: same as above and at list one person in list.</p>
+</li>
+<li>
+<p>Test case: <code>edit 1 pp/profile_picture_path</code>.<br>
+Expected: profile picture of contact with index 1 change to the profile picture corresponding to <code>profile_picture_path</code>.<br></p>
+</li>
+<li>
+<p>Test case: <code>edit 1 pp/</code>.<br>
+Expected: profile picture of contact with index 1 change to default profile picture.</p>
+</li>
+<li>
+<p>Test case: <code>edit 1 pp/invalid_profile_picture_path</code>.
+Expected: Person 1 is not edited. Error details shown in the status message. Status bar remains the same.<br></p>
+</li>
+<li>
+<p>Test case: <code>edit 1 pp/non_exist_profile_picture_path</code>.
+Expected: Person 1 is not edited. Error details shown in the status message. Status bar remains the same.<br></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-appointments"><a class="link" href="#managing-appointments">G.11. Managing appointments</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding/deleting an appointment.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: appointment with <code>t/Discussion sdt/2018-05-26 12:00 edt/2018-05-26 12:30</code> has not been added. Test in the order below.<br></p>
+</li>
+<li>
+<p>Test case: <code>addapp t/Discussion sdt/2018-05-26 12:00 edt/2018-05-26 12:30</code><br>
+Expected: appointment is added.</p>
+</li>
+<li>
+<p>Test case: <code>addapp t/Discussion sdt/2018-05-26 12:00 edt/2018-05-26 12:30</code><br>
+Expected: no addition appointment is added. Error details shown in the status message. Status bar remains the same.<br></p>
+</li>
+<li>
+<p>Test case: <code>delapp t/Discussion sdt/2018-05-26 12:00 edt/2018-05-26 12:30</code> <br>
+Expected: appointment is deleted.</p>
+</li>
+<li>
+<p>Test case: <code>delapp t/Discussion sdt/2018-05-26 12:00 edt/2018-05-26 12:30</code> <br>
+Expected: no appointment is delete. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>addapp t/Discussion sdt/2018-05-26 12:00 edt/2018-05-25 12:30</code>
+Expected: appointment is not added. Error details shown in the status message. Status bar remains the same.<br></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Viewing calendar.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: test test case 1 before others.</p>
+</li>
+<li>
+<p>Test case: <code>calendar</code>.<br>
+Expected: calendar panel is opened.</p>
+</li>
+<li>
+<p>Test case: <code>date</code> or <code>week</code> or <code>month</code> or <code>year</code>.<br>
+Expected: corresponding view is shown.</p>
+</li>
+<li>
+<p>Test case: <code>datetime 2018/03/26 12:00</code> or <code>date 2018/03/26</code> or <code>week 2018 10</code> or <code>month 2018/03</code> or <code>year 2018</code>.
+Expected: corresponding view at specific time is shown.</p>
+</li>
+<li>
+<p>Test case: <code>datetime 2018/02/29 12:00</code>.<br>
+Expected: no things change except error details shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging-in-to-google"><a class="link" href="#logging-in-to-google">G.12. Logging in to Google</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3839,7 +3966,7 @@ Expected: The command is not auto-completed.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sending-an-email"><a class="link" href="#sending-an-email">G.11. Sending an email</a></h3>
+<h3 id="sending-an-email"><a class="link" href="#sending-an-email">G.13. Sending an email</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3876,7 +4003,7 @@ be displayed to show that you have sent the email successfully.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 12:10:21 UTC
+Last updated 2018-04-15 13:19:49 UTC
 </div>
 </div>
 </body>

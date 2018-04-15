@@ -150,8 +150,8 @@
 <h2 id="introduction"><a class="link" href="#introduction">Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Welcome to <strong>contactHeRo</strong>! contactHeRo is the <strong>perfect contact management solution for recruiters</strong> across companies who need a <strong>quick and efficient way</strong> to manage the contact details and profiles of their potential recruits. It is a <strong>Command Line Interface(CLI) application</strong> with intuitive usage and effective features. You can manage details of prospective employees and job openings in your company through easy to use <code>add</code>, <code>delete</code> and <code>edit</code> features. Matching jobs to employees is also a great feature that makes the hiring process easy for you.
-Other than that, you can also view the linkedIn profiles of your potential employees, send emails and arrange meetings.</p>
+<p>Welcome to <strong>contactHeRo</strong>! <strong>contactHeRo</strong> is the <strong>perfect contact management solution for recruiters</strong> across companies who need a <strong>quick and efficient way</strong> to manage the contact details and profiles of their potential recruits. It is a <strong>Command Line Interface(CLI) application</strong> with intuitive usage and effective features. You can manage details of prospective employees and job openings in your company through easy to use <code>add</code>, <code>delete</code> and <code>edit</code> features. Matching jobs to employees is also a great feature that makes the hiring process easy for you.
+Other than that, you can also view the LinkedIn profiles of your potential employees, send emails and arrange meetings.</p>
 </div>
 </div>
 </div>
@@ -159,7 +159,7 @@ Other than that, you can also view the linkedIn profiles of your potential emplo
 <h2 id="before-reading-this-guide"><a class="link" href="#before-reading-this-guide">Before Reading This Guide</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This short guide will familiarize you with all of the features and functionality of contactHeRo. Given below is the legend for some symbols and markups used in this guide.</p>
+<p>This short guide will familiarize you with all of the features and functionality of contactHeRo. Given below are some symbols and markups used in this guide.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -191,13 +191,13 @@ This will represent a useful tip.
 <div class="sect2">
 <h3 id="managing-job-openings"><a class="link" href="#managing-job-openings">Managing Job Openings</a></h3>
 <div class="paragraph">
-<p>This section describes the commands you can use to manage person profiles in contactHeRo.</p>
+<p>This section describes the commands you can use to manage jobs in contactHeRo.</p>
 </div>
 <div class="sect3">
 <h4 id="adding-a-job-opening-code-addjob-code"><a class="link" href="#adding-a-job-opening-code-addjob-code">Adding a job opening: <code>addjob</code></a></h4>
 <div class="paragraph">
 <p>You can add a job opening to contactHeRo using the following format.<br>
-Format: <code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER_OF_POSITIONS s/SKILLS_REQUIRED</code></p>
+Format: <code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER_OF_POSITIONS s/SKILL_REQUIRED&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -216,7 +216,7 @@ Format: <code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER_OF_POSITIONS s/SKILLS
 </div>
 </li>
 <li>
-<p><code>addjob p/Marketing Intern t/Social Media Marketing l/Singapore n/1 s/Excel s/Writing</code></p>
+<p><code>addjob p/Marketing Intern t/Social Media Marketing l/Kuala Lampur, Malaysia n/1 s/Excel s/Writing</code></p>
 <div class="paragraph">
 <p>On running the above command, you should see the following success message and the job opening UI(Refer to figure 6) added to the Job List Panel(Refer to figure 2):<br></p>
 </div>
@@ -260,7 +260,7 @@ Format: <code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER_OF_POSITIONS s/SKILLS
 <p>When you edit skills, the existing skills of the job opening will be removed i.e adding of job&#8217;s skills is not cumulative.</p>
 </li>
 <li>
-<p>Unlike editing a person feature, you cannot remove all the job&#8217;s skills by typing <code>s/</code> because a job opening requires atleast one skill.</p>
+<p>Unlike editing a person feature, you cannot remove all the job&#8217;s skills by typing <code>s/</code> because a job opening requires at least one skill.</p>
 </li>
 </ul>
 </div>
@@ -295,13 +295,13 @@ Format:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find p/KEYWORD [MORE_KEYWORDS]</code> to find by position or</p>
+<p><code>findjob p/KEYWORD [MORE_KEYWORDS]</code> to find by position or</p>
 </li>
 <li>
-<p><code>find t/KEYWORD [MORE_KEYWORDS]</code> to find by team or</p>
+<p><code>findjob s/KEYWORD [MORE_KEYWORDS]</code> to find by skill or</p>
 </li>
 <li>
-<p><code>find s/KEYWORD [MORE_KEYWORDS]</code> to find by skill.</p>
+<p><code>findjob l/KEYWORD [MORE_KEYWORDS]</code> to find by location.</p>
 </li>
 </ul>
 </div>
@@ -337,16 +337,16 @@ Format:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find n/John</code><br>
-This will show any person having the name <code>john</code> or <code>John</code>.</p>
+<p><code>findjob p/Hardware Engineer</code><br>
+This will show any job with position <code>Hardware Engineer</code>.</p>
 </li>
 <li>
-<p><code>find s/designer</code><br>
-This will show <code>Jane Doe</code> whose skill is <code>designer</code>.</p>
+<p><code>findjob s/Java</code><br>
+This will show any job which requires Java.</p>
 </li>
 <li>
-<p><code>find n/Betsy Tim John</code><br>
-This will show any person having any of the names <code>Betsy</code>, <code>Tim</code>, or <code>John</code>.</p>
+<p><code>findjob l/Singapore</code><br>
+This will show any job in Singapore.</p>
 </li>
 </ul>
 </div>
@@ -557,13 +557,7 @@ This loads the LinkedIn search of 1st person in the results of the <code>find</c
 <div class="sect3">
 <h4 id="better-matching-of-jobs-code-coming-in-v2-0-code"><a class="link" href="#better-matching-of-jobs-code-coming-in-v2-0-code">Better matching of jobs <code>[coming in v2.0]</code></a></h4>
 <div class="paragraph">
-<p>Job matching will soon be improved wherein it will be using location-matching and Artificial Intelligence methods.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="matching-people-to-jobs-code-coming-in-v2-0-code"><a class="link" href="#matching-people-to-jobs-code-coming-in-v2-0-code">Matching people to jobs <code>[coming in v2.0]</code></a></h4>
-<div class="paragraph">
-<p>You will soon be able to match people to jobs as well to see which job opening is suitable for a particular person.</p>
+<p>Job matching will soon be improved using  Artificial Intelligence methods.</p>
 </div>
 </div>
 </div>
@@ -1022,7 +1016,7 @@ It is essential for them to have a quick and easy access to these contacts. Henc
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 12:10:21 UTC
+Last updated 2018-04-15 13:19:49 UTC
 </div>
 </div>
 </body>
