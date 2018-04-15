@@ -83,6 +83,7 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
     }
 
     public void setAppointments(UniqueAppointmentList replacement) {
+        this.internalList.clear();
         this.internalList.addAll(replacement.internalList);
     }
 
