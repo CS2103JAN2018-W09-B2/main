@@ -892,7 +892,9 @@ The following sections summarize the commands you can use in contactHeRo.
 |===
 // end::commandsummary[]
 
+// tag::conclusion[]
 == Conclusion
 Once again, thank you for choosing us as your contact management solution! You are our motivation to make this application better. +
 If you find any bugs or want to propose any ideas, please contact us via contactHeRo@gmail.com. +
 Hope you enjoy contactHeRo!
+// end::conclusion[]

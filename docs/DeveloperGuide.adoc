@@ -1582,6 +1582,7 @@ _{ more test cases ... }_
 
 _{ more test cases ... }_
 
+// tag::andremanualtest[]
 === Managing profile picture
 . Adding a profile picture.
 
@@ -1631,6 +1632,8 @@ _{ more test cases ... }_
    Expected: corresponding view at specific time is shown.
 .. Test case: `datetime 2018/02/29 12:00`. +
    Expected: no things change except error details shown in the status message.
+
+// end::andremanualtest[]
 
 === Saving data
 
