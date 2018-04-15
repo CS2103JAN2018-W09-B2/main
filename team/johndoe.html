@@ -884,7 +884,7 @@ All fields mentioned above are compulsory for the <code>Job</code> object unlike
 </div>
 </div>
 <div class="sect2">
-<h3 id="matching-jobs-implementation"><a class="link" href="#matching-jobs-implementation">Matching jobs implementation</a></h3>
+<h3 id="matching-jobs-mechanism"><a class="link" href="#matching-jobs-mechanism">Matching jobs mechanism</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current Implementation</a></h4>
 <div class="paragraph">
@@ -3036,44 +3036,7 @@ It is essential for them to have a quick and easy access to these contacts. Henc
 </div>
 </div>
 <div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix G: Product Survey</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Product Name</strong></p>
-</div>
-<div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a></h2>
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
@@ -3124,9 +3087,6 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">Deleting a person</a></h3>
@@ -3137,18 +3097,28 @@ Expected: The most recent window size and location is retained.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>List all persons using the <code>list</code> command.</p>
+</li>
+<li>
+<p>There must be multiple persons in the list.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+Expected: First contact is deleted from the person list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
 </li>
 <li>
 <p>Test case: <code>delete 0</code><br>
 Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size), <code>delete -1</code> (negative index)<br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
@@ -3156,28 +3126,294 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">Saving data</a></h3>
+<h3 id="adding-a-job-opening"><a class="link" href="#adding-a-job-opening">Adding a job opening</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Dealing with missing/corrupted data files</p>
+<p>Adding a job opening</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>You must be logged in to contactHeRo.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>addjob p/Job1 t/Team1 l/Singapore n/1 s/Java</code><br>
+Expected: A job opening is added to the job list and its details are displayed on the task pane(far right). Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>addjob p/Job2 t/Team2 l/Malaysia</code><br>
+Expected: No job opening is added. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect commands to try: <code>addjob p/Job3 t/Team3 l/Malaysia n/abc s/C++</code> (invalid number of positions), <code>addjob p/Job2 t/Team2 l/Malaysia n/1 s/</code> (empty skills)<br>
+Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-job-opening"><a class="link" href="#deleting-a-job-opening">Deleting a job opening</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a job opening while all job openings are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>List all job openings using the <code>listjob</code> command.</p>
+</li>
+<li>
+<p>There must be multiple job openings in the list.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>deletejob 2</code><br>
+Expected: Second job opening is deleted from the job opening list. Details of the deleted job opening shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>deletejob 0</code><br>
+Expected: No job opening is deleted. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect deletejob commands to try: <code>deletejob</code>, <code>deletejob x</code> (where x is larger than the list size), <code>deletejob -1</code> (negative index)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Deleting a job opening by finding it</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Job opening to find must exist in the job opening list.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>findjob p/Software</code> followed by <code>deletejob 1</code><br>
+Expected: First job opening is deleted from the search results of <code>findjob</code> command. Details of the deleted job opening shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>findjob p/Software</code> followed by <code>deletejob 4</code><br>
+Expected: No job opening is deleted since the <code>findjob</code> results contain only one job opening. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-job-opening"><a class="link" href="#editing-a-job-opening">Editing a job opening</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing a job opening</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>List all job openings using the <code>listjob</code> command.</p>
+</li>
+<li>
+<p>There must be atleast two job openings in the list.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>editjob 1 p/Hardware Engineer</code><br>
+Expected: The first job opening is edited and updated job opening is displayed. Details of the edited job opening shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>editjob 2 p/Hardware Engineer t/Cloud Services l/Singapore n/2 s/Java s/Algorithms</code><br>
+Expected: Assuming you have successfully executed the test case in Step 1.b above, the job opening will not be edited as it will result in a duplicate job. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect editjob commands to try: <code>editjob</code>, <code>editjob 1</code>, <code>editjob 1 p/</code> (empty field)<br>
+Expected: No job opening is edited. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="finding-a-job-opening"><a class="link" href="#finding-a-job-opening">Finding a job opening</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Finding a job opening</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>List all job openings using the <code>listjob</code> command.</p>
+</li>
+<li>
+<p>There must be atleast one job openings in the list.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>findjob p/Engineer</code><br>
+Expected: All job openigns containing 'Engineer' in their position name are displayed in the job opening list. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>findjob l/New York p/Engineer</code><br>
+Expected: Job openings are not searched since two fields are searched at the same time. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect findjob commands to try: <code>findjob</code>, <code>findjob Engineer</code> (without prefix), <code>findjob 1 p/</code> (empty field)<br>
+Expected: Job openings are not searched. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="matching-a-job-opening"><a class="link" href="#matching-a-job-opening">Matching a job opening</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Matching a job opening</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>List all job openings using the <code>listjob</code> command.</p>
+</li>
+<li>
+<p>There must be atleast one job openings in the list.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>matchjob 1</code><br>
+Expected: All persons whose skills match any of those required for the job opening at index 1 are displayed in the person list. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>matchjob 0</code><br>
+Expected: No job opening is matched. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect matchjob commands to try: <code>matchjob</code>, <code>delete x</code> (where x is larger than the list size), <code>matchjob Engineer</code> (matching by position)<br>
+Expected: Job openings are not searched. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="searching-a-person-on-linkedin"><a class="link" href="#searching-a-person-on-linkedin">Searching a person on LinkedIn</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Searching a person on LinkedIn</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>List all persons using the <code>list</code> command.</p>
+</li>
+<li>
+<p>There must be atlest one person in the list.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>linkedIn 1</code><br>
+Expected: LinkedIn tab is visible and once you login/signup, the first person in the person list is searched on LinkedIn. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>linkedIn 2</code><br>
+Expected: Assuming you are already logged in to LinkedIn, the second person in the person list is searched on LinkedIn. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>linkedIn 0</code><br>
+Expected: No person is searched on LinkedIn. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect linkedIn commands to try: <code>linkedIn</code>, <code>linkedIn x</code> (where x is larger than the list size), <code>linkedIn -1</code> (negative index), <code>linkedIn Alex</code> (by name)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="auto-completing-the-command"><a class="link" href="#auto-completing-the-command">Auto-completing the command</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Auto-completing the command</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: None.</p>
+</li>
+<li>
+<p>Test case: Type <code>a</code> and press <code>Tab</code>.<br>
+Expected: The command is auto-completed to <code>add</code> with its syntax.</p>
+</li>
+<li>
+<p>Test case: Type <code>l</code> and press <code>Tab</code> repeatedly.<br>
+Expected: The auto-completed command cycles between <code>linkedIn</code>, <code>list</code>, <code>listjob</code> and <code>login</code>.</p>
+</li>
+<li>
+<p>Test case: Type <code>ab</code> and press <code>Tab</code>.<br>
+Expected: The command is not auto-completed.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
@@ -3253,7 +3489,7 @@ be displayed to show that you have sent the email successfully.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 09:04:57 UTC
+Last updated 2018-04-15 10:02:11 UTC
 </div>
 </div>
 </body>
