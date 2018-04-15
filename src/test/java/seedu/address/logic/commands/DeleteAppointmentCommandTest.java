@@ -60,7 +60,7 @@ public class DeleteAppointmentCommandTest {
         RedoCommand redoCommand = prepareRedoCommand(model, undoRedoStack);
         Appointment appointmentToDelete = model.getAppointmentList().get(0);
         DeleteAppointmentCommand deleteAppointmentCommand = prepareCommand(appointmentToDelete);
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
 
         // delete -> first appointment deleted
         deleteAppointmentCommand.execute();

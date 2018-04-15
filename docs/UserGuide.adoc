@@ -69,7 +69,7 @@ image::DefaultLogin.png[width="800", align="center"]
 [NOTE]
 You can change the password later using the `updatepassword` command.
 +
-.  Upon successful login, You should see the user interface as shown below (Refer to figure 3) in a few seconds.
+.  Upon successful login, You should see the user interface as shown below (Refer to figure 3).
 
 .contactHeRo UI after login
 
@@ -83,7 +83,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 .  Some example commands you can try:
 
 * *`list`* : lists all contacts
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 cp/Software Engineer cc/Garena`  : adds a contact named `John Doe` to the Address Book.
+* **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 cp/Software Engineer cc/Garena`  : adds a contact named `John Doe` to the Address Book.
 * **`delete`**`3` : deletes the 3rd contact shown in the current list
 * *`exit`* : exits the app
 
