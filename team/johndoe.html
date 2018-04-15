@@ -3180,6 +3180,65 @@ Expected: Similar to previous.</p>
 <p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="logging-in-to-google"><a class="link" href="#logging-in-to-google">Logging in to Google</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Logging in to Google using the command</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>googlelogin</code> into the command box.</p>
+</li>
+<li>
+<p>The display panel should switch to the <code>Google</code> tab and the Google Account Login page should be displayed.</p>
+</li>
+<li>
+<p>Login using your Google account, click <code>Allow</code> to allow contactHeRo some access to your Gmail account.</p>
+</li>
+<li>
+<p>After you have logged in, you should be redirected to the Google homepage.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sending-an-email"><a class="link" href="#sending-an-email">Sending an email</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Sending Email to contact</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Logged in to Google using the command <code>googlelogin</code>.</p>
+</li>
+<li>
+<p>Test case: <code>email 1</code><br>
+Expected: First contact&#8217;s email address is displayed in the <code>To:</code> textbox.
+First Contact&#8217;s name is used in the template "Dear [NAME]" in the <code>Body:</code> textbox.</p>
+</li>
+<li>
+<p>Test case: <code>email 1 sub/Interview on 13 May</code><br>
+Expected: First contact&#8217;s email address is displayed in the <code>To:</code> textbox.
+First Contact&#8217;s name is used in the template "Dear [NAME]" in the <code>Body:</code> textbox.
+The subject title "Interview on 13 May" is displayed in the <code>Subject:</code> textbox.</p>
+</li>
+<li>
+<p>Test case: clicking <code>Send</code><br>
+Expected: Email should be sent to the correct email address, a pop-up box should
+be displayed to show that you have sent the email successfully.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -3194,7 +3253,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 08:06:14 UTC
+Last updated 2018-04-15 09:04:57 UTC
 </div>
 </div>
 </body>
