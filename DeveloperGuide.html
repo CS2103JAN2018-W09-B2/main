@@ -645,6 +645,9 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 <div class="sect2">
 <h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">4.1. Undo/Redo feature</a></h3>
+<div class="paragraph">
+<p>Given below is the implementation detail of the Undo/Redo feature and some alternative design considerations.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">4.1.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -937,6 +940,9 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div class="sect2">
 <h3 id="details-panel-implementation"><a class="link" href="#details-panel-implementation">4.2. Details Panel Implementation</a></h3>
+<div class="paragraph">
+<p>Given below is the implementation detail of the Details Panel and some alternative design considerations.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.2.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -1024,6 +1030,9 @@ Both the <code>select</code> and <code>linkedIn</code> command function quite si
 </div>
 <div class="sect2">
 <h3 id="tab-switching-mechanism"><a class="link" href="#tab-switching-mechanism">4.3. Tab Switching Mechanism</a></h3>
+<div class="paragraph">
+<p>Given below is the implementation detail of the Tab Switching Mechanism and some alternative design considerations.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.3.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -1157,6 +1166,9 @@ The <code>SwitchTabRequestEvent</code> has an integer attribute <code>tabId</cod
 </div>
 <div class="sect2">
 <h3 id="job-openings-implementation"><a class="link" href="#job-openings-implementation">4.4. Job Openings Implementation</a></h3>
+<div class="paragraph">
+<p>Given below is the implementation detail of the Job Openings feature and some alternative design considerations.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.4.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -1285,8 +1297,6 @@ All fields mentioned above are compulsory for the <code>Job</code> object unlike
 </div>
 <div class="sect2">
 <h3 id="matching-jobs-mechanism"><a class="link" href="#matching-jobs-mechanism">4.5. Matching jobs mechanism</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">4.5.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>JobMatchCommand</code> uses <code>PersonSkillContainsKeywordsPredicate</code> to match person&#8217;s skills with a job&#8217;s skills. It accepts the index for the job to match and then uses the <code>PersonSkillMatchesKeywordsPredicate</code> to match the job. Below is the code for the execution of the <code>JobMatchCommand</code>:</p>
 </div>
@@ -1331,11 +1341,8 @@ To minimize code duplication, we made a utility class <code>SkillUtil</code> whi
 </table>
 </div>
 </div>
-</div>
 <div class="sect2">
 <h3 id="auto-complete-mechanism"><a class="link" href="#auto-complete-mechanism">4.6. Auto-complete Mechanism</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">4.6.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The auto-complete mechanism is implemented in the <code>CommandBox</code> in the <code>UI</code> component. We check the key pressed by the user and if it is the <code>Tab</code> key, the auto-complete mechanism is triggered.</p>
 </div>
@@ -1353,7 +1360,6 @@ To minimize code duplication, we made a utility class <code>SkillUtil</code> whi
 prefix. For e.g. the <code>add</code>, <code>addjob</code> and <code>addapp</code> commands share the common <code>add</code>. In such a case, the user can just
 type <code>a</code> or <code>ad</code> or <code>add</code> and press <code>Tab</code> multiple times to cycle between these commands which will keep incrementing
 the Tab counter, <code>tabNumber</code> in a cyclic manner.</p>
-</div>
 </div>
 </div>
 <div class="sect2">
@@ -1419,7 +1425,7 @@ the Tab counter, <code>tabNumber</code> in a cyclic manner.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">4.9.1. Current implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">4.9.1. Current implementation</a></h4>
 <div class="sect4">
 <h5 id="input-and-store-profile-picture-path"><a class="link" href="#input-and-store-profile-picture-path">Input and store profile picture path:</a></h5>
 <div class="paragraph">
@@ -1586,7 +1592,7 @@ Don&#8217;t know Image and ImageView. Check these two links:<br>
 <div class="sect2">
 <h3 id="emailing-a-contact-using-google-api"><a class="link" href="#emailing-a-contact-using-google-api">4.10. Emailing a contact using Google API</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">4.10.1. Current implementation</a></h4>
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">4.10.1. Current implementation</a></h4>
 <div class="paragraph">
 <p>The sending of email will be implemented using the Google API.</p>
 </div>
@@ -1742,7 +1748,7 @@ main thread in order to wait for the user to authenticate, if the user close the
 <div class="sect2">
 <h3 id="login-system-implementation"><a class="link" href="#login-system-implementation">4.11. Login System Implementation</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">4.11.1. Current Implementation</a></h4>
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">4.11.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The login system is currently implemented such that there is only one user per application. Logging in and out of contactHeRo is done in the same way as the other commmands which is through the command line.</p>
 </div>
@@ -1853,7 +1859,7 @@ Constraints are set to both username and password to prevent illegal values from
 <div class="sect2">
 <h3 id="matching-jobs-implementation"><a class="link" href="#matching-jobs-implementation">4.12. Matching jobs implementation</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-10"><a class="link" href="#current-implementation-10">4.12.1. Current Implementation</a></h4>
+<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">4.12.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>JobMatchCommand</code> uses <code>PersonSkillContainsKeywordsPredicate</code> to match person&#8217;s skills with a job&#8217;s skills. It accepts the index for the job to match and then uses the <code>PersonSkillMatchesKeywordsPredicate</code> to match the job. Below is the code for the execution of the <code>JobMatchCommand</code>:</p>
 </div>
@@ -4165,7 +4171,7 @@ be displayed to show that you have sent the email successfully.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 14:05:22 UTC
+Last updated 2018-04-15 14:49:42 UTC
 </div>
 </div>
 </body>

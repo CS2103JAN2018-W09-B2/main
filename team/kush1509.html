@@ -74,7 +74,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed all releases <code>v1.3</code> - <code>v1.5rc</code> on GitHub</p>
+<p>Managed all releases <code>v1.3</code> - <code>v1.5</code> on GitHub</p>
 </li>
 <li>
 <p>Managed all milestones <code>v1.1</code> - <code>v1.5</code> (6 milestones) on GitHub</p>
@@ -218,7 +218,7 @@ Format: <code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER_OF_POSITIONS s/SKILL_
 <li>
 <p><code>addjob p/Marketing Intern t/Social Media Marketing l/Kuala Lampur, Malaysia n/1 s/Excel s/Writing</code></p>
 <div class="paragraph">
-<p>On running the above command, you should see the following success message and the job opening UI(Refer to figure 6) added to the Job List Panel(Refer to figure 2):<br></p>
+<p>On running the above command, you should see the following success message and the job opening UI(Refer to figure 7) added to the Job List Panel(Refer to figure 3):<br></p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -437,7 +437,7 @@ This will show any person whose skills match any of those required for the job o
 <code>matchjob 1</code><br>
 This will show any person whose skills match any of those required for the job opening at index 1 in the results of the findjob command.</p>
 <div class="paragraph">
-<p>On running this command, you should see a similar result as the following (Refer to figure 7). All persons having any skill as required by the job 'Software Engineer' will be shown.</p>
+<p>On running this command, you should see a similar result as the following (Refer to figure 8). All persons having any skill as required by the job 'Software Engineer' will be shown.</p>
 </div>
 </li>
 </ul>
@@ -536,7 +536,7 @@ This loads the LinkedIn search of the 2nd person in the contactHeRo.</p>
 <code>linkedIn 1</code><br>
 This loads the LinkedIn search of 1st person in the results of the <code>find</code> command.<br></p>
 <div class="paragraph">
-<p>On running the above command and after you have logged in, you should a similar result as the following (Refer to figure 5). Betsy is selected in the person list and she is searched on LinkedIn in the LinkedIn Tab.</p>
+<p>On running the above command and after you have logged in, you should a similar result as the following (Refer to figure 6). Betsy is selected in the person list and she is searched on LinkedIn in the LinkedIn Tab.</p>
 </div>
 </li>
 </ul>
@@ -578,6 +578,9 @@ This loads the LinkedIn search of 1st person in the results of the <code>find</c
 </table>
 <div class="sect2">
 <h3 id="details-panel-implementation"><a class="link" href="#details-panel-implementation">Details Panel Implementation</a></h3>
+<div class="paragraph">
+<p>Given below is the implementation detail of the Details Panel and some alternative design considerations.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
@@ -665,6 +668,9 @@ Both the <code>select</code> and <code>linkedIn</code> command function quite si
 </div>
 <div class="sect2">
 <h3 id="tab-switching-mechanism"><a class="link" href="#tab-switching-mechanism">Tab Switching Mechanism</a></h3>
+<div class="paragraph">
+<p>Given below is the implementation detail of the Tab Switching Mechanism and some alternative design considerations.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 <div class="paragraph">
@@ -798,6 +804,9 @@ The <code>SwitchTabRequestEvent</code> has an integer attribute <code>tabId</cod
 </div>
 <div class="sect2">
 <h3 id="job-openings-implementation"><a class="link" href="#job-openings-implementation">Job Openings Implementation</a></h3>
+<div class="paragraph">
+<p>Given below is the implementation detail of the Job Openings feature and some alternative design considerations.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
 <div class="paragraph">
@@ -926,8 +935,6 @@ All fields mentioned above are compulsory for the <code>Job</code> object unlike
 </div>
 <div class="sect2">
 <h3 id="matching-jobs-mechanism"><a class="link" href="#matching-jobs-mechanism">Matching jobs mechanism</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>JobMatchCommand</code> uses <code>PersonSkillContainsKeywordsPredicate</code> to match person&#8217;s skills with a job&#8217;s skills. It accepts the index for the job to match and then uses the <code>PersonSkillMatchesKeywordsPredicate</code> to match the job. Below is the code for the execution of the <code>JobMatchCommand</code>:</p>
 </div>
@@ -972,11 +979,8 @@ To minimize code duplication, we made a utility class <code>SkillUtil</code> whi
 </table>
 </div>
 </div>
-</div>
 <div class="sect2">
 <h3 id="auto-complete-mechanism"><a class="link" href="#auto-complete-mechanism">Auto-complete Mechanism</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The auto-complete mechanism is implemented in the <code>CommandBox</code> in the <code>UI</code> component. We check the key pressed by the user and if it is the <code>Tab</code> key, the auto-complete mechanism is triggered.</p>
 </div>
@@ -1004,7 +1008,6 @@ manage which include contact details and profiles of potential employees, job op
 It is essential for them to have a quick and easy access to these contacts. Hence, contactHero aims to make their lives easier by helping them to store and manage their contacts efficiently.</p>
 </div>
 </div>
-</div>
 <div class="sect2">
 <h3 id="proposed-enhancement-include-interviewing-process"><a class="link" href="#proposed-enhancement-include-interviewing-process">Proposed Enhancement: Include interviewing process</a></h3>
 <div class="paragraph">
@@ -1016,7 +1019,7 @@ It is essential for them to have a quick and easy access to these contacts. Henc
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 14:05:22 UTC
+Last updated 2018-04-15 14:49:42 UTC
 </div>
 </div>
 </body>
