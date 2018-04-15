@@ -20,12 +20,12 @@ By: `Team W09-B2`      Since: `Feb 2018`      Licence: `MIT`
 // tag::intro[]
 == Introduction
 
-Welcome to *contactHeRo*! contactHeRo is the *perfect contact management solution for recruiters* across companies who need a *quick and efficient way* to manage the contact details and profiles of their potential recruits. It is a *Command Line Interface(CLI) application* with intuitive usage and effective features. You can manage details of prospective employees and job openings in your company through easy to use `add`, `delete` and `edit` features. Matching jobs to employees is also a great feature that makes the hiring process easy for you.
-Other than that, you can also view the linkedIn profiles of your potential employees, send emails and arrange meetings.
+Welcome to *contactHeRo*! *contactHeRo* is the *perfect contact management solution for recruiters* across companies who need a *quick and efficient way* to manage the contact details and profiles of their potential recruits. It is a *Command Line Interface(CLI) application* with intuitive usage and effective features. You can manage details of prospective employees and job openings in your company through easy to use `add`, `delete` and `edit` features. Matching jobs to employees is also a great feature that makes the hiring process easy for you.
+Other than that, you can also view the LinkedIn profiles of your potential employees, send emails and arrange meetings.
 
 == Before Reading This Guide
 
-This short guide will familiarize you with all of the features and functionality of contactHeRo. Given below is the legend for some symbols and markups used in this guide.
+This short guide will familiarize you with all of the features and functionality of contactHeRo. Given below are some symbols and markups used in this guide.
 
 
 [NOTE]
@@ -54,14 +54,18 @@ Not sure how to install Java? Visit the oracle website link below for more infor
 .  Download the latest `contactHeRo.jar` link:{repoURL}/releases[here].
 .  Copy the file to the folder you want to use as the home folder for contactHeRo, i.e. where  you want to store the `contactHeRo.jar` and the subsequently generated data files.
 .  Double-click the file to start the app.
-.  Login using the default username,`Admin` and default password, `ad123`.
+.  Login using the default username,`Admin` and default password, `ad123` by typing `login u/Admin pw/ad123`
++
+.Login screen
+image::LogIn.png[align="center"]
 [NOTE]
 You can change the password later using the `updatepassword` command.
 
 .  The user interface should appear in a few seconds as shown below (Refer to figure 1).
 +
 .contactHeRo UI after login
-image::UIMarkup.png[align="center"]
+image::UIMarkup.png[align="center" width="400" height="100"]
+
 
 Now you can start using contactHeRo.
 
@@ -70,8 +74,8 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 .  Some example commands you can try:
 
 * *`list`* : lists all contacts
-* **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : adds a contact named `John Doe` to the Address Book.
-* **`delete`**`3` : deletes the 3rdo contact shown in the current list
+* **`add`**`add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 cp/Software Engineer cc/Garena` : adds a contact named `John Doe` to the Address Book.
+* **`delete`**`3` : deletes the 3rd contact shown in the current list
 * *`exit`* : exits the app
 
 .  You can refer to <<Features>> for more details of each command.
@@ -114,7 +118,7 @@ You can create a new user account through the command line by using the followin
 Format: `signup u/USERNAME pw/PASSWORD`
 
 ****
-* Username has to be at least 3 characters starting with a alphanumeric character. +
+* Username has to be at least 3 characters starting with an alphanumeric character. +
 * Password should be at least 4 characters long. +
 * Both username and password should not contain any whitespaces. +
 ****
@@ -693,7 +697,6 @@ Examples:
 * `delete 1` +
 `list` +
 `undo` (reverses the `delete 1` command) +
-
 
 * `select 1` +
 `list` +
