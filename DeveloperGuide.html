@@ -1832,14 +1832,14 @@ Constraints are set to both username and password to prevent illegal values from
 <p><strong>Aspect:</strong> Storing of user account data<br></p>
 </div>
 <div class="paragraph">
-<p><strong>Alternative 1 (current choice):</strong> Stores user account data in the same file with the main data.<br>
-<strong>Pros</strong>:<br>
-<strong>Cons</strong>: Data in contactHeRo becomes lost if user forgets the customized username or password.<br></p>
+<p><strong>Alternative 1 (current choice):</strong> Stores user account data in a separate file.+
+<strong>Pros</strong>: User can still retrieve their data if they forget their customize username or password by simply removing the file storing account data and logging in with their default username and password.<br>
+<strong>Cons</strong>: Data is not very secure as everyone can access the data through the default username and password.<br></p>
 </div>
 <div class="paragraph">
-<p><strong>Alternative 2:</strong> Stores user account data in a separate file.+
-<strong>Pros</strong>:  User can still retrieve their data if they forget their customize username or password by simply removing the file storing account data and restart with a<br>
-<strong>Cons</strong>: Data becomes insecure as now everyone can access the data through the default username and password.<br></p>
+<p><strong>Alternative 2:</strong> Stores user account data in the same file with the main data.<br>
+<strong>Pros</strong>: Resolves problem of accessing data from default account.<br>
+<strong>Cons</strong>: Data in contactHeRo becomes lost if user forgets the customized username or password.<br></p>
 </div>
 <div class="paragraph">
 <p><strong>Aspect:</strong> How login UI is implemented<br></p>
@@ -4171,7 +4171,7 @@ be displayed to show that you have sent the email successfully.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 14:49:42 UTC
+Last updated 2018-04-15 15:05:24 UTC
 </div>
 </div>
 </body>

@@ -31,9 +31,10 @@
 <ul class="sectlevel2">
 <li><a href="#managing-your-contacthero-account">4.1. Managing your contactHeRo account</a>
 <ul class="sectlevel3">
-<li><a href="#registering-a-new-account-code-signup-code">4.1.1. Registering a new account : <code>signup</code></a></li>
-<li><a href="#logging-in-code-login-code">4.1.2. Logging in : <code>login</code></a></li>
-<li><a href="#logging-out-code-logout-code">4.1.3. Logging out : <code>logout</code></a></li>
+<li><a href="#logging-in-code-login-code">4.1.1. Logging in : <code>login</code></a></li>
+<li><a href="#logging-out-code-logout-code">4.1.2. Logging out : <code>logout</code></a></li>
+<li><a href="#changing-your-username-code-updateusername-code">4.1.3. Changing your username : <code>updateusername</code></a></li>
+<li><a href="#changing-your-password-code-updatepassword-code">4.1.4. Changing your password : <code>updatepassword</code></a></li>
 </ul>
 </li>
 <li><a href="#managing-persons">4.2. Managing Persons</a>
@@ -229,7 +230,7 @@ Not sure how to install Java? Visit the oracle website link below for more infor
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-You can change the password later using the <code>updatepassword</code> command.
+You can change the username and password later using the <code>updateusername</code> and <code>updatepassword</code> commands respectively.
 </td>
 </tr>
 </table>
@@ -340,45 +341,7 @@ In case you make a mistake while typing the command, contactHeRo will show you t
 <p>This section describes the commands which enable you to use the login system to secure your data stored in contactHeRo.</p>
 </div>
 <div class="sect3">
-<h4 id="registering-a-new-account-code-signup-code"><a class="link" href="#registering-a-new-account-code-signup-code">4.1.1. Registering a new account : <code>signup</code></a></h4>
-<div class="paragraph">
-<p>You can create a new user account through the command line by using the following format.<br>
-Format: <code>signup u/USERNAME pw/PASSWORD</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Username has to be at least 3 characters starting with an alphanumeric character.<br></p>
-</li>
-<li>
-<p>Password should be at least 4 characters long.<br></p>
-</li>
-<li>
-<p>Both username and password should not contain any whitespaces.<br></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>signup u/JohnDoe pw/doe123</code></p>
-<div class="paragraph">
-<p>On running the above command, you should see the following success message:<br>
-  <code>You have signup successfully!</code></p>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="logging-in-code-login-code"><a class="link" href="#logging-in-code-login-code">4.1.2. Logging in : <code>login</code></a></h4>
+<h4 id="logging-in-code-login-code"><a class="link" href="#logging-in-code-login-code">4.1.1. Logging in : <code>login</code></a></h4>
 <div class="paragraph">
 <p>You can login via the command line using the following format.<br>
 Format: <code>login u/USERNAME pw/PASSWORD</code></p>
@@ -392,21 +355,88 @@ Format: <code>login u/USERNAME pw/PASSWORD</code></p>
 <p><code>login u/JohnDoe pw/doe123</code></p>
 <div class="paragraph">
 <p>On running the above command, you should see the following success message:<br>
- <code>You have successfully login as JohnDoe</code></p>
+ <code>You have successfully logged in as JohnDoe</code></p>
 </div>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="logging-out-code-logout-code"><a class="link" href="#logging-out-code-logout-code">4.1.3. Logging out : <code>logout</code></a></h4>
+<h4 id="logging-out-code-logout-code"><a class="link" href="#logging-out-code-logout-code">4.1.2. Logging out : <code>logout</code></a></h4>
 <div class="paragraph">
 <p>You can logout via the command line using the following this format.<br>
 Format: <code>logout</code></p>
 </div>
 <div class="paragraph">
 <p>On running this command, you should see the following success message:<br>
- <code>You have logout successfully!</code></p>
+ <code>You have logged out successfully!</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="changing-your-username-code-updateusername-code"><a class="link" href="#changing-your-username-code-updateusername-code">4.1.3. Changing your username : <code>updateusername</code></a></h4>
+<div class="paragraph">
+<p>You can change your username by using the following format.<br>
+Format: <code>updateusername u/NEWUSERNAME</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Username has to be alphanumeric and is at least 3 characters long.<br></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>updateusername u/JohnDoe</code></p>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br>
+  <code>You have successfully changed your username to JohnDoe</code></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="changing-your-password-code-updatepassword-code"><a class="link" href="#changing-your-password-code-updatepassword-code">4.1.4. Changing your password : <code>updatepassword</code></a></h4>
+<div class="paragraph">
+<p>You can change your password by using the following format.<br>
+Format: <code>updatepassword pw/OLDPASSWORD npw/NEWPASSWORD</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Password should start with a alphanumeric character and is at least 5 characters long.</p>
+</li>
+<li>
+<p>It should contain at least 1 digit, 1 alphabet and not contain any white spaces.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>updatepassword pw/Doe123 npw/doe456</code></p>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br>
+  <code>You have successfully updated your password!</code></p>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1699,6 +1729,11 @@ We are willing to help you.<br></p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>login u/Admin pw/ad123</code></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Changing your username</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>updateusername u/NEWUSERNAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>updateusername u/JohnDoe</code></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Changing your password</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>updatepassword pw/PASSWORD npw/NEW_PASSWORD</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>updatepassword pw/Doe123 npw/doe456</code></p></td>
@@ -2005,7 +2040,7 @@ Hope you enjoy contactHeRo!</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 14:49:42 UTC
+Last updated 2018-04-15 15:05:24 UTC
 </div>
 </div>
 </body>

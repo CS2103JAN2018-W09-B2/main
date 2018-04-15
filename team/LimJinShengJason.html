@@ -25,9 +25,11 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>contactHeRo is a desktop contact management application
-made for Human Resource (HR) managers, specifically for
-recruiters in a company.</p>
+<p>contactHeRo is a desktop contact management application for recruiters across companies who need a quick and efficient way to manage the contact details and profiles of their potential recruits.
+It is a Command Line Interface(CLI) application with several useful features such as a login system, email system, a view linkedIn profile feature as well as an in-built calendar.</p>
+</div>
+<div class="paragraph">
+<p>This portfolio is to collate my contributions to this project as well as showing my developments in software engineering skills which I have learned from CS2103T.</p>
 </div>
 </div>
 </div>
@@ -47,7 +49,7 @@ recruiters in a company.</p>
 <p>Justification: Recruiters are dealing with data of their potential employees and some of these data are personal and sensitive. Recruiters may also have some confidential company data stored in the application. Hence it is necessary for them to set up some form of security to protect these sensitive data. Having a login system is one of the common methods to ensure data security.</p>
 </li>
 <li>
-<p>Highlights: This enhancement provides a foundation for other security measures to be implemented in contactHeRo in the future to futher help users in securing their important data.</p>
+<p>Highlights: This enhancement provides a foundation for other security measures to be implemented in contactHeRo in the future to further help users in securing their important data.</p>
 </li>
 <li>
 <p>Credits: stackoverflow.com.</p>
@@ -85,16 +87,13 @@ this may expose some of the sensitive data which the user has inputted, like log
 <div class="ulist">
 <ul>
 <li>
-<p>Reach all the milestones <code>v1.1</code> - <code>v1.3rc</code> and <code>v1.5rc</code> on GitHub.</p>
+<p>Reach the milestones <code>v1.1</code> - <code>v1.3rc</code> and <code>v1.5rc - 1.5</code> on GitHub.</p>
 </li>
 <li>
 <p>Created issues and milestones for the team.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Enhancements to existing features:</p>
 </li>
 </ul>
 </div>
@@ -116,6 +115,1700 @@ this may expose some of the sensitive data which the user has inputted, like log
 </tr>
 </tbody>
 </table>
+<div class="sect3">
+<h4 id="logging-in-code-login-code"><a class="link" href="#logging-in-code-login-code">Logging in : <code>login</code></a></h4>
+<div class="paragraph">
+<p>You can login via the command line using the following format.<br>
+Format: <code>login u/USERNAME pw/PASSWORD</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>login u/JohnDoe pw/doe123</code></p>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br>
+ <code>You have successfully logged in as JohnDoe</code></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="logging-out-code-logout-code"><a class="link" href="#logging-out-code-logout-code">Logging out : <code>logout</code></a></h4>
+<div class="paragraph">
+<p>You can logout via the command line using the following this format.<br>
+Format: <code>logout</code></p>
+</div>
+<div class="paragraph">
+<p>On running this command, you should see the following success message:<br>
+ <code>You have logged out successfully!</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="changing-your-username-code-updateusername-code"><a class="link" href="#changing-your-username-code-updateusername-code">Changing your username : <code>updateusername</code></a></h4>
+<div class="paragraph">
+<p>You can change your username by using the following format.<br>
+Format: <code>updateusername u/NEWUSERNAME</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Username has to be alphanumeric and is at least 3 characters long.<br></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>updateusername u/JohnDoe</code></p>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br>
+  <code>You have successfully changed your username to JohnDoe</code></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="changing-your-password-code-updatepassword-code"><a class="link" href="#changing-your-password-code-updatepassword-code">Changing your password : <code>updatepassword</code></a></h4>
+<div class="paragraph">
+<p>You can change your password by using the following format.<br>
+Format: <code>updatepassword pw/OLDPASSWORD npw/NEWPASSWORD</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Password should start with a alphanumeric character and is at least 5 characters long.</p>
+</li>
+<li>
+<p>It should contain at least 1 digit, 1 alphabet and not contain any white spaces.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>updatepassword pw/Doe123 npw/doe456</code></p>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br>
+  <code>You have successfully updated your password!</code></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-persons"><a class="link" href="#managing-persons">Managing Persons</a></h3>
+<div class="paragraph">
+<p>This section describes the commands you can use to manage person profiles in contactHeRo.</p>
+</div>
+<div class="sect3">
+<h4 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">Adding a person : <code>add</code></a></h4>
+<div class="paragraph">
+<p>You can add a person to contactHeRo using the following format.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>n/NAME p/PHONE e/EMAIL a/ADDRESS cp/CURRENT_POSITION cc/COMPANY [pp/PROFILE_PICTURE_PATH] [s/SKILL]&#8230;&#8203;</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A person can have any number of skills (including 0)
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Profile Picture indicates the profile picture&#8217;s file path
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 cp/Software Engineer cc/Google</code><br></p>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>New person added: John Doe Phone: 98765432 Email: johnd@example.com Address: John street, block 123, #01-01 Current Position: Software Engineer Company: Google Skills:</pre>
+</div>
+</div>
+</li>
+<li>
+<p><code>add n/Betsy Crowe s/Java e/betsycrowe@example.com a/Newgate Prison p/1234567 cp/Student cc/NUS s/C++</code></p>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>New person added: Betsy Crowe Phone: 1234567 Email: betsycrowe@example.com Address: Newgate Prison Current Position: Student Company: NUS  Skills: [C++]</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">Editing a person : <code>edit</code></a></h4>
+<div class="paragraph">
+<p>You can edit an existing person in contactHeRo using this format.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [cp/CURRENT_POSITION] [cc/COMPANY] [pp/PROFILE_PICTURE_PATH][s/SKILL]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the person at the specified <code>INDEX</code>. Remember that the index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>You need to provide at least one of the optional.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>When you edit skills, the existing skills of the person will be removed i.e adding of skills is not cumulative.</p>
+</li>
+<li>
+<p>You can remove all the person&#8217;s skills by typing <code>s/</code> without specifying any skills after it.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
+Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Edited Person: John Doe Phone: 91234567 Email: johndoe@example.com Address: John street, block 123, #01-01 Current Position: Software Engineer Company: Google Skills:</pre>
+</div>
+</div>
+</li>
+<li>
+<p><code>edit 2 n/Betsy Crower s/</code><br>
+Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing skills.</p>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Edited Person: Betsy Crower Phone: 1234567 Email: betsycrowe@example.com Address: Newgate Prison Current Position: Student Company: NUS Skills:</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">Listing all persons : <code>list</code></a></h4>
+<div class="paragraph">
+<p>You can see a list of all persons in contactHeRo using the following format.<br>
+Format: <code>list</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="locating-persons-by-name-or-skill-code-find-code"><a class="link" href="#locating-persons-by-name-or-skill-code-find-code">Locating persons by name or skill : <code>find</code></a></h4>
+<div class="paragraph">
+<p>You can find all the persons whose names or skills contain any of the given keywords using the following format.<br>
+Format: <code>find n/KEYWORD [MORE_NAME_KEYWORDS]</code> to find by name or <code>find s/KEYWORD [MORE_SKILL_KEYWORDS]</code> to find by skill</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+</li>
+<li>
+<p>Only the name or skill is searched, depending on the prefix (n/ or s/)</p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
+</li>
+<li>
+<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find n/John</code><br>
+This will show any person having the name <code>john</code> or <code>John</code>.</p>
+</li>
+<li>
+<p><code>find s/designer</code><br>
+This will show <code>Jane Doe</code> whose skill is <code>designer</code>.</p>
+</li>
+<li>
+<p><code>find n/Betsy Tim John</code><br>
+This will show any person having any of the names <code>Betsy</code>, <code>Tim</code>, or <code>John</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">Deleting a person : <code>delete</code></a></h4>
+<div class="paragraph">
+<p>You can delete a specified person from contactHeRo using the following format.<br>
+Format: <code>delete INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>delete 1</code><br>
+This deletes the 1st person in contactHeRo and on running the above command, you should see the following success message:<br></p>
+<div class="literalblock">
+<div class="content">
+<pre>Deleted Person: John Doe Phone: 98765432 Email: johnd@example.com Address: John street, block 123, #01-01 Current Position: Software Engineer Company: Google Skills:</pre>
+</div>
+</div>
+</li>
+<li>
+<p><code>find n/Betsy</code><br>
+<code>delete 1</code><br>
+This deletes the 1st person in the results of the <code>find</code> command and on running the above command, you should see the following success message:<br></p>
+<div class="literalblock">
+<div class="content">
+<pre>Deleted Person: Betsy Crower Phone: 1234567 Email: betsycrowe@example.com Address: Newgate Prison Current Position: Student Company: NUS Skills:</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-the-contact-details-of-a-person-code-select-code"><a class="link" href="#viewing-the-contact-details-of-a-person-code-select-code">Viewing the contact details of a person: <code>select</code></a></h4>
+<div class="paragraph">
+<p>You can select a person identified by the index number used in the last person listing to view his/her contact details using the following format.<br>
+Format: <code>select INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Shows the contact details of the person at the specified <code>INDEX</code> in a formatted page.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>select 2</code><br>
+This selects the 2nd person in contactHeRo.</p>
+</li>
+<li>
+<p><code>find n/Betsy</code><br>
+<code>select 1</code><br>
+This selects the 1st person in the results of the <code>find</code> command.</p>
+<div class="paragraph">
+<p>On running this command, you should see a similar result as the following (Refer to figure 5). Betsy is selected in the person list and her contact details are visible in the Contact Details Tab.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/selectCommand.png" alt="selectCommand" width="800">
+</div>
+<div class="title">Figure 1. Select Command Execution</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="searching-a-person-on-linkedin-code-linkedin-code"><a class="link" href="#searching-a-person-on-linkedin-code-linkedin-code">Searching a person on LinkedIn: <code>linkedIn</code></a></h4>
+<div class="paragraph">
+<p>You can select a person identified by the index number used in the last person listing to search him/her on LinkedIn using the following format.<br>
+Format: <code>linkedIn INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This loads the LinkedIn search of the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+<li>
+<p>You will have to login to LinkedIn the first time to use this command in order to search the person.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+We do not save or log any of your LinkedIn credentials or information as we respect your privacy.
+Therefore, everytime you restart contactHeRo, you will have to login again.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>linkedIn 2</code><br>
+This loads the LinkedIn search of the 2nd person in the contactHeRo.</p>
+</li>
+<li>
+<p><code>find n/Betsy</code><br>
+<code>linkedIn 1</code><br>
+This loads the LinkedIn search of 1st person in the results of the <code>find</code> command.<br></p>
+<div class="paragraph">
+<p>On running the above command and after you have logged in, you should a similar result as the following (Refer to figure 6). Betsy is selected in the person list and she is searched on LinkedIn in the LinkedIn Tab.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/linkedInCommand.png" alt="linkedInCommand" width="800">
+</div>
+<div class="title">Figure 2. LinkedIn Command Execution</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-job-openings"><a class="link" href="#managing-job-openings">Managing Job Openings</a></h3>
+<div class="paragraph">
+<p>This section describes the commands you can use to manage jobs in contactHeRo.</p>
+</div>
+<div class="sect3">
+<h4 id="adding-a-job-opening-code-addjob-code"><a class="link" href="#adding-a-job-opening-code-addjob-code">Adding a job opening: <code>addjob</code></a></h4>
+<div class="paragraph">
+<p>You can add a job opening to contactHeRo using the following format.<br>
+Format: <code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER_OF_POSITIONS s/SKILL_REQUIRED&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addjob p/Software Engineer t/Cloud Services l/Singapore n/1 s/Java</code></p>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>New job opening added: Software Engineer Team: Cloud Services Location: Singapore Number of Positions: 1 Skills: [Java]</pre>
+</div>
+</div>
+</li>
+<li>
+<p><code>addjob p/Marketing Intern t/Social Media Marketing l/Kuala Lampur, Malaysia n/1 s/Excel s/Writing</code></p>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message and the job opening UI(Refer to figure 7) added to the Job List Panel(Refer to figure 3):<br></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>New job opening added: Marketing Intern Team: Social Media Marketing Location: Kuala Lampur, Malaysia Number of Positions: 1 Skills: [Excel][Writing]</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/addjobCommand.png" alt="addjobCommand">
+</div>
+<div class="title">Figure 3. A job opening in contactHeRo</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-a-job-opening-code-editjob-code"><a class="link" href="#editing-a-job-opening-code-editjob-code">Editing a job opening : <code>editjob</code></a></h4>
+<div class="paragraph">
+<p>You can edit an existing job opening in contactHeRo using this format.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>editjob INDEX [p/POSITION] [t/TEAM] [l/LOCATION] [n/NUMBER_OF_POSITIONS] [s/SKILL]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the job opening at the specified <code>INDEX</code>. Remember that the index refers to the index number shown in the last job listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>You need to provide at least one of the optional.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>When you edit skills, the existing skills of the job opening will be removed i.e adding of job&#8217;s skills is not cumulative.</p>
+</li>
+<li>
+<p>Unlike editing a person feature, you cannot remove all the job&#8217;s skills by typing <code>s/</code> because a job opening requires at least one skill.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editjob 1 p/Hardware Engineer t/Hardware Products</code><br>
+Edits the position and team of the 1st job opening to be <code>Hardware Engineer</code> and <code>Hardware Products</code> respectively.</p>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Edited Job: Hardware Engineer Team: Hardware Products Location: Singapore Number of Positions: 1 Skills: [Java]</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="locating-job-opening-by-position-location-or-skill-code-findjob-code"><a class="link" href="#locating-job-opening-by-position-location-or-skill-code-findjob-code">Locating job opening by position, location or skill : <code>findjob</code></a></h4>
+<div class="paragraph">
+<p>You can find all the persons whose names or skills contain any of the given keywords using the following format.<br>
+Format:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>findjob p/KEYWORD [MORE_KEYWORDS]</code> to find by position or</p>
+</li>
+<li>
+<p><code>findjob s/KEYWORD [MORE_KEYWORDS]</code> to find by skill or</p>
+</li>
+<li>
+<p><code>findjob l/KEYWORD [MORE_KEYWORDS]</code> to find by location.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Some things to take note of:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+</li>
+<li>
+<p>Only the name or skill is searched, depending on the prefix (n/ or s/)</p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
+</li>
+<li>
+<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>findjob p/Hardware Engineer</code><br>
+This will show any job with position <code>Hardware Engineer</code>.</p>
+</li>
+<li>
+<p><code>findjob s/Java</code><br>
+This will show any job which requires Java.</p>
+</li>
+<li>
+<p><code>findjob l/Singapore</code><br>
+This will show any job in Singapore.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-job-openings-code-listjob-code"><a class="link" href="#listing-all-job-openings-code-listjob-code">Listing all job openings : <code>listjob</code></a></h4>
+<div class="paragraph">
+<p>You can see a list of all job openings in contactHeRo using the following format.<br>
+Format: <code>listjob</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-job-opening-code-deletejob-code"><a class="link" href="#deleting-a-job-opening-code-deletejob-code">Deleting a job opening: <code>deletejob</code></a></h4>
+<div class="paragraph">
+<p>You can delete a specified job opening from contactHeRo using the following format.<br>
+Format: <code>deletejob INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the job opening at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listjob</code><br>
+<code>deletejob 2</code><br>
+This deletes the 2nd job opening in contactHeRo and on running the above command, you should see the following success message:<br></p>
+<div class="literalblock">
+<div class="content">
+<pre>Deleted Job: Marketing Intern Team: Social Media Marketing Location: Kuala Lampur, Malaysia Number of Positions: 1 Skills: [Excel][Writing]</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="matching-a-job-opening-to-a-person-code-matchjob-code"><a class="link" href="#matching-a-job-opening-to-a-person-code-matchjob-code">Matching a job opening to a person: <code>matchjob</code></a></h4>
+<div class="paragraph">
+<p>You can see potential candidates for a specified job opening in contactHeRo using the following format.<br>
+Format: <code>matchjob INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Matches the job opening at the specified <code>INDEX</code> to potential candidates using skill-matching.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>matchjob 1</code><br>
+This will show any person whose skills match any of those required for the job opening at index 1.</p>
+</li>
+<li>
+<p><code>findjob s/Software</code><br>
+<code>matchjob 1</code><br>
+This will show any person whose skills match any of those required for the job opening at index 1 in the results of the findjob command.</p>
+<div class="paragraph">
+<p>On running this command, you should see a similar result as the following (Refer to figure 8). All persons having any skill as required by the job 'Software Engineer' will be shown.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/matchjobCommand.png" alt="matchjobCommand" width="800">
+</div>
+<div class="title">Figure 4. MatchJob Command Execution</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-appointments"><a class="link" href="#managing-appointments">Managing Appointments</a></h3>
+<div class="paragraph">
+<p>This section describes the commands you can use to manage appointments in contactHeRo.</p>
+</div>
+<div class="sect3">
+<h4 id="adding-appointment-code-addapp-code"><a class="link" href="#adding-appointment-code-addapp-code">Adding appointment : <code>addapp</code></a></h4>
+<div class="paragraph">
+<p>You can add appointment using the following format.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>addapp t/TITLE sdt/START_DATE_TIME edt/END_DATE_TIME</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addapp t/Meeting sdt/2018-04-05 14:00 edt/2018-04-05 15:00</code></p>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>New appointment added: Meeting Start Date Time: 2018-04-05 14:00 End Date Time: 2018-04-05 15:00</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-appointment-code-delapp-code"><a class="link" href="#deleting-appointment-code-delapp-code">Deleting appointment : <code>delapp</code></a></h4>
+<div class="paragraph">
+<p>You can delete appointment using the following format.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delapp t/TITLE sdt/START_DATE_TIME edt/END_DATE_TIME</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delapp t/Meeting sdt/2018-04-05 14:00 edt/2018-04-05 15:00</code></p>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Appointment deleted: Meeting Start Date Time: 2018-04-05 14:00 End Date Time: 2018-04-05 15:00</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-the-calendar"><a class="link" href="#viewing-the-calendar">Viewing the Calendar</a></h3>
+<div class="paragraph">
+<p>This section describes the commands you can use view the calendar in contactHeRo.</p>
+</div>
+<div class="sect3">
+<h4 id="opening-the-calendar-code-calendar-code"><a class="link" href="#opening-the-calendar-code-calendar-code">Opening the calendar: <code>calendar</code></a></h4>
+<div class="paragraph">
+<p>You can switch to the calendar tab using the following format.<br>
+Format: <code>calendar</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-a-specific-date-or-switch-to-the-date-view-code-date-code"><a class="link" href="#viewing-a-specific-date-or-switch-to-the-date-view-code-date-code">Viewing a specific date or switch to the date view: <code>date</code></a></h4>
+<div class="paragraph">
+<p>You can view a specifc date or switch to the date view by using the following format.<br>
+Format: <code>date [DATE]</code><br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>DATE</code> needs to be in format YYYY-MM-DD
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>With <code>DATE</code>, you view the specific date<br>
+Example: <code>date 2018-04-26</code></p>
+</li>
+<li>
+<p>Without <code>DATE</code>, you change to the date view<br>
+Example: <code>date</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/dateView.png" alt="dateView" width="400">
+</div>
+<div class="title">Figure 5. Date view</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-a-specific-date-and-time-or-switch-to-the-date-and-time-view-code-datetime-code"><a class="link" href="#viewing-a-specific-date-and-time-or-switch-to-the-date-and-time-view-code-datetime-code">Viewing a specific date and time or switch to the date and time view : <code>datetime</code></a></h4>
+<div class="paragraph">
+<p>You can view a specifc date time by using the following format.<br>
+Format: <code>datetime [DATE_TIME]</code><br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>DATE_TIME</code> needs to be in format YYYY-MM-DD HH-mm
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example: <code>datetime 2018-04-26 12:00</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-a-specific-week-or-switch-to-the-week-view-code-week-code"><a class="link" href="#viewing-a-specific-week-or-switch-to-the-week-view-code-week-code">Viewing a specific week or switch to the week view : <code>week</code></a></h4>
+<div class="paragraph">
+<p>You can view a specifc week or switch to the week view by using the following format.<br>
+Format: <code>week [YEAR WEEK]</code><br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>Year</code> needs to be in format YYYY.<br>
+<code>Week</code> needs to be in format WW and WW refers to the order of week in one year.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>With <code>YEAR WEEK</code>, you view the specific week<br>
+Example: <code>week 2018 10</code></p>
+</li>
+<li>
+<p>Without <code>YEAR WEEK</code>, you change to the week view<br>
+Example: <code>week</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/weekView.png" alt="weekView" width="400">
+</div>
+<div class="title">Figure 6. Week view</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-a-specific-month-or-switch-to-the-month-view-code-month-code"><a class="link" href="#viewing-a-specific-month-or-switch-to-the-month-view-code-month-code">Viewing a specific month or switch to the month view : <code>month</code></a></h4>
+<div class="paragraph">
+<p>You can view a specifc month or switch to the month view by using the following format.<br>
+Format: <code>month [MONTH]</code><br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>MONTH</code> needs to be in format YYYY-MM
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>With <code>MONTH</code>, you view the specific month<br>
+Example: <code>month 2018-10</code></p>
+</li>
+<li>
+<p>Without <code>MONTH</code>, you change to the month view<br>
+Example: <code>month</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/monthView.png" alt="monthView" width="400">
+</div>
+<div class="title">Figure 7. Month view</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-a-specific-year-or-switch-to-the-year-view-code-year-code"><a class="link" href="#viewing-a-specific-year-or-switch-to-the-year-view-code-year-code">Viewing a specific year or switch to the year view : <code>year</code></a></h4>
+<div class="paragraph">
+<p>You can view a specifc year or switch to the year view by using the following format.<br>
+Format: <code>year [YEAR]</code><br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>YEAR</code> needs to be in format YYYY
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>With <code>YEAR</code>, you view the specific year<br>
+Example: <code>year 2018</code></p>
+</li>
+<li>
+<p>Without <code>YEAR</code>, you change to the year view<br>
+Example: <code>year</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/yearView.png" alt="yearView" width="400">
+</div>
+<div class="title">Figure 8. Year view</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-emails"><a class="link" href="#managing-emails">Managing Emails</a></h3>
+<div class="paragraph">
+<p>This section describes the commands you can use to manage emails in contactHeRo</p>
+</div>
+<div class="sect3">
+<h4 id="login-to-google-code-googlelogin-code"><a class="link" href="#login-to-google-code-googlelogin-code">Login to Google : <code>googlelogin</code></a></h4>
+<div class="paragraph">
+<p>You will have to login to google in order to use features like
+emailing. This process is simple and fast like how you would normally login
+using the web browser.<br>
+Format: <code>googlelogin</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Opens up the <code>Google</code> tab. This is contactHeRo&#8217;s built-in browser for Google logins. Simply enter your email and password to login.</p>
+</li>
+<li>
+<p>You will have to login in order to use the <code>Email</code> command to send email.</p>
+</li>
+<li>
+<p><strong>IMPORTANT</strong>: Please do not go to other webpage in the <code>Google</code> tab after you have logged in.<br></p>
+<div class="paragraph">
+<p>This is because contactHeRo has to use the login information from the webpage after you have login to send your email.</p>
+</div>
+</li>
+<li>
+<p><strong>NOTE</strong>: We do not save or log any of your Google credentials or information as we respect your privacy.
+Therefore, everytime you restart contactHeRo, you have to login again.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>googlelogin</code><br>
+This will open up the <code>Google</code> tab for you to login. On running the above command, you should see the following success message:<br></p>
+<div class="literalblock">
+<div class="content">
+<pre>Please log in to Google.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should also see the login screen as shown below.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/googlelogin1.PNG" alt="googlelogin1" width="400">
+</div>
+<div class="title">Figure 9. The Google log in page</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Please do not go to any other webpages in the <code>Google</code> tab after you have logged in.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Now that you have logged in, you are ready to use the <code>Email</code> feature to send out emails!</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="emailing-your-contact-code-email-code"><a class="link" href="#emailing-your-contact-code-email-code">Emailing your contact : <code>email</code></a></h4>
+<div class="paragraph">
+<p>You can send email to any person you have saved in contactHeRo using the following format.<br>
+Format: <code>email INDEX [sub/EMAIL_SUBJECT]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Opens up the Draft Email tab. This is an User Interface for you to draft your emails.</p>
+</li>
+<li>
+<p>Collects the information of the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The collected information will be used to help you fill up details in the draft like the person&#8217;s email address.</p>
+</li>
+<li>
+<p>The email subject title is optional.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>email 2</code><br>
+This will open up the Draft Email tab and then
+collect the information of the 2nd person in the list.</p>
+</li>
+<li>
+<p><code>list</code><br>
+<code>email 2 sub/Interview on 13 May 2018</code><br>
+This will open up the Draft Email tab and then
+collect the information of the 2nd person in the list.
+It will also set the email subject title to "Interview on 13 May 2018".</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>On running the above commands, you should see similar message like the following:<br></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Drafting email to: berniceyu@example.com</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The collected information will be used automatically to fill up details as shown below in figure 5.
+If you have also used <code>sub/Interview on 13 May 2018</code> in the command, the Subject textbox will also be fill with "Interview on 13 May 2018".</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/emailSS1.PNG" alt="emailSS1" width="400">
+</div>
+<div class="title">Figure 10. The User Interface to draft your email</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can use keyboard short-cuts like <code>Ctrl-B</code> to <strong>bold</strong> your text while drafting
+your email.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Finally, after you are done drafting up the email, simply hit the <code>Send</code>
+button to send your email. If the email is sent successfully, you should see
+a pop-up message as shown below.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/emailSS2.PNG" alt="emailSS2" width="300">
+</div>
+<div class="title">Figure 11. Pop-up message</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="utility-features"><a class="link" href="#utility-features">Utility Features</a></h3>
+<div class="paragraph">
+<p>This section describes the commands that will help you make better use of contactHeRo.
+==== Viewing help : <code>help</code></p>
+</div>
+<div class="paragraph">
+<p>In case you get stuck while using contactHeRo and would like to see the User Guide, you can do so by using the following format.<br>
+Format: <code>help</code></p>
+</div>
+<div class="paragraph">
+<p>This opens the help window as shown below in figure 3.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/helpWindow.png" alt="helpWindow" width="790">
+</div>
+<div class="title">Figure 12. Help Window in contactHeRo</div>
+</div>
+<div class="sect3">
+<h4 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">Listing entered commands : <code>history</code></a></h4>
+<div class="paragraph">
+<p>Lists all the commands that you have entered in reverse chronological order.<br>
+Format: <code>history</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command box.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="clearing-list-of-entered-commands-code-clearhistory-code"><a class="link" href="#clearing-list-of-entered-commands-code-clearhistory-code">Clearing list of entered commands : <code>clearhistory</code></a></h4>
+<div class="paragraph">
+<p>You can clear your history of entered commands using the following format.<br>
+Format: <code>clearhistory</code></p>
+</div>
+<div class="paragraph">
+<p>On running the above command, you should see the following success message:<br>
+ <code>Your history has been cleared.</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">Undoing previous command : <code>undo</code></a></h4>
+<div class="paragraph">
+<p>You can restore contactHeRo to the state before the previous <em>undoable</em> command(refer to note below) was executed in case you make a mistake or otherwise, using the following format.<br>
+Format: <code>undo</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Undoable commands: those commands that modify the contactHeRo&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>addjob</code>, <code>deletejob</code>, <code>editjob</code>, <code>addapp</code> and <code>delapp</code> and <code>clear</code>).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 1</code><br>
+<code>list</code><br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+</li>
+<li>
+<p><code>select 1</code><br>
+<code>list</code><br>
+<code>undo</code><br>
+The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>clear</code><br>
+<code>undo</code> (reverses the <code>clear</code> command)<br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">Redoing the previously undone command : <code>redo</code></a></h4>
+<div class="paragraph">
+<p>You can reverse the most recent <code>undo</code> command using the following format.<br>
+Format: <code>redo</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 1</code><br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br>
+<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>redo</code><br>
+The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>clear</code><br>
+<code>undo</code> (reverses the <code>clear</code> command)<br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br>
+<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
+<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">Clearing all entries : <code>clear</code></a></h4>
+<div class="paragraph">
+<p>You can clear all your contacts from contactHeRo using the following format.<br>
+Format: <code>clear</code></p>
+</div>
+<div class="paragraph">
+<p>+
+On running the above command, you should see the following success message:<br>
+<code>contactHeRo has been cleared!</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">Exiting the program : <code>exit</code></a></h4>
+<div class="paragraph">
+<p>You can exit the program using the following format.<br>
+Format: <code>exit</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="auto-complete-command"><a class="link" href="#auto-complete-command">Auto-complete command</a></h4>
+<div class="paragraph">
+<p>To save your time, after typing a partial command, you can press TAB for the command to be auto-completed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The first lexicographically matched command is returned.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typing <code>ad</code> and pressing <code>TAB</code> gives:<br>
+<code>add n/ e/ a/ [s/]&#8230;&#8203;</code></p>
+</li>
+<li>
+<p>Typing <code>h</code> and pressing <code>TAB</code> gives:<br>
+<code>help</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="saving-the-data"><a class="link" href="#saving-the-data">Saving the data</a></h4>
+<div class="paragraph">
+<p>You do not need to save manually. contactHeRo saves the data into the hard disk for you automatically.<br></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="coming-in-v2-0"><a class="link" href="#coming-in-v2-0">Coming in V2.0</a></h3>
+<div class="sect3">
+<h4 id="arranging-meetings-with-gmail-calendar-code-coming-in-v2-0-code"><a class="link" href="#arranging-meetings-with-gmail-calendar-code-coming-in-v2-0-code">Arranging meetings with Gmail calendar <code>[coming in v2.0]</code></a></h4>
+<div class="paragraph">
+<p>You will soon be able to arrange meeting on Gmail calender using contactHeRo.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="setting-reminders-code-coming-in-v2-0-code"><a class="link" href="#setting-reminders-code-coming-in-v2-0-code">Setting reminders <code>[coming in v2.0]</code></a></h4>
+<div class="paragraph">
+<p>You will soon be able to set reminders for meetings, appointments or any other event and contactHeRo will remind you of the event.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="better-matching-of-jobs-code-coming-in-v2-0-code"><a class="link" href="#better-matching-of-jobs-code-coming-in-v2-0-code">Better matching of jobs <code>[coming in v2.0]</code></a></h4>
+<div class="paragraph">
+<p>Job matching will soon be improved using  Artificial Intelligence methods.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">FAQ</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+</div>
+<div class="paragraph">
+<p><strong>Q</strong>: How do I report bugs to the developers?<br>
+<strong>A</strong>: Please send an email to <a href="mailto:contactHeRo@gmail.com">contactHeRo@gmail.com</a> if you find a bug. Thank you.</p>
+</div>
+<div class="paragraph">
+<p>To ask more questions, please send your email to <a href="mailto:contactHeRo@gmail.com">contactHeRo@gmail.com</a>.<br>
+We are willing to help you.<br></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contacthero-cheat-sheet"><a class="link" href="#contacthero-cheat-sheet">contactHeRo Cheat Sheet</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following sections summarize the commands you can use in contactHeRo.</p>
+</div>
+<div class="sect2">
+<h3 id="managing-your-contacthero-account"><a class="link" href="#managing-your-contacthero-account">Managing your contactHeRo account</a></h3>
+<table class="tableblock frame-all grid-all" style="width: 99%;">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Function</th>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logging in</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>login</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>login u/Admin pw/ad123</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Changing your username</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>updateusername u/NEWUSERNAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>updateusername u/JohnDoe</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Changing your password</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>updatepassword pw/PASSWORD npw/NEW_PASSWORD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>updatepassword pw/Doe123 npw/doe456</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logging out</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>logout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>logout</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="managing-persons-2"><a class="link" href="#managing-persons-2">Managing Persons</a></h3>
+<table class="tableblock frame-all grid-all" style="width: 99%;">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Function</th>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adding a person.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add n/NAME p/PHONE e/EMAIL a/ADDRESS cp/CURRENT_POSITION cc/COMPANY [pp/PROFILE_PICTURE_PATH] [s/SKILL]&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 cp/Software Engineer cc/Google pp//home/trafalgarandre/downloads/john.jpeg s/Java s/C++</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Editing an existing person.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [cp/CURRENT_POSITION] [cc/COMPANY] [pp/PROFILE_PICTURE_PATH] [s/SKILL]&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit 1 p/91234567 e/johndoe@example.com</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deleting an existing person.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete 2</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Showing a list of all persons.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>list</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>list</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Finding persons by name.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find n/KEYWORD [MORE_KEYWORDS]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find n/John</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Finding persons by skill.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find s/KEYWORD [MORE_KEYWORDS]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find s/Java</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seeing contact details of a person.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>select INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>select 3</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Searching a person on linkedIn.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>linkedIn INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>linkedIn 3</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="managing-job-openings-2"><a class="link" href="#managing-job-openings-2">Managing Job Openings</a></h3>
+<table class="tableblock frame-all grid-all" style="width: 99%;">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Function</th>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adding a job opening.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addjob p/POSITION t/TEAM l/LOCATION n/NUMBER OF POSITIONS s/SKILL REQUIRED&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addjob p/Software Engineer t/Cloud Services l/Singapore n/1 s/Java</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Editing an existing job opening.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>editjob INDEX [p/POSITION] [t/TEAM] [l/LOCATION] [n/NUMBER_OF_POSITIONS] [s/SKILL]…​</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>editjob 1 p/Backend Software Engineer t/Backend Services</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deleting an existing job opening.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deletejob INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deletejob 2</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Showing a list of all job openings.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>listjob</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>listjob</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Finding job openings by position.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>findjob p/KEYWORD [MORE_KEYWORDS]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>findjob p/Engineer</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Finding job openings by location.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>findjob l/KEYWORD [MORE_KEYWORDS]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>findjob l/Singapore</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Finding job openinngs by skill.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>findjob s/KEYWORD [MORE_KEYWORDS]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>findjob s/Java s/Excel</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Matching a job opening to a person.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>matchjob INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>matchjob 3</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="managing-appointments-2"><a class="link" href="#managing-appointments-2">Managing Appointments</a></h3>
+<table class="tableblock frame-all grid-all" style="width: 99%;">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Function</th>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adding an appointment.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addapp t/TITLE sdt/START_DATE_TIME edt/END_DATE_TIME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addapp t/Birthday sdt/2018-03-26 12:00 edt/2018-03-26 12:30</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deleting an existing appoinment.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delapp t/TITLE sdt/START DATE TIME edt/END DATE TIME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delapp t/Birthday sdt/2018-03-26 12:00 edt/2018-03-26 12:30</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="viewing-the-calendar-2"><a class="link" href="#viewing-the-calendar-2">Viewing the Calendar</a></h3>
+<table class="tableblock frame-all grid-all" style="width: 99%;">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Function</th>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Opening the calendar.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>calendar</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>calendar</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Viewing a specific date or switch to the date view.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>date</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>date 2018-04-26</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Viewing a specific date and time or switch to the date and time view.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datetime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>date 2018-04-26 12:00</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Viewing a specific week or switch to the week view.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>week [YEAR WEEK]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>week 2018 10</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Viewing a specific month or switch to the month view.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>month [MONTH]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>month</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Viewing a specific year or switch to the year view.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>year [YEAR]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>year 2018</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="managing-emails-2"><a class="link" href="#managing-emails-2">Managing Emails</a></h3>
+<table class="tableblock frame-all grid-all" style="width: 99%;">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Function</th>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Login to google</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>googlelogin</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>googlelogin</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emailing your contact.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>email INDEX [sub/EMAIL_SUBJECT]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>email 2 sub/Interview on 13 May 2018</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="utility-commands"><a class="link" href="#utility-commands">Utility Commands</a></h3>
+<table class="tableblock frame-all grid-all" style="width: 99%;">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Function</th>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Viewing help.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>help</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>help</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Listing entered commands.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>history</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>history</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clearing list of entered commands.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clearhistory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clearhistory</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Undo previous command.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>undo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>undo</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Redo previous command.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>redo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>redo</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clear all data.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clear</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clear</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exit contactHeRo.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exit</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="conclusion"><a class="link" href="#conclusion">Conclusion</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once again, thank you for choosing us as your contact management solution! You are our motivation to make this application better.<br>
+If you find any bugs or want to propose any ideas, please contact us via <a href="mailto:contactHeRo@gmail.com">contactHeRo@gmail.com</a>.<br>
+Hope you enjoy contactHeRo!</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -131,13 +1824,186 @@ this may expose some of the sensitive data which the user has inputted, like log
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="login-system-implementation"><a class="link" href="#login-system-implementation">Login System Implementation</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The login system is currently implemented such that there is only one user per application. Logging in and out of contactHeRo is done in the same way as the other commmands which is through the command line.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="logging-in"><a class="link" href="#logging-in">Logging in</a></h4>
+<div class="paragraph">
+<p>When the user starts the application, the user will see the display screen. The user will need to login in order to switch to the main display to view the data.
+Most of the commands will be locked so as to prevent modification of the data in contactHeRo before a user logs in. The commands that are available for use are <code>LoginCommand</code>, <code>HelpCommand</code>, <code>ClearHistoryCommand</code> and <code>ExitCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>The user will need to enter the <code>login</code> command to log in before he can get to the main window. The image below shows
+the sequence diagram for the <code>login</code> command in the logic component.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/LoginSDLogicComponent.png" alt="LoginSDLogicComponent" width="800">
+</div>
+<div class="title">Figure 13. Logic Component Sequence Diagram for logging in</div>
+</div>
+<div class="paragraph">
+<p>As seen in the image, when the user logs in, an instance of <code>LogicCommand</code> is created which then makes a function call to <code>Model</code> to check the validity of the inputs. Afterwards, the <code>LogicCommand</code> instance will post a <code>LoginEvent</code> to \
+<code>EventsCenter</code> and the event will be handled by the <code>UI</code> component to switch the display.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="logging-out"><a class="link" href="#logging-out">Logging out</a></h4>
+<div class="paragraph">
+<p>When the user is done with using the application, the user can use the <code>LogoutCommand</code> to log out. Once the log out is entered, the user will be brought back to the display screen.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="customizing-username-and-password"><a class="link" href="#customizing-username-and-password">Customizing username and password</a></h4>
+<div class="paragraph">
+<p>Currently, a default username and password is given for first time users of contactHeRo. This information can be seen in the in the <code>ResultDisplayPanel</code> in the display window when the user starts up the application. See the image below.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/LoginPrompt.png" alt="LoginPrompt" width="800">
+</div>
+<div class="title">Figure 14. LoginScreen.png</div>
+</div>
+<div class="paragraph">
+<p>Users can change the username and password by using the <code>updateusername</code> command and <code>updatepassword</code> command respectively.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Constraints are set to both username and password to prevent illegal values from being used, such as an empty string. The code snippets for the regex of both username and password are shown below.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> USERNAME_VALIDATION_REGEX = <span class="string"><span class="delimiter">&quot;</span><span class="char">\\</span><span class="content">S</span><span class="char">\\</span><span class="content">w{3,20}</span><span class="delimiter">&quot;</span></span>;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> PASSWORD_VALIDATION_REGEX = <span class="string"><span class="delimiter">&quot;</span><span class="content">(?=.*[A-Za-z])(?=.*</span><span class="char">\\</span><span class="content">d)[</span><span class="char">\\</span><span class="content">p{Alnum}](</span><span class="char">\\</span><span class="content">S{4,20})</span><span class="delimiter">&quot;</span></span>;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="storing-of-user-account"><a class="link" href="#storing-of-user-account">Storing of user account</a></h4>
+<div class="paragraph">
+<p>In our implementation, the <code>Account</code> class in the <code>model</code> component stores the in-memory data for the username and password. The <code>AccountsManager</code> class handles the methods which interacts with the data in <code>Account</code>, such as login and update password.</p>
+</div>
+<div class="paragraph">
+<p>For storing of the user account data in hard disk, it is handled by the <code>XmlAccountData</code> class in the <code>storage</code> component. The data will be stored as an XML file in a JAXB-friendly version <code>XmlAdaptedAccount</code>. This data file is a separate file from the file which stores the main data of contactHeRo.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Storing of user account data<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 1 (current choice):</strong> Stores user account data in a separate file.+
+<strong>Pros</strong>: User can still retrieve their data if they forget their customize username or password by simply removing the file storing account data and logging in with their default username and password.<br>
+<strong>Cons</strong>: Data is not very secure as everyone can access the data through the default username and password.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Stores user account data in the same file with the main data.<br>
+<strong>Pros</strong>: Resolves problem of accessing data from default account.<br>
+<strong>Cons</strong>: Data in contactHeRo becomes lost if user forgets the customized username or password.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Aspect:</strong> How login UI is implemented<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 1 (current choice):</strong> Use the same window for the display screen and main screen.<br>
+<strong>Pros</strong>: Faster to implement as layout is similar to main screen. Also reduces code duplication.<br>
+<strong>Cons</strong>: Can only do small changes to layout for display screen.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Create a separate login window.<br>
+<strong>Pros</strong>: Login UI can be customized to make it more user friendly for users visually.<br>
+<strong>Cons</strong>: User do not have to deal with the opening and closing of windows which may slow the app.<br></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="matching-jobs-implementation"><a class="link" href="#matching-jobs-implementation">Matching jobs implementation</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>JobMatchCommand</code> uses <code>PersonSkillContainsKeywordsPredicate</code> to match person&#8217;s skills with a job&#8217;s skills. It accepts the index for the job to match and then uses the <code>PersonSkillMatchesKeywordsPredicate</code> to match the job. Below is the code for the execution of the <code>JobMatchCommand</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
+    ...
+    Job jobToMatch = lastShownList.get(targetIndex.getZeroBased());
+
+    model.updateFilteredPersonList(<span class="keyword">new</span> PersonSkillContainsKeywordsPredicate(
+            CollectionUtil.getSetAsStringList(jobToMatch.getSkills())));
+    <span class="comment">// return result</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>PersonSkillMatchesKeywordsPredicate</code> takes in the list of skills of the job as the keywords as the parameter and then checks if the person has any of these skills using the <code>SkillUtil</code>. The code for matching the skills is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/**
+ * Checks if a set of skills contains any of the {@code keywords}.
+ */</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="type">boolean</span> match(<span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; keywords, <span class="predefined-type">Set</span>&lt;Skill&gt; list) {
+    <span class="predefined-type">String</span> skillList = getSkillsAsString(list);
+    <span class="keyword">return</span> keywords.stream()
+            .anyMatch(keyword -&gt; StringUtil.containsWordIgnoreCase(skillList, keyword));
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To minimize code duplication, we made a utility class <code>SkillUtil</code> which is used both by <code>PersonSkillMatchesKeywordsPredicate</code> during execution of <code>matchjob</code> and <code>find s/</code> commands and <code>JobSkillMatchesKeywordsPredicate</code> during the execution of <code>findjob s/</code> command.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-enhancement"><a class="link" href="#proposed-enhancement">Proposed Enhancement</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Add data encryption feature to further improve the security of the data in contactHeRo.</p>
+</li>
+<li>
+<p>Add shortcut keys to scroll through the list of data in contactHeRo to make it more user-friendly.</p>
+</li>
+</ul>
+</div>
 <hr>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 14:49:42 UTC
+Last updated 2018-04-15 15:05:24 UTC
 </div>
 </div>
 </body>
