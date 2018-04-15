@@ -6,7 +6,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
-import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.UndoableCommand;
 import seedu.address.logic.commands.exceptions.CommandException;

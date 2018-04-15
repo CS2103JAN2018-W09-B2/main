@@ -187,7 +187,9 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public boolean isLoggedIn() { return user.isPresent(); }
+    public boolean isLoggedIn() {
+        return user.isPresent();
+    }
 
     //@@author trafalgarandre
     @Override

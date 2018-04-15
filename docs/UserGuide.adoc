@@ -809,11 +809,6 @@ Examples:
      `help`
 // end::autoComplete[]
 
-
- Appointment deleted: Meeting Start Date Time: 2018-04-05 14:00 End Date Time: 2018-04-05 15:00
-
-// end::calendar[]
-
 ==== Saving the data
 
 You do not need to save manually. contactHeRo saves the data into the hard disk for you automatically. +
