@@ -4,6 +4,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.CommandTestUtil.prepareRedoCommand;
+import static seedu.address.logic.commands.CommandTestUtil.prepareUndoCommand;
 import static seedu.address.testutil.TypicalAppointments.BIRTHDAY;
 import static seedu.address.testutil.TypicalAppointments.MEETING;
 import static seedu.address.testutil.TypicalAppointments.getTypicalAddressBook;
@@ -50,6 +52,45 @@ public class DeleteAppointmentCommandTest {
         DeleteAppointmentCommand deleteAppointmentCommand = prepareCommand(notAddedAppointment);
 
         assertCommandFailure(deleteAppointmentCommand, model, DeleteAppointmentCommand.MESSAGE_NOT_FOUND_APPOINTMENT);
+    }
+
+    @Test
+    public void executeUndoRedo_validAppointment_success() throws Exception {
+        UndoRedoStack undoRedoStack = new UndoRedoStack();
+        UndoCommand undoCommand = prepareUndoCommand(model, undoRedoStack);
+        RedoCommand redoCommand = prepareRedoCommand(model, undoRedoStack);
+        Appointment appointmentToDelete = model.getAppointmentList().get(0);
+        DeleteAppointmentCommand deleteAppointmentCommand = prepareCommand(appointmentToDelete);
+        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new Account());
+
+        // delete -> first appointment deleted
+        deleteAppointmentCommand.execute();
+        undoRedoStack.push(deleteAppointmentCommand);
+
+        // undo -> reverts addressbook back to previous state
+        assertCommandSuccess(undoCommand, model, UndoCommand.MESSAGE_SUCCESS, expectedModel);
+
+        // redo -> same appointment deleted again
+        expectedModel.deleteAppointment(appointmentToDelete);
+        assertCommandSuccess(redoCommand, model, RedoCommand.MESSAGE_SUCCESS, expectedModel);
+    }
+
+    @Test
+    public void executeUndoRedo_invalidAppointment_failure() {
+        UndoRedoStack undoRedoStack = new UndoRedoStack();
+        UndoCommand undoCommand = prepareUndoCommand(model, undoRedoStack);
+        RedoCommand redoCommand = prepareRedoCommand(model, undoRedoStack);
+        Appointment appointmentToDelete = new AppointmentBuilder()
+                .withTitle("Interview").withStartDateTime("2018-04-26 17:00")
+                .withEndDateTime("2018-04-26 18:00").build();;
+        DeleteAppointmentCommand deleteAppointmentCommand = prepareCommand(appointmentToDelete);
+
+        // execution failed -> deleteCommand not pushed into undoRedoStack
+        assertCommandFailure(deleteAppointmentCommand, model, DeleteAppointmentCommand.MESSAGE_NOT_FOUND_APPOINTMENT);
+
+        // no commands in undoRedoStack -> undoCommand and redoCommand fail
+        assertCommandFailure(undoCommand, model, UndoCommand.MESSAGE_FAILURE);
+        assertCommandFailure(redoCommand, model, RedoCommand.MESSAGE_FAILURE);
     }
 
     @Test

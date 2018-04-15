@@ -34,8 +34,10 @@ public class UiManager extends ComponentManager implements Ui {
     private static final String ICON_APPLICATION = "/images/address_book_32.png";
 
     private static final String LOGIN_PROMPT = "Type 'login u/USERNAME pw/PASSWORD' to login. "
+
             + "If you're using contactHeRo for the first time, type 'Admin' as the USERNAME"
             + " and 'ad123' as the PASSWORD. \n"
+
             + "Type 'help' to view the User Guide. \n"
             + "Type 'exit' to exit contactHeRo.";
 

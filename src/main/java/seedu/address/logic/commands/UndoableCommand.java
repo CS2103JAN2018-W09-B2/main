@@ -5,6 +5,8 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_JOBS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
+import seedu.address.commons.core.EventsCenter;
+import seedu.address.commons.events.ui.ReloadCalendarEvent;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
@@ -41,6 +43,7 @@ public abstract class UndoableCommand extends Command {
         model.resetData(previousAddressBook);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.updateFilteredJobList(PREDICATE_SHOW_ALL_JOBS);
+        EventsCenter.getInstance().post(new ReloadCalendarEvent(model.getAddressBook().getAppointmentList()));
     }
 
     /**
@@ -57,6 +60,7 @@ public abstract class UndoableCommand extends Command {
         }
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.updateFilteredJobList(PREDICATE_SHOW_ALL_JOBS);
+        EventsCenter.getInstance().post(new ReloadCalendarEvent(model.getAddressBook().getAppointmentList()));
     }
 
     @Override
